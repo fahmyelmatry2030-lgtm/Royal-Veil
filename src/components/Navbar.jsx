@@ -78,7 +78,7 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: solid ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+          background: solid ? 'rgba(35, 23, 56, 0.95)' : 'transparent',
           backdropFilter: solid ? 'blur(10px)' : 'none',
           boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
           borderBottom: solid ? '1px solid var(--border-light)' : '1px solid rgba(255,255,255,0.1)',
@@ -99,7 +99,7 @@ export default function Navbar() {
         >
           {/* Right: Search & Language */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1 }} className="hidden lg:flex">
-             <button style={{ color: solid ? 'var(--primary-purple)' : '#fff', transition: 'color 0.3s' }}><Search size={20} strokeWidth={1.5} /></button>
+             <button style={{ color: solid ? 'var(--text-dark)' : '#fff', transition: 'color 0.3s' }}><Search size={20} strokeWidth={1.5} /></button>
              <span style={{ fontSize: '12px', fontWeight: 'bold', color: solid ? 'var(--text-dark)' : '#fff' }}>AR | EN</span>
           </div>
 
@@ -117,7 +117,7 @@ export default function Navbar() {
               fontWeight: '900',
               fontSize: '32px',
               letterSpacing: '0.2em',
-              color: solid ? 'var(--primary-purple)' : '#fff',
+              color: solid ? 'var(--accent-gold)' : '#fff',
               transition: 'all 0.3s',
               fontFamily: 'var(--font-serif), serif',
               marginBottom: '-6px',
@@ -139,14 +139,14 @@ export default function Navbar() {
           {/* Left: Icons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1, justifyContent: 'flex-end' }}>
             <div className="hidden lg:flex items-center gap-6 mr-6">
-               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
-               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: solid ? 'var(--text-dark)' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: solid ? 'var(--text-dark)' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
             </div>
             <Link
               to="/shop"
               style={{
                 position: 'relative',
-                color: solid ? 'var(--primary-purple)' : '#fff',
+                color: solid ? 'var(--text-dark)' : '#fff',
               }}
             >
               <ShoppingBag size={22} strokeWidth={1.5} />
@@ -173,7 +173,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(!mobileOpen)}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: solid ? 'var(--primary-purple)' : '#fff',
+                color: solid ? 'var(--text-dark)' : '#fff',
                 display: 'flex', alignItems: 'center',
               }}
               className="lg:hidden"
@@ -189,7 +189,7 @@ export default function Navbar() {
           display: 'none',
           justifyContent: 'center',
           paddingBottom: '12px',
-          background: solid ? '#fff' : 'transparent',
+          background: solid ? 'var(--bg-white)' : 'transparent',
           transition: 'all 0.3s'
         }} className="lg:flex">
            <nav style={{ display: 'flex', gap: '30px' }}>
@@ -202,7 +202,7 @@ export default function Navbar() {
                     fontWeight: active(l.path) ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: active(l.path) ? 'var(--accent-gold)' : solid ? 'var(--primary-purple)' : 'rgba(255,255,255,0.9)',
+                    color: active(l.path) ? 'var(--accent-gold)' : solid ? 'var(--text-dark)' : 'rgba(255,255,255,0.9)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                     paddingBottom: '4px',
@@ -221,7 +221,7 @@ export default function Navbar() {
                     fontWeight: moreActive ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: moreActive ? 'var(--accent-gold)' : solid ? 'var(--primary-purple)' : 'rgba(255,255,255,0.9)',
+                    color: moreActive ? 'var(--accent-gold)' : solid ? 'var(--text-dark)' : 'rgba(255,255,255,0.9)',
                     background: 'none', border: 'none', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', gap: '4px'
                   }}
@@ -236,7 +236,7 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: 10 }}
                       style={{
                         position: 'absolute', top: '100%', right: 0, minWidth: '180px',
-                        background: '#fff', boxShadow: 'var(--shadow-md)',
+                        background: 'var(--bg-white)', boxShadow: 'var(--shadow-md)',
                         padding: '10px 0', zIndex: 120, border: '1px solid var(--border-light)',
                         borderRadius: '8px'
                       }}
@@ -247,10 +247,10 @@ export default function Navbar() {
                           to={l.path}
                           style={{
                             display: 'block', padding: '10px 20px', fontSize: '12px',
-                            color: active(l.path) ? 'var(--accent-gold)' : 'var(--primary-purple)', textDecoration: 'none',
+                            color: active(l.path) ? 'var(--accent-gold)' : 'var(--text-dark)', textDecoration: 'none',
                             fontWeight: '600', transition: 'background 0.2s'
                           }}
-                          className="hover:bg-purple-50"
+                          className="hover:bg-purple-900"
                         >
                           {l.name}
                         </Link>
@@ -284,9 +284,9 @@ export default function Navbar() {
                    key={l.path} 
                    to={l.path}
                    style={{
-                     fontSize: '18px', fontWeight: '700', color: active(l.path) ? 'var(--accent-gold)' : 'var(--primary-purple)',
+                     fontSize: '18px', fontWeight: '700', color: active(l.path) ? 'var(--accent-gold)' : 'var(--text-dark)',
                      textDecoration: 'none', textTransform: 'uppercase',
-                     padding: '10px 0', borderBottom: '1px solid var(--purple-light)'
+                     padding: '10px 0', borderBottom: '1px solid var(--border-light)'
                    }}
                  >
                    {l.name}
@@ -294,13 +294,13 @@ export default function Navbar() {
                ))}
             </nav>
 
-            <div style={{ marginTop: 'auto', padding: '2rem', background: 'var(--purple-light)' }}>
+            <div style={{ marginTop: 'auto', padding: '2rem', background: 'var(--bg-lavender)' }}>
                <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '2rem' }}>
-                  <User size={24} style={{ color: 'var(--primary-purple)' }} />
-                  <Heart size={24} style={{ color: 'var(--primary-purple)' }} />
-                  <Search size={24} style={{ color: 'var(--primary-purple)' }} />
+                  <User size={24} style={{ color: 'var(--accent-gold)' }} />
+                  <Heart size={24} style={{ color: 'var(--accent-gold)' }} />
+                  <Search size={24} style={{ color: 'var(--accent-gold)' }} />
                </div>
-               <p style={{ textAlign: 'center', fontSize: '11px', color: 'var(--primary-purple)', opacity: 0.7, letterSpacing: '1px' }}>© 2024 ROYAL VEIL COUTURE</p>
+               <p style={{ textAlign: 'center', fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 ROYAL VEIL COUTURE</p>
             </div>
           </motion.div>
         )}

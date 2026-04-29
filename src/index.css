@@ -2,26 +2,26 @@
 
 
 :root {
-  /* Royal Purple Boutique Palette */
-  --primary-purple: #5D3E8B;
-  --secondary-purple: #7D5BA6;
-  --purple-light: #F8F4FF;
-  --purple-dark: #3B265D;
+  /* Marya Secret Palette */
+  --primary-purple: #be5b67; /* Muted Rose / Pinkish Red */
+  --secondary-purple: #df6775; /* Lighter Rose */
+  --purple-light: #fff5f6; /* Very light rose */
+  --purple-dark: #2b0b13; /* Very Dark Burgundy */
   
-  --accent-gold: #D4AF37;
-  --secondary-gold: #C5A028;
-  --gold-dark: #996515;
-  --gold-light: #F3E5AB;
+  --accent-gold: #4f483e; /* Dark Brown / Bronze */
+  --secondary-gold: #6a6053; /* Lighter Bronze */
+  --gold-dark: #332f28; /* Deep Brown */
+  --gold-light: #e8e4df; /* Soft Beige */
   
   --bg-white: #FFFFFF;
-  --bg-lavender: #F8F4FF;
-  --bg-cream: #FFFDF9;
+  --bg-lavender: #fbf9f9; /* Soft off-white / very pale rose */
+  --bg-cream: #f2f2f2; /* Light Gray */
   
-  --text-dark: #1A1A1A;
-  --text-muted: #6B6B6B;
+  --text-dark: #1e0b0d; /* Almost black burgundy */
+  --text-muted: #6b645e; /* Muted taupe/brown */
   --text-light: #FFFFFF;
   
-  --border-light: #E0D7F0;
+  --border-light: #ebdce0; /* Light rose border */
   
   --font-serif: 'Playfair Display', 'serif';
   --font-sans: 'Cairo', 'Outfit', sans-serif;

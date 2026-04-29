@@ -13,7 +13,7 @@ const BlouseEmbroidery = () => {
   ];
 
   return (
-    <div style={{ direction: 'rtl', background: '#fff' }}>
+    <div style={{ direction: 'rtl', background: 'var(--bg-white)' }}>
       <Helmet>
         <title>Royal Veil | تطريز البلايز - فن وإبداع</title>
       </Helmet>
@@ -43,13 +43,13 @@ const BlouseEmbroidery = () => {
             ))}
           </div>
 
-          <div style={{ background: '#fafafa', padding: '5rem 2rem', borderRadius: '4px', textAlign: 'center', border: '1px solid #f0f0f0' }}>
-            <div style={{ color: '#D4AF37', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}><Palette size={48} /></div>
+          <div style={{ background: 'var(--bg-lavender)', padding: '5rem 2rem', borderRadius: '4px', textAlign: 'center', border: '1px solid var(--border-light)' }}>
+            <div style={{ color: 'var(--accent-gold)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}><Palette size={48} /></div>
             <SectionHeader 
               badge="Custom Art"
               title="هل لديكِ قطعة ترغبين بتطريزها؟"
             />
-            <p style={{ color: '#666', mb: '2rem', maxWidth: '600px', margin: '0 auto 2.5rem', lineHeight: '1.8' }}>
+            <p style={{ color: 'var(--text-muted)', mb: '2rem', maxWidth: '600px', margin: '0 auto 2.5rem', lineHeight: '1.8' }}>
               يمكننا إضافة نقوش مخصصة، أسماء، أو تصاميم فنية على البلايز، القمصان، والعبايات الخاصة بكِ. نحول ملابسكِ العادية إلى قطع فنية فريدة.
             </p>
             <Link to="/custom-order" className="btn-premium">طلب خدمة تطريز <ArrowLeft size={20} /></Link>

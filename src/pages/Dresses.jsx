@@ -25,7 +25,7 @@ const Dresses = () => {
   const [sortBy, setSortBy] = useState('أحدث المنتجات');
 
   return (
-    <div style={{ direction: 'rtl', backgroundColor: '#fff' }}>
+    <div style={{ direction: 'rtl', backgroundColor: 'var(--bg-white)' }}>
       <Helmet>
         <title>Royal Veil | فساتين السهرة والزفاف - المجموعة الكاملة</title>
       </Helmet>
@@ -39,10 +39,10 @@ const Dresses = () => {
 
       {/* Control Bar */}
       <section style={{ 
-        borderBottom: '1px solid #eee', 
+        borderBottom: '1px solid var(--border-light)', 
         position: 'sticky', 
         top: '68px', 
-        background: '#fff', 
+        background: 'var(--bg-white)', 
         zIndex: 40 
       }}>
         <div className="container" style={{ 
@@ -60,14 +60,14 @@ const Dresses = () => {
                 gap: '8px', 
                 fontWeight: 'bold', 
                 fontSize: '14px',
-                color: '#222'
+                color: 'var(--text-dark)'
               }}
             >
               <Filter size={18} /> تصفية
             </button>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#888' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--text-muted)' }}>
               عرض: 
-              <LayoutGrid size={18} style={{ cursor: 'pointer', color: '#222' }} />
+              <LayoutGrid size={18} style={{ cursor: 'pointer', color: 'var(--text-dark)' }} />
               <List size={18} style={{ cursor: 'pointer' }} />
             </div>
           </div>
@@ -79,9 +79,9 @@ const Dresses = () => {
               gap: '6px', 
               fontSize: '14px', 
               fontWeight: '600',
-              color: '#222'
+              color: 'var(--text-dark)'
             }}>
-              ترتيب حسب: <span style={{ color: '#D4AF37' }}>{sortBy}</span>
+              ترتيب حسب: <span style={{ color: 'var(--accent-gold)' }}>{sortBy}</span>
               <ChevronDown size={14} />
             </button>
           </div>
@@ -122,14 +122,14 @@ const Dresses = () => {
       <section style={{ padding: '8rem 0', background: '#000', color: '#fff', overflow: 'hidden' }}>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', alignItems: 'center' }}>
           <div style={{ flex: '1', minWidth: '300px' }}>
-            <h5 style={{ color: '#D4AF37', letterSpacing: '4px', fontWeight: '800', fontSize: '12px', marginBottom: '1.5rem' }}>STYLE GUIDE</h5>
+            <h5 style={{ color: 'var(--accent-gold)', letterSpacing: '4px', fontWeight: '800', fontSize: '12px', marginBottom: '1.5rem' }}>STYLE GUIDE</h5>
             <h2 style={{ fontSize: '42px', fontWeight: '900', fontFamily: 'var(--font-serif)', lineHeight: 1.2, marginBottom: '2rem' }}>كيف تختارين <br /> فستان أحلامكِ؟</h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '2', fontSize: '16px', marginBottom: '2.5rem' }}>
               اختيار الفستان المثالي يعتمد على طبيعة المناسبة، شكل القوام، واللون الذي يبرز جمال بشرتكِ. خبراؤنا في رويال فيل مستعدون لمساعدتكِ في كل خطوة.
             </p>
             <Link to="/custom-order" style={{ 
               display: 'inline-flex', alignItems: 'center', gap: '10px', 
-              color: '#D4AF37', fontWeight: '900', fontSize: '14px', textDecoration: 'none',
+              color: 'var(--accent-gold)', fontWeight: '900', fontSize: '14px', textDecoration: 'none',
               letterSpacing: '1px'
             }}>احجزي جلسة استشارية <ArrowLeft size={16} /></Link>
           </div>
@@ -160,7 +160,7 @@ const Dresses = () => {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               style={{
                 position: 'fixed', top: 0, right: 0, bottom: 0, width: '380px',
-                background: '#fff', zIndex: 101, padding: '2rem', direction: 'rtl'
+                background: 'var(--bg-white)', zIndex: 101, padding: '2rem', direction: 'rtl'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
@@ -171,19 +171,19 @@ const Dresses = () => {
               {/* Filter Categories */}
               <div style={{ spaceY: '2rem' }}>
                 <div style={{ marginBottom: '2rem' }}>
-                  <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>الفئة</h3>
+                  <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '8px' }}>الفئة</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {['الكل', 'فساتين سهرة', 'فساتين زفاف', 'فساتين خطوبة', 'فساتين قصيرة'].map(cat => (
                       <label key={cat} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', cursor: 'pointer' }}>
-                        <input type="checkbox" style={{ accentColor: '#D4AF37' }} /> {cat}
+                        <input type="checkbox" style={{ accentcolor: 'var(--accent-gold)' }} /> {cat}
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div style={{ marginBottom: '2rem' }}>
-                  <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>السعر</h3>
-                  <input type="range" style={{ width: '100%', accentColor: '#D4AF37' }} />
+                  <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '8px' }}>السعر</h3>
+                  <input type="range" style={{ width: '100%', accentcolor: 'var(--accent-gold)' }} />
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginTop: '8px' }}>
                     <span>0$</span>
                     <span>5000$</span>
@@ -191,7 +191,7 @@ const Dresses = () => {
                 </div>
 
                 <div style={{ marginBottom: '2rem' }}>
-                  <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>اللون</h3>
+                  <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '8px' }}>اللون</h3>
                   <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     {['#fff', '#000', '#f00', '#00f', '#ffd700', '#c0c0c0'].map(color => (
                       <div key={color} style={{ 

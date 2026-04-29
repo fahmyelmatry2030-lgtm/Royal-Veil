@@ -104,7 +104,7 @@ const ProductCard = ({ product }) => {
             alignItems: 'center',
             justifyContent: 'center',
             border: 'none',
-            color: '#222',
+            color: 'var(--text-dark)',
             zIndex: 10,
             transition: 'all 0.2s',
           }}

@@ -14,7 +14,7 @@ const CustomTailoring = () => {
   ];
 
   return (
-    <div style={{ direction: 'rtl', background: '#fff' }}>
+    <div style={{ direction: 'rtl', background: 'var(--bg-white)' }}>
       <Helmet>
         <title>Royal Veil | خدمات التفصيل - دقة واحترافية</title>
       </Helmet>
@@ -38,22 +38,22 @@ const CustomTailoring = () => {
             {steps.map((step, index) => (
               <div key={index} style={{ 
                 padding: '3rem 2rem', 
-                background: '#fafafa', 
-                border: '1px solid #f0f0f0', 
+                background: 'var(--bg-lavender)', 
+                border: '1px solid var(--border-light)', 
                 borderRadius: '4px',
                 textAlign: 'center',
                 transition: 'transform 0.3s'
               }} className="hover:transform hover:-translate-y-2">
                 <div style={{ 
-                  width: '70px', height: '70px', background: '#fff', 
+                  width: '70px', height: '70px', background: 'var(--bg-white)', 
                   borderRadius: '50%', display: 'flex', alignItems: 'center', 
-                  justifyContent: 'center', margin: '0 auto 2rem', color: '#D4AF37',
+                  justifyContent: 'center', margin: '0 auto 2rem', color: 'var(--accent-gold)',
                   boxShadow: '0 10px 20px rgba(0,0,0,0.03)'
                 }}>
                   {step.icon}
                 </div>
                 <h3 style={{ fontSize: '20px', fontWeight: '800', marginBottom: '1rem' }}>{step.title}</h3>
-                <p style={{ color: '#666', fontSize: '14px', lineHeight: '1.7' }}>{step.desc}</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.7' }}>{step.desc}</p>
               </div>
             ))}
           </div>
@@ -70,16 +70,16 @@ const CustomTailoring = () => {
             <SectionHeader badge="Why Us" title="لماذا تختارين تفصيل رويال فيل؟" right />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                <div style={{ display: 'flex', gap: '15px' }}>
-                  <div style={{ color: '#D4AF37', fontWeight: '900' }}>✓</div>
-                  <p style={{ color: '#666' }}>نستخدم أحدث الماكينات والمعدات لضمان دقة الخياطة.</p>
+                  <div style={{ color: 'var(--accent-gold)', fontWeight: '900' }}>✓</div>
+                  <p style={{ color: 'var(--text-muted)' }}>نستخدم أحدث الماكينات والمعدات لضمان دقة الخياطة.</p>
                </div>
                <div style={{ display: 'flex', gap: '15px' }}>
-                  <div style={{ color: '#D4AF37', fontWeight: '900' }}>✓</div>
-                  <p style={{ color: '#666' }}>خبراء متخصصون في قص الموديلات المعقدة والفساتين الملكية.</p>
+                  <div style={{ color: 'var(--accent-gold)', fontWeight: '900' }}>✓</div>
+                  <p style={{ color: 'var(--text-muted)' }}>خبراء متخصصون في قص الموديلات المعقدة والفساتين الملكية.</p>
                </div>
                <div style={{ display: 'flex', gap: '15px' }}>
-                  <div style={{ color: '#D4AF37', fontWeight: '900' }}>✓</div>
-                  <p style={{ color: '#666' }}>إشراف فني على كل مرحلة لضمان مطابقة التصميم الأصلي.</p>
+                  <div style={{ color: 'var(--accent-gold)', fontWeight: '900' }}>✓</div>
+                  <p style={{ color: 'var(--text-muted)' }}>إشراف فني على كل مرحلة لضمان مطابقة التصميم الأصلي.</p>
                </div>
             </div>
             <Link to="/custom-order" style={{ 

@@ -163,7 +163,7 @@ const Shop = () => {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               style={{
                 position: 'fixed', top: 0, right: 0, bottom: 0, width: '380px',
-                background: '#fff', zIndex: 101, padding: '2rem', direction: 'rtl'
+                background: 'var(--bg-white)', zIndex: 101, padding: '2rem', direction: 'rtl'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>

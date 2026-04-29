@@ -15,7 +15,7 @@ const babyItems = [
 
 const BabyProducts = () => {
   return (
-    <div style={{ direction: 'rtl', background: '#fff' }}>
+    <div style={{ direction: 'rtl', background: 'var(--bg-white)' }}>
       <Helmet>
         <title>Royal Veil | منتجات البيبي - رقة وأمان</title>
       </Helmet>
@@ -38,17 +38,17 @@ const BabyProducts = () => {
             </div>
             <div style={{ flex: '1', minWidth: '300px' }}>
                <SectionHeader badge="Care & Love" title="نعومة فائقة لطفلكِ" right />
-               <p style={{ color: '#666', fontSize: '16px', lineHeight: '2', marginBottom: '2rem' }}>
+               <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '2', marginBottom: '2rem' }}>
                  في رويال فيل، نهتم بأطفالكِ بقدر اهتمامنا بكِ. نقدم مجموعة رقيقة من ملابس ومستلزمات الأطفال المصنوعة من خامات طبيعية صديقة للبشرة، مع لمسات فنية تجعل طفلكِ متميزاً منذ يومه الأول.
                </p>
                <div style={{ spaceY: '1rem', marginBottom: '2.5rem' }}>
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: '#222', marginBottom: '15px' }}>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: 'var(--text-dark)', marginBottom: '15px' }}>
                    <Heart className="text-[var(--secondary-gold)]" size={18} /> خامات قطنية 100%
                  </div>
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: '#222', marginBottom: '15px' }}>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: 'var(--text-dark)', marginBottom: '15px' }}>
                    <Star className="text-[var(--secondary-gold)]" size={18} /> تصاميم حصرية ومخصصة
                  </div>
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: '#222' }}>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: 'var(--text-dark)' }}>
                    <Heart className="text-[var(--secondary-gold)]" size={18} /> تطريز يدوي لطيف
                  </div>
                </div>

@@ -14,7 +14,7 @@ const heritageItems = [
 
 const Heritage = () => {
   return (
-    <div style={{ direction: 'rtl', background: '#fff' }}>
+    <div style={{ direction: 'rtl', background: 'var(--bg-white)' }}>
       <Helmet>
         <title>Royal Veil | التراث الفلسطيني - هوية وأصالة</title>
       </Helmet>
@@ -31,22 +31,22 @@ const Heritage = () => {
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', alignItems: 'center' }}>
           <div>
             <SectionHeader badge="Our Roots" title="عبق الماضي بروح الحاضر" right />
-            <p style={{ color: '#666', fontSize: '16px', lineHeight: '2', marginBottom: '1.5rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '2', marginBottom: '1.5rem' }}>
               في رويال فيل، نعتبر التطريز الفلسطيني ليس مجرد فن، بل هو لغة تحكي تاريخنا وهويتنا. نحرص على دمج النقوش التراثية الأصيلة في تصاميمنا العصرية، لنقدم قطعاً تعكس الفخر الفلسطيني بلمسة عالمية.
             </p>
-            <p style={{ color: '#666', fontSize: '16px', lineHeight: '2', marginBottom: '2.5rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '2', marginBottom: '2.5rem' }}>
               كل قطعة تراثية ننتجها تمر بمراحل عديدة من البحث عن النقش التاريخي لكل منطقة فلسطينية، ثم تنفيذه بدقة يدوية عالية تضمن استدامة الجمال عبر الأجيال.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <div style={{ padding: '20px', background: '#fafafa', border: '1px solid #f0f0f0' }}>
-                <Heart style={{ color: '#D4AF37', marginBottom: '8px' }} size={20} />
+              <div style={{ padding: '20px', background: 'var(--bg-lavender)', border: '1px solid var(--border-light)' }}>
+                <Heart style={{ color: 'var(--accent-gold)', marginBottom: '8px' }} size={20} />
                 <h4 style={{ fontWeight: '800', fontSize: '15px' }}>حرفة يدوية</h4>
-                <p style={{ fontSize: '12px', color: '#888' }}>تطريز يدوي بدقة متناهية</p>
+                <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>تطريز يدوي بدقة متناهية</p>
               </div>
-              <div style={{ padding: '20px', background: '#fafafa', border: '1px solid #f0f0f0' }}>
-                <Sparkles style={{ color: '#D4AF37', marginBottom: '8px' }} size={20} />
+              <div style={{ padding: '20px', background: 'var(--bg-lavender)', border: '1px solid var(--border-light)' }}>
+                <Sparkles style={{ color: 'var(--accent-gold)', marginBottom: '8px' }} size={20} />
                 <h4 style={{ fontWeight: '800', fontSize: '15px' }}>تصميم عصري</h4>
-                <p style={{ fontSize: '12px', color: '#888' }}>دمج التراث بالأزياء الحديثة</p>
+                <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>دمج التراث بالأزياء الحديثة</p>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ const Heritage = () => {
       </section>
 
       {/* Gallery Section */}
-      <section style={{ padding: '6rem 0', background: '#fafafa' }}>
+      <section style={{ padding: '6rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
           <SectionHeader 
             badge="Heritage Collection"
@@ -75,13 +75,13 @@ const Heritage = () => {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '8rem 0', background: '#fff', color: '#000', textAlign: 'center', borderTop: '1px solid #f0f0f0' }}>
+      <section style={{ padding: '8rem 0', background: 'var(--bg-white)', color: 'var(--text-dark)', textAlign: 'center', borderTop: '1px solid #f0f0f0' }}>
         <div className="container">
           <SectionHeader 
             badge="Your Identity"
             title="احصلي على قطعة تعبر عن جذوركِ"
           />
-          <p style={{ color: '#666', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '18px', lineHeight: '1.8' }}>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '18px', lineHeight: '1.8' }}>
             نحن هنا لنحول قصتكِ وهويتكِ إلى قطعة ملابس فريدة. اختاري النقش الذي تحبينه ودعينا نتولى الباقي.
           </p>
           <Link to="/custom-order" style={{ 

@@ -22,7 +22,7 @@ const Shop = () => {
   const [activeCategory, setActiveCategory] = useState('الكل');
 
   return (
-    <div style={{ direction: 'rtl', backgroundColor: '#fff' }}>
+    <div style={{ direction: 'rtl', backgroundColor: 'var(--bg-white)' }}>
       <Helmet>
         <title>Royal Veil | المتجر - تسوقي أجمل القطع الجاهزة</title>
       </Helmet>
@@ -35,10 +35,10 @@ const Shop = () => {
 
       {/* Control Bar */}
       <section style={{ 
-        borderBottom: '1px solid #eee', 
+        borderBottom: '1px solid var(--border-light)', 
         position: 'sticky', 
         top: '68px', 
-        background: '#fff', 
+        background: 'var(--bg-white)', 
         zIndex: 40 
       }}>
         <div className="container" style={{ 
@@ -56,7 +56,7 @@ const Shop = () => {
                 gap: '8px', 
                 fontWeight: 'bold', 
                 fontSize: '14px',
-                color: '#222'
+                color: 'var(--primary-purple)'
               }}
             >
               <Filter size={18} /> تصفية المنتجات
@@ -69,7 +69,7 @@ const Shop = () => {
                   style={{
                     fontSize: '13px',
                     fontWeight: activeCategory === cat ? '800' : '500',
-                    color: activeCategory === cat ? '#D4AF37' : '#888',
+                    color: activeCategory === cat ? 'var(--accent-gold)' : 'var(--text-muted)',
                     textTransform: 'uppercase',
                     letterSpacing: '1px'
                   }}
@@ -87,13 +87,13 @@ const Shop = () => {
                 placeholder="ابحثي هنا..." 
                 style={{
                   padding: '8px 35px 8px 12px',
-                  border: '1px solid #eee',
+                  border: '1px solid var(--border-light)',
                   borderRadius: '2px',
                   fontSize: '13px',
                   width: '200px'
                 }}
               />
-              <Search size={16} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: '#ccc' }} />
+              <Search size={16} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
             </div>
             <button style={{ 
               display: 'flex', 
@@ -101,7 +101,7 @@ const Shop = () => {
               gap: '6px', 
               fontSize: '14px', 
               fontWeight: '600',
-              color: '#222'
+              color: 'var(--primary-purple)'
             }}>
               ترتيب حسب <ChevronDown size={14} />
             </button>
@@ -125,7 +125,7 @@ const Shop = () => {
       </section>
 
       {/* Style Enrichment Section */}
-      <section style={{ padding: '8rem 0', borderTop: '1px solid #f0f0f0' }}>
+      <section style={{ padding: '8rem 0', borderTop: '1px solid var(--border-light)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <SectionHeader 
             badge="The Experience"
@@ -134,16 +134,16 @@ const Shop = () => {
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', marginTop: '4rem' }}>
             <div>
-              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)' }}>شحن سريع وآمن</h4>
-              <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.7' }}>نصل إليكِ أينما كنتِ في فلسطين وباقي أنحاء العالم بأعلى معايير الأمان.</p>
+              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)', color: 'var(--primary-purple)' }}>شحن سريع وآمن</h4>
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.7' }}>نصل إليكِ أينما كنتِ في فلسطين وباقي أنحاء العالم بأعلى معايير الأمان.</p>
             </div>
             <div>
-              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)' }}>تعديل مجاني</h4>
-              <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.7' }}>نقدم خدمة تعديل القياسات مجاناً لضمان المظهر المثالي لكل قطعة تقتنينها.</p>
+              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)', color: 'var(--primary-purple)' }}>تعديل مجاني</h4>
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.7' }}>نقدم خدمة تعديل القياسات مجاناً لضمان المظهر المثالي لكل قطعة تقتنينها.</p>
             </div>
             <div>
-              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)' }}>تغليف فاخر</h4>
-              <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.7' }}>تصلكِ منتجاتنا في صناديق فاخرة تليق بذوقكِ، لتكون هدية مثالية لنفسكِ أو لمن تحبين.</p>
+              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)', color: 'var(--primary-purple)' }}>تغليف فاخر</h4>
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.7' }}>تصلكِ منتجاتنا في صناديق فاخرة تليق بذوقكِ، لتكون هدية مثالية لنفسكِ أو لمن تحبين.</p>
             </div>
           </div>
         </div>
@@ -167,16 +167,16 @@ const Shop = () => {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <h2 style={{ fontSize: '20px', fontWeight: '800' }}>تصفية المنتجات</h2>
-                <button onClick={() => setFilterOpen(false)} style={{ fontSize: '24px' }}>&times;</button>
+                <h2 style={{ fontSize: '20px', fontWeight: '800', color: 'var(--primary-purple)' }}>تصفية المنتجات</h2>
+                <button onClick={() => setFilterOpen(false)} style={{ fontSize: '24px', color: 'var(--primary-purple)' }}>&times;</button>
               </div>
 
               {/* Add filter options here similar to Dresses.jsx if needed */}
-              <p style={{ color: '#888', fontSize: '14px' }}>تتوفر خيارات التصفية حسب اللون، السعر، والمقاس قريباً...</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '14px' }}>تتوفر خيارات التصفية حسب اللون، السعر، والمقاس قريباً...</p>
 
               <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', right: '2rem' }}>
                 <button style={{ 
-                  width: '100%', padding: '14px', background: '#222', color: '#fff', 
+                  width: '100%', padding: '14px', background: 'var(--primary-purple)', color: 'var(--text-light)', 
                   fontWeight: '700', borderRadius: '2px' 
                 }}>
                   تحديث النتائج

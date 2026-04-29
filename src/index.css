@@ -13,8 +13,8 @@
   --gold-dark: #332f28; /* Deep Brown */
   --gold-light: #e8e4df; /* Soft Beige */
   
-  --bg-white: #FFFFFF;
-  --bg-lavender: #fbf9f9; /* Soft off-white / very pale rose */
+  --bg-white: #fcfafa; /* Off-white instead of pure white */
+  --bg-lavender: #f8f4f4; /* Soft off-white / very pale rose */
   --bg-cream: #f2f2f2; /* Light Gray */
   
   --text-dark: #1e0b0d; /* Almost black burgundy */

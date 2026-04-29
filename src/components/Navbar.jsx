@@ -170,15 +170,15 @@ export default function Navbar() {
             
             {/* Mobile hamburger */}
             <button
-              onClick={() => setMobileOpen(true)}
+              onClick={() => setMobileOpen(!mobileOpen)}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: solid ? '#000' : '#fff',
+                color: solid ? 'var(--primary-purple)' : '#fff',
                 display: 'flex', alignItems: 'center',
               }}
               className="lg:hidden"
             >
-              <Menu size={26} strokeWidth={1.5} />
+              {mobileOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
             </button>
           </div>
         </div>
@@ -267,19 +267,16 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ type: 'tween', duration: 0.3 }}
             style={{
-              position: 'fixed', inset: 0, background: 'var(--bg-white)', zIndex: 200,
-              display: 'flex', flexDirection: 'column', direction: 'rtl'
+              position: 'fixed', top: scrolled ? '105px' : '125px', left: 0, right: 0, bottom: 0, background: 'var(--bg-white)', zIndex: 90,
+              display: 'flex', flexDirection: 'column', direction: 'rtl', overflowY: 'auto',
+              borderTop: '1px solid var(--border-light)'
             }}
           >
-            <div style={{ padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)' }}>
-               <span style={{ fontWeight: '900', letterSpacing: '2px', color: 'var(--primary-purple)', fontSize: '24px', fontFamily: 'var(--font-serif)' }}>ROYAL VEIL</span>
-               <button onClick={() => setMobileOpen(false)} style={{ color: 'var(--primary-purple)' }}><X size={30} /></button>
-            </div>
             
             <nav style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                {[...navLinks, ...moreLinks].map(l => (

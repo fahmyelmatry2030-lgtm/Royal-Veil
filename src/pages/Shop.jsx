@@ -134,15 +134,15 @@ const Shop = () => {
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', marginTop: '4rem' }}>
             <div>
-              <h4 style={{ fontWeight: '900', marginBottom: '15px' }}>شحن سريع وآمن</h4>
+              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)' }}>شحن سريع وآمن</h4>
               <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.7' }}>نصل إليكِ أينما كنتِ في فلسطين وباقي أنحاء العالم بأعلى معايير الأمان.</p>
             </div>
             <div>
-              <h4 style={{ fontWeight: '900', marginBottom: '15px' }}>تعديل مجاني</h4>
+              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)' }}>تعديل مجاني</h4>
               <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.7' }}>نقدم خدمة تعديل القياسات مجاناً لضمان المظهر المثالي لكل قطعة تقتنينها.</p>
             </div>
             <div>
-              <h4 style={{ fontWeight: '900', marginBottom: '15px' }}>تغليف فاخر</h4>
+              <h4 style={{ fontWeight: '900', marginBottom: '15px', fontFamily: 'var(--font-serif)' }}>تغليف فاخر</h4>
               <p style={{ fontSize: '14px', color: '#888', lineHeight: '1.7' }}>تصلكِ منتجاتنا في صناديق فاخرة تليق بذوقكِ، لتكون هدية مثالية لنفسكِ أو لمن تحبين.</p>
             </div>
           </div>

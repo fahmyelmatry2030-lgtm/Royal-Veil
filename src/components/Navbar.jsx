@@ -51,11 +51,11 @@ export default function Navbar() {
     <>
       {/* ─── Promo Bar ─── */}
       <div style={{
-        background: '#fff',
-        color: '#000',
+        background: 'var(--primary-purple)',
+        color: 'var(--text-light)',
         fontSize: '11px',
         textAlign: 'center',
-        padding: '8px 0',
+        padding: '10px 0',
         fontWeight: '600',
         letterSpacing: '1.5px',
         textTransform: 'uppercase',
@@ -64,23 +64,24 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 110,
-        borderBottom: '1px solid #f0f0f0'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
       }}>
-        شحن مجاني للطلبات أكثر من 200$ • كود الخصم: <span style={{ color: '#D4AF37' }}>ROYAL20</span>
+        شحن مجاني للطلبات أكثر من 200$ • كود الخصم: <span style={{ color: 'var(--accent-gold)' }}>ROYAL20</span>
       </div>
 
       {/* ─── Main Bar ─── */}
       <header
         style={{
           position: 'fixed',
-          top: 27, // Height of promo bar
+          top: 35, // Height of promo bar
           left: 0,
           right: 0,
           zIndex: 100,
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: solid ? '#fff' : 'transparent',
-          boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.05)' : 'none',
-          borderBottom: solid ? '1px solid #f0f0f0' : '1px solid rgba(255,255,255,0.1)',
+          background: solid ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+          backdropFilter: solid ? 'blur(10px)' : 'none',
+          boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
+          borderBottom: solid ? '1px solid var(--border-light)' : '1px solid rgba(255,255,255,0.1)',
         }}
       >
         <div
@@ -91,18 +92,17 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: scrolled ? '64px' : '80px',
+            height: scrolled ? '70px' : '90px',
             direction: 'rtl',
             transition: 'height 0.4s',
           }}
         >
           {/* Right: Search & Language */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1 }} className="hidden lg:flex">
-             <button style={{ color: solid ? '#000' : '#fff', transition: 'color 0.3s' }}><Search size={20} strokeWidth={1.5} /></button>
-             <span style={{ fontSize: '12px', fontWeight: 'bold', color: solid ? '#000' : '#fff' }}>AR | EN</span>
+             <button style={{ color: solid ? 'var(--primary-purple)' : '#fff', transition: 'color 0.3s' }}><Search size={20} strokeWidth={1.5} /></button>
+             <span style={{ fontSize: '12px', fontWeight: 'bold', color: solid ? 'var(--text-dark)' : '#fff' }}>AR | EN</span>
           </div>
 
-          {/* Center: Logo */}
           <Link
             to="/"
             style={{ 
@@ -115,37 +115,38 @@ export default function Navbar() {
           >
             <div style={{
               fontWeight: '900',
-              fontSize: '24px',
-              letterSpacing: '0.25em',
-              color: solid ? '#000' : '#fff',
-              transition: 'color 0.3s',
-              fontFamily: 'serif',
-              marginBottom: '-4px'
+              fontSize: '32px',
+              letterSpacing: '0.2em',
+              color: solid ? 'var(--primary-purple)' : '#fff',
+              transition: 'all 0.3s',
+              fontFamily: 'var(--font-serif), serif',
+              marginBottom: '-6px',
+              textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none'
             }}>
               ROYAL VEIL
             </div>
             <div style={{ 
-              fontSize: '8px', 
-              letterSpacing: '0.4em', 
-              color: '#D4AF37', 
+              fontSize: '10px', 
+              letterSpacing: '0.5em', 
+              color: 'var(--accent-gold)', 
               textTransform: 'uppercase',
-              fontWeight: '700'
+              fontWeight: '900'
             }}>
-              Palestinian Couture
+              EST. 2024
             </div>
           </Link>
 
           {/* Left: Icons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1, justifyContent: 'flex-end' }}>
             <div className="hidden lg:flex items-center gap-6 mr-6">
-               <button style={{ color: solid ? '#000' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
-               <button style={{ color: solid ? '#000' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
             </div>
             <Link
               to="/shop"
               style={{
                 position: 'relative',
-                color: solid ? '#000' : '#fff',
+                color: solid ? 'var(--primary-purple)' : '#fff',
               }}
             >
               <ShoppingBag size={22} strokeWidth={1.5} />
@@ -153,7 +154,7 @@ export default function Navbar() {
                 position: 'absolute',
                 top: '-6px',
                 right: '-8px',
-                background: '#D4AF37',
+                background: 'var(--accent-gold)',
                 color: '#fff',
                 fontSize: '9px',
                 width: '16px',
@@ -162,7 +163,8 @@ export default function Navbar() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
               }}>0</span>
             </Link>
             
@@ -200,11 +202,11 @@ export default function Navbar() {
                     fontWeight: active(l.path) ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: active(l.path) ? '#D4AF37' : solid ? '#222' : 'rgba(255,255,255,0.9)',
+                    color: active(l.path) ? 'var(--accent-gold)' : solid ? 'var(--primary-purple)' : 'rgba(255,255,255,0.9)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                     paddingBottom: '4px',
-                    borderBottom: active(l.path) ? '2px solid #D4AF37' : '2px solid transparent'
+                    borderBottom: active(l.path) ? '2px solid var(--accent-gold)' : '2px solid transparent'
                   }}
                 >
                   {l.name}
@@ -219,7 +221,7 @@ export default function Navbar() {
                     fontWeight: moreActive ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: moreActive ? '#D4AF37' : solid ? '#222' : 'rgba(255,255,255,0.9)',
+                    color: moreActive ? 'var(--accent-gold)' : solid ? 'var(--primary-purple)' : 'rgba(255,255,255,0.9)',
                     background: 'none', border: 'none', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', gap: '4px'
                   }}
@@ -234,8 +236,9 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: 10 }}
                       style={{
                         position: 'absolute', top: '100%', right: 0, minWidth: '180px',
-                        background: '#fff', boxShadow: '0 15px 30px rgba(0,0,0,0.1)',
-                        padding: '10px 0', zIndex: 120, border: '1px solid #eee'
+                        background: '#fff', boxShadow: 'var(--shadow-md)',
+                        padding: '10px 0', zIndex: 120, border: '1px solid var(--border-light)',
+                        borderRadius: '8px'
                       }}
                     >
                       {moreLinks.map(l => (
@@ -244,10 +247,10 @@ export default function Navbar() {
                           to={l.path}
                           style={{
                             display: 'block', padding: '10px 20px', fontSize: '12px',
-                            color: active(l.path) ? '#D4AF37' : '#222', textDecoration: 'none',
+                            color: active(l.path) ? 'var(--accent-gold)' : 'var(--primary-purple)', textDecoration: 'none',
                             fontWeight: '600', transition: 'background 0.2s'
                           }}
-                          className="hover:bg-gray-50"
+                          className="hover:bg-purple-50"
                         >
                           {l.name}
                         </Link>
@@ -269,23 +272,24 @@ export default function Navbar() {
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
             style={{
-              position: 'fixed', inset: 0, background: '#fff', zIndex: 200,
+              position: 'fixed', inset: 0, background: 'var(--bg-white)', zIndex: 200,
               display: 'flex', flexDirection: 'column', direction: 'rtl'
             }}
           >
-            <div style={{ padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-               <span style={{ fontWeight: '900', letterSpacing: '2px' }}>ROYAL VEIL</span>
-               <button onClick={() => setMobileOpen(false)}><X size={30} /></button>
+            <div style={{ padding: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-light)' }}>
+               <span style={{ fontWeight: '900', letterSpacing: '2px', color: 'var(--primary-purple)', fontSize: '24px', fontFamily: 'var(--font-serif)' }}>ROYAL VEIL</span>
+               <button onClick={() => setMobileOpen(false)} style={{ color: 'var(--primary-purple)' }}><X size={30} /></button>
             </div>
             
-            <nav style={{ padding: '0 2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <nav style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                {[...navLinks, ...moreLinks].map(l => (
                  <Link 
                    key={l.path} 
                    to={l.path}
                    style={{
-                     fontSize: '20px', fontWeight: '700', color: active(l.path) ? '#D4AF37' : '#000',
-                     textDecoration: 'none', textTransform: 'uppercase'
+                     fontSize: '18px', fontWeight: '700', color: active(l.path) ? 'var(--accent-gold)' : 'var(--primary-purple)',
+                     textDecoration: 'none', textTransform: 'uppercase',
+                     padding: '10px 0', borderBottom: '1px solid var(--purple-light)'
                    }}
                  >
                    {l.name}
@@ -293,20 +297,20 @@ export default function Navbar() {
                ))}
             </nav>
 
-            <div style={{ marginTop: 'auto', padding: '2rem', borderTop: '1px solid #eee' }}>
+            <div style={{ marginTop: 'auto', padding: '2rem', background: 'var(--purple-light)' }}>
                <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '2rem' }}>
-                  <User size={24} />
-                  <Heart size={24} />
-                  <Search size={24} />
+                  <User size={24} style={{ color: 'var(--primary-purple)' }} />
+                  <Heart size={24} style={{ color: 'var(--primary-purple)' }} />
+                  <Search size={24} style={{ color: 'var(--primary-purple)' }} />
                </div>
-               <p style={{ textAlign: 'center', fontSize: '12px', color: '#888' }}>© 2024 ROYAL VEIL COUTURE</p>
+               <p style={{ textAlign: 'center', fontSize: '11px', color: 'var(--primary-purple)', opacity: 0.7, letterSpacing: '1px' }}>© 2024 ROYAL VEIL COUTURE</p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Spacing for fixed header */}
-      <div style={{ height: scrolled ? '100px' : '110px' }}></div>
+      <div style={{ height: scrolled ? '105px' : '125px' }}></div>
     </>
   );
 }

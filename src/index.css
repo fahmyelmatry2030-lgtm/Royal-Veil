@@ -2,18 +2,38 @@
 
 
 :root {
-  --primary-purple: #1A1A1A; /* Changed from purple to dark black/gray for a cleaner white brand */
-  --secondary-gold: #D4AF37;
-  --gold-light: #F1D592;
-  --gold-dark: #A67C00;
-  --bg-cream: #FFFFFF; /* Pure white */
-  --text-dark: #000000;
+  /* Royal Purple Boutique Palette */
+  --primary-purple: #5D3E8B;
+  --secondary-purple: #7D5BA6;
+  --purple-light: #F8F4FF;
+  --purple-dark: #3B265D;
+  
+  --accent-gold: #D4AF37;
+  --secondary-gold: #C5A028;
+  --gold-dark: #996515;
+  --gold-light: #F3E5AB;
+  
+  --bg-white: #FFFFFF;
+  --bg-lavender: #F8F4FF;
+  --bg-cream: #FFFDF9;
+  
+  --text-dark: #1A1A1A;
+  --text-muted: #6B6B6B;
   --text-light: #FFFFFF;
-  --text-gray: #666666;
-  --glass-bg: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(0, 0, 0, 0.05);
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --border-light: #E0D7F0;
+  
+  --font-serif: 'Playfair Display', 'serif';
+  --font-sans: 'Cairo', 'Outfit', sans-serif;
+  
+  --shadow-sm: 0 4px 12px rgba(93, 62, 139, 0.05);
+  --shadow-md: 0 15px 35px rgba(93, 62, 139, 0.1);
+  --shadow-lg: 0 20px 40px rgba(93, 62, 139, 0.15);
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 * {

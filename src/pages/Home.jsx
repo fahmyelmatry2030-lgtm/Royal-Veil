@@ -30,62 +30,63 @@ const Home = () => {
           />
           <div style={{ 
             position: 'absolute', inset: 0, 
-            background: 'linear-gradient(to left, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 100%)' 
+            background: 'linear-gradient(to bottom, rgba(93, 62, 139, 0.2), rgba(93, 62, 139, 0.6))' 
           }}></div>
         </div>
 
-        <div className="container" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            style={{ maxWidth: '700px', color: '#fff' }}
-          >
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              style={{ height: '2px', background: '#D4AF37', width: '60px', marginBottom: '2rem', transformOrigin: 'right' }}
-            />
-            <h5 style={{ 
-              color: '#D4AF37', fontWeight: '800', letterSpacing: '6px', 
-              textTransform: 'uppercase', fontSize: '14px', marginBottom: '1.5rem' 
-            }}>Haute Couture 2024</h5>
-            <h1 style={{ 
-              fontSize: 'clamp(3.5rem, 8vw, 6rem)', fontWeight: '900', 
-              lineHeight: 1, marginBottom: '2rem', fontFamily: 'serif' 
-            }}>
-              فن <span style={{ color: '#D4AF37' }}>الحكاية</span> <br /> في كل غرزة
-            </h1>
-            <p style={{ fontSize: '19px', color: 'rgba(255,255,255,0.9)', marginBottom: '3rem', lineHeight: 1.7, maxWidth: '550px' }}>
-              نحول التراث الفلسطيني إلى أيقونات عصرية تخطف الأنظار، بأيدي أمهر الحرفيات والمصممين.
-            </p>
-            <div style={{ display: 'flex', gap: '25px' }}>
-              <Link to="/shop" className="btn-premium" style={{ padding: '20px 50px' }}>استكشفي المجموعة</Link>
-              <Link to="/contact" style={{ 
-                borderBottom: '2px solid #fff', color: '#fff', 
-                fontWeight: '700', textDecoration: 'none',
-                fontSize: '14px', letterSpacing: '2px', paddingBottom: '4px'
-              }}>تحدثي معنا</Link>
-            </div>
-          </motion.div>
+        {/* Geometric Frame Decoration (Inspired by User Image) */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '90%',
+          height: '85%',
+          border: '1px solid rgba(212, 175, 55, 0.3)',
+          pointerEvents: 'none',
+          zIndex: 2
+        }}>
+          <div style={{ position: 'absolute', top: '-10px', left: '-10px', width: '40px', height: '40px', borderTop: '2px solid var(--accent-gold)', borderLeft: '2px solid var(--accent-gold)' }} />
+          <div style={{ position: 'absolute', bottom: '-10px', right: '-10px', width: '40px', height: '40px', borderBottom: '2px solid var(--accent-gold)', borderRight: '2px solid var(--accent-gold)' }} />
         </div>
 
-        {/* Floating Numbers / Decorative */}
-        <div style={{ position: 'absolute', bottom: '40px', left: '40px', color: '#fff', opacity: 0.5, fontSize: '12px', letterSpacing: '4px' }}>
-          01 / 04 COLLECTION
+        <div className="container" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            style={{ maxWidth: '800px', textAlign: 'center' }}
+          >
+            <h5 style={{ 
+              color: 'var(--accent-gold)', fontWeight: '900', letterSpacing: '8px', 
+              textTransform: 'uppercase', fontSize: '12px', marginBottom: '1.5rem' 
+            }}>Haute Couture 2024</h5>
+            <h1 style={{ 
+              fontSize: 'clamp(3.5rem, 10vw, 7rem)', fontWeight: '900', 
+              lineHeight: 1, marginBottom: '2rem', fontFamily: 'var(--font-serif), serif', color: 'var(--bg-white)',
+              textShadow: '0 4px 20px rgba(0,0,0,0.3)'
+            }}>
+              ROYAL VEIL
+            </h1>
+            <p style={{ fontSize: '18px', color: 'var(--bg-lavender)', marginBottom: '3rem', lineHeight: 1.8, maxWidth: '600px', margin: '0 auto 3.5rem', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+              نحول التراث الفلسطيني إلى أيقونات عصرية تخطف الأنظار، بأيدي أمهر الحرفيات والمصممين.
+            </p>
+            <div style={{ display: 'flex', gap: '25px', justifyContent: 'center' }}>
+              <Link to="/shop" className="btn-premium" style={{ padding: '20px 60px' }}>استكشفي المجموعة</Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ─── Scrolling Marquee ─── */}
       <div style={{ 
-        background: '#000', color: '#fff', padding: '15px 0', overflow: 'hidden', whiteSpace: 'nowrap',
-        borderTop: '1px solid #D4AF37', borderBottom: '1px solid #D4AF37'
+        background: 'var(--primary-purple)', color: 'var(--accent-gold)', padding: '15px 0', overflow: 'hidden', whiteSpace: 'nowrap',
+        borderBottom: '1px solid var(--border-light)'
       }}>
         <motion.div 
           animate={{ x: [0, -1000] }}
-          transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-          style={{ display: 'inline-block', fontSize: '14px', fontWeight: '800', letterSpacing: '4px' }}
+          transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
+          style={{ display: 'inline-block', fontSize: '12px', fontWeight: '900', letterSpacing: '4px' }}
         >
           NEW ARRIVALS • PALESTINIAN COUTURE • HANDMADE LUXURY • ROYAL VEIL SELECTION • 
           NEW ARRIVALS • PALESTINIAN COUTURE • HANDMADE LUXURY • ROYAL VEIL SELECTION • 
@@ -93,7 +94,7 @@ const Home = () => {
       </div>
 
       {/* ─── Shop by Category ─── */}
-      <section style={{ padding: '10rem 0' }}>
+      <section style={{ padding: '12rem 0' }}>
         <div className="container">
           <SectionHeader 
             badge="Selection" 
@@ -103,29 +104,28 @@ const Home = () => {
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-            gap: '2rem' 
+            gap: '3rem' 
           }}>
             {[
-              { title: 'فساتين السهرة', desc: 'لأنكِ تستحقين أن تكوني نجمة الليلة', img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800', link: '/dresses' },
-              { title: 'التطريز التراثي', desc: 'هوية تسكن في تفاصيل الملابس', img: 'https://images.unsplash.com/photo-1582533089852-0243ed27bbd8?auto=format&fit=crop&q=80&w=800', link: '/heritage' },
-              { title: 'منتجات الأطفال', desc: 'رقة تليق ببداياتهم الجميلة', img: 'https://images.unsplash.com/photo-1519706347221-f090d81c8412?auto=format&fit=crop&q=80&w=800', link: '/baby' },
+              { title: 'فساتين السهرة', desc: 'Elegant & Sophisticated', img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800', link: '/dresses' },
+              { title: 'التطريز التراثي', desc: 'Handcrafted Heritage', img: 'https://images.unsplash.com/photo-1582533089852-0243ed27bbd8?auto=format&fit=crop&q=80&w=800', link: '/heritage' },
+              { title: 'منتجات الأطفال', desc: 'Soft & Gentle Care', img: 'https://images.unsplash.com/photo-1519706347221-f090d81c8412?auto=format&fit=crop&q=80&w=800', link: '/baby' },
             ].map((cat, i) => (
               <motion.div 
                 key={i}
-                whileHover={{ y: -15 }}
-                style={{ position: 'relative', height: '600px', overflow: 'hidden' }}
+                whileHover={{ y: -10 }}
+                style={{ position: 'relative', height: '650px', overflow: 'hidden', borderRadius: '2px' }}
               >
                 <Link to={cat.link} style={{ display: 'block', height: '100%', textDecoration: 'none' }} className="group">
-                  <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)' }} className="group-hover:scale-110" />
+                  <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1)' }} className="group-hover:scale-110" />
                   <div style={{ 
                     position: 'absolute', inset: 0, 
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)', 
-                    display: 'flex', alignItems: 'flex-end', padding: '3rem' 
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%)', 
+                    display: 'flex', alignItems: 'flex-end', padding: '3.5rem' 
                   }}>
-                    <div style={{ width: '100%' }}>
-                      <h3 style={{ color: '#fff', fontSize: '28px', fontWeight: '900', marginBottom: '10px' }}>{cat.title}</h3>
-                      <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', marginBottom: '20px' }}>{cat.desc}</p>
-                      <div style={{ height: '1px', background: '#D4AF37', width: '40px', transition: 'width 0.3s' }} className="group-hover:w-full" />
+                    <div style={{ width: '100%', textAlign: 'center' }}>
+                      <h3 style={{ color: '#fff', fontSize: '32px', fontWeight: '900', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>{cat.title}</h3>
+                      <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: '700' }}>{cat.desc}</p>
                     </div>
                   </div>
                 </Link>
@@ -136,13 +136,13 @@ const Home = () => {
       </section>
 
       {/* ─── Featured Products ─── */}
-      <section style={{ padding: '8rem 0', background: '#fafafa', position: 'relative' }}>
+      <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)', position: 'relative' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}>
              <SectionHeader badge="Trending" title="الأكثر رواجاً هذا الموسم" right />
-             <Link to="/shop" style={{ color: '#000', fontWeight: '800', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', paddingBottom: '10px' }}>اكتشفي المزيد <ArrowLeft size={16} /></Link>
+             <Link to="/shop" style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', paddingBottom: '10px', textDecoration: 'none' }}>اكتشفي المزيد <ArrowLeft size={16} /></Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '3rem' }}>
             {featuredProducts.map(p => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -150,35 +150,40 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ─── Luxury Experience (Overlapping Layout) ─── */}
-      <section style={{ padding: '12rem 0' }}>
+      {/* ─── Luxury Experience (Geometric Overlay) ─── */}
+      <section style={{ padding: '12rem 0', background: 'var(--bg-cream)' }}>
         <div className="container">
-           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
+           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '8rem', alignItems: 'center' }}>
               <div style={{ position: 'relative' }}>
-                 <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '200px', height: '200px', border: '1px solid #D4AF37', zIndex: 0 }} />
+                 {/* Geometric Frames like User Image */}
+                 <div style={{ 
+                   position: 'absolute', top: '-30px', right: '-30px', bottom: '-30px', left: '-30px',
+                   border: '1px solid rgba(212, 175, 55, 0.3)', zIndex: 0
+                 }} />
+                 <div style={{ 
+                   position: 'absolute', top: '-15px', right: '-15px', bottom: '-15px', left: '-15px',
+                   border: '1px solid rgba(212, 175, 55, 0.4)', zIndex: 0, transform: 'rotate(2deg)'
+                 }} />
+                 
                  <img 
                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1000" 
                    alt="Workshop" 
-                   style={{ width: '100%', borderRadius: '2px', position: 'relative', zIndex: 1, boxShadow: '30px 30px 0 rgba(212,175,55,0.05)' }}
+                   style={{ width: '100%', borderRadius: '2px', position: 'relative', zIndex: 1 }}
                  />
-                 <div style={{ position: 'absolute', bottom: '-30px', left: '-30px', background: '#fff', padding: '30px', boxShadow: '0 10px 40px rgba(0,0,0,0.1)', zIndex: 5, maxWidth: '250px' }}>
-                    <Quote size={30} style={{ color: '#D4AF37', marginBottom: '15px' }} />
-                    <p style={{ fontSize: '14px', fontStyle: 'italic', color: '#666' }}>"كل قطعة هي وعد بالتميز والجودة التي تدوم طويلاً."</p>
-                 </div>
               </div>
               <div>
-                 <SectionHeader badge="Our Philosophy" title="فلسفة التصميم الراقي" right />
+                 <SectionHeader badge="Artistry" title="إتقان يتجاوز الزمن" right />
                  <p style={{ color: '#666', lineHeight: '2.2', fontSize: '17px', marginBottom: '2.5rem' }}>
-                    في رويال فيل، لا نتبع الموضة فقط، بل نصنعها بلمسة شخصية. نؤمن أن الفخامة تكمن في التفاصيل الصغيرة؛ في جودة الحرير، في دقة الغرزة اليدوية، وفي التوازن بين التراث والحداثة.
+                    نحن في رويال فيل نؤمن أن الجمال الحقيقي يكمن في البساطة المتقنة. كل غرزة، كل قطعة قماش، وكل نقش يتم اختياره بعناية فائقة لنضمن لكِ تجربة استثنائية تشبه تماماً ما تحلمين به.
                  </p>
-                 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '30px' }}>
-                    <div style={{ borderRight: '3px solid #D4AF37', paddingRight: '20px' }}>
-                       <h4 style={{ fontWeight: '900', fontSize: '20px', marginBottom: '5px' }}>100% صناعة يدوية</h4>
-                       <p style={{ fontSize: '14px', color: '#888' }}>نعتمد كلياً على المهارات الحرفية الفلسطينية الأصيلة.</p>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '35px' }}>
+                    <div style={{ paddingRight: '25px', borderRight: '2px solid var(--accent-gold)' }}>
+                       <h4 style={{ fontWeight: '900', fontSize: '18px', marginBottom: '5px', fontFamily: 'var(--font-serif)', color: 'var(--primary-purple)' }}>100% صناعة يدوية</h4>
+                       <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>نعتمد كلياً على المهارات الحرفية الفلسطينية الأصيلة.</p>
                     </div>
-                    <div style={{ borderRight: '3px solid #eee', paddingRight: '20px' }}>
-                       <h4 style={{ fontWeight: '900', fontSize: '20px', marginBottom: '5px' }}>أقمشة عالمية</h4>
-                       <p style={{ fontSize: '14px', color: '#888' }}>نستورد أفضل الخامات من تركيا وإيطاليا وفرنسا.</p>
+                    <div style={{ paddingRight: '25px', borderRight: '2px solid var(--border-light)' }}>
+                       <h4 style={{ fontWeight: '900', fontSize: '18px', marginBottom: '5px', fontFamily: 'var(--font-serif)', color: 'var(--primary-purple)' }}>خامات عالمية</h4>
+                       <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>نستورد أفضل الخامات من تركيا وإيطاليا وفرنسا.</p>
                     </div>
                  </div>
               </div>
@@ -187,15 +192,15 @@ const Home = () => {
       </section>
 
       {/* ─── Social Feed ─── */}
-      <section style={{ padding: '6rem 0', background: '#000', color: '#fff' }}>
+      <section style={{ padding: '6rem 0', background: 'var(--purple-dark)', color: 'var(--text-light)' }}>
         <div className="container">
            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem' }}>
               <div>
-                <h3 style={{ fontSize: '32px', fontWeight: '900', fontFamily: 'serif' }}>شاركِينا لحظاتكِ</h3>
-                <p style={{ color: '#D4AF37', fontWeight: '700', letterSpacing: '2px' }}>#ROYAL_VEIL_STYLE</p>
+                <h3 style={{ fontSize: '32px', fontWeight: '900', fontFamily: 'var(--font-serif)', color: 'var(--bg-white)' }}>شاركِينا لحظاتكِ</h3>
+                <p style={{ color: 'var(--accent-gold)', fontWeight: '700', letterSpacing: '2px', fontSize: '12px' }}>#ROYAL_VEIL_STYLE</p>
               </div>
               <div style={{ textAlign: 'left' }}>
-                <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', border: '1px solid #fff', padding: '12px 30px', fontSize: '12px', fontWeight: '700' }}>انضمي إلينا</Link>
+                <Link to="/contact" style={{ color: 'var(--bg-white)', textDecoration: 'none', border: '1px solid var(--bg-white)', padding: '12px 30px', fontSize: '11px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase' }}>انضمي إلينا</Link>
               </div>
            </div>
            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>

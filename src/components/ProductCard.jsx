@@ -66,29 +66,25 @@ const ProductCard = ({ product }) => {
               width: '44px',
               height: '44px',
               borderRadius: '50%',
-              background: '#fff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: 'none',
-              color: '#000',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              background: 'var(--bg-white)',
+              color: 'var(--primary-purple)',
+              boxShadow: 'var(--shadow-md)',
             }}
           >
             <ShoppingBag size={20} />
           </motion.button>
           
           <div style={{
-            background: '#fff',
+            background: 'var(--bg-white)',
             padding: '8px 16px',
             borderRadius: '99px',
             fontSize: '12px',
             fontWeight: 'bold',
-            color: '#000',
+            color: 'var(--primary-purple)',
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            boxShadow: 'var(--shadow-md)',
           }}>
             <ZoomIn size={14} /> عرض التفاصيل
           </div>
@@ -123,7 +119,8 @@ const ProductCard = ({ product }) => {
             position: 'absolute',
             bottom: '12px',
             left: '12px',
-            background: 'rgba(255,255,255,0.9)',
+            background: 'var(--glass-bg)',
+            backdropFilter: 'blur(5px)',
             padding: '4px 8px',
             borderRadius: '4px',
             display: 'flex',
@@ -131,13 +128,13 @@ const ProductCard = ({ product }) => {
             gap: '4px',
             fontSize: '11px',
             fontWeight: '800',
-            color: '#000',
+            color: 'var(--text-dark)',
             zIndex: 10,
           }}
         >
-          <Star size={12} fill="#D4AF37" color="#D4AF37" />
+          <Star size={12} fill="var(--accent-gold)" color="var(--accent-gold)" />
           <span>4.9</span>
-          <span style={{ color: '#888', fontWeight: '400' }}>(24)</span>
+          <span style={{ color: 'var(--text-muted)', fontWeight: '400' }}>(24)</span>
         </div>
 
         {/* Discount Tag (Optional) */}
@@ -147,8 +144,8 @@ const ProductCard = ({ product }) => {
               position: 'absolute',
               top: '12px',
               left: '12px',
-              background: '#000',
-              color: '#fff',
+              background: 'var(--primary-purple)',
+              color: 'var(--text-light)',
               padding: '4px 10px',
               fontSize: '10px',
               fontWeight: 'bold',
@@ -163,41 +160,39 @@ const ProductCard = ({ product }) => {
       {/* Product Info */}
       <div
         style={{
-          marginTop: '1rem',
+          marginTop: '1.2rem',
           textAlign: 'center',
         }}
       >
         <p
           style={{
-            fontSize: '13px',
-            color: '#888',
-            marginBottom: '4px',
+            fontSize: '10px',
+            color: 'var(--accent-gold)',
+            marginBottom: '6px',
             textTransform: 'uppercase',
-            letterSpacing: '1px',
+            letterSpacing: '3px',
+            fontWeight: '900'
           }}
         >
           Royal Veil Selection
         </p>
         <h3
           style={{
-            fontSize: '15px',
+            fontSize: '16px',
             fontWeight: '600',
-            color: '#222',
-            marginBottom: '8px',
-            fontFamily: 'Cairo, sans-serif',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
+            color: 'var(--text-dark)',
+            marginBottom: '10px',
+            fontFamily: 'var(--font-serif), serif',
           }}
         >
           {product.title}
         </h3>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
           <span
             style={{
-              fontSize: '16px',
-              fontWeight: '800',
-              color: '#D4AF37',
+              fontSize: '15px',
+              fontWeight: '900',
+              color: 'var(--primary-purple)',
             }}
           >
             {product.price}
@@ -206,8 +201,9 @@ const ProductCard = ({ product }) => {
             <span
               style={{
                 fontSize: '13px',
-                color: '#aaa',
+                color: 'var(--text-muted)',
                 textDecoration: 'line-through',
+                fontWeight: '400'
               }}
             >
               {product.oldPrice}

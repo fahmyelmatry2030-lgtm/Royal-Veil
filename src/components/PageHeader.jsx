@@ -53,12 +53,12 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             style={{
-              marginBottom: '1rem', 
-              fontSize: '11px', 
-              fontWeight: '800', 
-              letterSpacing: '3px',
+              marginBottom: '1.2rem', 
+              fontSize: '10px', 
+              fontWeight: '900', 
+              letterSpacing: '4px',
               textTransform: 'uppercase',
-              color: bgImage ? '#fff' : '#D4AF37',
+              color: '#D4AF37',
             }}
           >
             {badge}
@@ -71,12 +71,12 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            color: bgImage ? '#fff' : '#000', 
+            color: '#000', 
             fontWeight: '900',
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
             lineHeight: 1.1, 
-            marginBottom: '1.5rem',
-            fontFamily: 'serif',
+            marginBottom: '1.8rem',
+            fontFamily: 'var(--font-serif), serif',
             letterSpacing: '1px'
           }}
         >
@@ -90,12 +90,13 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{
-              color: bgImage ? 'rgba(255,255,255,0.8)' : '#666', 
-              fontSize: '16px',
-              maxWidth: '500px', 
+              color: '#888', 
+              fontSize: '15px',
+              maxWidth: '550px', 
               margin: '0 auto', 
-              lineHeight: 1.6,
+              lineHeight: 1.8,
               fontWeight: '400',
+              letterSpacing: '0.5px'
             }}
           >
             {subtitle}

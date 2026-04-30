@@ -39,6 +39,10 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li><Link to="/about" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>من نحن</Link></li>
               <li><Link to="/team" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طاقم العمل</Link></li>
+              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>توصيل القدس والضفة: 30 ₪</li>
+              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>توصيل مناطق 48: 70 ₪</li>
+              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>متوفر الدفع عند الاستلام</li>
+              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>متوفر الدفع عبر PayPal</li>
               <li><Link to="/custom-order" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طلب تفصيل خاص</Link></li>
               <li><Link to="/shop" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>المتجر الإلكتروني</Link></li>
               <li><Link to="/contact" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>تواصل معنا</Link></li>
@@ -50,7 +54,7 @@ const Footer = () => {
             <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', letterSpacing: '1px', color: 'var(--primary-purple)' }}>تواصل معنا</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +972 58-504-0233
+                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +972 50-554-2323
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
                 <Mail size={16} strokeWidth={1.5} color="var(--accent-gold)" /> royalveil529@gmail.com

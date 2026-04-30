@@ -7,7 +7,7 @@ import { ShoppingBag, Heart, Star, ZoomIn } from 'lucide-react';
  * مستوحى من تصميم turkihsa.com
  */
 const ProductCard = ({ product }) => {
-  const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(`مرحبا، أريد الاستفسار عن هذا المنتج: ${product.title}`)}`;
+  const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(`مرحبا، أريد الاستفسار عن هذا المنتج: ${product.title}`)}`;
   
   return (
     <motion.div

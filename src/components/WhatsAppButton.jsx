@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton = () => {
-  const phoneNumber = "970599000000"; // Placeholder
-  const message = encodeURIComponent("مرحباً Royal Veil، أرغب في الاستفسار عن خدمات التفصيل.");
+  const phoneNumber = "972505542323"; 
+  const message = encodeURIComponent("مرحباً جمعية الطرحة الملكية، أرغب في الاستفسار عن منتجاتكم.");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (

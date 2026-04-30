@@ -37,7 +37,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>اتصلي بنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 58-504-0233</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 50-554-2323</p>
                   </div>
                 </div>
 

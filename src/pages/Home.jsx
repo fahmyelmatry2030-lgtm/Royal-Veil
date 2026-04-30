@@ -135,17 +135,21 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ flex: '0 0 300px', scrollSnapAlign: 'start' }}
+                style={{ flex: '0 0 260px', scrollSnapAlign: 'start' }}
               >
                 <Link to={cat.link} style={{ display: 'block', textDecoration: 'none' }}>
                   <div style={{ 
-                    height: '400px', borderRadius: '8px', overflow: 'hidden', 
-                    boxShadow: 'var(--shadow-md)', marginBottom: '1.5rem',
-                    background: '#f8f8f8'
+                    height: '420px', borderRadius: '15px', overflow: 'hidden', 
+                    boxShadow: 'var(--shadow-md)', marginBottom: '1.2rem',
+                    background: '#f8f8f8',
+                    border: '1px solid rgba(0,0,0,0.05)'
                   }}>
-                    <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} className="hover:scale-105" />
                   </div>
-                  <h3 style={{ color: 'var(--text-dark)', fontSize: '18px', fontWeight: '800', textAlign: 'center' }}>{cat.title}</h3>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 5px' }}>
+                    <h3 style={{ color: 'var(--text-dark)', fontSize: '18px', fontWeight: '800' }}>{cat.title}</h3>
+                    <ArrowLeft size={20} color="var(--text-dark)" />
+                  </div>
                 </Link>
               </motion.div>
             ))}

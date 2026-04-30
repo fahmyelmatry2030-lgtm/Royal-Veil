@@ -20,78 +20,93 @@ const Home = () => {
         <title>جمعية الطرحة الملكية التعاونية | الرئيسية - عالم الأزياء الراقية</title>
       </Helmet>
 
-      {/* ─── Cinematic Hero Section ─── */}
-      <section style={{ position: 'relative', height: '100vh', minHeight: '850px', overflow: 'hidden' }}>
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 10, ease: "easeOut" }}
-          style={{ position: 'absolute', inset: 0 }}
-        >
-          <img 
-            src="/royal_veil_hero_banner_1777543465352.png" 
-            alt="Royal Veil Collection" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
-          />
-          <div style={{ 
-            position: 'absolute', inset: 0, 
-            background: 'linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)' 
-          }}></div>
-        </motion.div>
+      {/* ─── Luxury Composite Hero Section ─── */}
+      <section style={{ position: 'relative', height: '90vh', minHeight: '750px', background: 'var(--bg-lavender)', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+        
+        {/* Background Decorative Elements */}
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '40%', height: '120%', background: 'var(--purple-light)', borderRadius: '50%', filter: 'blur(80px)', opacity: 0.6 }}></div>
+        <div style={{ position: 'absolute', bottom: '10%', left: '5%', width: '300px', height: '300px', border: '1px solid var(--accent-gold)', borderRadius: '50%', opacity: 0.2 }}></div>
 
-        {/* Decorative Framing */}
-        <div style={{ position: 'absolute', top: '15%', right: '8%', width: '1px', height: '20vh', background: 'linear-gradient(to bottom, var(--accent-gold), transparent)' }}></div>
-        <div style={{ position: 'absolute', bottom: '15%', left: '8%', width: '20vw', height: '1px', background: 'linear-gradient(to right, var(--accent-gold), transparent)' }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+            
+            {/* Left Content: Text & Calligraphy */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem' }}>
+                <div style={{ width: '40px', height: '1px', background: 'var(--accent-gold)' }}></div>
+                <h5 style={{ color: 'var(--accent-gold)', fontWeight: '700', fontSize: '14px', letterSpacing: '2px' }}>الإصدار الملكي الجديد</h5>
+              </div>
 
-        <div className="container" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', paddingTop: '10vh' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-            style={{ maxWidth: '800px' }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem' }}>
-              <div style={{ width: '50px', height: '1px', background: 'var(--accent-gold)' }}></div>
-              <h5 style={{ 
-                color: 'var(--accent-gold)', fontWeight: '800',
-                textTransform: 'uppercase', fontSize: '15px', margin: 0, fontFamily: 'var(--font-sans)'
-              }}>المجموعة الحصرية ٢٠٢٤</h5>
-            </div>
-            
-            <h1 style={{ 
-              fontSize: 'clamp(3.5rem, 8vw, 6rem)', fontWeight: '900', 
-              lineHeight: 1.1, marginBottom: '2.5rem', fontFamily: 'var(--font-sans)', color: 'var(--text-dark)',
-              textShadow: '2px 2px 30px rgba(255,255,255,0.8)'
-            }}>
-              تُصاغ الأناقة<br/>بخيوطٍ من ذهب
-            </h1>
-            
-            <p style={{ 
-              fontSize: '20px', color: 'var(--text-dark)', marginBottom: '4rem', 
-              lineHeight: 1.8, maxWidth: '600px', fontWeight: '600', letterSpacing: '0.5px',
-              textShadow: '1px 1px 20px rgba(255,255,255,0.5)'
-            }}>
-              في "جمعية الطرحة الملكية التعاونية"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
-            </p>
-            
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-              <Link to="/shop" style={{ 
-                background: 'var(--accent-gold)', color: '#000', padding: '20px 50px', fontSize: '15px', 
-                fontWeight: '800', borderRadius: '2px', textDecoration: 'none', transition: 'all 0.3s',
-                display: 'flex', alignItems: 'center', gap: '10px'
-              }} className="hover:bg-white hover:scale-105">
-                استكشفي الروائع <ChevronLeft size={18} />
-              </Link>
-              <Link to="/custom-order" style={{ 
-                padding: '20px 50px', fontSize: '15px', color: 'var(--text-light)', 
-                border: '1px solid rgba(212, 175, 55, 0.4)', borderRadius: '2px',
-                display: 'flex', alignItems: 'center', gap: '10px', backdropFilter: 'blur(10px)',
-                textDecoration: 'none', transition: 'all 0.3s'
-              }} className="hover:bg-white hover:text-purple-900 hover:border-white">
-                <Play size={18} fill="currentColor" /> تجربة التفصيل الخاص
-              </Link>
-            </div>
-          </motion.div>
+              <h1 style={{ 
+                fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+                fontFamily: 'var(--font-calligraphy)', 
+                color: 'var(--purple-dark)', 
+                lineHeight: 1.3, 
+                marginBottom: '2rem' 
+              }}>
+                تألقي بسحر<br/>
+                <span style={{ color: 'var(--primary-purple)' }}>تراثكِ الأصيل</span>
+              </h1>
+
+              <p style={{ 
+                fontSize: '18px', color: 'var(--text-muted)', marginBottom: '3.5rem', 
+                lineHeight: 1.8, maxWidth: '500px', fontFamily: 'var(--font-serif-ar)'
+              }}>
+                نجمع لكِ بين فخامة الماضي وإبداع الحاضر في قطع فريدة تُصمم خصيصاً لتناسب ذوقكِ الرفيع.
+              </p>
+
+              <div style={{ display: 'flex', gap: '15px' }}>
+                <Link to="/shop" style={{ 
+                  background: 'var(--primary-purple)', color: '#fff', padding: '16px 45px', 
+                  borderRadius: '50px', textDecoration: 'none', fontWeight: '700', 
+                  boxShadow: '0 10px 20px rgba(177, 156, 217, 0.3)', transition: 'all 0.3s'
+                }} className="hover:scale-105">
+                  تسوقي الآن
+                </Link>
+                <Link to="/custom-order" style={{ 
+                  background: 'transparent', color: 'var(--purple-dark)', padding: '16px 45px', 
+                  borderRadius: '50px', textDecoration: 'none', fontWeight: '700', 
+                  border: '1px solid var(--purple-dark)', transition: 'all 0.3s'
+                }} className="hover:bg-purple-dark hover:text-white">
+                  طلب تفصيل
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Content: Model Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              style={{ position: 'relative' }}
+            >
+              <div style={{ 
+                position: 'relative', width: '100%', maxWidth: '550px', height: '650px', 
+                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%', overflow: 'hidden',
+                boxShadow: 'var(--shadow-lg)', border: '8px solid #fff', margin: '0 auto'
+              }}>
+                <img 
+                  src="/royal_veil_hero_banner_1777543465352.png" 
+                  alt="Royal Model" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              
+              {/* Decorative Floating Icon */}
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                style={{ position: 'absolute', top: '10%', right: '5%', background: '#fff', padding: '20px', borderRadius: '50%', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+              >
+                <Crown color="var(--accent-gold)" size={30} />
+              </motion.div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 

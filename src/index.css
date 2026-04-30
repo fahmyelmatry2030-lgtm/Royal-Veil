@@ -24,6 +24,8 @@
   --border-light: #ece7f5; /* Subtle borders */
   
   --font-serif: 'Playfair Display', 'serif';
+  --font-serif-ar: 'Amiri', 'serif';
+  --font-calligraphy: 'Aref Ruqaa', 'serif';
   --font-sans: 'Cairo', 'Outfit', sans-serif;
   
   --shadow-sm: 0 4px 12px rgba(93, 62, 139, 0.05);

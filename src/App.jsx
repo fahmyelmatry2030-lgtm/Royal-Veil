@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -19,8 +19,39 @@ import OrderForm from './pages/OrderForm';
 import Shop from './pages/Shop';
 import CustomOrderForm from './pages/CustomOrderForm';
 import AdminDashboard from './pages/AdminDashboard';
+import LoginPage from './pages/LoginPage';
 
 import { HelmetProvider } from 'react-helmet-async';
+
+function AppContent() {
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin') || location.pathname === '/login';
+
+  return (
+    <div className="app-container">
+      {!isAdminPage && <Navbar />}
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dresses" element={<Dresses />} />
+          <Route path="/embroidery" element={<BlouseEmbroidery />} />
+          <Route path="/heritage" element={<Heritage />} />
+          <Route path="/baby" element={<BabyProducts />} />
+          <Route path="/custom" element={<CustomTailoring />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/order" element={<OrderForm />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/custom-order" element={<CustomOrderForm />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </main>
+      {!isAdminPage && <Footer />}
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -28,27 +59,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <WhatsAppButton />
-        <div className="app-container">
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/dresses" element={<Dresses />} />
-              <Route path="/embroidery" element={<BlouseEmbroidery />} />
-              <Route path="/heritage" element={<Heritage />} />
-              <Route path="/baby" element={<BabyProducts />} />
-              <Route path="/custom" element={<CustomTailoring />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/order" element={<OrderForm />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/custom-order" element={<CustomOrderForm />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <AppContent />
       </Router>
     </HelmetProvider>
   );

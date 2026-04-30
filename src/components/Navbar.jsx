@@ -79,7 +79,7 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: solid ? 'rgba(255, 255, 255, 0.98)' : 'transparent',
+          background: solid ? 'rgba(116, 81, 168, 0.95)' : 'transparent',
           backdropFilter: solid ? 'blur(10px)' : 'none',
           boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
           borderBottom: solid ? '1px solid var(--border-light)' : '1px solid rgba(255,255,255,0.1)',

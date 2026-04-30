@@ -135,11 +135,11 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ flex: '0 0 300px', scrollSnapAlign: 'start' }}
+                style={{ flex: '0 0 220px', scrollSnapAlign: 'start' }}
               >
                 <Link to={cat.link} style={{ display: 'block', textDecoration: 'none' }}>
                   <div style={{ 
-                    height: '450px', borderRadius: '2px', overflow: 'hidden', 
+                    height: '320px', borderRadius: '2px', overflow: 'hidden', 
                     boxShadow: 'var(--shadow-md)', marginBottom: '1.5rem',
                     background: '#f8f8f8'
                   }}>
@@ -193,7 +193,7 @@ const Home = () => {
               scrollSnapType: 'x mandatory'
             }} className="hide-scrollbar">
             {featuredProducts.map((p, i) => (
-              <div key={p.id} style={{ flex: '0 0 320px', scrollSnapAlign: 'start' }}>
+              <div key={p.id} style={{ flex: '0 0 250px', scrollSnapAlign: 'start' }}>
                 <ProductCard product={p} />
               </div>
             ))}

@@ -120,7 +120,8 @@ export default function Navbar() {
               color: solid ? 'var(--accent-gold)' : '#fff',
               transition: 'all 0.3s',
               fontFamily: 'var(--font-sans)',
-              textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none'
+              textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none',
+              whiteSpace: 'nowrap'
             }}>
               ROYAL VEIL
             </div>

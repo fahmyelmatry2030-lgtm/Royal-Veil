@@ -35,7 +35,7 @@ const Home = () => {
           />
           <div style={{ 
             position: 'absolute', inset: 0, 
-            background: 'linear-gradient(to top, rgba(35, 23, 56, 1) 0%, rgba(35, 23, 56, 0.4) 50%, rgba(0,0,0,0.3) 100%)' 
+            background: 'linear-gradient(to top, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255,255,255,0.1) 100%)' 
           }}></div>
         </motion.div>
 
@@ -59,15 +59,14 @@ const Home = () => {
             </div>
             
             <h1 style={{ 
-              fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: '900', 
-              lineHeight: 1.1, marginBottom: '2.5rem', fontFamily: 'var(--font-sans)', color: 'var(--text-light)',
-              textShadow: '0 5px 20px rgba(0,0,0,0.4)'
+              fontSize: 'clamp(3.5rem, 8vw, 6rem)', fontWeight: '900', 
+              lineHeight: 1.1, marginBottom: '2.5rem', fontFamily: 'var(--font-sans)', color: 'var(--text-dark)',
             }}>
               تُصاغ الأناقة<br/>بخيوطٍ من ذهب
             </h1>
             
             <p style={{ 
-              fontSize: '19px', color: 'rgba(255,255,255,0.8)', marginBottom: '4rem', 
+              fontSize: '19px', color: 'var(--text-muted)', marginBottom: '4rem', 
               lineHeight: 2, maxWidth: '600px', fontWeight: '400', letterSpacing: '0.5px'
             }}>
               في "جمعية الطرحة الملكية التعاونية"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
@@ -94,36 +93,69 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ─── Pillars of Excellence ─── */}
-      <section style={{ padding: '6rem 0', background: 'var(--bg-lavender)', position: 'relative', zIndex: 10, marginTop: '-50px', borderRadius: '40px 40px 0 0' }}>
+      {/* ─── 1. The Collections (مجموعات) ─── */}
+      <section style={{ padding: '8rem 0', background: 'var(--bg-white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <SectionHeader 
+            badge="The Collections" 
+            title="مجموعاتنا المتميزة" 
+            subtitle="اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة."
+          />
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
+            gap: '2.5rem' 
+          }}>
             {[
-              { icon: <Crown size={32} />, title: 'تصاميم حصرية', desc: 'كل قطعة نصممها هي لوحة فنية فريدة تعكس شخصيتك، بإصدارات محدودة تضمن لكِ التميز المطلق.' },
-              { icon: <Scissors size={32} />, title: 'دقة التفصيل', desc: 'نعتني بأدق التفاصيل من أخذ القياسات وحتى الغرزة الأخيرة، لضمان مظهر يتناغم تماماً مع قوامك.' },
-              { icon: <Gem size={32} />, title: 'أقمشة فاخرة', desc: 'ننتقي أجود أنواع الأقمشة الحريرية والمخملية من أعرق دور النسيج العالمية لتليق بإطلالتك.' }
-            ].map((pillar, i) => (
+              { title: 'فساتين', img: '/Images/IMG-20260429-WA0036.jpg', link: '/dresses' },
+              { title: 'بلوزات', img: '/Images/IMG-20260429-WA0023.jpg', link: '/shop' },
+              { title: 'بيبي', img: '/Images/IMG-20260429-WA0035.jpg', link: '/baby' },
+              { title: 'تفصيل خاص', img: '/Images/IMG-20260429-WA0021.jpg', link: '/custom-order' },
+            ].map((cat, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: i * 0.2 }}
-                style={{ background: 'var(--bg-white)', padding: '3.5rem 2.5rem', borderRadius: '16px', border: '1px solid var(--border-light)', textAlign: 'center', transition: 'transform 0.3s' }}
-                className="hover:-translate-y-2"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                style={{ textAlign: 'center' }}
               >
-                <div style={{ width: '70px', height: '70px', background: 'var(--purple-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)', margin: '0 auto 1.5rem' }}>
-                  {pillar.icon}
-                </div>
-                <h3 style={{ fontSize: '20px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>{pillar.title}</h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, fontSize: '15px' }}>{pillar.desc}</p>
+                <Link to={cat.link} style={{ display: 'block', textDecoration: 'none', marginBottom: '20px' }}>
+                  <div style={{ 
+                    height: '350px', borderRadius: '2px', overflow: 'hidden', 
+                    boxShadow: 'var(--shadow-md)', marginBottom: '20px',
+                    border: '1px solid var(--border-light)'
+                  }}>
+                    <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} className="hover:scale-105" />
+                  </div>
+                  <h3 style={{ color: 'var(--text-dark)', fontSize: '20px', fontWeight: '900', fontFamily: 'var(--font-serif)' }}>{cat.title}</h3>
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── The Royal Story ─── */}
+      {/* ─── 2. Featured Products (منتجات متميزة) ─── */}
+      <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)' }}>
+        <div className="container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '5rem', flexWrap: 'wrap', gap: '20px' }}>
+             <SectionHeader badge="Exclusive" title="منتجات متميزة" subtitle="القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم." right style={{ marginBottom: 0 }} />
+             <Link to="/shop" style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', paddingBottom: '15px' }}>
+               كل المنتجات <ArrowLeft size={18} />
+             </Link>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '3rem' }}>
+            {featuredProducts.map((p, i) => (
+              <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <ProductCard product={p} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. About Us (من نحن) ─── */}
       <section style={{ padding: '10rem 0', background: 'var(--bg-white)', overflow: 'hidden' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
@@ -135,20 +167,17 @@ const Home = () => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                 <Sparkles size={20} color="var(--accent-gold)" />
-                <h4 style={{ color: 'var(--accent-gold)', fontSize: '14px', letterSpacing: '4px', fontWeight: '800', textTransform: 'uppercase', margin: 0 }}>الإرث والهوية</h4>
+                <h4 style={{ color: 'var(--accent-gold)', fontSize: '14px', letterSpacing: '4px', fontWeight: '800', textTransform: 'uppercase', margin: 0 }}>جمعية الطرحة الملكية التعاونية</h4>
               </div>
               <h2 style={{ fontSize: '46px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '35px', fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>
-                تجسيد الأنوثة <br/>بروح التراث العريق
+                من نحن
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: '2.1', fontSize: '17px', marginBottom: '40px' }}>
-                بدأت رحلة "جمعية الطرحة الملكية التعاونية" من حلم إحياء التراث الفلسطيني وتتويجه بلمسات من الأناقة العالمية. نحن لا نصنع فساتين فقط، بل ننسج حكايات من المجد والجمال بأيدي أمهر الحرفيات اللواتي ورثن الفن جيلاً بعد جيل، لنقدم لكِ تُحفاً فنية خالدة.
+                نحن جمعية تعاونية رائدة تسعى لتمكين الحرفيات المحليات ودمج الفن الفلسطيني التقليدي بالذوق العالمي المعاصر. رسالتنا هي الحفاظ على هويتنا من خلال صناعة قطع فنية خالدة تحكي قصصاً من المجد والجمال لكل امرأة تطمح للتميز.
               </p>
-              
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                <Link to="/about" style={{ color: 'var(--accent-gold)', fontWeight: '800', textDecoration: 'none', borderBottom: '2px solid var(--accent-gold)', paddingBottom: '5px', fontSize: '15px', letterSpacing: '1px' }}>
-                  اقرئي قصتنا كاملة
-                </Link>
-              </div>
+              <Link to="/about" style={{ color: 'var(--primary-purple)', fontWeight: '800', textDecoration: 'none', borderBottom: '2px solid var(--primary-purple)', paddingBottom: '5px' }}>
+                التفاصيل الكاملة
+              </Link>
             </motion.div>
 
             <motion.div 
@@ -158,76 +187,37 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               style={{ position: 'relative' }}
             >
-              <div style={{ position: 'absolute', top: '-30px', left: '-30px', bottom: '30px', right: '30px', border: '2px solid var(--accent-gold)', zIndex: 0, borderRadius: '4px', opacity: 0.3 }}></div>
-              <img 
-                src="/Images/new_sewing.jpg" 
-                alt="Craftsmanship" 
-                style={{ width: '100%', position: 'relative', zIndex: 1, borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }}
-              />
-              
-              {/* Floating Element */}
-              <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                style={{ 
-                  position: 'absolute', bottom: '10%', right: '-40px', background: 'var(--bg-lavender)', 
-                  padding: '30px', zIndex: 2, boxShadow: '0 20px 40px rgba(0,0,0,0.4)', borderRadius: '4px',
-                  borderRight: '4px solid var(--accent-gold)', maxWidth: '250px'
-                }}
-              >
-                <div style={{ fontSize: '40px', fontWeight: '900', color: 'var(--accent-gold)', marginBottom: '5px', lineHeight: 1 }}>100%</div>
-                <div style={{ fontSize: '13px', color: 'var(--text-dark)', fontWeight: 'bold', letterSpacing: '1px' }}>صناعة يدوية بشغف من قلب فلسطين</div>
-              </motion.div>
+              <img src="/Images/IMG-20260429-WA0031.jpg" alt="About Us" style={{ width: '100%', borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }} />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── Shop by Category (The Collections) ─── */}
+      {/* ─── 4. Association Activities (نشاطات الجمعية) ─── */}
       <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
           <SectionHeader 
-            badge="The Collections" 
-            title="عوالم جمعية الطرحة الملكية التعاونية الإبداعية" 
-            subtitle="اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة."
+            badge="Activities" 
+            title="نشاطات الجمعية" 
+            subtitle="نساهم في بناء المجتمع وتطوير مهارات الحرفيات من خلال فعالياتنا المستمرة."
           />
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-            gap: '2rem' 
-          }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {[
-              { title: 'فساتين السهرة', desc: 'إطلالة تخطف الأنفاس', img: '/Images/IMG-20260429-WA0036.jpg', link: '/dresses' },
-              { title: 'فساتين الزفاف الملكية', desc: 'أبهة لا تُنسى', img: '/Images/IMG-20260429-WA0039.jpg', link: '/dresses' },
-              { title: 'العباءات الملكية', desc: 'فخامة محتشمة', img: '/Images/IMG-20260429-WA0023.jpg', link: '/shop' },
-              { title: 'التطريز والأزياء الراقية', desc: 'تفاصيل استثنائية', img: '/Images/IMG-20260429-WA0021.jpg', link: '/heritage' },
-            ].map((cat, i) => (
+              { title: 'ورش عمل التطريز', desc: 'دورات تدريبية مكثفة لتعليم أصول التطريز اليدوي للأجيال الجديدة.', icon: <Scissors size={24} /> },
+              { title: 'معارض التراث', desc: 'المشاركة في المعارض الدولية والوطنية لنشر الثقافة والزي الفلسطيني.', icon: <Globe size={24} /> },
+              { title: 'تمكين المرأة', desc: 'برامج لدعم المبدعات وتوفير فرص عمل مستدامة لهن في مجال الخياطة والتفصيل.', icon: <Star size={24} /> },
+            ].map((activity, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ position: 'relative', height: '500px', overflow: 'hidden', borderRadius: '8px' }}
-                className="group"
+                transition={{ delay: i * 0.1 }}
+                style={{ background: 'var(--bg-white)', padding: '3rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}
               >
-                <Link to={cat.link} style={{ display: 'block', height: '100%', textDecoration: 'none' }}>
-                  <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1)' }} className="group-hover:scale-110" />
-                  <div style={{ 
-                    position: 'absolute', inset: 0, 
-                    background: 'linear-gradient(to top, rgba(35, 23, 56, 0.9) 0%, rgba(35, 23, 56, 0) 60%)', 
-                    display: 'flex', alignItems: 'flex-end', padding: '2.5rem',
-                    transition: 'background 0.5s'
-                  }} className="group-hover:from-purple-900">
-                    <div style={{ width: '100%' }}>
-                      <h3 style={{ color: '#fff', fontSize: '28px', fontWeight: '900', marginBottom: '8px', fontFamily: 'var(--font-serif)', transform: 'translateY(15px)', transition: 'transform 0.4s ease-out' }} className="group-hover:translate-y-0">{cat.title}</h3>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: 0, transform: 'translateY(15px)', transition: 'all 0.4s ease-out' }} className="group-hover:opacity-100 group-hover:translate-y-0">
-                        <span style={{ color: 'var(--accent-gold)', fontSize: '13px', letterSpacing: '2px', fontWeight: '700' }}>{cat.desc}</span>
-                        <ArrowLeft size={14} color="var(--accent-gold)" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                <div style={{ color: 'var(--accent-gold)', marginBottom: '1.5rem' }}>{activity.icon}</div>
+                <h3 style={{ fontSize: '20px', fontWeight: '900', marginBottom: '1rem' }}>{activity.title}</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.8' }}>{activity.desc}</p>
               </motion.div>
             ))}
           </div>

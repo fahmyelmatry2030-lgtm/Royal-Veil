@@ -25,6 +25,7 @@ const BabyProducts = () => {
         badge="Baby Collection"
         title="منتجات البيبي"
         subtitle="نقدم لطفلكِ أرقى التصاميم التي تجمع بين الجمال الفائق والراحة المثالية لجلد طفلكِ الرقيق."
+        bgImage="/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(2).jpeg"
       />
 
       <section style={{ padding: '6rem 0' }}>

@@ -31,6 +31,7 @@ const Shop = () => {
         badge="Ready to Wear"
         title="المتجر الإلكتروني"
         subtitle="اختاري من تشكيلتنا الواسعة من القطع الجاهزة والمميزة التي تناسب كل ذوق."
+        bgImage="/Images/IMG-20260429-WA0035.jpg"
       />
 
       {/* Control Bar */}

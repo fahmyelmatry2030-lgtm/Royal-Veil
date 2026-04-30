@@ -45,6 +45,7 @@ const CustomOrderForm = () => {
         badge="Bespoke Service"
         title="طلب تفصيل خاص"
         subtitle="حولي فكرة أحلامكِ إلى حقيقة. صممي فستانكِ أو قطعتكِ التراثية بمساعدة خيرة مصممينا."
+        bgImage="/Images/IMG-20260429-WA0016.jpg"
       />
 
       <section style={{ padding: '6rem 0' }}>

@@ -23,6 +23,7 @@ const CustomTailoring = () => {
         badge="Tailoring Excellence"
         title="خدمات التفصيل والحياكة"
         subtitle="نحول القماش إلى تحفة فنية تناسب تفاصيل جسدكِ وذوقكِ الرفيع."
+        bgImage="/Images/IMG-20260429-WA0017.jpg"
       />
 
       {/* Process Steps */}

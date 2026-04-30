@@ -71,7 +71,7 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            color: 'var(--text-dark)', 
+            color: bgImage ? '#fff' : 'var(--text-dark)', 
             fontWeight: '900',
             fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
             lineHeight: 1.1, 
@@ -90,7 +90,7 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{
-              color: 'var(--text-muted)', 
+              color: bgImage ? 'rgba(255,255,255,0.9)' : 'var(--text-muted)', 
               fontSize: '15px',
               maxWidth: '550px', 
               margin: '0 auto', 

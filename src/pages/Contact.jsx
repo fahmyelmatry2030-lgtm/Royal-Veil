@@ -16,6 +16,7 @@ const Contact = () => {
         badge="Get in Touch"
         title="تواصل معنا"
         subtitle="يسعدنا دائماً سماع ملاحظاتكِ والإجابة على استفساراتكِ."
+        bgImage="/Images/IMG-20260429-WA0014.jpg"
       />
 
       <section style={{ padding: '6rem 0' }}>

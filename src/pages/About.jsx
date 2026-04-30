@@ -16,6 +16,7 @@ const About = () => {
         badge="The Story"
         title="قصة رويال فيل"
         subtitle="حيث تلتقي الحرفية الفلسطينية التقليدية مع التصاميم العالمية المعاصرة."
+        bgImage="/Images/IMG-20260429-WA0018.jpg"
       />
 
       {/* Intro Section */}

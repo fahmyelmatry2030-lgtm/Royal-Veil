@@ -3,19 +3,19 @@
 
 :root {
   /* Royal Purple & Gold Palette (Dark Mode) */
-  --primary-purple: #8b6ec3; /* A bit darker and richer than before */
+  --primary-purple: #b19cd9; /* Exact Lavender Orchid from client's image */
   --secondary-purple: #9079c0; 
-  --purple-light: #5d428d; /* Slightly lighter than dark, for sub-containers */
-  --purple-dark: #2a1b42; /* Deepest purple */
+  --purple-light: #3d2b5e; 
+  --purple-dark: #1a0f2e; /* Deep Midnight Purple for maximum contrast */
   
   --accent-gold: #D4AF37; /* Premium Gold */
   --secondary-gold: #C5A028; 
   --gold-dark: #996515; 
   --gold-light: #F3E5AB; 
   
-  --bg-white: #3a275c; /* Main Background: Deep Royal Purple */
-  --bg-lavender: #312150; /* Alternate darker background */
-  --bg-cream: #452e6e; /* Alternate lighter background */
+  --bg-white: #1a0f2e; /* Midnight Purple Background */
+  --bg-lavender: #23153c; 
+  --bg-cream: #2a1b42; 
   
   --text-dark: #FFFFFF; /* Main text is now White */
   --text-muted: #c4b5e0; /* Muted text is soft lavender */

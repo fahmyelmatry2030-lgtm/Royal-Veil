@@ -17,6 +17,29 @@ const CustomOrderForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const categoryMap = {
+      'dress': 'فستان سهرة / زفاف',
+      'heritage': 'قطعة تراثية / ثوب',
+      'embroidery': 'تطريز قطعة خاصة',
+      'baby': 'ملابس أطفال'
+    };
+
+    const message = `*طلب تفصيل جديد*
+--------------------------
+*الاسم:* ${formData.fullName}
+*الهاتف:* ${formData.phone}
+*البريد:* ${formData.email}
+*نوع القطعة:* ${categoryMap[formData.category]}
+--------------------------
+*التفاصيل:*
+${formData.details}
+
+*القياسات:*
+${formData.sizes || 'طلب مساعدة'}`;
+
+    const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
     setSubmitted(true);
   };
 
@@ -27,7 +50,7 @@ const CustomOrderForm = () => {
           <CheckCircle2 size={80} style={{ color: 'var(--accent-gold)', marginBottom: '2rem' }} />
           <h2 style={{ fontSize: '32px', fontWeight: '900', marginBottom: '1.5rem' }}>شكراً لثقتكِ بنا!</h2>
           <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '16px' }}>
-            تم استلام طلب التفصيل الخاص بكِ بنجاح. سيقوم فريق المصممين لدينا بمراجعة الطلب والتواصل معكِ خلال 24 ساعة لمناقشة التفاصيل والقياسات.
+            تم إرسال طلب التفصيل الخاص بكِ بنجاح عبر الواتساب. سيقوم فريق المصممين لدينا بالرد عليكِ قريباً.
           </p>
           <button onClick={() => setSubmitted(false)} style={{ marginTop: '3rem', background: '#000', color: '#fff', padding: '16px 40px', fontWeight: '700', borderRadius: '2px', border: 'none' }}>إرسال طلب آخر</button>
         </div>
@@ -75,25 +98,25 @@ const CustomOrderForm = () => {
                 <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '2.5rem' }}>تفاصيل الطلب</h3>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                      <input type="text" placeholder="الاسم الكامل" required style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }} />
-                      <input type="tel" placeholder="رقم الهاتف" required style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }} />
+                      <input type="text" placeholder="الاسم الكامل" required value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }} />
+                      <input type="tel" placeholder="رقم الهاتف" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }} />
                    </div>
-                   <input type="email" placeholder="البريد الإلكتروني" required style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }} />
-                   <select style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px', background: 'var(--bg-white)' }}>
+                   <input type="email" placeholder="البريد الإلكتروني" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }} />
+                   <select value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px', background: 'var(--bg-white)' }}>
                       <option value="dress">فستان سهرة / زفاف</option>
                       <option value="heritage">قطعة تراثية / ثوب</option>
                       <option value="embroidery">تطريز قطعة خاصة</option>
                       <option value="baby">ملابس أطفال</option>
                    </select>
-                   <textarea rows="4" placeholder="وصفي لنا التصميم الذي تحلمين به (الألوان، نوع القماش، الإضافات)..." style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }}></textarea>
-                   <textarea rows="2" placeholder="القياسات التقريبية (أو اطلبي مساعدة فريقنا)" style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }}></textarea>
+                   <textarea rows="4" placeholder="وصفي لنا التصميم الذي تحلمين به (الألوان، نوع القماش، الإضافات)..." required value={formData.details} onChange={e => setFormData({...formData, details: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }}></textarea>
+                   <textarea rows="2" placeholder="القياسات التقريبية (أو اطلبي مساعدة فريقنا)" value={formData.sizes} onChange={e => setFormData({...formData, sizes: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid #ddd', borderRadius: '2px' }}></textarea>
                    
                    <button type="submit" style={{ 
                      background: '#222', color: '#fff', padding: '16px', fontWeight: '800', 
                      borderRadius: '2px', border: 'none', cursor: 'pointer', 
                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' 
                    }}>
-                     إرسال طلب التفصيل <Send size={18} />
+                     إرسال عبر الواتساب <Send size={18} />
                    </button>
                 </form>
              </div>

@@ -115,10 +115,12 @@ const Home = () => {
             ref={collectionsRef}
             style={{ 
               display: 'flex', 
+              justifyContent: 'center',
               overflowX: 'auto', 
               gap: '2rem', 
               paddingBottom: '2rem',
-              paddingRight: '1rem',
+              paddingRight: '1.5rem',
+              paddingLeft: '1.5rem',
               msOverflowStyle: 'none',
               scrollbarWidth: 'none',
               scrollSnapType: 'x mandatory'
@@ -340,7 +342,12 @@ const Home = () => {
                عرض المجموعة كاملة <ArrowLeft size={18} />
              </Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '3rem' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', 
+            gap: '1.5rem',
+            justifyItems: 'center' 
+          }}>
             {featuredProducts.map((p, i) => (
               <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <ProductCard product={p} />

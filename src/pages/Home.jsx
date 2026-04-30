@@ -160,7 +160,7 @@ const Home = () => {
             >
               <div style={{ position: 'absolute', top: '-30px', left: '-30px', bottom: '30px', right: '30px', border: '2px solid var(--accent-gold)', zIndex: 0, borderRadius: '4px', opacity: 0.3 }}></div>
               <img 
-                src="/Images/IMG-20260429-WA0016.jpg" 
+                src="/Images/new_sewing.jpg" 
                 alt="Craftsmanship" 
                 style={{ width: '100%', position: 'relative', zIndex: 1, borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }}
               />

@@ -18,6 +18,7 @@ import Team from './pages/Team';
 import OrderForm from './pages/OrderForm';
 import Shop from './pages/Shop';
 import CustomOrderForm from './pages/CustomOrderForm';
+import AdminDashboard from './pages/AdminDashboard';
 
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -43,6 +44,7 @@ function App() {
               <Route path="/order" element={<OrderForm />} />
               <Route path="/team" element={<Team />} />
               <Route path="/custom-order" element={<CustomOrderForm />} />
+              <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </main>
           <Footer />

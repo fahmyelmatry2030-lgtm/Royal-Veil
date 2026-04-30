@@ -20,67 +20,88 @@ const Home = () => {
         <title>جمعية الطرحة الملكية التعاونية | الرئيسية - عالم الأزياء الراقية</title>
       </Helmet>
 
-      {/* ─── Exact Mimicry Hero Section (Marya Secret Style) ─── */}
-      <section style={{ position: 'relative', height: '100vh', minHeight: '800px', overflow: 'hidden' }}>
+      {/* ─── Luxury Composite Hero Section ─── */}
+      <section style={{ position: 'relative', height: '90vh', minHeight: '750px', background: 'var(--bg-lavender)', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
         
-        {/* Full Banner Image */}
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img 
-            src="/Images/WhatsApp Image 2026-04-30 at 1.39.14 PM.jpeg" 
-            alt="Royal Veil Campaign" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
-          />
-          {/* Subtle Overlay to make text pop */}
-          <div style={{ 
-            position: 'absolute', inset: 0, 
-            background: 'linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, transparent 70%)' 
-          }}></div>
-        </div>
+        {/* Background Decorative Elements */}
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '40%', height: '120%', background: 'var(--purple-light)', borderRadius: '50%', filter: 'blur(80px)', opacity: 0.6 }}></div>
 
-        <div className="container" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
-          <div style={{ maxWidth: '700px', paddingBottom: '10vh' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
             
-            {/* The Calligraphic Title with Glow */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              style={{ 
-                fontSize: 'clamp(3.5rem, 9vw, 6.5rem)', 
-                fontFamily: 'var(--font-calligraphy)', 
-                color: '#fff', 
-                lineHeight: 1.2, 
-                marginBottom: '1rem',
-                textShadow: '0 0 30px rgba(177, 156, 217, 0.8), 0 0 60px rgba(0,0,0,0.3)',
-                filter: 'drop-shadow(2px 4px 6px rgba(0,0,0,0.2))'
-              }}
-            >
-              تألقي بسحر<br/>
-              تراثكِ الأصيل
-            </motion.h1>
-
-            {/* The Small Subtle Button */}
+            {/* Left Content: Text & Calligraphy */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
-              <Link to="/shop" style={{ 
-                display: 'inline-block',
-                background: 'rgba(255, 255, 255, 0.2)',
-                backdropFilter: 'blur(10px)',
-                color: '#fff',
-                padding: '8px 25px',
-                fontSize: '14px',
-                fontWeight: '600',
-                borderRadius: '50px',
-                textDecoration: 'none',
-                border: '1px solid rgba(255,255,255,0.3)',
-                marginTop: '1.5rem',
-                transition: 'all 0.3s'
-              }} className="hover:bg-white hover:text-purple-900">
-                تسوقي الآن
-              </Link>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem' }}>
+                <div style={{ width: '40px', height: '1px', background: 'var(--accent-gold)' }}></div>
+                <h5 style={{ color: 'var(--accent-gold)', fontWeight: '700', fontSize: '14px', letterSpacing: '2px' }}>الإصدار الملكي ٢٠٢٤</h5>
+              </div>
+
+              <h1 style={{ 
+                fontSize: 'clamp(3rem, 6vw, 5.5rem)', 
+                fontFamily: 'var(--font-calligraphy)', 
+                color: 'var(--purple-dark)', 
+                lineHeight: 1.3, 
+                marginBottom: '2rem' 
+              }}>
+                تألقي بسحر<br/>
+                <span style={{ color: 'var(--primary-purple)' }}>تراثكِ الأصيل</span>
+              </h1>
+
+              <p style={{ 
+                fontSize: '18px', color: 'var(--text-muted)', marginBottom: '3.5rem', 
+                lineHeight: 1.8, maxWidth: '500px', fontFamily: 'var(--font-serif-ar)'
+              }}>
+                في "جمعية الطرحة الملكية"، ننسج لكِ من عبق التاريخ أثواباً تليق بحضوركِ الاستثنائي.
+              </p>
+
+              <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                <Link to="/shop" style={{ 
+                  background: 'var(--primary-purple)', color: '#fff', padding: '16px 45px', 
+                  borderRadius: '50px', textDecoration: 'none', fontWeight: '700', 
+                  boxShadow: '0 10px 20px rgba(177, 156, 217, 0.3)', transition: 'all 0.3s'
+                }} className="hover:scale-105">
+                  تسوقي الآن
+                </Link>
+                <Link to="/custom-order" style={{ 
+                  background: 'transparent', color: 'var(--purple-dark)', padding: '16px 45px', 
+                  borderRadius: '50px', textDecoration: 'none', fontWeight: '700', 
+                  border: '1px solid var(--purple-dark)', transition: 'all 0.3s'
+                }} className="hover:bg-purple-dark hover:text-white">
+                  طلب تفصيل
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Content: The New Client Photo in Organic Shape */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              style={{ position: 'relative' }}
+            >
+              <div style={{ 
+                position: 'relative', width: '100%', maxWidth: '550px', height: '650px', 
+                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%', overflow: 'hidden',
+                boxShadow: 'var(--shadow-lg)', border: '8px solid #fff', margin: '0 auto'
+              }}>
+                <img 
+                  src="/Images/WhatsApp Image 2026-04-30 at 1.39.14 PM.jpeg" 
+                  alt="Royal Model" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                style={{ position: 'absolute', top: '10%', right: '5%', background: '#fff', padding: '20px', borderRadius: '50%', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+              >
+                <Crown color="var(--accent-gold)" size={30} />
+              </motion.div>
             </motion.div>
 
           </div>

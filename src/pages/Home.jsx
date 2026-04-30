@@ -26,7 +26,7 @@ const Home = () => {
         {/* Full Banner Image */}
         <div style={{ position: 'absolute', inset: 0 }}>
           <img 
-            src="/royal_veil_boutique_hero_1777544492906.png" 
+            src="/royal_veil_boutique_hero.png" 
             alt="Royal Veil Campaign" 
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
           />

@@ -79,10 +79,10 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: solid ? 'rgba(35, 23, 56, 0.98)' : 'transparent',
-          backdropFilter: solid ? 'blur(10px)' : 'none',
-          boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
-          borderBottom: solid ? '1px solid var(--border-light)' : '1px solid rgba(255,255,255,0.1)',
+          background: 'rgba(35, 23, 56, 0.98)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: 'var(--shadow-md)',
+          borderBottom: '1px solid var(--border-light)',
         }}
       >
         <div
@@ -93,7 +93,7 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            height: scrolled ? '70px' : '90px',
+            height: '80px',
             direction: 'rtl',
             transition: 'height 0.4s',
           }}
@@ -117,7 +117,7 @@ export default function Navbar() {
             <div style={{
               fontWeight: '300',
               fontSize: '28px',
-              color: solid ? 'var(--primary-purple)' : '#fff',
+              color: 'var(--primary-purple)',
               transition: 'all 0.3s',
               fontFamily: 'var(--font-sans)',
               textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none',
@@ -131,14 +131,14 @@ export default function Navbar() {
           {/* Left: Icons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1, justifyContent: 'flex-end' }}>
             <div className="hidden lg:flex items-center gap-6 mr-6">
-               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
-               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: 'var(--primary-purple)' }}><User size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: 'var(--primary-purple)' }}><Heart size={20} strokeWidth={1.5} /></button>
             </div>
             <Link
               to="/shop"
               style={{
                 position: 'relative',
-                color: solid ? 'var(--primary-purple)' : '#fff',
+                color: 'var(--primary-purple)',
               }}
             >
               <ShoppingBag size={22} strokeWidth={1.5} />
@@ -194,7 +194,7 @@ export default function Navbar() {
                     fontWeight: active(l.path) ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: active(l.path) ? 'var(--accent-gold)' : solid ? 'var(--primary-purple)' : 'rgba(255,255,255,0.9)',
+                    color: active(l.path) ? 'var(--accent-gold)' : 'var(--primary-purple)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                     paddingBottom: '4px',

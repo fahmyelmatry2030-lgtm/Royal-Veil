@@ -3,7 +3,7 @@
 
 :root {
   /* Royal Purple & Gold Palette (Dark Mode) */
-  --primary-purple: #b19cd9; /* Exact Lavender Orchid from client's image */
+  --primary-purple: #8b6ec3; /* A bit darker and richer than before */
   --secondary-purple: #9079c0; 
   --purple-light: #5d428d; /* Slightly lighter than dark, for sub-containers */
   --purple-dark: #2a1b42; /* Deepest purple */

@@ -193,7 +193,7 @@ const ProductCard = ({ product }) => {
         >
           {product.title}
         </h3>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '15px' }}>
           <span
             style={{
               fontSize: '15px',
@@ -216,6 +216,30 @@ const ProductCard = ({ product }) => {
             </span>
           )}
         </div>
+        <button
+          style={{
+            width: '100%',
+            padding: '10px',
+            background: 'var(--primary-purple)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            cursor: 'pointer',
+            fontSize: '14px'
+          }}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevents double firing since the parent div is also clickable
+            window.open(whatsappUrl, '_blank');
+          }}
+        >
+          <ShoppingBag size={16} />
+          اطلب الآن
+        </button>
       </div>
     </motion.div>
   );

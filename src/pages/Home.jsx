@@ -29,13 +29,13 @@ const Home = () => {
           style={{ position: 'absolute', inset: 0 }}
         >
           <img 
-            src="/Images/IMG-20260429-WA0053.jpg" 
+            src="/royal_veil_hero_banner_1777543465352.png" 
             alt="Royal Veil Collection" 
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
           />
           <div style={{ 
             position: 'absolute', inset: 0, 
-            background: 'linear-gradient(to top, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255,255,255,0.1) 100%)' 
+            background: 'linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)' 
           }}></div>
         </motion.div>
 
@@ -61,13 +61,15 @@ const Home = () => {
             <h1 style={{ 
               fontSize: 'clamp(3.5rem, 8vw, 6rem)', fontWeight: '900', 
               lineHeight: 1.1, marginBottom: '2.5rem', fontFamily: 'var(--font-sans)', color: 'var(--text-dark)',
+              textShadow: '2px 2px 30px rgba(255,255,255,0.8)'
             }}>
               تُصاغ الأناقة<br/>بخيوطٍ من ذهب
             </h1>
             
             <p style={{ 
-              fontSize: '19px', color: 'var(--text-muted)', marginBottom: '4rem', 
-              lineHeight: 2, maxWidth: '600px', fontWeight: '400', letterSpacing: '0.5px'
+              fontSize: '20px', color: 'var(--text-dark)', marginBottom: '4rem', 
+              lineHeight: 1.8, maxWidth: '600px', fontWeight: '600', letterSpacing: '0.5px',
+              textShadow: '1px 1px 20px rgba(255,255,255,0.5)'
             }}>
               في "جمعية الطرحة الملكية التعاونية"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
             </p>

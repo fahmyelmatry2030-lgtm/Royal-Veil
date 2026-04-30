@@ -2,26 +2,26 @@
 
 
 :root {
-  /* Royal Purple & Gold Palette (Dark Mode) */
-  --primary-purple: #926cd1; /* Brighter purple for interactive elements */
+  /* Royal Purple & Gold Palette (Light Boutique Theme) */
+  --primary-purple: #a189da; /* Softer pastel lavender */
   --secondary-purple: #7451a8; 
-  --purple-light: #4f3678; /* Sub-container backgrounds */
-  --purple-dark: #2a1b42; /* Deepest purple */
+  --purple-light: #f5f0ff; /* Very light lavender for sub-containers */
+  --purple-dark: #2a1b42; /* Deepest purple for text and icons */
   
   --accent-gold: #D4AF37; /* Premium Gold */
   --secondary-gold: #C5A028; 
   --gold-dark: #996515; 
   --gold-light: #F3E5AB; 
   
-  --bg-white: #3a275c; /* Main Background: Deep Royal Purple */
-  --bg-lavender: #312150; /* Alternate darker background */
-  --bg-cream: #452e6e; /* Alternate lighter background */
+  --bg-white: #ffffff; /* Main Background: Pure White */
+  --bg-lavender: #faf9ff; /* Alternate extremely light lavender */
+  --bg-cream: #fdfaf5; /* Cream for that premium boutique feel */
   
-  --text-dark: #FFFFFF; /* Main text is now White */
-  --text-muted: #c4b5e0; /* Muted text is soft lavender */
-  --text-light: #FFFFFF;
+  --text-dark: #2a1b42; /* Deep Purple text for readability on light BG */
+  --text-muted: #6b5a8e; /* Muted purple text */
+  --text-light: #FFFFFF; /* White text only on dark elements */
   
-  --border-light: #442d6e; /* Subtle purple borders */
+  --border-light: #efeaff; /* Very subtle borders */
   
   --font-serif: 'Playfair Display', 'serif';
   --font-sans: 'Cairo', 'Outfit', sans-serif;

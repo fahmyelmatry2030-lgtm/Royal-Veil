@@ -28,7 +28,7 @@ const Team = () => {
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', overflowX: 'hidden' }}>
       <Helmet>
-        <title>جمعية طرحة الملكية التعاونية | طاقم العمل</title>
+        <title>جمعية الطرحة الملكية التعاونية | طاقم العمل</title>
       </Helmet>
 
       <PageHeader

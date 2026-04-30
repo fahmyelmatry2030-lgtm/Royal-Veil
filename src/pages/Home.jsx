@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', overflowX: 'hidden' }}>
       <Helmet>
-        <title>جمعية طرحة الملكية التعاونية | الرئيسية - عالم الأزياء الراقية</title>
+        <title>جمعية الطرحة الملكية التعاونية | الرئيسية - عالم الأزياء الراقية</title>
       </Helmet>
 
       {/* ─── Cinematic Hero Section ─── */}
@@ -70,7 +70,7 @@ const Home = () => {
               fontSize: '19px', color: 'rgba(255,255,255,0.8)', marginBottom: '4rem', 
               lineHeight: 2, maxWidth: '600px', fontWeight: '400', letterSpacing: '0.5px'
             }}>
-              في "جمعية طرحة الملكية التعاونية"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
+              في "جمعية الطرحة الملكية التعاونية"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
             </p>
             
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
@@ -141,7 +141,7 @@ const Home = () => {
                 تجسيد الأنوثة <br/>بروح التراث العريق
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: '2.1', fontSize: '17px', marginBottom: '40px' }}>
-                بدأت رحلة "رويال فيل" من حلم إحياء التراث الفلسطيني وتتويجه بلمسات من الأناقة العالمية. نحن لا نصنع فساتين فقط، بل ننسج حكايات من المجد والجمال بأيدي أمهر الحرفيات اللواتي ورثن الفن جيلاً بعد جيل، لنقدم لكِ تُحفاً فنية خالدة.
+                بدأت رحلة "جمعية الطرحة الملكية التعاونية" من حلم إحياء التراث الفلسطيني وتتويجه بلمسات من الأناقة العالمية. نحن لا نصنع فساتين فقط، بل ننسج حكايات من المجد والجمال بأيدي أمهر الحرفيات اللواتي ورثن الفن جيلاً بعد جيل، لنقدم لكِ تُحفاً فنية خالدة.
               </p>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -188,7 +188,7 @@ const Home = () => {
         <div className="container">
           <SectionHeader 
             badge="The Collections" 
-            title="عوالم رويال فيل الإبداعية" 
+            title="عوالم جمعية الطرحة الملكية التعاونية الإبداعية" 
             subtitle="اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة."
           />
           <div style={{ 
@@ -247,7 +247,7 @@ const Home = () => {
             "أنتِ لا ترتدين فستاناً، <br/>أنتِ ترتدين قطعة من الفن والتاريخ."
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px', letterSpacing: '2px' }}>
-            - المؤسس، رويال فيل
+            - المؤسس، جمعية الطرحة الملكية التعاونية
           </p>
           <Link to="/custom-order" className="btn-premium" style={{ background: 'transparent', border: '1px solid var(--accent-gold)', color: 'var(--accent-gold)' }}>اطلبي تصميمك المخصص</Link>
         </div>
@@ -277,7 +277,7 @@ const Home = () => {
         <div className="container">
           <div style={{ background: 'var(--bg-lavender)', borderRadius: '16px', padding: '5rem 3rem', textAlign: 'center', border: '1px solid var(--border-light)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }}></div>
-            <h3 style={{ fontSize: '36px', fontWeight: '900', color: 'var(--text-dark)', fontFamily: 'var(--font-serif)', marginBottom: '15px' }}>نادي رويال فيل للأناقة</h3>
+            <h3 style={{ fontSize: '36px', fontWeight: '900', color: 'var(--text-dark)', fontFamily: 'var(--font-serif)', marginBottom: '15px' }}>نادي جمعية الطرحة الملكية للأناقة</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '16px', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.8 }}>
               انضمي إلى قائمتنا البريدية لتكوني أول من يكتشف مجموعاتنا الحصرية، وتحصلي على دعوات خاصة لفعالياتنا وعروضنا السرية.
             </p>

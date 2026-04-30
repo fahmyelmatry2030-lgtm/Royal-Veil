@@ -122,7 +122,7 @@ export default function Navbar() {
               fontFamily: 'var(--font-sans)',
               textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none'
             }}>
-              جمعية طرحة الملكية التعاونية
+              ROYAL VEIL
             </div>
           </Link>
 
@@ -302,7 +302,7 @@ export default function Navbar() {
               alignItems: 'center',
               borderBottom: '1px solid var(--border-light)',
             }}>
-              <span style={{ fontWeight: '800', color: 'var(--accent-gold)', fontSize: '18px', fontFamily: 'var(--font-sans)' }}>جمعية طرحة الملكية التعاونية</span>
+              <span style={{ fontWeight: '800', color: 'var(--accent-gold)', fontSize: '18px', fontFamily: 'var(--font-sans)' }}>ROYAL VEIL</span>
               <button onClick={() => setMobileOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-dark)', padding: '5px' }}>
                 <X size={24} strokeWidth={1.5} />
               </button>
@@ -340,7 +340,7 @@ export default function Navbar() {
                   <Heart size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                   <Search size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                </div>
-               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 جمعية طرحة الملكية التعاونية</p>
+               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 جمعية الطرحة الملكية التعاونية</p>
             </div>
           </motion.div>
         )}

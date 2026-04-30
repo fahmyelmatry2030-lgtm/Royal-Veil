@@ -68,7 +68,7 @@ const CustomTailoring = () => {
              <img src="/Images/IMG-20260429-WA0017.jpg" style={{ width: '100%', borderRadius: '2px', objectFit: 'cover', maxHeight: '550px' }} alt="Tailoring" />
           </div>
           <div>
-            <SectionHeader badge="Why Us" title="لماذا تختارين تفصيل رويال فيل؟" right />
+            <SectionHeader badge="Why Us" title="لماذا تختارين تفصيل جمعية الطرحة الملكية التعاونية؟" right />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                <div style={{ display: 'flex', gap: '15px' }}>
                   <div style={{ color: 'var(--accent-gold)', fontWeight: '900' }}>✓</div>

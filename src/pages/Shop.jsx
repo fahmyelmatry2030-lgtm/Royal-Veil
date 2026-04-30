@@ -130,7 +130,7 @@ const Shop = () => {
         <div className="container" style={{ textAlign: 'center' }}>
           <SectionHeader 
             badge="The Experience"
-            title="لماذا تتسوقين من رويال فيل؟"
+            title="لماذا تتسوقين من جمعية الطرحة الملكية التعاونية؟"
             subtitle="نحن لا نبيع الملابس فقط، بل نقدم تجربة فريدة مصممة خصيصاً لكِ."
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', marginTop: '4rem' }}>

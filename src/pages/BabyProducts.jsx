@@ -41,7 +41,7 @@ const BabyProducts = () => {
             <div style={{ flex: '1', minWidth: '300px' }}>
                <SectionHeader badge="Care & Love" title="نعومة فائقة لطفلكِ" right />
                <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '2', marginBottom: '2rem' }}>
-                 في رويال فيل، نهتم بأطفالكِ بقدر اهتمامنا بكِ. نقدم مجموعة رقيقة من ملابس ومستلزمات الأطفال المصنوعة من خامات طبيعية صديقة للبشرة، مع لمسات فنية تجعل طفلكِ متميزاً منذ يومه الأول.
+                 في جمعية الطرحة الملكية التعاونية، نهتم بأطفالكِ بقدر اهتمامنا بكِ. نقدم مجموعة رقيقة من ملابس ومستلزمات الأطفال المصنوعة من خامات طبيعية صديقة للبشرة، مع لمسات فنية تجعل طفلكِ متميزاً منذ يومه الأول.
                </p>
                <div style={{ spaceY: '1rem', marginBottom: '2.5rem' }}>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: '700', color: 'var(--text-dark)', marginBottom: '15px' }}>

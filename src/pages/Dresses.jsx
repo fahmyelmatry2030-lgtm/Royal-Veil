@@ -125,7 +125,7 @@ const Dresses = () => {
             <h5 style={{ color: 'var(--accent-gold)', letterSpacing: '4px', fontWeight: '800', fontSize: '12px', marginBottom: '1.5rem' }}>STYLE GUIDE</h5>
             <h2 style={{ fontSize: '42px', fontWeight: '900', fontFamily: 'var(--font-serif)', lineHeight: 1.2, marginBottom: '2rem' }}>كيف تختارين <br /> فستان أحلامكِ؟</h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '2', fontSize: '16px', marginBottom: '2.5rem' }}>
-              اختيار الفستان المثالي يعتمد على طبيعة المناسبة، شكل القوام، واللون الذي يبرز جمال بشرتكِ. خبراؤنا في رويال فيل مستعدون لمساعدتكِ في كل خطوة.
+              اختيار الفستان المثالي يعتمد على طبيعة المناسبة، شكل القوام، واللون الذي يبرز جمال بشرتكِ. خبراؤنا في جمعية الطرحة الملكية التعاونية مستعدون لمساعدتكِ في كل خطوة.
             </p>
             <Link to="/custom-order" style={{ 
               display: 'inline-flex', alignItems: 'center', gap: '10px', 

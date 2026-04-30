@@ -35,7 +35,7 @@ const SectionHeader = ({ title, subtitle, badge, dark = false, right = false }) 
             border: `1px solid ${dark ? 'rgba(212,175,55,0.3)' : 'var(--border-light)'}`,
           }}
         >
-          <span style={{ color: dark ? 'var(--gold-light)' : 'var(--primary-purple)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          <span style={{ color: dark ? 'var(--gold-light)' : 'var(--primary-purple)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>
             {badge}
           </span>
         </motion.div>
@@ -87,7 +87,6 @@ const SectionHeader = ({ title, subtitle, badge, dark = false, right = false }) 
             margin: right ? '0' : '0 auto',
             lineHeight: 1.8,
             fontFamily: 'var(--font-sans), sans-serif',
-            letterSpacing: '0.5px'
           }}
         >
           {subtitle}

@@ -58,7 +58,6 @@ export default function Navbar() {
         textAlign: 'center',
         padding: '10px 0',
         fontWeight: '600',
-        letterSpacing: '1.5px',
         textTransform: 'uppercase',
         position: 'fixed',
         top: 0,
@@ -121,7 +120,6 @@ export default function Navbar() {
               transition: 'all 0.3s',
               fontFamily: 'var(--font-serif)',
               whiteSpace: 'nowrap',
-              letterSpacing: '1px',
               textTransform: 'uppercase'
             }}>
               ROYAL VEIL
@@ -342,7 +340,7 @@ export default function Navbar() {
                   <Heart size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                   <Search size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                </div>
-               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 جمعية الطرحة الملكية التعاونية</p>
+               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)' }}>© 2024 جمعية الطرحة الملكية التعاونية</p>
             </div>
           </motion.div>
         )}

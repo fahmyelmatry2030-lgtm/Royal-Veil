@@ -135,17 +135,17 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ flex: '0 0 220px', scrollSnapAlign: 'start' }}
+                style={{ flex: '0 0 180px', scrollSnapAlign: 'start' }}
               >
                 <Link to={cat.link} style={{ display: 'block', textDecoration: 'none' }}>
                   <div style={{ 
-                    height: '320px', borderRadius: '2px', overflow: 'hidden', 
-                    boxShadow: 'var(--shadow-md)', marginBottom: '1.5rem',
+                    height: '260px', borderRadius: '2px', overflow: 'hidden', 
+                    boxShadow: 'var(--shadow-md)', marginBottom: '1rem',
                     background: '#f8f8f8'
                   }}>
                     <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
-                  <h3 style={{ color: 'var(--text-dark)', fontSize: '18px', fontWeight: '800', textAlign: 'center' }}>{cat.title}</h3>
+                  <h3 style={{ color: 'var(--text-dark)', fontSize: '15px', fontWeight: '800', textAlign: 'center' }}>{cat.title}</h3>
                 </Link>
               </motion.div>
             ))}
@@ -255,7 +255,7 @@ const Home = () => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                 <Sparkles size={20} color="var(--accent-gold)" />
-                <h4 style={{ color: 'var(--accent-gold)', fontSize: '14px', letterSpacing: '4px', fontWeight: '800', textTransform: 'uppercase', margin: 0 }}>جمعية الطرحة الملكية التعاونية</h4>
+                <h4 style={{ color: 'var(--accent-gold)', fontSize: '14px', fontWeight: '800', textTransform: 'uppercase', margin: 0 }}>جمعية الطرحة الملكية التعاونية</h4>
               </div>
               <h2 style={{ fontSize: '46px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '35px', fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>
                 من نحن
@@ -324,7 +324,7 @@ const Home = () => {
           <h2 style={{ color: '#fff', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: '900', fontFamily: 'var(--font-serif)', marginBottom: '30px', lineHeight: 1.3 }}>
             "أنتِ لا ترتدين فستاناً، <br/>أنتِ ترتدين قطعة من الفن والتاريخ."
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px', letterSpacing: '2px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px' }}>
             - المؤسس، جمعية الطرحة الملكية التعاونية
           </p>
           <Link to="/custom-order" className="btn-premium" style={{ background: 'transparent', border: '1px solid var(--accent-gold)', color: 'var(--accent-gold)' }}>اطلبي تصميمك المخصص</Link>
@@ -336,7 +336,7 @@ const Home = () => {
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '5rem', flexWrap: 'wrap', gap: '20px' }}>
              <SectionHeader badge="Trending Now" title="القطع الأكثر طلباً" subtitle="اكتشفي الإبداعات التي خطفت قلوب عميلاتنا هذا الموسم." right style={{ marginBottom: 0 }} />
-             <Link to="/shop" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', paddingBottom: '15px' }} className="hover:text-white transition-colors">
+             <Link to="/shop" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', paddingBottom: '15px' }} className="hover:text-white transition-colors">
                عرض المجموعة كاملة <ArrowLeft size={18} />
              </Link>
           </div>
@@ -373,10 +373,10 @@ const Home = () => {
            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem', flexWrap: 'wrap', gap: '20px' }}>
               <div>
                 <h3 style={{ fontSize: '32px', fontWeight: '900', fontFamily: 'var(--font-serif)', color: 'var(--text-dark)', marginBottom: '10px' }}>تألقي معنا على انستغرام</h3>
-                <p style={{ color: 'var(--accent-gold)', fontWeight: '700', letterSpacing: '2px', fontSize: '13px' }}>@ROYALVEIL.COUTURE</p>
+                <p style={{ color: 'var(--accent-gold)', fontWeight: '700', fontSize: '13px' }}>@ROYALVEIL.COUTURE</p>
               </div>
               <div>
-                <a href="#" style={{ color: 'var(--text-dark)', textDecoration: 'none', border: '1px solid var(--border-light)', padding: '14px 35px', fontSize: '13px', fontWeight: '800', letterSpacing: '1px', borderRadius: '50px', transition: 'all 0.3s' }} className="hover:bg-purple-900 hover:text-white hover:border-purple-900">
+                <a href="#" style={{ color: 'var(--text-dark)', textDecoration: 'none', border: '1px solid var(--border-light)', padding: '14px 35px', fontSize: '13px', fontWeight: '800', borderRadius: '50px', transition: 'all 0.3s' }} className="hover:bg-purple-900 hover:text-white hover:border-purple-900">
                   متابعة الصفحة
                 </a>
               </div>

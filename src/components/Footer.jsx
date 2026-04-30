@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div style={{ gridColumn: 'span 1' }}>
             <Link to="/" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', marginBottom: '25px' }}>
-              <span style={{ fontWeight: '900', fontSize: '24px', color: 'var(--primary-purple)', fontFamily: 'var(--font-serif)', letterSpacing: '1px' }}>ROYAL VEIL</span>
+              <span style={{ fontWeight: '900', fontSize: '24px', color: 'var(--primary-purple)', fontFamily: 'var(--font-serif)' }}>ROYAL VEIL</span>
             </Link>
             <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: '1.8', marginBottom: '25px' }}>
               نجمع بين الإبداع اليدوي التقليدي واللمسات العصرية العالمية لنخلق قطعاً فريدة تحكي قصة أناقة فلسطينية لا تنتهي.
@@ -25,7 +25,7 @@ const Footer = () => {
 
           {/* Links */}
           <div>
-            <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', letterSpacing: '1px', color: 'var(--primary-purple)' }}>المجموعات</h4>
+            <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', color: 'var(--primary-purple)' }}>المجموعات</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li><Link to="/dresses" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>فساتين السهرة</Link></li>
               <li><Link to="/heritage" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>التراث الفلسطيني</Link></li>
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', letterSpacing: '1px', color: 'var(--primary-purple)' }}>الشركة</h4>
+            <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', color: 'var(--primary-purple)' }}>الشركة</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li><Link to="/about" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>من نحن</Link></li>
               <li><Link to="/team" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طاقم العمل</Link></li>
@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', letterSpacing: '1px', color: 'var(--primary-purple)' }}>تواصل معنا</h4>
+            <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', color: 'var(--primary-purple)' }}>تواصل معنا</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
                 <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +972 50-554-2323
@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
 
         <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '30px', textAlign: 'center' }}>
-          <p style={{ color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '1px', opacity: 0.8 }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '11px', opacity: 0.8 }}>
             © {new Date().getFullYear()} جمعية الطرحة الملكية التعاونية. جميع الحقوق محفوظة.
           </p>
         </div>

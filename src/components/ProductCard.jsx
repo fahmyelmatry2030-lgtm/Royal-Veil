@@ -182,7 +182,6 @@ const ProductCard = ({ product }) => {
             color: 'var(--accent-gold)',
             marginBottom: '6px',
             textTransform: 'uppercase',
-            letterSpacing: '3px',
             fontWeight: '900'
           }}
         >

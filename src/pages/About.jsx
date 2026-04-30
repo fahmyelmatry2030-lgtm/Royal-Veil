@@ -43,7 +43,7 @@ const About = () => {
               borderRadius: '2px', display: 'none' 
             }} className="md:block">
               <span style={{ fontSize: '32px', fontWeight: '900', color: 'var(--accent-gold)' }}>2024</span>
-              <p style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase' }}>ESTABLISHED</p>
+              <p style={{ fontSize: '11px', textTransform: 'uppercase' }}>ESTABLISHED</p>
             </div>
           </div>
         </div>

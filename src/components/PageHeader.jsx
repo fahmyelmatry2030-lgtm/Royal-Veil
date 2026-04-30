@@ -56,7 +56,6 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
               marginBottom: '1.2rem', 
               fontSize: '10px', 
               fontWeight: '900', 
-              letterSpacing: '4px',
               textTransform: 'uppercase',
               color: 'var(--accent-gold)',
             }}
@@ -77,7 +76,6 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
             lineHeight: 1.1, 
             marginBottom: '1.8rem',
             fontFamily: 'var(--font-serif), serif',
-            letterSpacing: '1px'
           }}
         >
           {title}
@@ -96,7 +94,6 @@ const PageHeader = ({ title, subtitle, badge, bgImage }) => {
               margin: '0 auto', 
               lineHeight: 1.8,
               fontWeight: '400',
-              letterSpacing: '0.5px'
             }}
           >
             {subtitle}

@@ -93,8 +93,8 @@ const Dresses = () => {
         <div className="container">
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
-            gap: '2.5rem' 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', 
+            gap: '1.5rem' 
           }}>
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -108,7 +108,7 @@ const Dresses = () => {
               borderRadius: '2px',
               fontSize: '13px',
               fontWeight: '800',
-              letterSpacing: '2px',
+              letterSpacing: '0px',
               background: 'transparent',
               transition: 'all 0.3s'
             }} className="hover:bg-black hover:text-white">
@@ -122,15 +122,14 @@ const Dresses = () => {
       <section style={{ padding: '8rem 0', background: '#000', color: '#fff', overflow: 'hidden' }}>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', alignItems: 'center' }}>
           <div style={{ flex: '1', minWidth: '300px' }}>
-            <h5 style={{ color: 'var(--accent-gold)', letterSpacing: '4px', fontWeight: '800', fontSize: '12px', marginBottom: '1.5rem' }}>STYLE GUIDE</h5>
+            <h5 style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '12px', marginBottom: '1.5rem' }}>STYLE GUIDE</h5>
             <h2 style={{ fontSize: '42px', fontWeight: '900', fontFamily: 'var(--font-serif)', lineHeight: 1.2, marginBottom: '2rem' }}>كيف تختارين <br /> فستان أحلامكِ؟</h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '2', fontSize: '16px', marginBottom: '2.5rem' }}>
               اختيار الفستان المثالي يعتمد على طبيعة المناسبة، شكل القوام، واللون الذي يبرز جمال بشرتكِ. خبراؤنا في جمعية الطرحة الملكية التعاونية مستعدون لمساعدتكِ في كل خطوة.
             </p>
             <Link to="/custom-order" style={{ 
               display: 'inline-flex', alignItems: 'center', gap: '10px', 
-              color: 'var(--accent-gold)', fontWeight: '900', fontSize: '14px', textDecoration: 'none',
-              letterSpacing: '1px'
+              color: 'var(--accent-gold)', fontWeight: '900', fontSize: '14px', textDecoration: 'none'
             }}>احجزي جلسة استشارية <ArrowLeft size={16} /></Link>
           </div>
           <div style={{ flex: '1', minWidth: '300px', display: 'flex', gap: '20px' }}>

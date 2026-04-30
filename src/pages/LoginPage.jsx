@@ -5,21 +5,29 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const [error, setError] = useState('');
+
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call
+    setError('');
+
+    // Admin Credentials Check
     setTimeout(() => {
-      localStorage.setItem('isAdmin', 'true');
-      navigate('/admin');
+      if (username === 'admin' && password === 'royal2024') {
+        localStorage.setItem('isAdmin', 'true');
+        navigate('/admin');
+      } else {
+        setError('بيانات الدخول غير صحيحة. يرجى المحاولة مرة أخرى.');
+      }
       setLoading(false);
-    }, 1500);
+    }, 1200);
   };
 
   return (
@@ -75,15 +83,15 @@ const LoginPage = () => {
 
         <form onSubmit={handleLogin} style={{ textAlign: 'right', direction: 'rtl' }}>
           <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '700', marginBottom: '8px', color: '#555' }}>البريد الإلكتروني</label>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '700', marginBottom: '8px', color: '#555' }}>اسم المستخدم</label>
             <div style={{ position: 'relative' }}>
               <Mail size={18} style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
               <input 
-                type="email" 
+                type="text" 
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@royalveil.com" 
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="admin" 
                 style={{ 
                   width: '100%', 
                   padding: '14px 45px 14px 20px', 
@@ -133,6 +141,25 @@ const LoginPage = () => {
               </button>
             </div>
           </div>
+
+          {error && (
+            <motion.div 
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              style={{ 
+                background: '#fff5f5', 
+                color: '#e53e3e', 
+                padding: '12px', 
+                borderRadius: '10px', 
+                fontSize: '13px', 
+                fontWeight: '700', 
+                marginBottom: '20px', 
+                border: '1px solid #fed7d7' 
+              }}
+            >
+              ⚠️ {error}
+            </motion.div>
+          )}
 
           <motion.button 
             whileHover={{ scale: 1.02 }}

@@ -71,8 +71,7 @@ const Shop = () => {
                     fontSize: '13px',
                     fontWeight: activeCategory === cat ? '800' : '500',
                     color: activeCategory === cat ? 'var(--accent-gold)' : 'var(--text-muted)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px'
+                    textTransform: 'uppercase'
                   }}
                 >
                   {cat}
@@ -115,8 +114,8 @@ const Shop = () => {
         <div className="container">
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
-            gap: '2.5rem' 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', 
+            gap: '1.5rem' 
           }}>
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />

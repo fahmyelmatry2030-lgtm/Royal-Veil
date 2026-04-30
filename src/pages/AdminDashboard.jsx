@@ -255,7 +255,7 @@ const AdminDashboard = () => {
               <div style={{ width: '40px', height: '40px', background: 'var(--primary-purple)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
                 <ShoppingBag size={24} />
               </div>
-              <h2 style={{ fontSize: '18px', fontWeight: '900', color: 'var(--purple-dark)', letterSpacing: '0.5px' }}>
+              <h2 style={{ fontSize: '18px', fontWeight: '900', color: 'var(--purple-dark)' }}>
                 ROYAL PANEL
               </h2>
             </div>

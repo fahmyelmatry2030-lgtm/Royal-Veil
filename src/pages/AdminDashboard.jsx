@@ -24,7 +24,7 @@ import {
   ArrowUpRight,
   ArrowDownRight
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, Cell, PieChart, Pie
 } from 'recharts';
@@ -75,6 +75,12 @@ const StatCard = ({ title, value, icon, trend, color, isUp }) => (
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAdmin');
+    navigate('/login');
+  };
 
   // Sub-Pages
   const renderContent = () => {
@@ -301,7 +307,7 @@ const AdminDashboard = () => {
         </nav>
 
         <div style={{ padding: '20px', borderTop: '1px solid #eee' }}>
-          <button style={{ 
+          <button onClick={handleLogout} style={{ 
             width: '100%', display: 'flex', alignItems: 'center', gap: '15px', 
             padding: '14px 20px', background: 'transparent', border: 'none', 
             color: '#ff4d4d', cursor: 'pointer', fontWeight: '700'

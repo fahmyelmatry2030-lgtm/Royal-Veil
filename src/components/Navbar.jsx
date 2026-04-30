@@ -115,14 +115,14 @@ export default function Navbar() {
             }}
           >
             <div style={{
-              fontWeight: '300',
-              fontSize: '28px',
+              fontWeight: '900',
+              fontSize: '32px',
               color: 'var(--primary-purple)',
               transition: 'all 0.3s',
-              fontFamily: 'var(--font-sans)',
-              textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none',
+              fontFamily: 'var(--font-serif)',
               whiteSpace: 'nowrap',
-              letterSpacing: '4px'
+              letterSpacing: '1px',
+              textTransform: 'uppercase'
             }}>
               ROYAL VEIL
             </div>

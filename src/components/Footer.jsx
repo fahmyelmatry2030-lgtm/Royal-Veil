@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div style={{ gridColumn: 'span 1' }}>
             <Link to="/" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', marginBottom: '25px' }}>
-              <span style={{ fontWeight: '300', fontSize: '20px', color: 'var(--primary-purple)', fontFamily: 'var(--font-sans)', letterSpacing: '2px' }}>ROYAL VEIL</span>
+              <span style={{ fontWeight: '900', fontSize: '24px', color: 'var(--primary-purple)', fontFamily: 'var(--font-serif)', letterSpacing: '1px' }}>ROYAL VEIL</span>
             </Link>
             <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: '1.8', marginBottom: '25px' }}>
               نجمع بين الإبداع اليدوي التقليدي واللمسات العصرية العالمية لنخلق قطعاً فريدة تحكي قصة أناقة فلسطينية لا تنتهي.

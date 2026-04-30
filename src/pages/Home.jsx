@@ -14,6 +14,16 @@ const featuredProducts = [
 ];
 
 const Home = () => {
+  const collectionsRef = React.useRef(null);
+  const productsRef = React.useRef(null);
+
+  const scroll = (ref, direction) => {
+    if (ref.current) {
+      const scrollAmount = 350;
+      ref.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', overflowX: 'hidden' }}>
       <Helmet>
@@ -97,16 +107,18 @@ const Home = () => {
             subtitle="اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة."
           />
           
-          <div style={{ 
-            display: 'flex', 
-            overflowX: 'auto', 
-            gap: '2rem', 
-            paddingBottom: '2rem',
-            paddingRight: '1rem',
-            msOverflowStyle: 'none',
-            scrollbarWidth: 'none',
-            scrollSnapType: 'x mandatory'
-          }} className="hide-scrollbar">
+          <div 
+            ref={collectionsRef}
+            style={{ 
+              display: 'flex', 
+              overflowX: 'auto', 
+              gap: '2rem', 
+              paddingBottom: '2rem',
+              paddingRight: '1rem',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              scrollSnapType: 'x mandatory'
+            }} className="hide-scrollbar">
             {[
               { title: 'فساتين', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (6).jpeg', link: '/dresses' },
               { title: 'بلوزات', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.16 PM (7).jpeg', link: '/shop' },
@@ -134,6 +146,17 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Navigation Arrows for Collections */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '1rem' }}>
+            <button onClick={() => scroll(collectionsRef, 'right')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
+              <ChevronRight size={24} />
+            </button>
+            <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontWeight: '600' }}>مجموعاتنا</span>
+            <button onClick={() => scroll(collectionsRef, 'left')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
+              <ChevronLeft size={24} />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -142,15 +165,17 @@ const Home = () => {
         <div className="container">
           <SectionHeader badge="Exclusive" title="منتجات متميزة" subtitle="القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم." />
           
-          <div style={{ 
-            display: 'flex', 
-            overflowX: 'auto', 
-            gap: '2rem', 
-            paddingBottom: '4rem',
-            msOverflowStyle: 'none',
-            scrollbarWidth: 'none',
-            scrollSnapType: 'x mandatory'
-          }} className="hide-scrollbar">
+          <div 
+            ref={productsRef}
+            style={{ 
+              display: 'flex', 
+              overflowX: 'auto', 
+              gap: '2rem', 
+              paddingBottom: '4rem',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+              scrollSnapType: 'x mandatory'
+            }} className="hide-scrollbar">
             {featuredProducts.map((p, i) => (
               <div key={p.id} style={{ flex: '0 0 320px', scrollSnapAlign: 'start' }}>
                 <ProductCard product={p} />
@@ -158,7 +183,18 @@ const Home = () => {
             ))}
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+          {/* Navigation Arrows for Products */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginBottom: '3rem' }}>
+            <button onClick={() => scroll(productsRef, 'right')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
+              <ChevronRight size={24} />
+            </button>
+            <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontWeight: '600' }}>تصفح المنتجات</span>
+            <button onClick={() => scroll(productsRef, 'left')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
+              <ChevronLeft size={24} />
+            </button>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Link to="/shop" style={{ 
               background: '#fff', 
               color: 'var(--primary-purple)', 

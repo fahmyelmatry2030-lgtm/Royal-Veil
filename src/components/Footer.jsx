@@ -50,13 +50,13 @@ const Footer = () => {
             <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', letterSpacing: '1px', color: 'var(--primary-purple)' }}>تواصل معنا</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +970 599 000 000
+                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +972 58-504-0233
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Mail size={16} strokeWidth={1.5} color="var(--accent-gold)" /> info@royalveil.com
+                <Mail size={16} strokeWidth={1.5} color="var(--accent-gold)" /> royalveil529@gmail.com
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <MapPin size={16} strokeWidth={1.5} color="var(--accent-gold)" /> فلسطين، غزة
+                <MapPin size={16} strokeWidth={1.5} color="var(--accent-gold)" /> فلسطين - القدس - شارع صلاح الدين
               </li>
             </ul>
           </div>

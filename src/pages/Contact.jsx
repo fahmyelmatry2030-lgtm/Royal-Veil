@@ -37,7 +37,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>اتصلي بنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+970 599 000 000</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 58-504-0233</p>
                   </div>
                 </div>
 
@@ -47,7 +47,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>البريد الإلكتروني</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>info@royalveil.com</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>royalveil529@gmail.com</p>
                   </div>
                 </div>
 
@@ -57,7 +57,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>موقعنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>فلسطين، غزة، شارع المبدعين</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>فلسطين - القدس - شارع صلاح الدين</p>
                   </div>
                 </div>
               </div>

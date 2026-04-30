@@ -39,8 +39,8 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li><Link to="/about" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>من نحن</Link></li>
               <li><Link to="/team" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طاقم العمل</Link></li>
-              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>توصيل القدس والضفة: 30 ₪</li>
-              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>توصيل مناطق 48: 70 ₪</li>
+              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>توصيل القدس والضفة: 30 شيكل</li>
+              <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>توصيل مناطق 48: 70 شيكل</li>
               <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>متوفر الدفع عند الاستلام</li>
               <li style={{ color: 'var(--text-muted)', fontSize: '13px' }}>متوفر الدفع عبر PayPal</li>
               <li><Link to="/custom-order" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طلب تفصيل خاص</Link></li>

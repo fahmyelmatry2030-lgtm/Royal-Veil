@@ -8,16 +8,16 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const products = [
-  { id: 1, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: ' ₪', oldPrice: ' ₪', discount: 20, img: '/Images/IMG-20260429-WA0021.jpg' },
-  { id: 2, title: 'فستان زفاف ملكي بدانتيل مرصع', price: ' ₪', img: '/Images/IMG-20260429-WA0025.jpg' },
-  { id: 3, title: 'فستان سهرة بالكريستال والأحجار الخضراء', price: ' ₪', oldPrice: ' ₪', discount: 15, img: '/Images/IMG-20260429-WA0022.jpg' },
-  { id: 4, title: 'فستان زفاف أبيض دانتيل عصري', price: ' ₪', img: '/Images/IMG-20260429-WA0053.jpg' },
-  { id: 5, title: 'فستان سهرة مطرز بخيوط ذهبية ولؤلؤ', price: ' ₪', img: '/Images/IMG-20260429-WA0035.jpg' },
-  { id: 6, title: 'فستان سهرة كريستال بذيل ملكي', price: ' ₪', oldPrice: ' ₪', img: '/Images/IMG-20260429-WA0036.jpg' },
-  { id: 7, title: 'فستان زفاف دانتيل أبيض واسع', price: ' ₪', img: '/Images/IMG-20260429-WA0039.jpg' },
-  { id: 8, title: 'فستان زفاف بطرحة دانتيل طويلة', price: ' ₪', img: '/Images/IMG-20260429-WA0037.jpg' },
-  { id: 9, title: 'فستان زفاف مطرز بقلب مزين', price: ' ₪', oldPrice: ' ₪', img: '/Images/IMG-20260429-WA0038.jpg' },
-  { id: 10, title: 'فستان زفاف ستان بطرحة كلاسيكية', price: ' ₪', img: '/Images/IMG-20260429-WA0040.jpg' },
+  { id: 1, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: '1200 شيكل', oldPrice: '1500 شيكل', discount: 20, img: '/Images/IMG-20260429-WA0021.jpg' },
+  { id: 2, title: 'فستان زفاف ملكي بدانتيل مرصع', price: '3500 شيكل', img: '/Images/IMG-20260429-WA0025.jpg' },
+  { id: 3, title: 'فستان سهرة بالكريستال والأحجار الخضراء', price: '800 شيكل', oldPrice: '950 شيكل', discount: 15, img: '/Images/IMG-20260429-WA0022.jpg' },
+  { id: 4, title: 'فستان زفاف أبيض دانتيل عصري', price: '950 شيكل', img: '/Images/IMG-20260429-WA0053.jpg' },
+  { id: 5, title: 'فستان سهرة مطرز بخيوط ذهبية ولؤلؤ', price: '1500 شيكل', img: '/Images/IMG-20260429-WA0035.jpg' },
+  { id: 6, title: 'فستان سهرة كريستال بذيل ملكي', price: '700 شيكل', oldPrice: '850 شيكل', img: '/Images/IMG-20260429-WA0036.jpg' },
+  { id: 7, title: 'فستان زفاف دانتيل أبيض واسع', price: '2800 شيكل', img: '/Images/IMG-20260429-WA0039.jpg' },
+  { id: 8, title: 'فستان زفاف بطرحة دانتيل طويلة', price: '1100 شيكل', img: '/Images/IMG-20260429-WA0037.jpg' },
+  { id: 9, title: 'فستان زفاف مطرز بقلب مزين', price: '550 شيكل', oldPrice: '650 شيكل', img: '/Images/IMG-20260429-WA0038.jpg' },
+  { id: 10, title: 'فستان زفاف ستان بطرحة كلاسيكية', price: '3200 شيكل', img: '/Images/IMG-20260429-WA0040.jpg' },
 ];
 
 const Dresses = () => {
@@ -185,8 +185,8 @@ const Dresses = () => {
                   <h3 style={{ fontWeight: '700', marginBottom: '1rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '8px' }}>السعر</h3>
                   <input type="range" style={{ width: '100%', accentcolor: 'var(--accent-gold)' }} />
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginTop: '8px' }}>
-                    <span> ₪</span>
-                    <span> ₪</span>
+                    <span>0 شيكل</span>
+                    <span>5000 شيكل</span>
                   </div>
                 </div>
 

@@ -7,14 +7,14 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const products = [
-  { id: 1, title: 'فستان سهرة مطرز بخيوط الحرير', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0021.jpg' },
-  { id: 2, title: 'فستان سهرة بالكريستال والأحجار', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0022.jpg' },
-  { id: 3, title: 'عباءة سوداء بتطريز ذهبي فاخر', price: ' ₪', category: 'عباءات', img: '/Images/IMG-20260429-WA0023.jpg' },
-  { id: 4, title: 'فستان زفاف دانتيل كلاسيك', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0024.jpg' },
-  { id: 5, title: 'فستان زفاف دانتيل بذيل طويل', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0025.jpg' },
-  { id: 6, title: 'فستان سهرة مطرز بخيوط الزهور', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0035.jpg' },
-  { id: 7, title: 'فستان سهرة كريستال بذيل ملكي', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0036.jpg' },
-  { id: 8, title: 'فستان زفاف بطرحة دانتيل طويلة', price: ' ₪', category: 'فساتين', img: '/Images/IMG-20260429-WA0039.jpg' },
+  { id: 1, title: 'فستان سهرة مطرز بخيوط الحرير', price: '450 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0021.jpg' },
+  { id: 2, title: 'فستان سهرة بالكريستال والأحجار', price: '1200 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0022.jpg' },
+  { id: 3, title: 'عباءة سوداء بتطريز ذهبي فاخر', price: '350 شيكل', category: 'عباءات', img: '/Images/IMG-20260429-WA0023.jpg' },
+  { id: 4, title: 'فستان زفاف دانتيل كلاسيك', price: '2500 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0024.jpg' },
+  { id: 5, title: 'فستان زفاف دانتيل بذيل طويل', price: '2800 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0025.jpg' },
+  { id: 6, title: 'فستان سهرة مطرز بخيوط الزهور', price: '900 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0035.jpg' },
+  { id: 7, title: 'فستان سهرة كريستال بذيل ملكي', price: '1500 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0036.jpg' },
+  { id: 8, title: 'فستان زفاف بطرحة دانتيل طويلة', price: '3200 شيكل', category: 'فساتين', img: '/Images/IMG-20260429-WA0039.jpg' },
 ];
 
 const Shop = () => {

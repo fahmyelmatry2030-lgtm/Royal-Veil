@@ -50,12 +50,7 @@ const Footer = () => {
             <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', letterSpacing: '1px', color: 'var(--primary-purple)' }}>تواصل معنا</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> 
-                <span>للاتصال: <a href="tel:+972585040233" style={{ color: 'inherit', textDecoration: 'none' }}>+972 58-504-0233</a></span>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Phone size={16} strokeWidth={1.5} color="#25D366" /> 
-                <span>واتساب (للطلب): <a href="https://wa.me/972505542323" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+972 50-554-2323</a></span>
+                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +972 50-554-2323
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
                 <Mail size={16} strokeWidth={1.5} color="var(--accent-gold)" /> royalveil529@gmail.com

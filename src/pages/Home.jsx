@@ -26,14 +26,14 @@ const Home = () => {
         {/* Full Banner Image */}
         <div style={{ position: 'absolute', inset: 0 }}>
           <img 
-            src="/Images/IMG-20260429-WA0053.jpg" 
-            alt="Royal Veil Collection" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+            src="/royal_veil_boutique_hero_1777544492906.png" 
+            alt="Royal Veil Campaign" 
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
           />
           {/* Subtle Overlay to make text pop */}
           <div style={{ 
             position: 'absolute', inset: 0, 
-            background: 'linear-gradient(to right, rgba(42, 27, 66, 0.4) 0%, transparent 60%)' 
+            background: 'linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, transparent 70%)' 
           }}></div>
         </div>
 

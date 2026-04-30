@@ -32,9 +32,9 @@ const About = () => {
           </div>
           <div style={{ position: 'relative' }}>
             <img 
-              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" 
+              src="/Images/IMG-20260429-WA0014.jpg" 
               alt="Workshop" 
-              style={{ width: '100%', borderRadius: '2px', boxShadow: '0 20px 50px rgba(0,0,0,0.08)' }}
+              style={{ width: '100%', borderRadius: '2px', boxShadow: '0 20px 50px rgba(0,0,0,0.08)', objectFit: 'cover', maxHeight: '550px' }}
             />
             <div style={{ 
               position: 'absolute', bottom: '-20px', right: '-20px', 

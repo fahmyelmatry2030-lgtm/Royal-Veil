@@ -7,14 +7,14 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const products = [
-  { id: 1, title: 'فستان مخمل مطرز بخيوط الحرير', price: '450$', category: 'فساتين', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=600' },
-  { id: 2, title: 'بلوزة تطريز يدوي فلسطيني أصيل', price: '120$', category: 'تطريز', img: 'https://images.unsplash.com/photo-1605646351745-9788e0b6d91f?auto=format&fit=crop&q=80&w=600' },
-  { id: 3, title: 'طقم بيبي كلاسيك بتطريز ناعم', price: '85$', category: 'بيبي', img: 'https://images.unsplash.com/photo-1519706347221-f090d81c8412?auto=format&fit=crop&q=80&w=600' },
-  { id: 4, title: 'شال تراثي مقصب مع شراشيب يدوية', price: '60$', category: 'تراث', img: 'https://images.unsplash.com/photo-1520975661595-6453be3f7070?auto=format&fit=crop&q=80&w=600' },
-  { id: 5, title: 'فستان زفاف دانتيل مع ذيل طويل', price: '2200$', category: 'فساتين', img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=600' },
-  { id: 6, title: 'قميص رجالي مطرز بنقشة ملكية', price: '95$', category: 'تطريز', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c717658?auto=format&fit=crop&q=80&w=600' },
-  { id: 7, title: 'عباءة مطرزة بتصميم عصري', price: '180$', category: 'تطريز', img: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&q=80&w=600' },
-  { id: 8, title: 'ثوب فلسطيني تراثي مطرز يدوياً', price: '350$', category: 'تراث', img: 'https://images.unsplash.com/photo-1582533089852-0243ed27bbd8?auto=format&fit=crop&q=80&w=600' },
+  { id: 1, title: 'فستان سهرة مطرز بخيوط الحرير', price: '450$', category: 'فساتين', img: '/Images/IMG-20260429-WA0021.jpg' },
+  { id: 2, title: 'فستان سهرة بالكريستال والأحجار', price: '1200$', category: 'فساتين', img: '/Images/IMG-20260429-WA0022.jpg' },
+  { id: 3, title: 'عباءة سوداء بتطريز ذهبي فاخر', price: '350$', category: 'عباءات', img: '/Images/IMG-20260429-WA0023.jpg' },
+  { id: 4, title: 'فستان زفاف دانتيل كلاسيك', price: '2500$', category: 'فساتين', img: '/Images/IMG-20260429-WA0024.jpg' },
+  { id: 5, title: 'فستان زفاف دانتيل بذيل طويل', price: '2800$', category: 'فساتين', img: '/Images/IMG-20260429-WA0025.jpg' },
+  { id: 6, title: 'فستان سهرة مطرز بخيوط الزهور', price: '900$', category: 'فساتين', img: '/Images/IMG-20260429-WA0035.jpg' },
+  { id: 7, title: 'فستان سهرة كريستال بذيل ملكي', price: '1500$', category: 'فساتين', img: '/Images/IMG-20260429-WA0036.jpg' },
+  { id: 8, title: 'فستان زفاف بطرحة دانتيل طويلة', price: '3200$', category: 'فساتين', img: '/Images/IMG-20260429-WA0039.jpg' },
 ];
 
 const Shop = () => {

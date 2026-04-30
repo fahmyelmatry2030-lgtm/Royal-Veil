@@ -64,7 +64,7 @@ const CustomTailoring = () => {
       <section style={{ padding: '6rem 0', borderTop: '1px solid #f0f0f0' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', alignItems: 'center' }}>
           <div style={{ position: 'relative' }}>
-             <img src="https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?auto=format&fit=crop&q=80&w=800" style={{ width: '100%', borderRadius: '2px' }} alt="Tailoring" />
+             <img src="/Images/IMG-20260429-WA0017.jpg" style={{ width: '100%', borderRadius: '2px', objectFit: 'cover', maxHeight: '550px' }} alt="Tailoring" />
           </div>
           <div>
             <SectionHeader badge="Why Us" title="لماذا تختارين تفصيل رويال فيل؟" right />

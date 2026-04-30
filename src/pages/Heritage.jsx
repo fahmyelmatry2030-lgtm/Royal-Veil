@@ -7,9 +7,9 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const heritageItems = [
-  { id: 301, title: 'شال القدس المطرز يدوياً', price: '120$', img: 'https://images.unsplash.com/photo-1445205170230-053b830c6039?auto=format&fit=crop&q=80&w=800' },
-  { id: 302, title: 'ثوب يافا العصري بقصة ملكية', price: '450$', img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800' },
-  { id: 303, title: 'جاكيت الخليل التراثي المقصب', price: '180$', img: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&q=80&w=800' },
+  { id: 301, title: 'ثوب فلسطيني تراثي بتطريز أحمر يدوي', price: '120$', img: '/Images/IMG-20260429-WA0047.jpg' },
+  { id: 302, title: 'ثوب فلسطيني بتطريز تقليدي ملون', price: '450$', img: '/Images/IMG-20260429-WA0050.jpg' },
+  { id: 303, title: 'فستان سهرة أسود بتطريز ذهبي حصري', price: '180$', img: '/Images/IMG-20260429-WA0048.jpg' },
 ];
 
 const Heritage = () => {
@@ -23,7 +23,7 @@ const Heritage = () => {
         badge="Palestinian Heritage"
         title="التراث الفلسطيني"
         subtitle="نحتفي بتراثنا الأصيل ونوظفه في قطع عصرية فريدة تحكي هوية فلسطين الجميلة."
-        bgImage="https://images.unsplash.com/photo-1582533089852-0243ed27bbd8?auto=format&fit=crop&q=80&w=1920"
+        bgImage="/Images/IMG-20260429-WA0050.jpg"
       />
 
       {/* Philosophy Section */}
@@ -51,8 +51,8 @@ const Heritage = () => {
             </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-             <img src="https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&q=80&w=600" style={{ borderRadius: '2px', height: '400px', objectFit: 'cover', width: '100%' }} alt="" />
-             <img src="https://images.unsplash.com/photo-1596462502278-27bfad45f1f6?auto=format&fit=crop&q=80&w=600" style={{ borderRadius: '2px', height: '400px', objectFit: 'cover', width: '100%', marginTop: '30px' }} alt="" />
+             <img src="/Images/IMG-20260429-WA0047.jpg" style={{ borderRadius: '2px', height: '400px', objectFit: 'cover', width: '100%', objectPosition: 'top' }} alt="" />
+             <img src="/Images/IMG-20260429-WA0048.jpg" style={{ borderRadius: '2px', height: '400px', objectFit: 'cover', width: '100%', marginTop: '30px' }} alt="" />
           </div>
         </div>
       </section>

@@ -7,10 +7,11 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const babyItems = [
-  { id: 201, title: 'بدلة غمرة للأطفال بتطريز تراثي', price: '150$', img: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&q=80&w=600' },
-  { id: 202, title: 'فستان بيبي مطرز يدوي ناعم', price: '85$', img: 'https://images.unsplash.com/photo-1519706347221-f090d81c8412?auto=format&fit=crop&q=80&w=600' },
-  { id: 203, title: 'طقم ولادة ملكي مع قبعة', price: '220$', img: 'https://images.unsplash.com/photo-1537678122130-b023ff055042?auto=format&fit=crop&q=80&w=600' },
-  { id: 204, title: 'قبعة وقفازات مطرزة يدوياً', price: '45$', img: 'https://images.unsplash.com/photo-1544126592-807daa2b565b?auto=format&fit=crop&q=80&w=600' },
+  { id: 201, title: 'طقم بيبي أبيض مطرز بالاسم (غزل)', price: '85$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM.jpeg' },
+  { id: 202, title: 'طقم ولادة ملكي أبيض مطرز (فؤاد)', price: '220$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(1).jpeg' },
+  { id: 203, title: 'طقم بيبي أبيض مطرز بالاسم (قاسم)', price: '180$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(2).jpeg' },
+  { id: 204, title: 'طقم بناتي ناعم مع تطريز ورد (ليلى)', price: '190$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(3).jpeg' },
+  { id: 205, title: 'طقم بيبي ولادي أزرق (تيم)', price: '200$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(4).jpeg' },
 ];
 
 const BabyProducts = () => {
@@ -31,8 +32,8 @@ const BabyProducts = () => {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem', alignItems: 'center', marginBottom: '8rem' }}>
             <div style={{ flex: '1', minWidth: '300px' }}>
                <img 
-                src="https://images.unsplash.com/photo-1522771935876-2497116a7d9e?auto=format&fit=crop&q=80&w=800" 
-                style={{ width: '100%', borderRadius: '4px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }} 
+                src="/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(3).jpeg" 
+                style={{ width: '100%', borderRadius: '4px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', objectFit: 'cover', maxHeight: '500px' }} 
                 alt="Baby Products" 
                />
             </div>

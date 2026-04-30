@@ -8,16 +8,16 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const products = [
-  { id: 1, title: 'فستان سهرة كلاسيك مطرز بالخرز', price: '1200$', oldPrice: '1500$', discount: 20, img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800' },
-  { id: 2, title: 'فستان زفاف ملكي أبيض مرصع', price: '3500$', img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=800' },
-  { id: 3, title: 'فستان مخمل أزرق ملكي مع تطريز ذهبي', price: '800$', oldPrice: '950$', discount: 15, img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800' },
-  { id: 4, title: 'فستان دانتيل ناعم بتصميم عصري', price: '950$', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800' },
-  { id: 5, title: 'فستان سهرة ذهبي براق للمناسبات', price: '1500$', img: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800' },
-  { id: 6, title: 'فستان حرير أحمر بتفاصيل يدوية', price: '700$', oldPrice: '850$', img: 'https://images.unsplash.com/photo-1494578379644-dc37c229393a?auto=format&fit=crop&q=80&w=800' },
-  { id: 7, title: 'فستان زفاف دانتيل بوهيمي', price: '2800$', img: 'https://images.unsplash.com/photo-1549416878-b9ca35c2d47a?auto=format&fit=crop&q=80&w=800' },
-  { id: 8, title: 'فستان سهرة أسود مخملي', price: '1100$', img: 'https://images.unsplash.com/photo-1572804013307-a9a11efbb185?auto=format&fit=crop&q=80&w=800' },
-  { id: 9, title: 'فستان كوكتيل بتصميم تركي', price: '550$', oldPrice: '650$', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=800' },
-  { id: 10, title: 'فستان زفاف ستان كلاسيكي', price: '3200$', img: 'https://images.unsplash.com/photo-1542040540-3b169b14c35a?auto=format&fit=crop&q=80&w=800' },
+  { id: 1, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: '1200$', oldPrice: '1500$', discount: 20, img: '/Images/IMG-20260429-WA0021.jpg' },
+  { id: 2, title: 'فستان زفاف ملكي بدانتيل مرصع', price: '3500$', img: '/Images/IMG-20260429-WA0025.jpg' },
+  { id: 3, title: 'فستان سهرة بالكريستال والأحجار الخضراء', price: '800$', oldPrice: '950$', discount: 15, img: '/Images/IMG-20260429-WA0022.jpg' },
+  { id: 4, title: 'فستان زفاف أبيض دانتيل عصري', price: '950$', img: '/Images/IMG-20260429-WA0053.jpg' },
+  { id: 5, title: 'فستان سهرة مطرز بخيوط ذهبية ولؤلؤ', price: '1500$', img: '/Images/IMG-20260429-WA0035.jpg' },
+  { id: 6, title: 'فستان سهرة كريستال بذيل ملكي', price: '700$', oldPrice: '850$', img: '/Images/IMG-20260429-WA0036.jpg' },
+  { id: 7, title: 'فستان زفاف دانتيل أبيض واسع', price: '2800$', img: '/Images/IMG-20260429-WA0039.jpg' },
+  { id: 8, title: 'فستان زفاف بطرحة دانتيل طويلة', price: '1100$', img: '/Images/IMG-20260429-WA0037.jpg' },
+  { id: 9, title: 'فستان زفاف مطرز بقلب مزين', price: '550$', oldPrice: '650$', img: '/Images/IMG-20260429-WA0038.jpg' },
+  { id: 10, title: 'فستان زفاف ستان بطرحة كلاسيكية', price: '3200$', img: '/Images/IMG-20260429-WA0040.jpg' },
 ];
 
 const Dresses = () => {
@@ -34,7 +34,7 @@ const Dresses = () => {
         badge="Luxury Collection"
         title="فساتين السهرة والزفاف"
         subtitle="استكشفي أرقى التصاميم التي تجمع بين الفخامة التركية واللمسة الفلسطينية الأصيلة."
-        bgImage="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=1920"
+        bgImage="/Images/IMG-20260429-WA0036.jpg"
       />
 
       {/* Control Bar */}
@@ -134,8 +134,8 @@ const Dresses = () => {
             }}>احجزي جلسة استشارية <ArrowLeft size={16} /></Link>
           </div>
           <div style={{ flex: '1', minWidth: '300px', display: 'flex', gap: '20px' }}>
-             <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&q=80&w=600" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '2px' }} alt="" />
-             <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=600" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '2px', marginTop: '60px' }} alt="" />
+             <img src="/Images/IMG-20260429-WA0024.jpg" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '2px' }} alt="" />
+             <img src="/Images/IMG-20260429-WA0025.jpg" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '2px', marginTop: '60px' }} alt="" />
           </div>
         </div>
       </section>

@@ -7,10 +7,10 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const featuredProducts = [
-  { id: 101, title: 'فستان زفاف "أورورا" الملكي', price: '3200$', img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=800' },
-  { id: 102, title: 'فستان سهرة "زمرد" الفاخر', price: '1450$', discount: 10, img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800' },
-  { id: 103, title: 'عباءة "الأندلس" بتطريز ذهبي', price: '450$', img: 'https://images.unsplash.com/photo-1582533089852-0243ed27bbd8?auto=format&fit=crop&q=80&w=800' },
-  { id: 104, title: 'فستان "ليل" المخملي الكلاسيكي', price: '1100$', img: 'https://images.unsplash.com/photo-1572804013307-a9a11efbb185?auto=format&fit=crop&q=80&w=800' },
+  { id: 101, title: 'فستان زفاف ملكي بدانتيل مطرز', price: '3200$', img: '/Images/IMG-20260429-WA0025.jpg' },
+  { id: 102, title: 'فستان سهرة "زمرد" بالكريستال الفاخر', price: '1450$', discount: 10, img: '/Images/IMG-20260429-WA0022.jpg' },
+  { id: 103, title: 'عباءة "الأندلس" بتطريز ذهبي', price: '450$', img: '/Images/IMG-20260429-WA0023.jpg' },
+  { id: 104, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: '1100$', img: '/Images/IMG-20260429-WA0021.jpg' },
 ];
 
 const Home = () => {
@@ -29,9 +29,9 @@ const Home = () => {
           style={{ position: 'absolute', inset: 0 }}
         >
           <img 
-            src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&q=80&w=1920" 
+            src="/Images/IMG-20260429-WA0035.jpg" 
             alt="Royal Veil Collection" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
           />
           <div style={{ 
             position: 'absolute', inset: 0, 
@@ -160,7 +160,7 @@ const Home = () => {
             >
               <div style={{ position: 'absolute', top: '-30px', left: '-30px', bottom: '30px', right: '30px', border: '2px solid var(--accent-gold)', zIndex: 0, borderRadius: '4px', opacity: 0.3 }}></div>
               <img 
-                src="https://images.unsplash.com/photo-1550614000-4b95d4ebf0e8?auto=format&fit=crop&q=80&w=800" 
+                src="/Images/IMG-20260429-WA0016.jpg" 
                 alt="Craftsmanship" 
                 style={{ width: '100%', position: 'relative', zIndex: 1, borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }}
               />
@@ -197,10 +197,10 @@ const Home = () => {
             gap: '2rem' 
           }}>
             {[
-              { title: 'فساتين السهرة', desc: 'إطلالة تخطف الأنفاس', img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=600', link: '/dresses' },
-              { title: 'التطريز التراثي', desc: 'أصالة تتجدد', img: 'https://images.unsplash.com/photo-1582533089852-0243ed27bbd8?auto=format&fit=crop&q=80&w=600', link: '/heritage' },
-              { title: 'العباءات الملكية', desc: 'فخامة محتشمة', img: 'https://images.unsplash.com/photo-1589465885857-44edb59bbff2?auto=format&fit=crop&q=80&w=600', link: '/shop' },
-              { title: 'الأزياء الراقية', desc: 'تفاصيل استثنائية', img: 'https://images.unsplash.com/photo-1572804013307-a9a11efbb185?auto=format&fit=crop&q=80&w=600', link: '/dresses' },
+              { title: 'فساتين السهرة', desc: 'إطلالة تخطف الأنفاس', img: '/Images/IMG-20260429-WA0036.jpg', link: '/dresses' },
+              { title: 'فساتين الزفاف الملكية', desc: 'أبهة لا تُنسى', img: '/Images/IMG-20260429-WA0039.jpg', link: '/dresses' },
+              { title: 'العباءات الملكية', desc: 'فخامة محتشمة', img: '/Images/IMG-20260429-WA0023.jpg', link: '/shop' },
+              { title: 'التطريز والأزياء الراقية', desc: 'تفاصيل استثنائية', img: '/Images/IMG-20260429-WA0021.jpg', link: '/heritage' },
             ].map((cat, i) => (
               <motion.div 
                 key={i}
@@ -237,7 +237,7 @@ const Home = () => {
       {/* ─── Parallax Banner ─── */}
       <section style={{ 
         position: 'relative', padding: '12rem 0', 
-        backgroundImage: 'url(https://images.unsplash.com/photo-1596455607563-ad6193f76b13?auto=format&fit=crop&q=80&w=1920)',
+        backgroundImage: 'url(/Images/IMG-20260429-WA0015.jpg)',
         backgroundAttachment: 'fixed', backgroundPosition: 'center', backgroundSize: 'cover'
       }}>
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(24, 16, 38, 0.85)' }}></div>
@@ -304,13 +304,20 @@ const Home = () => {
               </div>
            </div>
            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
-              {[1,2,3,4,5,6].map(i => (
+              {[
+                '/Images/IMG-20260429-WA0035.jpg',
+                '/Images/IMG-20260429-WA0022.jpg',
+                '/Images/IMG-20260429-WA0021.jpg',
+                '/Images/IMG-20260429-WA0023.jpg',
+                '/Images/IMG-20260429-WA0024.jpg',
+                '/Images/IMG-20260429-WA0053.jpg',
+              ].map((imgSrc, i) => (
                 <div key={i} style={{ aspectRatio: '1/1', overflow: 'hidden', position: 'relative', borderRadius: '8px' }} className="group">
                    <img 
-                    src={`https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600&sig=${i+10}`} 
+                    src={imgSrc}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease' }} 
                     className="group-hover:scale-110 group-hover:brightness-50"
-                    alt="Instagram Feed"
+                    alt="Royal Veil Collection"
                    />
                    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s' }} className="group-hover:opacity-100">
                      <Star color="var(--accent-gold)" fill="var(--accent-gold)" size={28} />

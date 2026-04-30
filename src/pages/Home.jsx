@@ -177,7 +177,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               style={{ position: 'relative' }}
             >
-              <img src="/Images/IMG-20260429-WA0031.jpg" alt="About Us" style={{ width: '100%', borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }} />
+              <img src="/Images/new_sewing.jpg" alt="About Us" style={{ width: '100%', borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }} />
             </motion.div>
           </div>
         </div>

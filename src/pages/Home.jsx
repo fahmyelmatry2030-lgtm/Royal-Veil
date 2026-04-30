@@ -124,10 +124,10 @@ const Home = () => {
               scrollSnapType: 'x mandatory'
             }} className="hide-scrollbar">
             {[
-              { title: 'فساتين', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (6).jpeg', link: '/dresses' },
-              { title: 'بلوزات', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.16 PM (7).jpeg', link: '/shop' },
-              { title: 'بيبي', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.15 PM (5).jpeg', link: '/baby' },
-              { title: 'تفصيل خاص', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (1).jpeg', link: '/custom-order' },
+              { title: 'فساتين', img: '/Images/collection_dresses.png', link: '/dresses' },
+              { title: 'بلوزات', img: '/Images/collection_blouses.png', link: '/shop' },
+              { title: 'بيبي', img: '/Images/collection_baby.png', link: '/baby' },
+              { title: 'تفصيل خاص', img: '/Images/collection_custom.png', link: '/custom-order' },
             ].map((cat, i) => (
               <motion.div 
                 key={i}

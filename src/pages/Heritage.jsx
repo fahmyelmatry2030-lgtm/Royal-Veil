@@ -66,7 +66,12 @@ const Heritage = () => {
             subtitle="تصاميم مستوحاة من المدن والقرى الفلسطينية العريقة."
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '2rem' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', 
+            gap: '2rem',
+            justifyItems: 'center'
+          }}>
             {heritageItems.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}

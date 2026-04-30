@@ -63,7 +63,12 @@ const BabyProducts = () => {
             title="مجموعتنا للأطفال"
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', 
+            gap: '1.5rem',
+            justifyItems: 'center'
+          }}>
             {babyItems.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}

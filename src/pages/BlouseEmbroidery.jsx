@@ -7,9 +7,9 @@ import SectionHeader from '../components/SectionHeader';
 
 const BlouseEmbroidery = () => {
   const examples = [
-    { title: 'تطريز يدوي كلاسيك', img: '/Images/IMG-20260429-WA0050.jpg' },
-    { title: 'تطريز فلسطيني عصري', img: '/Images/IMG-20260429-WA0047.jpg' },
-    { title: 'تطريز ناعم وملون', img: '/Images/IMG-20260429-WA0021.jpg' },
+    { title: 'تطريز مرامية', img: '/Images/WhatsApp%20Image%202026-04-30%20at%206.18.55%20AM.jpeg' },
+    { title: 'تطريز خريطة فلسطين', img: '/Images/WhatsApp%20Image%202026-04-30%20at%206.18.55%20AM%20(1).jpeg' },
+    { title: 'تطريز هوية', img: '/Images/WhatsApp%20Image%202026-04-30%20at%206.18.55%20AM%20(2).jpeg' },
   ];
 
   return (

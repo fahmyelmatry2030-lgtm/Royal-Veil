@@ -67,7 +67,7 @@ export default function Navbar() {
         zIndex: 110,
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
       }}>
-        شحن مجاني للطلبات أكثر من 200$ • كود الخصم: <span style={{ color: 'var(--accent-gold)' }}>ROYAL20</span>
+        شحن مجاني للطلبات أكثر من 200 ₪ • كود الخصم: <span style={{ color: 'var(--accent-gold)' }}>ROYAL20</span>
       </div>
 
       {/* ─── Main Bar ─── */}

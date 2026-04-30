@@ -7,9 +7,9 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const heritageItems = [
-  { id: 301, title: 'ثوب فلسطيني تراثي بتطريز أحمر يدوي', price: '120$', img: '/Images/IMG-20260429-WA0047.jpg' },
-  { id: 302, title: 'ثوب فلسطيني بتطريز تقليدي ملون', price: '450$', img: '/Images/IMG-20260429-WA0050.jpg' },
-  { id: 303, title: 'فستان سهرة أسود بتطريز ذهبي حصري', price: '180$', img: '/Images/IMG-20260429-WA0048.jpg' },
+  { id: 301, title: 'ثوب فلسطيني تراثي بتطريز أحمر يدوي', price: ' ₪', img: '/Images/IMG-20260429-WA0047.jpg' },
+  { id: 302, title: 'ثوب فلسطيني بتطريز تقليدي ملون', price: ' ₪', img: '/Images/IMG-20260429-WA0050.jpg' },
+  { id: 303, title: 'فستان سهرة أسود بتطريز ذهبي حصري', price: ' ₪', img: '/Images/IMG-20260429-WA0048.jpg' },
 ];
 
 const Heritage = () => {

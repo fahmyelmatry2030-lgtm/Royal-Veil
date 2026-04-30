@@ -7,11 +7,11 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const babyItems = [
-  { id: 201, title: 'طقم بيبي أبيض مطرز بالاسم (غزل)', price: '85$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM.jpeg' },
-  { id: 202, title: 'طقم ولادة ملكي أبيض مطرز (فؤاد)', price: '220$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(1).jpeg' },
-  { id: 203, title: 'طقم بيبي أبيض مطرز بالاسم (قاسم)', price: '180$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(2).jpeg' },
-  { id: 204, title: 'طقم بناتي ناعم مع تطريز ورد (ليلى)', price: '190$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(3).jpeg' },
-  { id: 205, title: 'طقم بيبي ولادي أزرق (تيم)', price: '200$', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(4).jpeg' },
+  { id: 201, title: 'طقم بيبي أبيض مطرز بالاسم (غزل)', price: ' ₪', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM.jpeg' },
+  { id: 202, title: 'طقم ولادة ملكي أبيض مطرز (فؤاد)', price: ' ₪', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(1).jpeg' },
+  { id: 203, title: 'طقم بيبي أبيض مطرز بالاسم (قاسم)', price: ' ₪', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(2).jpeg' },
+  { id: 204, title: 'طقم بناتي ناعم مع تطريز ورد (ليلى)', price: ' ₪', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(3).jpeg' },
+  { id: 205, title: 'طقم بيبي ولادي أزرق (تيم)', price: ' ₪', img: '/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(4).jpeg' },
 ];
 
 const BabyProducts = () => {

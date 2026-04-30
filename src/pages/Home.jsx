@@ -7,10 +7,10 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const featuredProducts = [
-  { id: 101, title: 'فستان زفاف ملكي بدانتيل مطرز', price: '3200$', img: '/Images/IMG-20260429-WA0025.jpg' },
-  { id: 102, title: 'فستان سهرة "زمرد" بالكريستال الفاخر', price: '1450$', discount: 10, img: '/Images/IMG-20260429-WA0022.jpg' },
-  { id: 103, title: 'عباءة "الأندلس" بتطريز ذهبي', price: '450$', img: '/Images/IMG-20260429-WA0023.jpg' },
-  { id: 104, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: '1100$', img: '/Images/IMG-20260429-WA0021.jpg' },
+  { id: 101, title: 'فستان زفاف ملكي بدانتيل مطرز', price: ' ₪', img: '/Images/IMG-20260429-WA0025.jpg' },
+  { id: 102, title: 'فستان سهرة "زمرد" بالكريستال الفاخر', price: ' ₪', discount: 10, img: '/Images/IMG-20260429-WA0022.jpg' },
+  { id: 103, title: 'عباءة "الأندلس" بتطريز ذهبي', price: ' ₪', img: '/Images/IMG-20260429-WA0023.jpg' },
+  { id: 104, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: ' ₪', img: '/Images/IMG-20260429-WA0021.jpg' },
 ];
 
 const Home = () => {

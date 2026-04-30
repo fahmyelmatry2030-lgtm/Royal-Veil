@@ -7,18 +7,22 @@ import { ShoppingBag, Heart, Star, ZoomIn } from 'lucide-react';
  * مستوحى من تصميم turkihsa.com
  */
 const ProductCard = ({ product }) => {
+  const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(`مرحبا، أريد الاستفسار عن هذا المنتج: ${product.title}`)}`;
+  
   return (
     <motion.div
+      onClick={() => window.open(whatsappUrl, '_blank')}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
+      className="group"
       style={{
         width: '100%',
         marginBottom: '2rem',
         direction: 'rtl',
+        cursor: 'pointer'
       }}
-      className="group"
     >
       {/* Image Container */}
       <div
@@ -69,6 +73,8 @@ const ProductCard = ({ product }) => {
               background: 'var(--bg-white)',
               color: 'var(--primary-purple)',
               boxShadow: 'var(--shadow-md)',
+              border: 'none',
+              cursor: 'pointer'
             }}
           >
             <ShoppingBag size={20} />
@@ -86,7 +92,7 @@ const ProductCard = ({ product }) => {
             gap: '6px',
             boxShadow: 'var(--shadow-md)',
           }}>
-            <ZoomIn size={14} /> عرض التفاصيل
+            <ShoppingBag size={14} /> اطلب الآن
           </div>
         </div>
 

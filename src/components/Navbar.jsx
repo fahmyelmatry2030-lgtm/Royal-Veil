@@ -263,44 +263,94 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ─── Mobile Menu ─── */}
+      {/* ─── Mobile Menu Overlay Backdrop ─── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ type: 'tween', duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setMobileOpen(false)}
             style={{
-              position: 'fixed', top: scrolled ? '105px' : '125px', left: 0, right: 0, bottom: 0, background: 'var(--bg-white)', zIndex: 90,
-              display: 'flex', flexDirection: 'column', direction: 'rtl', overflowY: 'auto',
-              borderTop: '1px solid var(--border-light)'
+              position: 'fixed', inset: 0,
+              background: 'rgba(0,0,0,0.5)',
+              zIndex: 150,
+              backdropFilter: 'blur(2px)',
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ─── Mobile Menu Drawer ─── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+            style={{
+              position: 'fixed',
+              top: 0, right: 0, bottom: 0,
+              width: '300px',
+              maxWidth: '80vw',
+              background: 'var(--bg-white)',
+              zIndex: 200,
+              display: 'flex',
+              flexDirection: 'column',
+              direction: 'rtl',
+              overflowY: 'auto',
+              boxShadow: '-10px 0 40px rgba(0,0,0,0.4)',
             }}
           >
-            
-            <nav style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Drawer Header */}
+            <div style={{
+              padding: '1.5rem',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '1px solid var(--border-light)',
+            }}>
+              <span style={{ fontWeight: '900', letterSpacing: '2px', color: 'var(--accent-gold)', fontSize: '18px', fontFamily: 'var(--font-serif)' }}>ROYAL VEIL</span>
+              <button onClick={() => setMobileOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-dark)', padding: '5px' }}>
+                <X size={24} strokeWidth={1.5} />
+              </button>
+            </div>
+
+            {/* Drawer Links */}
+            <nav style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
                {[...navLinks, ...moreLinks].map(l => (
                  <Link 
                    key={l.path} 
                    to={l.path}
+                   onClick={() => setMobileOpen(false)}
                    style={{
-                     fontSize: '18px', fontWeight: '700', color: active(l.path) ? 'var(--accent-gold)' : 'var(--text-dark)',
-                     textDecoration: 'none', textTransform: 'uppercase',
-                     padding: '10px 0', borderBottom: '1px solid var(--border-light)'
+                     fontSize: '16px', fontWeight: active(l.path) ? '900' : '700',
+                     color: active(l.path) ? 'var(--accent-gold)' : 'var(--text-dark)',
+                     textDecoration: 'none',
+                     padding: '14px 0',
+                     borderBottom: '1px solid var(--border-light)',
+                     display: 'flex',
+                     alignItems: 'center',
+                     gap: '10px',
+                     transition: 'color 0.2s',
                    }}
                  >
+                   {active(l.path) && <div style={{ width: '3px', height: '18px', background: 'var(--accent-gold)', borderRadius: '2px' }}></div>}
                    {l.name}
                  </Link>
                ))}
             </nav>
 
-            <div style={{ marginTop: 'auto', padding: '2rem', background: 'var(--bg-lavender)' }}>
-               <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '2rem' }}>
-                  <User size={24} style={{ color: 'var(--accent-gold)' }} />
-                  <Heart size={24} style={{ color: 'var(--accent-gold)' }} />
-                  <Search size={24} style={{ color: 'var(--accent-gold)' }} />
+            {/* Drawer Footer */}
+            <div style={{ marginTop: 'auto', padding: '1.5rem', background: 'var(--bg-lavender)', borderTop: '1px solid var(--border-light)' }}>
+               <div style={{ display: 'flex', justifyContent: 'center', gap: '25px', marginBottom: '1rem' }}>
+                  <User size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
+                  <Heart size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
+                  <Search size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                </div>
-               <p style={{ textAlign: 'center', fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 ROYAL VEIL COUTURE</p>
+               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 ROYAL VEIL COUTURE</p>
             </div>
           </motion.div>
         )}

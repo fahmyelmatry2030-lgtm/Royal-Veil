@@ -75,7 +75,7 @@ const OrderForm = () => {
             <div style={{ background: 'var(--bg-lavender)', padding: '3rem', borderRadius: '8px', border: '1px solid var(--border-light)', height: 'fit-content' }}>
               <SectionHeader badge="Summary" title="ملخص الطلب" right />
               
-              <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '2rem', padding: '20px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px' }}>
+              <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '2rem', padding: '20px', background: 'var(--purple-light)', borderRadius: '4px' }}>
                 <ShoppingBag color="var(--accent-gold)" size={32} />
                 <div>
                   <h4 style={{ fontWeight: '800', fontSize: '18px', color: 'var(--text-dark)' }}>{productName || 'منتج مخصص'}</h4>

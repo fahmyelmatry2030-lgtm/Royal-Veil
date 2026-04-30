@@ -2,26 +2,26 @@
 
 
 :root {
-  /* Royal Purple & Gold Palette (Dark Mode) */
-  --primary-purple: #b19cd9; /* Exact Lavender Orchid from client's image */
+  /* Luxury White, Lavender & Gold Palette */
+  --primary-purple: #b19cd9; /* The exact Lavender from client's image */
   --secondary-purple: #9079c0; 
-  --purple-light: #3d2b5e; 
-  --purple-dark: #1a0f2e; /* Deep Midnight Purple for maximum contrast */
+  --purple-light: #f5f0ff; /* Very light lavender tint for sections */
+  --purple-dark: #2a1b42; /* Deep purple for text contrast */
   
   --accent-gold: #D4AF37; /* Premium Gold */
   --secondary-gold: #C5A028; 
   --gold-dark: #996515; 
   --gold-light: #F3E5AB; 
   
-  --bg-white: #1a0f2e; /* Midnight Purple Background */
-  --bg-lavender: #23153c; 
-  --bg-cream: #2a1b42; 
+  --bg-white: #ffffff; /* Main Background: Pure White as requested */
+  --bg-lavender: #faf9ff; /* Soft lavender tint */
+  --bg-cream: #fdfaf5; 
   
-  --text-dark: #FFFFFF; /* Main text is now White */
-  --text-muted: #c4b5e0; /* Muted text is soft lavender */
+  --text-dark: #2a1b42; /* Deep purple text for high readability on white */
+  --text-muted: #6b5a8e; 
   --text-light: #FFFFFF;
   
-  --border-light: #5d428d; /* Updated to match new theme */
+  --border-light: #ece7f5; /* Subtle borders */
   
   --font-serif: 'Playfair Display', 'serif';
   --font-sans: 'Cairo', 'Outfit', sans-serif;

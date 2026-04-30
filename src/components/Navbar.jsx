@@ -79,9 +79,9 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: 'rgba(26, 15, 46, 0.98)',
+          background: 'rgba(255, 255, 255, 0.98)',
           backdropFilter: 'blur(10px)',
-          boxShadow: 'var(--shadow-md)',
+          boxShadow: 'var(--shadow-sm)',
           borderBottom: '1px solid var(--border-light)',
         }}
       >
@@ -194,7 +194,7 @@ export default function Navbar() {
                     fontWeight: active(l.path) ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: active(l.path) ? 'var(--accent-gold)' : 'var(--primary-purple)',
+                    color: active(l.path) ? 'var(--accent-gold)' : 'var(--purple-dark)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                     paddingBottom: '4px',

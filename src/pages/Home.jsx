@@ -108,19 +108,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ─── 1. The Collections (مجموعات) ─── */}
-      <section style={{ padding: '8rem 0', background: 'var(--bg-white)' }}>
+      {/* ─── 1. The Collections (Horizontal Slider) ─── */}
+      <section style={{ padding: '6rem 0', background: 'var(--bg-white)', overflow: 'hidden' }}>
         <div className="container">
           <SectionHeader 
             badge="The Collections" 
             title="مجموعاتنا المتميزة" 
             subtitle="اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة."
           />
+          
           <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-            gap: '2.5rem' 
-          }}>
+            display: 'flex', 
+            overflowX: 'auto', 
+            gap: '2rem', 
+            paddingBottom: '2rem',
+            paddingRight: '1rem',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+            scrollSnapType: 'x mandatory'
+          }} className="hide-scrollbar">
             {[
               { title: 'فساتين', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (6).jpeg', link: '/dresses' },
               { title: 'بلوزات', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.16 PM (7).jpeg', link: '/shop' },
@@ -129,21 +135,21 @@ const Home = () => {
             ].map((cat, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{ textAlign: 'center' }}
+                style={{ flex: '0 0 300px', scrollSnapAlign: 'start' }}
               >
-                <Link to={cat.link} style={{ display: 'block', textDecoration: 'none', marginBottom: '20px' }}>
+                <Link to={cat.link} style={{ display: 'block', textDecoration: 'none' }}>
                   <div style={{ 
-                    height: '350px', borderRadius: '2px', overflow: 'hidden', 
-                    boxShadow: 'var(--shadow-md)', marginBottom: '20px',
-                    border: '1px solid var(--border-light)'
+                    height: '400px', borderRadius: '8px', overflow: 'hidden', 
+                    boxShadow: 'var(--shadow-md)', marginBottom: '1.5rem',
+                    background: '#f8f8f8'
                   }}>
-                    <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} className="hover:scale-105" />
+                    <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
-                  <h3 style={{ color: 'var(--text-dark)', fontSize: '20px', fontWeight: '900', fontFamily: 'var(--font-serif)' }}>{cat.title}</h3>
+                  <h3 style={{ color: 'var(--text-dark)', fontSize: '18px', fontWeight: '800', textAlign: 'center' }}>{cat.title}</h3>
                 </Link>
               </motion.div>
             ))}
@@ -151,21 +157,42 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ─── 2. Featured Products (منتجات متميزة) ─── */}
-      <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)' }}>
+      {/* ─── 2. Featured Products (Horizontal Slider - Marya Style) ─── */}
+      <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)', overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '5rem', flexWrap: 'wrap', gap: '20px' }}>
-             <SectionHeader badge="Exclusive" title="منتجات متميزة" subtitle="القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم." right style={{ marginBottom: 0 }} />
-             <Link to="/shop" style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', paddingBottom: '15px' }}>
-               كل المنتجات <ArrowLeft size={18} />
-             </Link>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '3rem' }}>
+          <SectionHeader badge="Exclusive" title="منتجات متميزة" subtitle="القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم." />
+          
+          <div style={{ 
+            display: 'flex', 
+            overflowX: 'auto', 
+            gap: '2rem', 
+            paddingBottom: '4rem',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+            scrollSnapType: 'x mandatory'
+          }} className="hide-scrollbar">
             {featuredProducts.map((p, i) => (
-              <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <div key={p.id} style={{ flex: '0 0 320px', scrollSnapAlign: 'start' }}>
                 <ProductCard product={p} />
-              </motion.div>
+              </div>
             ))}
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+            <Link to="/shop" style={{ 
+              background: '#fff', 
+              color: 'var(--primary-purple)', 
+              padding: '12px 40px', 
+              borderRadius: '50px', 
+              textDecoration: 'none', 
+              fontWeight: '800', 
+              fontSize: '14px',
+              border: '1px solid var(--primary-purple)',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+              transition: 'all 0.3s'
+            }} className="hover:bg-primary-purple hover:text-white">
+              عرض الكل
+            </Link>
           </div>
         </div>
       </section>

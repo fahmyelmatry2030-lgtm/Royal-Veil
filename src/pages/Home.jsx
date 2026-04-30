@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Star, Sparkles, Quote, Play, Crown, Scissors, Gem, ChevronLeft, Globe } from 'lucide-react';
+import { ArrowLeft, Star, Sparkles, Quote, Play, Crown, Scissors, Gem, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';

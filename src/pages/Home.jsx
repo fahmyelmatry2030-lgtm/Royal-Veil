@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', overflowX: 'hidden' }}>
       <Helmet>
-        <title>Royal Veil | الرئيسية - عالم الأزياء الراقية</title>
+        <title>جمعية طرحة الملكية التعاونية | الرئيسية - عالم الأزياء الراقية</title>
       </Helmet>
 
       {/* ─── Cinematic Hero Section ─── */}
@@ -29,7 +29,7 @@ const Home = () => {
           style={{ position: 'absolute', inset: 0 }}
         >
           <img 
-            src="/Images/IMG-20260429-WA0035.jpg" 
+            src="/Images/IMG-20260429-WA0053.jpg" 
             alt="Royal Veil Collection" 
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
           />
@@ -53,15 +53,15 @@ const Home = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem' }}>
               <div style={{ width: '50px', height: '1px', background: 'var(--accent-gold)' }}></div>
               <h5 style={{ 
-                color: 'var(--accent-gold)', fontWeight: '800', letterSpacing: '8px', 
-                textTransform: 'uppercase', fontSize: '13px', margin: 0
+                color: 'var(--accent-gold)', fontWeight: '800',
+                textTransform: 'uppercase', fontSize: '15px', margin: 0, fontFamily: 'var(--font-sans)'
               }}>المجموعة الحصرية ٢٠٢٤</h5>
             </div>
             
             <h1 style={{ 
               fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: '900', 
-              lineHeight: 1.1, marginBottom: '2.5rem', fontFamily: 'var(--font-serif), serif', color: 'var(--text-light)',
-              textShadow: '0 10px 40px rgba(0,0,0,0.6)'
+              lineHeight: 1.1, marginBottom: '2.5rem', fontFamily: 'var(--font-sans)', color: 'var(--text-light)',
+              textShadow: '0 5px 20px rgba(0,0,0,0.4)'
             }}>
               تُصاغ الأناقة<br/>بخيوطٍ من ذهب
             </h1>
@@ -70,7 +70,7 @@ const Home = () => {
               fontSize: '19px', color: 'rgba(255,255,255,0.8)', marginBottom: '4rem', 
               lineHeight: 2, maxWidth: '600px', fontWeight: '400', letterSpacing: '0.5px'
             }}>
-              في "رويال فيل"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
+              في "جمعية طرحة الملكية التعاونية"، نروي قصة جمالكِ من خلال تصاميم هوت كوتور استثنائية، تمزج بين عراقة التطريز الفلسطيني الأصيل وفخامة القصّات العالمية المعاصرة.
             </p>
             
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>

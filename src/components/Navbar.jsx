@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const navLinks = [
   { name: 'الرئيسية', path: '/' },
   { name: 'من نحن', path: '/about' },
+  { name: 'طاقم العمل', path: '/team' },
   { name: 'فساتين', path: '/dresses' },
   { name: 'التراث', path: '/heritage' },
   { name: 'تواصل معنا', path: '/contact' },
@@ -107,32 +108,21 @@ export default function Navbar() {
             to="/"
             style={{ 
               display: 'flex', 
-              flexDirection: 'column', 
               alignItems: 'center', 
+              justifyContent: 'center',
               textDecoration: 'none',
               flex: 1
             }}
           >
             <div style={{
-              fontWeight: '900',
-              fontSize: '32px',
-              letterSpacing: '0.2em',
+              fontWeight: '800',
+              fontSize: '26px',
               color: solid ? 'var(--accent-gold)' : '#fff',
               transition: 'all 0.3s',
-              fontFamily: 'var(--font-serif), serif',
-              marginBottom: '-6px',
+              fontFamily: 'var(--font-sans)',
               textShadow: !solid ? '0 2px 10px rgba(0,0,0,0.2)' : 'none'
             }}>
-              ROYAL VEIL
-            </div>
-            <div style={{ 
-              fontSize: '10px', 
-              letterSpacing: '0.5em', 
-              color: 'var(--accent-gold)', 
-              textTransform: 'uppercase',
-              fontWeight: '900'
-            }}>
-              EST. 2024
+              جمعية طرحة الملكية التعاونية
             </div>
           </Link>
 
@@ -312,7 +302,7 @@ export default function Navbar() {
               alignItems: 'center',
               borderBottom: '1px solid var(--border-light)',
             }}>
-              <span style={{ fontWeight: '900', letterSpacing: '2px', color: 'var(--accent-gold)', fontSize: '18px', fontFamily: 'var(--font-serif)' }}>ROYAL VEIL</span>
+              <span style={{ fontWeight: '800', color: 'var(--accent-gold)', fontSize: '18px', fontFamily: 'var(--font-sans)' }}>جمعية طرحة الملكية التعاونية</span>
               <button onClick={() => setMobileOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-dark)', padding: '5px' }}>
                 <X size={24} strokeWidth={1.5} />
               </button>
@@ -350,7 +340,7 @@ export default function Navbar() {
                   <Heart size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                   <Search size={20} style={{ color: 'var(--accent-gold)', cursor: 'pointer' }} />
                </div>
-               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 ROYAL VEIL COUTURE</p>
+               <p style={{ textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', letterSpacing: '1px' }}>© 2024 جمعية طرحة الملكية التعاونية</p>
             </div>
           </motion.div>
         )}

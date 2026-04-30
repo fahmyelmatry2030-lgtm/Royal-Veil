@@ -3,19 +3,19 @@
 
 :root {
   /* Royal Purple & Gold Palette (Dark Mode) */
-  --primary-purple: #7a52b3; /* Brighter purple for interactive elements */
-  --secondary-purple: #5D3E8B; 
-  --purple-light: #3c265e; /* Sub-container backgrounds */
-  --purple-dark: #181026; /* Deepest purple */
+  --primary-purple: #926cd1; /* Brighter purple for interactive elements */
+  --secondary-purple: #7451a8; 
+  --purple-light: #4f3678; /* Sub-container backgrounds */
+  --purple-dark: #2a1b42; /* Deepest purple */
   
   --accent-gold: #D4AF37; /* Premium Gold */
   --secondary-gold: #C5A028; 
   --gold-dark: #996515; 
   --gold-light: #F3E5AB; 
   
-  --bg-white: #231738; /* Main Background: Deep Royal Purple */
-  --bg-lavender: #1c122e; /* Alternate darker background */
-  --bg-cream: #2d1e47; /* Alternate lighter background */
+  --bg-white: #3a275c; /* Main Background: Deep Royal Purple */
+  --bg-lavender: #312150; /* Alternate darker background */
+  --bg-cream: #452e6e; /* Alternate lighter background */
   
   --text-dark: #FFFFFF; /* Main text is now White */
   --text-muted: #c4b5e0; /* Muted text is soft lavender */

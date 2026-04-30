@@ -11,6 +11,10 @@ const featuredProducts = [
   { id: 102, title: 'طقم تفصيل خاص مطرز', price: '2800 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.16 PM.jpeg' },
   { id: 103, title: 'فستان مخمل أسود فاخر', price: '3200 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.14 PM.jpeg' },
   { id: 104, title: 'عباءة مطرزة يدوياً', price: '1900 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.17 PM (8).jpeg' },
+  { id: 105, title: 'فستان سهرة "أوركيد"', price: '2400 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.15 PM.jpeg' },
+  { id: 106, title: 'طقم كاجوال راقي', price: '1200 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.17 PM (1).jpeg' },
+  { id: 107, title: 'فستان زفاف دانتيل', price: '5500 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (2).jpeg' },
+  { id: 108, title: 'فستان حفلات "غزل"', price: '2100 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.19 PM (3).jpeg' },
 ];
 
 const Home = () => {

@@ -148,13 +148,25 @@ const Home = () => {
           </div>
 
           {/* Navigation Arrows for Collections */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '1rem' }}>
-            <button onClick={() => scroll(collectionsRef, 'right')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
-              <ChevronRight size={24} />
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px', marginTop: '2rem' }}>
+            <button 
+              onClick={() => scroll(collectionsRef, 'right')} 
+              style={{ 
+                background: 'var(--bg-lavender)', border: '1px solid var(--border-light)', 
+                borderRadius: '50%', padding: '10px', cursor: 'pointer', color: 'var(--primary-purple)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s'
+              }} className="hover:bg-purple-100">
+              <ChevronRight size={22} />
             </button>
-            <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontWeight: '600' }}>مجموعاتنا</span>
-            <button onClick={() => scroll(collectionsRef, 'left')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
-              <ChevronLeft size={24} />
+            <span style={{ fontSize: '15px', color: 'var(--purple-dark)', fontWeight: '700', fontFamily: 'var(--font-serif-ar)' }}>مجموعاتنا المتميزة</span>
+            <button 
+              onClick={() => scroll(collectionsRef, 'left')} 
+              style={{ 
+                background: 'var(--bg-lavender)', border: '1px solid var(--border-light)', 
+                borderRadius: '50%', padding: '10px', cursor: 'pointer', color: 'var(--primary-purple)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s'
+              }} className="hover:bg-purple-100">
+              <ChevronLeft size={22} />
             </button>
           </div>
         </div>
@@ -184,13 +196,27 @@ const Home = () => {
           </div>
 
           {/* Navigation Arrows for Products */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginBottom: '3rem' }}>
-            <button onClick={() => scroll(productsRef, 'right')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
-              <ChevronRight size={24} />
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px', marginBottom: '4rem' }}>
+            <button 
+              onClick={() => scroll(productsRef, 'right')} 
+              style={{ 
+                background: '#fff', border: '1px solid var(--border-light)', 
+                borderRadius: '50%', padding: '10px', cursor: 'pointer', color: 'var(--primary-purple)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
+              }} className="hover:scale-110">
+              <ChevronRight size={22} />
             </button>
-            <span style={{ fontSize: '14px', color: 'var(--text-muted)', fontWeight: '600' }}>تصفح المنتجات</span>
-            <button onClick={() => scroll(productsRef, 'left')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary-purple)' }}>
-              <ChevronLeft size={24} />
+            <span style={{ fontSize: '15px', color: 'var(--purple-dark)', fontWeight: '700', fontFamily: 'var(--font-serif-ar)' }}>استكشفي المزيد</span>
+            <button 
+              onClick={() => scroll(productsRef, 'left')} 
+              style={{ 
+                background: '#fff', border: '1px solid var(--border-light)', 
+                borderRadius: '50%', padding: '10px', cursor: 'pointer', color: 'var(--primary-purple)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
+              }} className="hover:scale-110">
+              <ChevronLeft size={22} />
             </button>
           </div>
 

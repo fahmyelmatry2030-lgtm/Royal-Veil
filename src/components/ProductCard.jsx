@@ -1,17 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, Star, ZoomIn } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * ProductCard — مكون عرض المنتج بأسلوب بوتيك فاخر
  * مستوحى من تصميم turkihsa.com
  */
 const ProductCard = ({ product }) => {
-  const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(`مرحبا، أريد الاستفسار عن هذا المنتج: ${product.title}`)}`;
+  const navigate = useNavigate();
+  
+  const handleOrder = (e) => {
+    if (e) e.stopPropagation();
+    navigate(`/order?product=${encodeURIComponent(product.title)}&price=${encodeURIComponent(product.price)}`);
+  };
   
   return (
     <motion.div
-      onClick={() => window.open(whatsappUrl, '_blank')}
+      onClick={handleOrder}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -232,10 +238,7 @@ const ProductCard = ({ product }) => {
             cursor: 'pointer',
             fontSize: '14px'
           }}
-          onClick={(e) => {
-            e.stopPropagation(); // Prevents double firing since the parent div is also clickable
-            window.open(whatsappUrl, '_blank');
-          }}
+          onClick={handleOrder}
         >
           <ShoppingBag size={16} />
           اطلب الآن

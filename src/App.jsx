@@ -15,6 +15,7 @@ import BabyProducts from './pages/BabyProducts';
 import CustomTailoring from './pages/CustomTailoring';
 import Contact from './pages/Contact';
 import Team from './pages/Team';
+import OrderForm from './pages/OrderForm';
 import Shop from './pages/Shop';
 import CustomOrderForm from './pages/CustomOrderForm';
 
@@ -39,6 +40,7 @@ function App() {
               <Route path="/custom" element={<CustomTailoring />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/order" element={<OrderForm />} />
               <Route path="/team" element={<Team />} />
               <Route path="/custom-order" element={<CustomOrderForm />} />
             </Routes>

@@ -7,10 +7,10 @@ import SectionHeader from '../components/SectionHeader';
 import ProductCard from '../components/ProductCard';
 
 const featuredProducts = [
-  { id: 101, title: 'فستان زفاف ملكي بدانتيل مطرز', price: '3200 شيكل', img: '/Images/IMG-20260429-WA0025.jpg' },
-  { id: 102, title: 'فستان سهرة "زمرد" بالكريستال الفاخر', price: '1450 شيكل', discount: 10, img: '/Images/IMG-20260429-WA0022.jpg' },
-  { id: 103, title: 'عباءة "الأندلس" بتطريز ذهبي', price: '450 شيكل', img: '/Images/IMG-20260429-WA0023.jpg' },
-  { id: 104, title: 'فستان سهرة مطرز بخيوط الحرير والخرز', price: '1100 شيكل', img: '/Images/IMG-20260429-WA0021.jpg' },
+  { id: 101, title: 'فستان سهرة ملكي مرصع', price: '3500 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.19 PM (7).jpeg' },
+  { id: 102, title: 'طقم تفصيل خاص مطرز', price: '2800 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.16 PM.jpeg' },
+  { id: 103, title: 'فستان مخمل أسود فاخر', price: '3200 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.14 PM.jpeg' },
+  { id: 104, title: 'عباءة مطرزة يدوياً', price: '1900 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.17 PM (8).jpeg' },
 ];
 
 const Home = () => {
@@ -26,9 +26,9 @@ const Home = () => {
         {/* Full Banner Image */}
         <div style={{ position: 'absolute', inset: 0 }}>
           <img 
-            src="/royal_veil_boutique_hero.png" 
+            src="/Images/WhatsApp Image 2026-04-30 at 1.39.14 PM.jpeg" 
             alt="Royal Veil Campaign" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
           />
           {/* Subtle Overlay to make text pop */}
           <div style={{ 
@@ -101,10 +101,10 @@ const Home = () => {
             gap: '2.5rem' 
           }}>
             {[
-              { title: 'فساتين', img: '/Images/IMG-20260429-WA0036.jpg', link: '/dresses' },
-              { title: 'بلوزات', img: '/Images/IMG-20260429-WA0023.jpg', link: '/shop' },
-              { title: 'بيبي', img: '/Images/IMG-20260429-WA0035.jpg', link: '/baby' },
-              { title: 'تفصيل خاص', img: '/Images/IMG-20260429-WA0021.jpg', link: '/custom-order' },
+              { title: 'فساتين', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (6).jpeg', link: '/dresses' },
+              { title: 'بلوزات', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.16 PM (7).jpeg', link: '/shop' },
+              { title: 'بيبي', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.15 PM (5).jpeg', link: '/baby' },
+              { title: 'تفصيل خاص', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (1).jpeg', link: '/custom-order' },
             ].map((cat, i) => (
               <motion.div 
                 key={i}

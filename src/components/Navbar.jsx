@@ -79,7 +79,7 @@ export default function Navbar() {
           right: 0,
           zIndex: 100,
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: solid ? 'rgba(144, 121, 192, 0.95)' : 'transparent',
+          background: solid ? 'rgba(35, 23, 56, 0.98)' : 'transparent',
           backdropFilter: solid ? 'blur(10px)' : 'none',
           boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
           borderBottom: solid ? '1px solid var(--border-light)' : '1px solid rgba(255,255,255,0.1)',
@@ -131,14 +131,14 @@ export default function Navbar() {
           {/* Left: Icons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1, justifyContent: 'flex-end' }}>
             <div className="hidden lg:flex items-center gap-6 mr-6">
-               <button style={{ color: solid ? 'var(--text-dark)' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
-               <button style={{ color: solid ? 'var(--text-dark)' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><User size={20} strokeWidth={1.5} /></button>
+               <button style={{ color: solid ? 'var(--primary-purple)' : '#fff' }}><Heart size={20} strokeWidth={1.5} /></button>
             </div>
             <Link
               to="/shop"
               style={{
                 position: 'relative',
-                color: solid ? 'var(--text-dark)' : '#fff',
+                color: solid ? 'var(--primary-purple)' : '#fff',
               }}
             >
               <ShoppingBag size={22} strokeWidth={1.5} />
@@ -194,7 +194,7 @@ export default function Navbar() {
                     fontWeight: active(l.path) ? '800' : '600',
                     textTransform: 'uppercase',
                     letterSpacing: '1.5px',
-                    color: active(l.path) ? 'var(--accent-gold)' : solid ? 'var(--text-dark)' : 'rgba(255,255,255,0.9)',
+                    color: active(l.path) ? 'var(--accent-gold)' : solid ? 'var(--primary-purple)' : 'rgba(255,255,255,0.9)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
                     paddingBottom: '4px',

@@ -24,9 +24,9 @@
   --border-light: #ece7f5; /* Subtle borders */
   
   --font-serif: 'Playfair Display', 'serif';
-  --font-serif-ar: 'Amiri', 'serif';
-  --font-calligraphy: 'Aref Ruqaa', 'serif';
-  --font-sans: 'Cairo', 'Outfit', sans-serif;
+  --font-serif-ar: 'Tajawal', serif;
+  --font-calligraphy: 'Tajawal', serif;
+  --font-sans: 'Tajawal', 'Outfit', sans-serif;
   
   --shadow-sm: 0 4px 12px rgba(93, 62, 139, 0.05);
   --shadow-md: 0 15px 35px rgba(93, 62, 139, 0.1);
@@ -90,8 +90,8 @@ body, html {
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cairo', 'Playfair Display', serif;
-  font-weight: 700;
+  font-family: 'Tajawal', 'Playfair Display', serif;
+  font-weight: 800;
 }
 
 
@@ -192,7 +192,7 @@ button {
 
 /* RTL Support */
 [dir="rtl"] {
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Tajawal', sans-serif;
 }
 
 /* Gold Glow Effect */

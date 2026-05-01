@@ -12,6 +12,12 @@ const stats = [
   { number: '1000+', label: 'عميلة سعيدة', icon: <Heart size={32} /> },
 ];
 
+const milestones = [
+  { year: '2024', title: 'إحياء القدرات', desc: 'إحياء القدرات و الخبرات في تصميم الملابس وتوظيفهم ضمن رؤية الجمعية.' },
+  { year: '2025', title: 'دعم المشروع', desc: 'دعم المشروع من عدة جهات مانحة جعلنا نفتتح اول مشغل يدوي لتصميم الفساتين في القدس.' },
+  { year: '2026', title: 'توسع النطاق', desc: 'وسعنا نطاق العمل و البدء في العمل على مختلف القطع من منتجات البيبي و البلايز و الفساتين والعبايات.' },
+];
+
 const values = [
   { title: 'الابتكار', icon: <Palette size={28} />, desc: 'تطوير تصاميم جديدة تدمج التقنيات الحديثة بالحرفة اليدوية الأصيلة.' },
   { title: 'الاستدامة', icon: <Leaf size={28} />, desc: 'استخدام خامات طبيعية صديقة للبيئة وتقنيات إنتاج نظيفة ومسؤولة.' },
@@ -206,12 +212,40 @@ const About = () => {
         </div>
       </section>
 
+      {/* Milestones Timeline - As seen in screenshot */}
+      <section style={{ padding: '10rem 0', background: 'var(--bg-white)' }}>
+        <div className="container">
+          <SectionHeader badge="Milestones" title="محطاتنا عبر الزمن" subtitle="مسيرة حافلة بالإنجازات التي شكلّت ما نحن عليه اليوم." />
+          <div style={{ position: 'relative', maxWidth: '800px', margin: '6rem auto 0' }}>
+            <div style={{ position: 'absolute', right: '50%', top: 0, bottom: 0, width: '2px', background: 'linear-gradient(to bottom, var(--primary-purple), var(--accent-gold))', transform: 'translateX(50%)', opacity: 0.2 }} />
+            {milestones.map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? 40 : -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                style={{ display: 'flex', justifyContent: i % 2 === 0 ? 'flex-end' : 'flex-start', marginBottom: '6rem', position: 'relative' }}
+              >
+                <div style={{ position: 'absolute', right: 'calc(50% - 22px)', top: '20px', width: '44px', height: '44px', background: 'var(--primary-purple)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', zIndex: 2, boxShadow: '0 0 0 8px #fff' }}>
+                  <Star size={18} fill="#fff" />
+                </div>
+                <div style={{ width: '44%', background: 'var(--bg-lavender)', padding: '2.5rem', borderRadius: '24px', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow-sm)', direction: 'rtl' }}>
+                  <span style={{ display: 'inline-block', background: 'var(--primary-purple)', color: '#fff', fontSize: '14px', fontWeight: '900', padding: '5px 18px', borderRadius: '50px', marginBottom: '1.5rem' }}>{m.year}</span>
+                  <h3 style={{ fontSize: '22px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '1rem' }}>{m.title}</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '16px', lineHeight: '1.9' }}>{m.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Vision & Mission & Objectives */}
       <section style={{ padding: '10rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
           <SectionHeader badge="Vision & Mission" title="رؤيتنا وأهدافنا" subtitle="نسعى نحو غد أفضل لصناعة الأزياء الفلسطينية على الصعيدين المحلي والعالمي." />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '3rem' }}>
-            {/* Vision & Mission */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -239,7 +273,6 @@ const About = () => {
               </p>
             </motion.div>
 
-            {/* Objectives - As seen in screenshot */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

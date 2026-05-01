@@ -2,32 +2,40 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Heart, Star, Users, Award, Sparkles, ArrowLeft, Quote, Palette, Scissors, ShieldCheck } from 'lucide-react';
+import { Heart, Star, Users, Award, Sparkles, ArrowLeft, Quote, Palette, ShieldCheck, Megaphone, Truck } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
 
-const teamMembers = [
+const designers = [
+  'امل ابو جمعة',
+  'عبير ابو نجيب',
+  'سهاد خوجة',
+  'شهد ابو جمعة',
+  'ملك شحادة'
+];
+
+const logisticsTeam = [
+  'ضياء الحسيني',
+  'معروف مطور'
+];
+
+const teamCategories = [
   {
-    name: 'طاقم التصميم المبدع',
-    role: 'تصميم الأزياء والتطريز',
-    desc: 'نخبة من 7 مصممات فلسطينيات محترفات يمزجن بين عبق التراث الفلسطيني والخطوط العالمية المعاصرة، ليخلقن قطعاً فنية تتحدث بلغة الأناقة.',
-    img: '/Images/WhatsApp Image 2026-04-29 at 6.25.39 PM.jpeg',
-    tag: 'DESIGN TEAM'
+    name: 'نخبة تصميم الأزياء',
+    role: 'الإبداع والابتكار',
+    desc: 'مجموعة مختارة من أبرز المصممات الفلسطينيات اللواتي يقدن الرؤية الفنية للجمعية.',
+    members: designers,
+    icon: <Palette size={30} />,
+    tag: 'FASHION DESIGN'
   },
   {
-    name: 'قسم الخياطة اليدوية',
-    role: 'الخياطة والتفصيل الراقي',
-    desc: 'أنامل ذهبية تعمل بدقة متناهية لتحويل التصاميم الورقية إلى واقع ملموس، مع التركيز على جودة التفاصيل والتشطيبات الملكية.',
-    img: '/Images/IMG-20260429-WA0018.jpg',
-    tag: 'TAILORING'
-  },
-  {
-    name: 'حارسات التراث',
-    role: 'التطريز اليدوي الفلسطيني',
-    desc: 'فريق متخصص في فنون التطريز التقليدي، يضمن بقاء كل غرزة وفية لتاريخنا العريق مع لمسة من الحداثة التي تناسب ذوقك الرفيع.',
-    img: '/Images/IMG-20260429-WA0045.jpg',
-    tag: 'EMBROIDERY'
-  },
+    name: 'طاقم اللوجوستي والترويجي',
+    role: 'العمليات والتسويق',
+    desc: 'الفريق المسؤول عن إيصال إبداعاتنا إلى العالم وضمان سلاسة العمليات.',
+    members: logisticsTeam,
+    icon: <Megaphone size={30} />,
+    tag: 'LOGISTICS & PROMO'
+  }
 ];
 
 const stats = [
@@ -35,13 +43,6 @@ const stats = [
   { number: '7', label: 'مصممين أزياء بهوية فلسطينية', icon: <Palette size={32} /> },
   { number: '5000+', label: 'قطعة مصنوعة يدوياً', icon: <Star size={32} /> },
   { number: '1000+', label: 'عميلة سعيدة حول العالم', icon: <Heart size={32} /> },
-];
-
-const values = [
-  { title: 'الهوية الفلسطينية', desc: 'كل قطعة نصنعها هي رسالة فخر بجذورنا وتعبير عن صمود إرثنا الجميل.', icon: <ShieldCheck size={30} /> },
-  { title: 'الجودة الفائقة', desc: 'نلتزم بأعلى معايير الخياطة والتطريز لضمان قطعة تدوم لأجيال.', icon: <Award size={30} /> },
-  { title: 'التمكين الاقتصادي', desc: 'مشروعنا قائم على تمكين المرأة الفلسطينية وتوفير فرص عمل تليق بإبداعها.', icon: <Users size={30} /> },
-  { title: 'الابتكار الفني', desc: 'لا نكتفي بتقليد القديم، بل نبتكر تصاميم عصرية تحمل روح التراث.', icon: <Sparkles size={30} /> },
 ];
 
 const Team = () => {
@@ -53,13 +54,13 @@ const Team = () => {
       </Helmet>
 
       <PageHeader
-        badge="Our Experts"
+        badge="Our Team"
         title="طاقم العمل"
-        subtitle="تعرفي على الأنامل الذهبية والخبرات التي تقف خلف كل قطعة ننتجها بكل حب."
+        subtitle="تعرفي على النخبة التي تقف خلف كل قطعة ننتجها بكل حب وإتقان."
         bgImage="/Images/WhatsApp Image 2026-04-29 at 6.25.39 PM.jpeg"
       />
 
-      {/* Stats Bar - High Impact */}
+      {/* Stats Bar */}
       <section style={{ padding: '7rem 0', background: 'var(--purple-dark)', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
         <div className="container">
@@ -74,119 +75,62 @@ const Team = () => {
                 style={{ textAlign: 'center' }}
               >
                 <div style={{ color: 'var(--accent-gold)', display: 'flex', justifyContent: 'center', marginBottom: '25px' }}>
-                  <div style={{ 
-                    padding: '20px', 
-                    borderRadius: '50%', 
-                    background: 'rgba(212,175,55,0.1)', 
-                    border: '1px solid rgba(212,175,55,0.2)',
-                    boxShadow: '0 0 30px rgba(212,175,55,0.1)'
-                  }}>
+                  <div style={{ padding: '20px', borderRadius: '50%', background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.2)', boxShadow: '0 0 30px rgba(212,175,55,0.1)' }}>
                     {stat.icon}
                   </div>
                 </div>
-                <div style={{ 
-                  fontSize: 'clamp(3.5rem, 7vw, 5rem)', 
-                  fontWeight: '900', 
-                  color: '#fff', 
-                  fontFamily: 'var(--font-serif)', 
-                  lineHeight: 1,
-                  marginBottom: '10px'
-                }}>
-                  {stat.number}
-                </div>
-                <div style={{ 
-                  color: 'rgba(255,255,255,0.75)', 
-                  fontSize: '18px', 
-                  fontWeight: '700',
-                  fontFamily: 'var(--font-serif-ar)'
-                }}>
-                  {stat.label}
-                </div>
+                <div style={{ fontSize: 'clamp(3.5rem, 7vw, 5rem)', fontWeight: '900', color: '#fff', fontFamily: 'var(--font-serif)', lineHeight: 1, marginBottom: '10px' }}>{stat.number}</div>
+                <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '18px', fontWeight: '700' }}>{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Intro Narrative */}
-      <section style={{ padding: '12rem 0', background: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '8rem', alignItems: 'center' }}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <SectionHeader 
-                badge="THE CREATORS" 
-                title="خبرات عريقة وشغف لا ينتهي" 
-                subtitle="فريقنا ليس مجرد طاقم عمل، بل هو عائلة تجمعت على حب الفن والارتباط بالأرض والهوية."
-                right
-              />
-              <div style={{ color: 'var(--text-muted)', fontSize: '19px', lineHeight: '2.3' }}>
-                <p style={{ marginBottom: '2.5rem' }}>
-                  نفتخر بوجود 7 مصممات فلسطينيات مبدعات يعملن على رسم ملامح مجموعاتنا، مستلهمات من روح القدس وعراقة يافا، ليقدمن تصاميم تليق بامرأة عصرية تعتز بجذورها.
-                </p>
-                <p style={{ marginBottom: '3.5rem' }}>
-                  بخبراتنا المتراكمة، نضمن لكِ أن كل فستان يخرج من مشغلنا هو نتاج ساعات طوال من التخطيط، الخياطة، والتطريز اليدوي المتقن.
-                </p>
-              </div>
-              <div style={{ display: 'flex', gap: '25px', flexWrap: 'wrap' }}>
-                <Link to="/contact" className="btn-premium" style={{ padding: '16px 45px' }}>انضمي إلينا</Link>
-                <Link to="/shop" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: 'var(--primary-purple)', fontWeight: '900', textDecoration: 'none', fontSize: '17px' }}>تصفحي إبداعاتنا <ArrowLeft size={20} /></Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              style={{ position: 'relative' }}
-            >
-              <div style={{ position: 'relative', borderRadius: '40px', overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.12)' }}>
-                <img src="/Images/WhatsApp Image 2026-04-29 at 6.25.39 PM.jpeg" alt="Our Team at Work" style={{ width: '100%', height: 'auto', display: 'block' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,10,46,0.5), transparent)' }} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Showcase */}
-      <section style={{ padding: '10rem 0', background: 'var(--bg-lavender)' }}>
+      {/* Team Structure */}
+      <section style={{ padding: '10rem 0', background: 'var(--bg-white)' }}>
         <div className="container">
           <SectionHeader 
-            badge="OUR TEAMS" 
-            title="أقسام الإبداع" 
-            subtitle="نتوزع على فرق متكاملة تعمل بانسجام لتخرج كل قطعة بأبهى حلة."
+            badge="OUR TALENTS" 
+            title="نخبة المبدعين" 
+            subtitle="الأسماء التي تضع بصمتها في كل زاوية من زوايا الجمعية."
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '4rem' }}>
-            {teamMembers.map((member, i) => (
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '4rem', marginTop: '4rem' }}>
+            {teamCategories.map((cat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
+                transition={{ delay: i * 0.2 }}
                 style={{ 
-                  background: '#fff', 
+                  background: 'var(--bg-lavender)', 
+                  padding: '4rem', 
                   borderRadius: '32px', 
-                  overflow: 'hidden',
-                  boxShadow: 'var(--shadow-md)',
-                  transition: 'all 0.4s'
+                  border: '1px solid var(--border-light)',
+                  boxShadow: 'var(--shadow-sm)',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}
-                whileHover={{ y: -15, boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
               >
-                <div style={{ height: '300px', overflow: 'hidden', position: 'relative' }}>
-                   <img src={member.img} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                   <div style={{ position: 'absolute', top: '20px', left: '20px', background: 'var(--accent-gold)', color: '#000', padding: '6px 15px', borderRadius: '50px', fontSize: '11px', fontWeight: '900' }}>{member.tag}</div>
-                </div>
-                <div style={{ padding: '3rem' }}>
-                   <h3 style={{ fontSize: '24px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '1rem' }}>{member.name}</h3>
-                   <p style={{ color: 'var(--primary-purple)', fontWeight: '700', fontSize: '14px', marginBottom: '1.5rem', textTransform: 'uppercase' }}>{member.role}</p>
-                   <p style={{ color: 'var(--text-muted)', lineHeight: '1.9', fontSize: '16px' }}>{member.desc}</p>
+                <div style={{ position: 'absolute', top: '30px', left: '30px', color: 'var(--primary-purple)', opacity: 0.1 }}>{cat.icon}</div>
+                <div style={{ position: 'absolute', top: '30px', left: '30px', background: 'var(--accent-gold)', color: '#000', padding: '5px 15px', borderRadius: '50px', fontSize: '10px', fontWeight: '900' }}>{cat.tag}</div>
+                
+                <h3 style={{ fontSize: '28px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '1rem' }}>{cat.name}</h3>
+                <p style={{ color: 'var(--primary-purple)', fontWeight: '700', fontSize: '15px', marginBottom: '2rem' }}>{cat.role}</p>
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '16px', marginBottom: '2.5rem' }}>{cat.desc}</p>
+                
+                <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '2.5rem' }}>
+                   <h4 style={{ fontSize: '18px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '1.5rem' }}>أبرز الأعضاء:</h4>
+                   <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                      {cat.members.map((name, j) => (
+                        <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                           <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-gold)' }} />
+                           <span style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text-dark)' }}>{name}</span>
+                        </div>
+                      ))}
+                   </div>
                 </div>
               </motion.div>
             ))}
@@ -195,7 +139,7 @@ const Team = () => {
       </section>
 
       {/* Values & Principles */}
-      <section style={{ padding: '10rem 0', background: 'var(--bg-white)' }}>
+      <section style={{ padding: '10rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
           <SectionHeader 
             badge="PRINCIPLES" 
@@ -203,23 +147,23 @@ const Team = () => {
             subtitle="القيم التي توحد طاقاتنا وتدفعنا نحو التميز."
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3.5rem' }}>
-            {values.map((v, i) => (
+            {[
+              { title: 'الهوية الفلسطينية', desc: 'كل قطعة نصنعها هي رسالة فخر بجذورنا وتعبير عن صمود إرثنا الجميل.', icon: <ShieldCheck size={30} /> },
+              { title: 'الجودة الفائقة', desc: 'نلتزم بأعلى معايير الخياطة والتطريز لضمان قطعة تدوم لأجيال.', icon: <Award size={30} /> },
+              { title: 'التمكين الاقتصادي', desc: 'مشروعنا قائم على تمكين المرأة الفلسطينية وتوفير فرص عمل تليق بإبداعها.', icon: <Users size={30} /> },
+              { title: 'الابتكار الفني', desc: 'لا نكتفي بتقليد القديم، بل نبتكر تصاميم عصرية تحمل روح التراث.', icon: <Sparkles size={30} /> },
+            ].map((v, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                style={{ 
-                  background: 'var(--bg-lavender)', 
-                  padding: '4rem 3rem', 
-                  borderRadius: '32px', 
-                  textAlign: 'center',
-                  transition: 'all 0.4s'
-                }}
+                style={{ background: '#fff', padding: '4rem 3rem', borderRadius: '32px', textAlign: 'center', transition: 'all 0.4s' }}
+                whileHover={{ y: -10, boxShadow: 'var(--shadow-md)' }}
               >
                 <div style={{ color: 'var(--primary-purple)', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-                  <div style={{ padding: '20px', background: '#fff', borderRadius: '24px' }}>{v.icon}</div>
+                  <div style={{ padding: '20px', background: 'var(--bg-lavender)', borderRadius: '24px' }}>{v.icon}</div>
                 </div>
                 <h4 style={{ fontSize: '22px', fontWeight: '900', marginBottom: '1.5rem', color: 'var(--text-dark)' }}>{v.title}</h4>
                 <p style={{ color: 'var(--text-muted)', lineHeight: '2', fontSize: '16px' }}>{v.desc}</p>

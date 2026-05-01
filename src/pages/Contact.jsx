@@ -36,7 +36,7 @@ const Contact = () => {
 *الرسالة:*
 ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(waMessage)}`;
+    const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(waMessage)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -71,7 +71,7 @@ ${formData.message}`;
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>اتصلي بنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 58-504-0233</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 50-554-2323</p>
                   </div>
                 </div>
 

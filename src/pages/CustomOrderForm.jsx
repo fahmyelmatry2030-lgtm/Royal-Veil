@@ -53,7 +53,7 @@ ${formData.details}
 *القياسات:*
 ${formData.sizes || 'طلب مساعدة'}`;
 
-    const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setSubmitted(true);
   };

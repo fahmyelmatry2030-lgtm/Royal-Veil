@@ -70,7 +70,7 @@ const OrderForm = () => {
 --------------------------
 *ملاحظات:* ${formData.notes || 'لا يوجد'}`;
 
-    const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

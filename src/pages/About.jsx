@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Target, Eye, Users, ShieldCheck, Leaf, Palette, Sparkles, ArrowLeft, Award, Heart, Star, X } from 'lucide-react';
+import { Target, Eye, Users, ShieldCheck, Leaf, Palette, Sparkles, ArrowLeft, Award, Heart, Star, Quote } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 
 const stats = [
@@ -10,13 +10,6 @@ const stats = [
   { number: '200+', label: 'حرفية فلسطينية', icon: <Users size={32} /> },
   { number: '5000+', label: 'قطعة مُصنَّعة', icon: <Star size={32} /> },
   { number: '1000+', label: 'عميلة سعيدة', icon: <Heart size={32} /> },
-];
-
-const milestones = [
-  { year: '2025', title: 'البداية الأولى', desc: 'تأسست نواة الجمعية من مجموعة صغيرة من الحرفيات المتحمسات لإحياء الزي الفلسطيني.' },
-  { year: '2014', title: 'أول معرض دولي', desc: 'شاركنا في معرض الحرف اليدوية الدولي وحصدنا إشادة واسعة على مستوى المنطقة.' },
-  { year: '2018', title: 'توسعة المشاغل', desc: 'افتتحنا مشاغل تدريب مجهزة لاستقبال حرفيات جدد وتطوير مهاراتهن.' },
-  { year: '2024', title: 'الطرحة الملكية', desc: 'إطلاق العلامة التجارية Royal Veil ودمج الهوية التراثية بمنصة رقمية عصرية.' },
 ];
 
 const values = [
@@ -34,7 +27,7 @@ const About = () => {
         <meta name="description" content="تعرفي على جمعية الطرحة الملكية التعاونية، قصتنا ورؤيتنا وقيمنا في الحفاظ على الحرفة الفلسطينية." />
       </Helmet>
 
-      {/* Hero Section - Visual matching the screenshot */}
+      {/* Hero Section */}
       <section style={{ position: 'relative', height: '85vh', minHeight: '650px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <img 
@@ -83,7 +76,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Bar - Precise matching of screenshot spacing and style */}
+      {/* Stats Bar */}
       <section style={{ padding: '7rem 0', background: 'var(--purple-dark)', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
         <div className="container">
@@ -199,10 +192,23 @@ const About = () => {
         </div>
       </section>
 
-      {/* Vision & Mission Banner - High Impact */}
+      {/* Quote Section - Updated with requested text */}
+      <section style={{ padding: '8rem 0', background: 'linear-gradient(135deg, var(--purple-dark), #1a0a2e)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(177,156,217,0.1) 0%, transparent 60%), radial-gradient(circle at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 60%)' }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <Quote color="var(--accent-gold)" size={60} style={{ margin: '0 auto 30px', opacity: 0.5 }} />
+            <h2 style={{ color: '#fff', fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontFamily: 'var(--font-calligraphy)', lineHeight: 1.5, maxWidth: '800px', margin: '0 auto 25px', textShadow: '0 0 40px rgba(212,175,55,0.2)' }}>
+              لسنا مجرد جمعية لتصميم الملابس،<br />نحن حارسات الهوية وصانعات الجمال
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px' }}>— رسالة جمعية الطرحة الملكية التعاونية</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Vision & Mission Banner */}
       <section style={{ padding: '12rem 0', background: 'var(--purple-dark)', position: 'relative', overflow: 'hidden' }}>
          <div style={{ position: 'absolute', inset: 0, opacity: 0.15, backgroundImage: 'url("/Images/IMG-20260429-WA0015.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
-         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(212,175,55,0.1), transparent)' }} />
          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '7rem' }}>
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -227,7 +233,7 @@ const About = () => {
          </div>
       </section>
 
-      {/* Values with Icons */}
+      {/* Values */}
       <section style={{ padding: '10rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
           <SectionHeader 

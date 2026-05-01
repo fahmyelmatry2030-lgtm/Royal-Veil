@@ -22,7 +22,7 @@ const BlouseEmbroidery = () => {
         badge="Art & Embroidery"
         title="تطريز البلايز والقطع الخاصة"
         subtitle="نضيف لمسة فنية فريدة على ملابسكِ من خلال خدمات التطريز اليدوي والآلي المبتكرة."
-        bgImage="/Images/IMG-20260429-WA0021.jpg"
+        bgImage="/Images/embroidered_blouse_header.png"
       />
 
       <section style={{ padding: '6rem 0' }}>

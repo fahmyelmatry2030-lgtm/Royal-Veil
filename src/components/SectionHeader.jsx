@@ -59,19 +59,7 @@ const SectionHeader = ({ title, subtitle, badge, dark = false, right = false }) 
         {title}
       </motion.h2>
 
-      {/* Underline */}
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: 60 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        style={{
-          height: 2,
-          background: 'linear-gradient(90deg, var(--accent-gold), var(--gold-dark))',
-          margin: right ? '0 0 16px auto' : '0 auto 16px auto',
-          borderRadius: 2,
-        }}
-      />
+      {/* Underline Removed */}
 
       {/* Subtitle */}
       {subtitle && (

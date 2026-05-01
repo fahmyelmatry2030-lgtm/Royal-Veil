@@ -191,7 +191,7 @@ const About = () => {
                 border: '4px solid #fff'
               }}>
                 <span style={{ fontSize: '26px', fontWeight: '900', color: '#1a102e', lineHeight: 1 }}>منذ</span>
-                <span style={{ fontSize: '34px', fontWeight: '900', color: '#1a102e', lineHeight: 1.2 }}>2025</span>
+                <span style={{ fontSize: '34px', fontWeight: '900', color: '#1a102e', lineHeight: 1.2 }}>2020</span>
               </div>
             </motion.div>
           </div>

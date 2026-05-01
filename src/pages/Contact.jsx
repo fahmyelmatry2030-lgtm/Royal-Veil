@@ -8,6 +8,7 @@ import SectionHeader from '../components/SectionHeader';
 import { storage } from '../utils/storage';
 
 const Contact = () => {
+  const content = storage.getContent();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,8 +49,8 @@ ${formData.message}`;
 
       <PageHeader
         badge="Get in Touch"
-        title="تواصل معنا"
-        subtitle="يسعدنا دائماً سماع ملاحظاتكِ والإجابة على استفساراتكِ."
+        title={content.contact.hero.title}
+        subtitle={content.contact.hero.subtitle}
         bgImage="/Images/IMG-20260429-WA0014.jpg"
       />
 
@@ -59,9 +60,9 @@ ${formData.message}`;
             
             {/* Contact Info */}
             <div>
-              <SectionHeader badge="Contact Info" title="قنوات الاتصال" right />
+              <SectionHeader badge="Contact Info" title={content.contact.info.title} right />
               <p style={{ color: 'var(--text-muted)', mb: '3rem', lineHeight: '1.8', marginBottom: '3rem' }}>
-                نحن متاحون للرد على جميع استفساراتكِ بخصوص الطلبات الخاصة أو المتجر الإلكتروني. لا تترددي في التواصل معنا.
+                {content.contact.info.description}
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -71,7 +72,7 @@ ${formData.message}`;
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>اتصلي بنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 50-554-2323</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>{content.common.footer.phone}</p>
                   </div>
                 </div>
 
@@ -81,7 +82,7 @@ ${formData.message}`;
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>البريد الإلكتروني</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>royalveil529@gmail.com</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>{content.common.footer.email}</p>
                   </div>
                 </div>
 
@@ -91,7 +92,7 @@ ${formData.message}`;
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>موقعنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>فلسطين - القدس - شارع صلاح الدين</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>{content.common.footer.address}</p>
                   </div>
                 </div>
               </div>

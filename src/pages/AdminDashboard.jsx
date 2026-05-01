@@ -34,6 +34,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
 import { storage } from '../utils/storage';
+import { initialProducts, CATEGORIES } from '../data/products';
 
 // ─── Constants ───
 const COLORS = ['#B19CD9', '#D4AF37', '#5D3E8B', '#A084CA'];
@@ -65,6 +66,8 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [newProduct, setNewProduct] = useState({ title: '', price: '', category: 'فساتين', img: '' });
   const navigate = useNavigate();
 
   // Data State
@@ -73,6 +76,7 @@ const AdminDashboard = () => {
   const [customers, setCustomers] = useState([]);
   const [subscribers, setSubscribers] = useState([]);
   const [products, setProducts] = useState([]);
+  const [siteContent, setSiteContent] = useState(null);
 
   useEffect(() => {
     // Load Real Data
@@ -80,7 +84,11 @@ const AdminDashboard = () => {
     setMessages(storage.getMessages());
     setCustomers(storage.getCustomers());
     setSubscribers(storage.getSubscribers());
-    setProducts(storage.getProducts());
+    setSiteContent(storage.getContent());
+    
+    // Combine initial products with storage products
+    const storedProducts = storage.getProducts();
+    setProducts([...initialProducts, ...storedProducts]);
   }, []);
 
   const handleLogout = () => {
@@ -101,8 +109,39 @@ const AdminDashboard = () => {
   };
 
   const deleteProduct = (id) => {
+    // If it's a manual product (from storage), delete it there
     storage.deleteProduct(id);
-    setProducts(storage.getProducts());
+    // Refresh products list
+    const storedProducts = storage.getProducts();
+    setProducts([...initialProducts, ...storedProducts]);
+  };
+
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    if (newProduct.title && newProduct.price) {
+      storage.saveProduct(newProduct);
+      const storedProducts = storage.getProducts();
+      setProducts([...initialProducts, ...storedProducts]);
+      setIsAddModalOpen(false);
+      setNewProduct({ title: '', price: '', category: 'فساتين', img: '' });
+    }
+  };
+
+  const handleUpdateContent = (section, field, value) => {
+    const updated = { ...siteContent };
+    if (!updated[section]) updated[section] = {};
+    
+    // Support nested fields (e.g. hero.title)
+    if (field.includes('.')) {
+      const [sub, subField] = field.split('.');
+      if (!updated[section][sub]) updated[section][sub] = {};
+      updated[section][sub][subField] = value;
+    } else {
+      updated[section][field] = value;
+    }
+    
+    setSiteContent(updated);
+    storage.saveContent(updated);
   };
 
   // Sub-Pages Rendering
@@ -200,16 +239,9 @@ const AdminDashboard = () => {
         return (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-              <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>إدارة المخزون</h2>
+              <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>إدارة المتجر</h2>
               <button 
-                onClick={() => {
-                  const title = prompt('اسم المنتج:');
-                  const price = prompt('السعر:');
-                  if (title && price) {
-                    storage.saveProduct({ title, price });
-                    setProducts(storage.getProducts());
-                  }
-                }}
+                onClick={() => setIsAddModalOpen(true)}
                 style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', background: 'var(--primary-purple)', border: 'none', borderRadius: '12px', fontSize: '16px', color: '#fff', cursor: 'pointer', fontWeight: '700' }}
               >
                 <PlusCircle size={20} /> إضافة منتج جديد
@@ -218,17 +250,90 @@ const AdminDashboard = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
               {products.map(p => (
                 <div key={p.id} style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
+                  <div style={{ height: '180px', overflow: 'hidden' }}>
+                    <img src={p.img || '/Images/placeholder.jpg'} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
                   <div style={{ padding: '20px' }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>{p.title}</h4>
-                    <p style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '18px', marginBottom: '15px' }}>{p.price} ₪</p>
+                    <h4 style={{ fontSize: '15px', fontWeight: '700', marginBottom: '4px', height: '40px', overflow: 'hidden' }}>{p.title}</h4>
+                    <p style={{ fontSize: '12px', color: '#888', marginBottom: '8px' }}>{p.category}</p>
+                    <p style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '16px', marginBottom: '15px' }}>{p.price} ₪</p>
                     <div style={{ display: 'flex', gap: '10px' }}>
-                      <button onClick={() => deleteProduct(p.id)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', color: '#ff4d4d', cursor: 'pointer' }}><Trash2 size={16}/></button>
+                      <button onClick={() => deleteProduct(p.id)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', color: '#ff4d4d', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Trash2 size={16}/>
+                      </button>
                     </div>
                   </div>
                 </div>
               ))}
-              {products.length === 0 && <p style={{ gridColumn: '1/-1', textAlign: 'center', padding: '40px', color: '#888' }}>لا يوجد منتجات مضافة يدوياً. المنتجات الأساسية مشفرة في ملف المتجر.</p>}
+              {products.length === 0 && <p style={{ gridColumn: '1/-1', textAlign: 'center', padding: '40px', color: '#888' }}>لا يوجد منتجات حالياً.</p>}
             </div>
+
+            {/* Add Product Modal */}
+            <AnimatePresence>
+              {isAddModalOpen && (
+                <div style={{ position: 'fixed', inset: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+                  <motion.div 
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                    onClick={() => setIsAddModalOpen(false)}
+                    style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+                  />
+                  <motion.div 
+                    initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+                    style={{ position: 'relative', background: '#fff', width: '100%', maxWidth: '500px', borderRadius: '24px', padding: '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
+                  >
+                    <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '30px', color: 'var(--primary-purple)' }}>إضافة منتج جديد</h3>
+                    <form onSubmit={handleAddProduct} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <label style={{ fontSize: '14px', fontWeight: '700' }}>اسم المنتج</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={newProduct.title}
+                          onChange={(e) => setNewProduct({...newProduct, title: e.target.value})}
+                          style={{ padding: '12px 16px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                        />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <label style={{ fontSize: '14px', fontWeight: '700' }}>السعر (شيكل)</label>
+                        <input 
+                          type="text" 
+                          required
+                          value={newProduct.price}
+                          onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
+                          style={{ padding: '12px 16px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                        />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <label style={{ fontSize: '14px', fontWeight: '700' }}>الفئة</label>
+                        <select 
+                          value={newProduct.category}
+                          onChange={(e) => setNewProduct({...newProduct, category: e.target.value})}
+                          style={{ padding: '12px 16px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                        >
+                          {CATEGORIES.filter(c => c !== 'الكل').map(cat => (
+                            <option key={cat} value={cat}>{cat}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <label style={{ fontSize: '14px', fontWeight: '700' }}>رابط الصورة</label>
+                        <input 
+                          type="text" 
+                          placeholder="/Images/product-name.jpg"
+                          value={newProduct.img}
+                          onChange={(e) => setNewProduct({...newProduct, img: e.target.value})}
+                          style={{ padding: '12px 16px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                        />
+                      </div>
+                      <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                        <button type="submit" style={{ flex: 1, padding: '14px', borderRadius: '12px', background: 'var(--primary-purple)', color: '#fff', border: 'none', fontWeight: '800', cursor: 'pointer' }}>حفظ المنتج</button>
+                        <button type="button" onClick={() => setIsAddModalOpen(false)} style={{ flex: 1, padding: '14px', borderRadius: '12px', background: '#f5f5f5', color: '#555', border: 'none', fontWeight: '800', cursor: 'pointer' }}>إلغاء</button>
+                      </div>
+                    </form>
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
           </motion.div>
         );
 
@@ -307,6 +412,271 @@ const AdminDashboard = () => {
           </motion.div>
         );
 
+      case 'content':
+        if (!siteContent) return null;
+        return (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>إدارة محتوى الموقع</h2>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '30px' }}>
+              {/* Home - Hero */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <LayoutDashboard size={20} /> الصفحة الرئيسية - الغلاف (Hero)
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الرئيسي</label>
+                  <textarea 
+                    value={siteContent.home.hero.title}
+                    onChange={(e) => handleUpdateContent('home', 'hero.title', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '100px', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>نص الزر</label>
+                  <input 
+                    type="text"
+                    value={siteContent.home.hero.buttonText}
+                    onChange={(e) => handleUpdateContent('home', 'hero.buttonText', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* Home - About */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Users size={20} /> الصفحة الرئيسية - من نحن
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان</label>
+                  <input 
+                    type="text"
+                    value={siteContent.home.about.title}
+                    onChange={(e) => handleUpdateContent('home', 'about.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الوصف</label>
+                  <textarea 
+                    value={siteContent.home.about.description}
+                    onChange={(e) => handleUpdateContent('home', 'about.description', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '120px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* Home - Parallax Quote */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <MessageSquare size={20} /> الصفحة الرئيسية - الاقتباس
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>النص</label>
+                  <textarea 
+                    value={siteContent.home.parallax.quote}
+                    onChange={(e) => handleUpdateContent('home', 'parallax.quote', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>القائل / المؤسس</label>
+                  <input 
+                    type="text"
+                    value={siteContent.home.parallax.author}
+                    onChange={(e) => handleUpdateContent('home', 'parallax.author', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* Common - Footer */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Settings size={20} /> تذييل الصفحة (Footer)
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>عن الجمعية (Footer Text)</label>
+                  <textarea 
+                    value={siteContent.common.footer.about}
+                    onChange={(e) => handleUpdateContent('common', 'footer.about', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '700' }}>الهاتف</label>
+                      <input 
+                        type="text"
+                        value={siteContent.common.footer.phone}
+                        onChange={(e) => handleUpdateContent('common', 'footer.phone', e.target.value)}
+                        style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان</label>
+                      <input 
+                        type="text"
+                        value={siteContent.common.footer.address}
+                        onChange={(e) => handleUpdateContent('common', 'footer.address', e.target.value)}
+                        style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* About - Hero */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Award size={20} /> صفحة من نحن - الغلاف
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الرئيسي</label>
+                  <textarea 
+                    value={siteContent.about.hero.title}
+                    onChange={(e) => handleUpdateContent('about', 'hero.title', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الفرعي</label>
+                  <textarea 
+                    value={siteContent.about.hero.subtitle}
+                    onChange={(e) => handleUpdateContent('about', 'hero.subtitle', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* About - Legacy */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Crown size={20} /> صفحة من نحن - الإرث
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان</label>
+                  <input 
+                    type="text"
+                    value={siteContent.about.legacy.title}
+                    onChange={(e) => handleUpdateContent('about', 'legacy.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الوصف</label>
+                  <textarea 
+                    value={siteContent.about.legacy.description}
+                    onChange={(e) => handleUpdateContent('about', 'legacy.description', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '150px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* About - Vision & Mission */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Target size={20} /> صفحة من نحن - الرؤية والرسالة
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الرؤية</label>
+                  <textarea 
+                    value={siteContent.about.vision.description}
+                    onChange={(e) => handleUpdateContent('about', 'vision.description', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الرسالة</label>
+                  <textarea 
+                    value={siteContent.about.mission.description}
+                    onChange={(e) => handleUpdateContent('about', 'mission.description', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* Contact Page */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Mail size={20} /> صفحة اتصل بنا
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الرئيسي</label>
+                  <input 
+                    type="text"
+                    value={siteContent.contact.hero.title}
+                    onChange={(e) => handleUpdateContent('contact', 'hero.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الفرعي</label>
+                  <textarea 
+                    value={siteContent.contact.hero.subtitle}
+                    onChange={(e) => handleUpdateContent('contact', 'hero.subtitle', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* FAQ Page */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <MessageSquare size={20} /> صفحة الأسئلة الشائعة
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الرئيسي</label>
+                  <input 
+                    type="text"
+                    value={siteContent.faq.hero.title}
+                    onChange={(e) => handleUpdateContent('faq', 'hero.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الفرعي</label>
+                  <textarea 
+                    value={siteContent.faq.hero.subtitle}
+                    onChange={(e) => handleUpdateContent('faq', 'hero.subtitle', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* Team Page */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Users size={20} /> صفحة فريق العمل
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الرئيسي</label>
+                  <input 
+                    type="text"
+                    value={siteContent.team.hero.title}
+                    onChange={(e) => handleUpdateContent('team', 'hero.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الفرعي</label>
+                  <textarea 
+                    value={siteContent.team.hero.subtitle}
+                    onChange={(e) => handleUpdateContent('team', 'hero.subtitle', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
+              {/* Shop Page */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <ShoppingBag size={20} /> صفحة المتجر
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الرئيسي</label>
+                  <input 
+                    type="text"
+                    value={siteContent.shop.hero.title}
+                    onChange={(e) => handleUpdateContent('shop', 'hero.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان الفرعي</label>
+                  <textarea 
+                    value={siteContent.shop.hero.subtitle}
+                    onChange={(e) => handleUpdateContent('shop', 'hero.subtitle', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        );
+
       default:
         return <div style={{ textAlign: 'center', padding: '100px', color: '#888' }}><Clock size={50} style={{ marginBottom: '20px', opacity: 0.2 }} /><p>هذا القسم قيد التطوير...</p></div>;
     }
@@ -330,13 +700,13 @@ const AdminDashboard = () => {
         </div>
 
         <nav style={{ flex: 1, marginTop: '20px', padding: '0 15px' }}>
-          {[
             { id: 'overview', icon: <LayoutDashboard size={20} />, label: 'الرئيسية' },
             { id: 'orders', icon: <ShoppingBag size={20} />, label: 'الطلبات' },
-            { id: 'products', icon: <Package size={20} />, label: 'المخزون' },
+            { id: 'products', icon: <Package size={20} />, label: 'المتجر' },
             { id: 'customers', icon: <Users size={20} />, label: 'العملاء' },
             { id: 'messages', icon: <MessageSquare size={20} />, label: 'الرسائل' },
             { id: 'subscribers', icon: <Bell size={20} />, label: 'المشتركات' },
+            { id: 'content', icon: <Edit size={20} />, label: 'إدارة المحتوى' },
           ].map((item) => (
             <button key={item.id} onClick={() => setActiveTab(item.id)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', marginBottom: '5px', background: activeTab === item.id ? 'var(--primary-purple)' : 'transparent', borderRadius: '12px', color: activeTab === item.id ? '#fff' : '#636e72', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'right', fontWeight: activeTab === item.id ? '700' : '500' }}>
               <div style={{ opacity: activeTab === item.id ? 1 : 0.7 }}>{item.icon}</div>

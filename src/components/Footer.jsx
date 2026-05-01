@@ -4,6 +4,7 @@ import { Camera, Share2, Globe, Mail, Phone, MapPin, Send } from 'lucide-react';
 import { storage } from '../utils/storage';
 
 const Footer = () => {
+  const content = storage.getContent();
   return (
     <footer style={{ background: 'var(--bg-lavender)', borderTop: '1px solid var(--border-light)', padding: '80px 0 40px', direction: 'rtl' }}>
       <div className="container">
@@ -15,7 +16,7 @@ const Footer = () => {
               <span style={{ fontWeight: '900', fontSize: '24px', color: 'var(--primary-purple)', fontFamily: 'var(--font-serif)' }}>ROYAL VEIL</span>
             </Link>
             <p style={{ color: 'var(--text-muted)', fontSize: '13px', lineHeight: '1.8', marginBottom: '25px' }}>
-              نجمع بين الإبداع اليدوي التقليدي واللمسات العصرية العالمية لنخلق قطعاً فريدة تحكي قصة أناقة فلسطينية لا تنتهي.
+              {content.common.footer.about}
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a href="https://www.instagram.com/veilroyal?igsh=MTEyMHBtZm15dmtqYQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-purple)' }}><Camera size={18} strokeWidth={1.5} /></a>
@@ -52,13 +53,13 @@ const Footer = () => {
             <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '25px', color: 'var(--primary-purple)' }}>تواصل معنا</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> +972 58-504-0233
+                <Phone size={16} strokeWidth={1.5} color="var(--accent-gold)" /> {content.common.footer.phone}
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <Mail size={16} strokeWidth={1.5} color="var(--accent-gold)" /> royalveil529@gmail.com
+                <Mail size={16} strokeWidth={1.5} color="var(--accent-gold)" /> {content.common.footer.email}
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: 'var(--text-muted)' }}>
-                <MapPin size={16} strokeWidth={1.5} color="var(--accent-gold)" /> فلسطين - القدس - شارع صلاح الدين
+                <MapPin size={16} strokeWidth={1.5} color="var(--accent-gold)" /> {content.common.footer.address}
               </li>
             </ul>
           </div>

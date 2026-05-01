@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, MessageCircle, HelpCircle } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
+import { storage } from '../utils/storage';
+import { useEffect } from 'react';
 
 const faqs = [
   {
@@ -156,6 +158,12 @@ const FAQItem = ({ q, a, index }) => {
 };
 
 const FAQ = () => {
+  const [content, setContent] = useState(storage.getContent());
+
+  useEffect(() => {
+    setContent(storage.getContent());
+  }, []);
+
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', minHeight: '100vh' }}>
       <Helmet>
@@ -165,8 +173,8 @@ const FAQ = () => {
 
       <PageHeader
         badge="FAQ"
-        title="الأسئلة الشائعة"
-        subtitle="نجيب على كل استفساراتكِ بوضوح وشفافية تامة."
+        title={content.faq.hero.title}
+        subtitle={content.faq.hero.subtitle}
         bgImage="/Images/IMG-20260429-WA0014.jpg"
       />
 

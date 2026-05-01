@@ -7,10 +7,24 @@ const STORAGE_KEYS = {
   CUSTOMERS: 'rv_customers',
   SUBSCRIBERS: 'rv_subscribers',
   STATS: 'rv_stats',
-  PRODUCTS: 'rv_products'
+  PRODUCTS: 'rv_products',
+  CONTENT: 'rv_site_content'
 };
 
+import { initialContent } from '../data/content';
+
 export const storage = {
+  // --- Site Content (CMS) ---
+  getContent: () => {
+    const stored = localStorage.getItem(STORAGE_KEYS.CONTENT);
+    if (!stored) return initialContent;
+    // Merge stored content with initial to handle new fields
+    const parsed = JSON.parse(stored);
+    return { ...initialContent, ...parsed };
+  },
+  saveContent: (newContent) => {
+    localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(newContent));
+  },
   // --- Orders ---
   getOrders: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS) || '[]'),
   saveOrder: (order) => {

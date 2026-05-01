@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Target, Eye, Users, ShieldCheck, Leaf, Palette, Sparkles, ArrowLeft, Award, Heart, Star, Quote } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import { storage } from '../utils/storage';
+import { useState, useEffect } from 'react';
 
 const stats = [
   { number: '15+', label: 'مجموع خبرات الطاقم', icon: <Award size={32} /> },
@@ -26,6 +28,12 @@ const values = [
 ];
 
 const About = () => {
+  const [content, setContent] = useState(storage.getContent());
+
+  useEffect(() => {
+    setContent(storage.getContent());
+  }, []);
+
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', overflowX: 'hidden' }}>
       <Helmet>
@@ -62,9 +70,10 @@ const About = () => {
               fontFamily: 'var(--font-serif)', 
               lineHeight: 1.1, 
               marginBottom: '2.5rem',
-              textShadow: '0 15px 45px rgba(0,0,0,0.6)'
+              textShadow: '0 15px 45px rgba(0,0,0,0.6)',
+              whiteSpace: 'pre-line'
             }}>
-              قصة جمعية الطرحة<br />الملكية التعاونية
+              {content.about.hero.title}
             </h1>
             
             <p style={{ 
@@ -76,7 +85,7 @@ const About = () => {
               fontWeight: '500',
               fontFamily: 'var(--font-serif-ar)'
             }}>
-              حيث تلتقي الحرفية الفلسطينية التقليدية مع التصاميم العالمية المعاصرة.
+              {content.about.hero.subtitle}
             </p>
           </motion.div>
         </div>
@@ -143,17 +152,12 @@ const About = () => {
             >
               <SectionHeader 
                 badge="OUR LEGACY" 
-                title="إرث من الإبداع والتمكين" 
+                title={content.about.legacy.title} 
                 subtitle="نسعى في جمعية الطرحة الملكية التعاونية لتقديم تجربة أزياء تتخطى حدود الملبس لتصبح تعبيراً عن الهوية."
                 right
               />
-              <div style={{ color: 'var(--text-muted)', fontSize: '19px', lineHeight: '2.3' }}>
-                <p style={{ marginBottom: '2.5rem' }}>
-                  نحن نؤمن بأن التطريز الفلسطيني ليس مجرد خيوط، بل هو لغة تحكي تاريخنا العريق. من هنا انطلقت رؤيتنا لدمج هذا الفن في قوالب عصرية تليق بالمرأة في كل مكان.
-                </p>
-                <p style={{ marginBottom: '3.5rem' }}>
-                  بأيدي أكثر من 200 حرفية مبدعة، نصنع كل قطعة بشغف وعناية فائقة، مع الالتزام بأعلى معايير الجودة العالمية في الخامات والتنفيذ.
-                </p>
+              <div style={{ color: 'var(--text-muted)', fontSize: '19px', lineHeight: '2.3', whiteSpace: 'pre-line' }}>
+                {content.about.legacy.description}
               </div>
               <div style={{ display: 'flex', gap: '25px', flexWrap: 'wrap' }}>
                 <Link to="/shop" className="btn-premium" style={{ padding: '16px 45px' }}>استكشفي المجموعات</Link>
@@ -256,10 +260,10 @@ const About = () => {
                  <div style={{ width: '54px', height: '54px', background: 'var(--purple-light)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Eye size={28} color="var(--primary-purple)" />
                  </div>
-                 <h3 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-dark)' }}>رؤيتنا</h3>
+                 <h3 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-dark)' }}>{content.about.vision.title}</h3>
               </div>
               <p style={{ color: 'var(--text-muted)', lineHeight: '2', fontSize: '17px', marginBottom: '3rem' }}>
-                أن نكون المنارة العالمية للأناقة التي تجمع بين سحر الشرق وأصالة التراث وعصرية التصميم، متمكنين من وضع بصمة فلسطينية في كل خزانة أزياء راقية.
+                {content.about.vision.description}
               </p>
               
               <div style={{ display: 'flex', gap: '20px', marginBottom: '2.5rem' }}>

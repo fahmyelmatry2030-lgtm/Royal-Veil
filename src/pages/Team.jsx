@@ -46,6 +46,7 @@ const stats = [
 ];
 
 const Team = () => {
+  const content = storage.getContent();
   return (
     <div style={{ direction: 'rtl', background: 'var(--bg-white)', overflowX: 'hidden' }}>
       <Helmet>
@@ -55,8 +56,8 @@ const Team = () => {
 
       <PageHeader
         badge="Our Team"
-        title="طاقم العمل"
-        subtitle="تعرفي على النخبة التي تقف خلف كل قطعة ننتجها بكل حب وإتقان."
+        title={content.team.hero.title}
+        subtitle={content.team.hero.subtitle}
         bgImage="/Images/WhatsApp Image 2026-04-29 at 6.25.39 PM.jpeg"
       />
 

@@ -56,6 +56,12 @@ const Home = () => {
   const collectionsRef = React.useRef(null);
   const productsRef = React.useRef(null);
   const [phone, setPhone] = useState('');
+  const [content, setContent] = useState(storage.getContent());
+
+  React.useEffect(() => {
+    // Listen for changes in localStorage if needed, or just load once
+    setContent(storage.getContent());
+  }, []);
 
   const scroll = (ref, direction) => {
     if (ref.current) {
@@ -88,13 +94,13 @@ const Home = () => {
           <div style={{ maxWidth: '700px', paddingRight: '2rem', textAlign: 'right', marginLeft: 'auto' }}>
             <motion.h1
               initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.2 }}
-              style={{ fontSize: 'clamp(3.5rem, 9vw, 6rem)', fontFamily: 'var(--font-calligraphy)', color: '#fff', lineHeight: 1.2, marginBottom: '1rem', textShadow: '0 0 40px rgba(177,156,217,0.6)' }}
+              style={{ fontSize: 'clamp(3.5rem, 9vw, 6rem)', fontFamily: 'var(--font-calligraphy)', color: '#fff', lineHeight: 1.2, marginBottom: '1rem', textShadow: '0 0 40px rgba(177,156,217,0.6)', whiteSpace: 'pre-line' }}
             >
-              تألقي بسحر<br/>تراثكِ الأصيل
+              {content.home.hero.title}
             </motion.h1>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Link to="/shop" style={{ display: 'inline-block', background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', color: '#fff', padding: '10px 35px', fontSize: '14px', fontWeight: '700', borderRadius: '50px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.3)', marginTop: '1.5rem' }}>
-                تسوقي الآن
+                {content.home.hero.buttonText}
               </Link>
             </motion.div>
           </div>
@@ -159,11 +165,11 @@ const Home = () => {
             <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
                 <Sparkles size={20} color="var(--accent-gold)" />
-                <h4 style={{ color: 'var(--accent-gold)', fontSize: '14px', fontWeight: '800', textTransform: 'uppercase', margin: 0 }}>جمعية الطرحة الملكية التعاونية</h4>
+                <h4 style={{ color: 'var(--accent-gold)', fontSize: '14px', fontWeight: '800', textTransform: 'uppercase', margin: 0 }}>{content.home.about.badge}</h4>
               </div>
-              <h2 style={{ fontSize: '46px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '35px', fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>من نحن</h2>
+              <h2 style={{ fontSize: '46px', fontWeight: '900', color: 'var(--text-dark)', marginBottom: '35px', fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>{content.home.about.title}</h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: '2.1', fontSize: '17px', marginBottom: '40px' }}>
-                نحن جمعية تعاونية رائدة تسعى لتمكين الحرفيات المحليات ودمج الفن الفلسطيني التقليدي بالذوق العالمي المعاصر.
+                {content.home.about.description}
               </p>
               <Link to="/about" style={{ color: 'var(--primary-purple)', fontWeight: '800', textDecoration: 'none', borderBottom: '2px solid var(--primary-purple)', paddingBottom: '5px' }}>التفاصيل الكاملة</Link>
             </motion.div>
@@ -200,10 +206,10 @@ const Home = () => {
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(24,16,38,0.85)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <Quote color="var(--accent-gold)" size={50} style={{ margin: '0 auto 30px', opacity: 0.5 }} />
-          <h2 style={{ color: '#fff', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: '900', fontFamily: 'var(--font-serif)', marginBottom: '30px', lineHeight: 1.3 }}>
-            "أنتِ لا ترتدين فستاناً،<br/>أنتِ ترتدين قطعة من الفن والتاريخ."
+          <h2 style={{ color: '#fff', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: '900', fontFamily: 'var(--font-serif)', marginBottom: '30px', lineHeight: 1.3, whiteSpace: 'pre-line' }}>
+            {content.home.parallax.quote}
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px' }}>- المؤسس، جمعية الطرحة الملكية التعاونية</p>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px' }}>{content.home.parallax.author}</p>
           <Link to="/custom-order" className="btn-premium" style={{ background: 'transparent', border: '1px solid var(--accent-gold)', color: 'var(--accent-gold)' }}>اطلبي تصميمك المخصص</Link>
         </div>
       </section>
@@ -288,9 +294,9 @@ const Home = () => {
         <div className="container">
           <div style={{ background: 'var(--bg-lavender)', borderRadius: '16px', padding: '5rem 3rem', textAlign: 'center', border: '1px solid var(--border-light)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
-            <h3 style={{ fontSize: '36px', fontWeight: '900', color: 'var(--text-dark)', fontFamily: 'var(--font-serif)', marginBottom: '15px' }}>نادي جمعية الطرحة الملكية للأناقة</h3>
+            <h3 style={{ fontSize: '36px', fontWeight: '900', color: 'var(--text-dark)', fontFamily: 'var(--font-serif)', marginBottom: '15px' }}>{content.home.newsletter.title}</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '16px', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.8 }}>
-              سجلي رقم هاتفك لتكوني أول من يكتشف مجموعاتنا الحصرية وعروضنا السرية.
+              {content.home.newsletter.description}
             </p>
             <form style={{ display: 'flex', maxWidth: '500px', margin: '0 auto', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }} onSubmit={handleSubscribe}>
               <input type="tel" placeholder="أدخلي رقم هاتفك هنا..." dir="rtl" value={phone} onChange={(e) => setPhone(e.target.value)} style={{ flex: '1 1 250px', padding: '16px 25px', borderRadius: '20px', border: '1px solid var(--border-light)', background: 'var(--bg-white)', color: 'var(--text-dark)', outline: 'none' }} />

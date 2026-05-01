@@ -21,6 +21,7 @@ const OrderForm = () => {
     area: 'القدس',
     address: '',
     notes: '',
+    city: '',
     paymentMethod: 'cod'
   });
 
@@ -46,6 +47,7 @@ const OrderForm = () => {
       fullName: formData.fullName,
       phone: formData.phone,
       area: formData.area,
+      city: formData.city,
       address: formData.address,
       notes: formData.notes,
       total: (parseInt(productPrice) || 0) + shippingCost
@@ -61,6 +63,7 @@ const OrderForm = () => {
 *الاسم:* ${formData.fullName}
 *الهاتف:* ${formData.phone}
 *المنطقة:* ${formData.area}
+*المحافظة/المدينة:* ${formData.city}
 *العنوان:* ${formData.address}
 *طريقة الدفع:* ${formData.paymentMethod === 'cod' ? 'الدفع عند الاستلام' : formData.paymentMethod === 'visa' ? 'فيزا / ماستر كارد' : 'باي بال'}
 *رسوم التوصيل:* ${shippingCost} شيكل
@@ -155,16 +158,31 @@ const OrderForm = () => {
                 </div>
 
                 <div style={{ position: 'relative' }}>
-                  <MapPin size={18} style={{ position: 'absolute', right: '15px', top: '16px', color: 'var(--text-muted)', zIndex: 1 }} />
-                  <select 
-                    value={formData.area}
-                    onChange={(e) => setFormData({...formData, area: e.target.value})}
-                    style={{ width: '100%', padding: '14px 45px 14px 14px', border: '1px solid var(--border-light)', borderRadius: '4px', background: 'var(--bg-white)', color: 'var(--text-dark)', cursor: 'pointer' }}
-                  >
-                    <option value="القدس">القدس</option>
-                    <option value="الضفة الغربية">الضفة الغربية</option>
-                    <option value="مناطق 48">مناطق 48 (شمال وجنوب)</option>
-                  </select>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '800', fontSize: '14px', color: 'var(--text-dark)' }}>منطقة التوصيل:</label>
+                  <div style={{ position: 'relative' }}>
+                    <MapPin size={18} style={{ position: 'absolute', right: '15px', top: '16px', color: 'var(--text-muted)', zIndex: 1 }} />
+                    <select 
+                      value={formData.area}
+                      onChange={(e) => setFormData({...formData, area: e.target.value})}
+                      style={{ width: '100%', padding: '14px 45px 14px 14px', border: '1px solid var(--border-light)', borderRadius: '4px', background: 'var(--bg-white)', color: 'var(--text-dark)', cursor: 'pointer', appearance: 'none' }}
+                    >
+                      <option value="القدس">القدس (30 شيكل)</option>
+                      <option value="الضفة الغربية">كافة مدن الضفة الغربية (30 شيكل)</option>
+                      <option value="مناطق 48">مناطق الـ 48 - شمال وجنوب (70 شيكل)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ position: 'relative' }}>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '800', fontSize: '14px', color: 'var(--text-dark)' }}>المحافظة / المدينة:</label>
+                  <input 
+                    type="text" 
+                    placeholder="مثلاً: نابلس، حيفا، رام الله..." 
+                    required 
+                    value={formData.city}
+                    onChange={(e) => setFormData({...formData, city: e.target.value})}
+                    style={{ width: '100%', padding: '14px', border: '1px solid var(--border-light)', borderRadius: '4px', background: 'var(--bg-white)', color: 'var(--text-dark)' }} 
+                  />
                 </div>
 
                 {/* Payment Methods */}

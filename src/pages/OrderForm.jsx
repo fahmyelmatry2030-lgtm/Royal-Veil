@@ -79,7 +79,7 @@ const OrderForm = () => {
         badge="Checkout"
         title="إتمام الطلب"
         subtitle="يرجى إدخال بياناتك لتأكيد الطلب وسنقوم بالتواصل معكِ لتأكيد الموعد والتسليم."
-        bgImage="/Images/IMG-20260429-WA0018.jpg"
+        bgImage="/Images/happy_customer.png"
       />
 
       <section style={{ padding: '6rem 0' }}>

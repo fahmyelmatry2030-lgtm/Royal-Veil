@@ -4,6 +4,8 @@ import { Send, CheckCircle2 } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
 
+import { storage } from '../utils/storage';
+
 const CustomOrderForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -25,6 +27,19 @@ const CustomOrderForm = () => {
       'baby': 'ملابس أطفال'
     };
 
+    // 1. Save to Local Storage for Admin Dashboard
+    storage.saveOrder({
+      product: `تفصيل: ${categoryMap[formData.category]}`,
+      price: 'قيد التسعير',
+      fullName: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      details: formData.details,
+      sizes: formData.sizes,
+      total: 0
+    });
+
+    // 2. Prepare WhatsApp Message
     const message = `*طلب تفصيل جديد*
 --------------------------
 *الاسم:* ${formData.fullName}
@@ -52,7 +67,7 @@ ${formData.sizes || 'طلب مساعدة'}`;
           <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '16px' }}>
             تم إرسال طلب التفصيل الخاص بكِ بنجاح عبر الواتساب. سيقوم فريق المصممين لدينا بالرد عليكِ قريباً.
           </p>
-          <button onClick={() => setSubmitted(false)} style={{ marginTop: '3rem', background: '#000', color: '#fff', padding: '16px 40px', fontWeight: '700', borderRadius: '2px', border: 'none' }}>إرسال طلب آخر</button>
+          <button onClick={() => setSubmitted(false)} style={{ marginTop: '3rem', background: '#000', color: '#fff', padding: '16px 40px', fontWeight: '700', borderRadius: '20px', border: 'none' }}>إرسال طلب آخر</button>
         </div>
       </div>
     );
@@ -94,7 +109,7 @@ ${formData.sizes || 'طلب مساعدة'}`;
                 </div>
              </div>
 
-             <div style={{ background: 'var(--bg-lavender)', padding: '4rem', borderRadius: '4px', border: '1px solid var(--border-light)' }}>
+             <div style={{ background: 'var(--bg-lavender)', padding: '4rem', borderRadius: '20px', border: '1px solid var(--border-light)' }}>
                 <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '2.5rem' }}>تفاصيل الطلب</h3>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, 
@@ -26,46 +26,19 @@ import {
   Mail,
   MessageSquare,
   MoreVertical,
-  UserPlus
+  UserPlus,
+  PhoneCall
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
+import { storage } from '../utils/storage';
 
-// ─── Mock Data ───
-const salesData = [
-  { name: 'يناير', sales: 4000, revenue: 2400 },
-  { name: 'فبراير', sales: 3000, revenue: 1398 },
-  { name: 'مارس', sales: 2000, revenue: 9800 },
-  { name: 'أبريل', sales: 2780, revenue: 3908 },
-  { name: 'مايو', sales: 1890, revenue: 4800 },
-  { name: 'يونيو', sales: 2390, revenue: 3800 },
-];
-
-const categoryData = [
-  { name: 'فساتين سهرة', value: 400 },
-  { name: 'عبايات', value: 300 },
-  { name: 'أطقم كاجوال', value: 300 },
-  { name: 'ملابس أطفال', value: 200 },
-];
-
-const messagesData = [
-  { id: 1, sender: 'ليلى أحمد', email: 'layla@example.com', subject: 'طلب فستان مخصص', date: 'منذ ساعتين', status: 'unread', msg: 'أهلاً، أود الاستفسار عن إمكانية تفصيل فستان زفاف دانتيل بمقاسات خاصة...' },
-  { id: 2, sender: 'سارة محمد', email: 'sara@example.com', subject: 'استفسار عن التوصيل', date: 'منذ ٥ ساعات', status: 'read', msg: 'متى يتوقع وصول طلبي رقم #1023؟' },
-  { id: 3, sender: 'نور الهدى', email: 'nour@example.com', subject: 'شكراً لكم', date: 'أمس', status: 'read', msg: 'وصل الفستان اليوم، الجودة رائعة جداً والتطريز متقن. شكراً!' },
-];
-
-const customersData = [
-  { id: 1, name: 'مريم علي', email: 'mariam@example.com', phone: '+972 59-123-4567', orders: 5, totalSpent: '١٢,٥٠٠ شيكل', lastOrder: '٢٠٢٤/٠٤/٢٨' },
-  { id: 2, name: 'رنا يوسف', email: 'rana@example.com', phone: '+972 59-987-6543', orders: 2, totalSpent: '٤,٢٠٠ شيكل', lastOrder: '٢٠٢٤/٠٤/٢٥' },
-  { id: 3, name: 'هبة القواسمي', email: 'heba@example.com', phone: '+972 52-444-5566', orders: 12, totalSpent: '٣٥,٠٠٠ شيكل', lastOrder: '٢٠٢٤/٠٤/٣٠' },
-];
-
+// ─── Constants ───
 const COLORS = ['#B19CD9', '#D4AF37', '#5D3E8B', '#A084CA'];
 
 // ─── Components ───
-
 const StatCard = ({ title, value, icon, trend, color, isUp }) => (
   <motion.div 
     whileHover={{ y: -5 }}
@@ -94,9 +67,42 @@ const AdminDashboard = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const navigate = useNavigate();
 
+  // Data State
+  const [orders, setOrders] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [subscribers, setSubscribers] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Load Real Data
+    setOrders(storage.getOrders());
+    setMessages(storage.getMessages());
+    setCustomers(storage.getCustomers());
+    setSubscribers(storage.getSubscribers());
+    setProducts(storage.getProducts());
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem('isAdmin');
     navigate('/login');
+  };
+
+  const deleteMessage = (id) => {
+    const updated = messages.filter(m => m.id !== id);
+    setMessages(updated);
+    localStorage.setItem('rv_messages', JSON.stringify(updated));
+  };
+
+  const deleteOrder = (id) => {
+    const updated = orders.filter(o => o.id !== id);
+    setOrders(updated);
+    localStorage.setItem('rv_orders', JSON.stringify(updated));
+  };
+
+  const deleteProduct = (id) => {
+    storage.deleteProduct(id);
+    setProducts(storage.getProducts());
   };
 
   // Sub-Pages Rendering
@@ -106,47 +112,33 @@ const AdminDashboard = () => {
         return (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginBottom: '30px' }}>
-              <StatCard title="إجمالي المبيعات" value="٤٥,٨٠٠ شيكل" icon={<DollarSign size={20} />} trend="١٢.٥٪" color="var(--primary-purple)" isUp={true} />
-              <StatCard title="الطلبات النشطة" value="٢٤" icon={<ShoppingBag size={20} />} trend="٥.٢٪" color="var(--accent-gold)" isUp={true} />
-              <StatCard title="العملاء الجدد" value="١٥٦" icon={<Users size={20} />} trend="٣.١٪" color="#4CAF50" isUp={false} />
-              <StatCard title="متوسط قيمة الطلب" value="١,٢٠٠ شيكل" icon={<TrendingUp size={20} />} trend="٨.٤٪" color="#5D3E8B" isUp={true} />
+              <StatCard title="إجمالي المبيعات" value={`${orders.reduce((sum, o) => sum + (parseInt(o.total) || 0), 0)} شيكل`} icon={<DollarSign size={20} />} trend="١٢.٥٪" color="var(--primary-purple)" isUp={true} />
+              <StatCard title="الطلبات النشطة" value={orders.length} icon={<ShoppingBag size={20} />} trend="٥.٢٪" color="var(--accent-gold)" isUp={true} />
+              <StatCard title="العملاء" value={customers.length} icon={<Users size={20} />} trend="٣.١٪" color="#4CAF50" isUp={true} />
+              <StatCard title="المشتركات" value={subscribers.length} icon={<Bell size={20} />} trend="٨.٤٪" color="#5D3E8B" isUp={true} />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px', marginBottom: '30px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px', marginBottom: '30px' }}>
               <div style={{ background: '#fff', padding: '24px', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px', color: '#2d3436' }}>إحصائيات المبيعات الأسبوعية</h3>
-                <div style={{ height: '300px', width: '100%' }}>
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={salesData}>
-                      <defs>
-                        <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="var(--primary-purple)" stopOpacity={0.1}/>
-                          <stop offset="95%" stopColor="var(--primary-purple)" stopOpacity={0}/>
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                      <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} dy={10} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} />
-                      <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} />
-                      <Area type="monotone" dataKey="revenue" stroke="var(--primary-purple)" strokeWidth={3} fillOpacity={1} fill="url(#colorSales)" />
-                    </AreaChart>
-                  </ResponsiveContainer>
+                <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px', color: '#2d3436' }}>الطلبات الأخيرة</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                   {orders.slice(0, 5).map(order => (
+                     <div key={order.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', borderBottom: '1px solid #f9f9f9' }}>
+                        <div>
+                          <p style={{ fontWeight: '700', fontSize: '14px' }}>{order.fullName}</p>
+                          <p style={{ fontSize: '12px', color: '#888' }}>{order.product}</p>
+                        </div>
+                        <p style={{ fontWeight: '800', color: 'var(--primary-purple)' }}>{order.total} ₪</p>
+                     </div>
+                   ))}
                 </div>
               </div>
 
               <div style={{ background: '#fff', padding: '24px', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px', color: '#2d3436' }}>توزيع الفئات</h3>
-                <div style={{ height: '300px', width: '100%' }}>
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie data={categoryData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
-                        {categoryData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                    </PieChart>
-                  </ResponsiveContainer>
+                <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px', color: '#2d3436' }}>توزيع الرسائل</h3>
+                <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                   <MessageSquare size={40} color="var(--primary-purple)" style={{ opacity: 0.3, marginBottom: '15px' }} />
+                   <p style={{ color: '#888' }}>لديك {messages.filter(m => m.status === 'unread').length} رسالة غير مقروءة</p>
                 </div>
               </div>
             </div>
@@ -158,43 +150,46 @@ const AdminDashboard = () => {
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
               <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>إدارة الطلبات</h2>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', background: '#fff', border: '1px solid #ddd', borderRadius: '8px', fontSize: '14px', cursor: 'pointer' }}>
-                  <Filter size={18} /> تصفية
-                </button>
-                <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', background: 'var(--primary-purple)', border: 'none', borderRadius: '8px', fontSize: '14px', color: '#fff', cursor: 'pointer' }}>
-                  <Download size={18} /> تصدير تقرير
-                </button>
-              </div>
+              <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', background: 'var(--primary-purple)', border: 'none', borderRadius: '8px', fontSize: '14px', color: '#fff', cursor: 'pointer' }}>
+                <Download size={18} /> تصدير الطلبات
+              </button>
             </div>
             <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
                 <thead style={{ background: '#fafafa' }}>
                   <tr>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>رقم الطلب</th>
                     <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>العميل</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>التاريخ</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>السعر</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>المنتج</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>العنوان</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الإجمالي</th>
                     <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الحالة</th>
                     <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {[1,2,3,4,5].map(i => (
-                    <tr key={i} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                      <td style={{ padding: '16px', fontWeight: '600' }}>#102{i}</td>
-                      <td style={{ padding: '16px' }}>عميل رقم {i}</td>
-                      <td style={{ padding: '16px', color: '#777' }}>٢٠٢٤/٠٤/٣٠</td>
-                      <td style={{ padding: '16px', fontWeight: '700' }}>٢,٥٠٠ شيكل</td>
-                      <td style={{ padding: '16px' }}><span style={{ padding: '4px 12px', borderRadius: '50px', fontSize: '12px', fontWeight: '700', background: '#E8F5E9', color: '#4CAF50' }}>مكتمل</span></td>
+                  {orders.length > 0 ? orders.map(order => (
+                    <tr key={order.id} style={{ borderBottom: '1px solid #f0f0f0' }}>
+                      <td style={{ padding: '16px' }}>
+                         <div style={{ fontWeight: '700' }}>{order.fullName}</div>
+                         <div style={{ fontSize: '12px', color: '#888' }}>{order.phone}</div>
+                      </td>
+                      <td style={{ padding: '16px', maxWidth: '200px' }}>{order.product}</td>
+                      <td style={{ padding: '16px' }}>{order.area}</td>
+                      <td style={{ padding: '16px', fontWeight: '700', color: 'var(--primary-purple)' }}>{order.total} ₪</td>
+                      <td style={{ padding: '16px' }}>
+                         <span style={{ padding: '4px 12px', borderRadius: '50px', fontSize: '12px', fontWeight: '700', background: order.status === 'pending' ? '#FFF3E0' : '#E8F5E9', color: order.status === 'pending' ? '#E65100' : '#4CAF50' }}>
+                           {order.status === 'pending' ? 'بانتظار التأكيد' : 'مكتمل'}
+                         </span>
+                      </td>
                       <td style={{ padding: '16px' }}>
                         <div style={{ display: 'flex', gap: '8px' }}>
-                          <button style={{ color: 'var(--primary-purple)' }}><Edit size={18}/></button>
-                          <button style={{ color: '#ff4d4d' }}><Trash2 size={18}/></button>
+                          <button onClick={() => deleteOrder(order.id)} style={{ color: '#ff4d4d', background: 'none', border: 'none', cursor: 'pointer' }}><Trash2 size={18}/></button>
                         </div>
                       </td>
                     </tr>
-                  ))}
+                  )) : (
+                    <tr><td colSpan="6" style={{ padding: '40px', textAlign: 'center', color: '#888' }}>لا يوجد طلبات حالياً</td></tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -205,25 +200,34 @@ const AdminDashboard = () => {
         return (
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-              <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>قائمة المنتجات</h2>
-              <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', background: 'var(--primary-purple)', border: 'none', borderRadius: '12px', fontSize: '16px', color: '#fff', cursor: 'pointer', fontWeight: '700' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>إدارة المخزون</h2>
+              <button 
+                onClick={() => {
+                  const title = prompt('اسم المنتج:');
+                  const price = prompt('السعر:');
+                  if (title && price) {
+                    storage.saveProduct({ title, price });
+                    setProducts(storage.getProducts());
+                  }
+                }}
+                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', background: 'var(--primary-purple)', border: 'none', borderRadius: '12px', fontSize: '16px', color: '#fff', cursor: 'pointer', fontWeight: '700' }}
+              >
                 <PlusCircle size={20} /> إضافة منتج جديد
               </button>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
-              {[1,2,3,4].map(i => (
-                <div key={i} style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
-                  <div style={{ height: '200px', background: '#eee' }}></div>
+              {products.map(p => (
+                <div key={p.id} style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
                   <div style={{ padding: '20px' }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>منتج رقم {i}</h4>
-                    <p style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '18px', marginBottom: '15px' }}>١,٥٠٠ شيكل</p>
+                    <h4 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>{p.title}</h4>
+                    <p style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '18px', marginBottom: '15px' }}>{p.price} ₪</p>
                     <div style={{ display: 'flex', gap: '10px' }}>
-                      <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee' }}><Edit size={16}/></button>
-                      <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee' }}><Trash2 size={16} color="#ff4d4d"/></button>
+                      <button onClick={() => deleteProduct(p.id)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', color: '#ff4d4d', cursor: 'pointer' }}><Trash2 size={16}/></button>
                     </div>
                   </div>
                 </div>
               ))}
+              {products.length === 0 && <p style={{ gridColumn: '1/-1', textAlign: 'center', padding: '40px', color: '#888' }}>لا يوجد منتجات مضافة يدوياً. المنتجات الأساسية مشفرة في ملف المتجر.</p>}
             </div>
           </motion.div>
         );
@@ -231,41 +235,24 @@ const AdminDashboard = () => {
       case 'customers':
         return (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-              <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>قاعدة بيانات العملاء</h2>
-              <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', background: 'var(--accent-gold)', border: 'none', borderRadius: '12px', fontSize: '16px', color: '#1a0a2e', cursor: 'pointer', fontWeight: '700' }}>
-                <UserPlus size={20} /> إضافة عميل
-              </button>
-            </div>
+            <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>قاعدة بيانات العملاء</h2>
             <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
                 <thead style={{ background: '#fafafa' }}>
                   <tr>
                     <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الاسم</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الاتصال</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>رقم الهاتف</th>
                     <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الطلبات</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>إجمالي المشتريات</th>
                     <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>آخر طلب</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {customersData.map(c => (
+                  {customers.map(c => (
                     <tr key={c.id} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                      <td style={{ padding: '16px' }}>
-                        <div style={{ fontWeight: '700' }}>{c.name}</div>
-                        <div style={{ fontSize: '12px', color: '#888' }}>ID: #CUS-00{c.id}</div>
-                      </td>
-                      <td style={{ padding: '16px' }}>
-                        <div>{c.email}</div>
-                        <div style={{ fontSize: '12px', color: '#888' }}>{c.phone}</div>
-                      </td>
-                      <td style={{ padding: '16px', fontWeight: '600' }}>{c.orders} طلبات</td>
-                      <td style={{ padding: '16px', color: 'var(--primary-purple)', fontWeight: '800' }}>{c.totalSpent}</td>
+                      <td style={{ padding: '16px', fontWeight: '700' }}>{c.name}</td>
+                      <td style={{ padding: '16px' }}>{c.phone}</td>
+                      <td style={{ padding: '16px' }}>{c.orders} طلبات</td>
                       <td style={{ padding: '16px', color: '#777' }}>{c.lastOrder}</td>
-                      <td style={{ padding: '16px' }}>
-                        <button style={{ color: '#636e72' }}><MoreVertical size={18}/></button>
-                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -279,9 +266,8 @@ const AdminDashboard = () => {
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
             <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>رسائل تواصل العملاء</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              {messagesData.map(msg => (
+              {messages.length > 0 ? messages.map(msg => (
                 <div key={msg.id} style={{ background: '#fff', padding: '24px', borderRadius: '16px', border: '1px solid #f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
-                  {msg.status === 'unread' && <div style={{ position: 'absolute', top: '15px', right: '15px', width: '10px', height: '10px', background: '#ff4d4d', borderRadius: '50%' }}></div>}
                   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                     <div style={{ width: '50px', height: '50px', background: 'var(--bg-lavender)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-purple)' }}>
                       <Mail size={24} />
@@ -294,10 +280,29 @@ const AdminDashboard = () => {
                   </div>
                   <div style={{ textAlign: 'left' }}>
                     <p style={{ fontSize: '12px', color: '#aaa', marginBottom: '10px' }}>{msg.date}</p>
-                    <button style={{ padding: '8px 20px', background: 'var(--bg-lavender)', color: 'var(--primary-purple)', borderRadius: '8px', fontWeight: '700', border: 'none', cursor: 'pointer' }}>رد سريع</button>
+                    <button onClick={() => deleteMessage(msg.id)} style={{ color: '#ff4d4d', background: 'none', border: 'none', cursor: 'pointer' }}><Trash2 size={18}/></button>
                   </div>
                 </div>
-              ))}
+              )) : (
+                <div style={{ padding: '100px', textAlign: 'center', color: '#888' }}>لا توجد رسائل جديدة</div>
+              )}
+            </div>
+          </motion.div>
+        );
+
+      case 'subscribers':
+        return (
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+            <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>مشتركات النشرة الإخبارية</h2>
+            <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #f0f0f0', padding: '20px' }}>
+               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
+                  {subscribers.map((sub, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '15px', background: 'var(--bg-lavender)', borderRadius: '12px' }}>
+                       <PhoneCall size={18} color="var(--primary-purple)" />
+                       <span style={{ fontWeight: '700' }}>{sub}</span>
+                    </div>
+                  ))}
+               </div>
             </div>
           </motion.div>
         );
@@ -310,7 +315,7 @@ const AdminDashboard = () => {
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#fcfcfe', direction: 'rtl', fontFamily: 'var(--font-sans)' }}>
       
-      {/* ─── Sidebar ─── */}
+      {/* Sidebar */}
       <motion.aside initial={false} animate={{ width: isSidebarOpen ? '280px' : '90px' }} style={{ background: '#fff', boxShadow: '2px 0 20px rgba(0,0,0,0.03)', zIndex: 100, display: 'flex', flexDirection: 'column', position: 'sticky', top: 0, height: '100vh' }}>
         <div style={{ padding: '30px 24px', display: 'flex', alignItems: 'center', justifyContent: isSidebarOpen ? 'space-between' : 'center' }}>
           {isSidebarOpen && (
@@ -331,8 +336,7 @@ const AdminDashboard = () => {
             { id: 'products', icon: <Package size={20} />, label: 'المخزون' },
             { id: 'customers', icon: <Users size={20} />, label: 'العملاء' },
             { id: 'messages', icon: <MessageSquare size={20} />, label: 'الرسائل' },
-            { id: 'analytics', icon: <TrendingUp size={20} />, label: 'التقارير' },
-            { id: 'settings', icon: <Settings size={20} />, label: 'الإعدادات' },
+            { id: 'subscribers', icon: <Bell size={20} />, label: 'المشتركات' },
           ].map((item) => (
             <button key={item.id} onClick={() => setActiveTab(item.id)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', marginBottom: '5px', background: activeTab === item.id ? 'var(--primary-purple)' : 'transparent', borderRadius: '12px', color: activeTab === item.id ? '#fff' : '#636e72', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'right', fontWeight: activeTab === item.id ? '700' : '500' }}>
               <div style={{ opacity: activeTab === item.id ? 1 : 0.7 }}>{item.icon}</div>
@@ -349,40 +353,12 @@ const AdminDashboard = () => {
         </div>
       </motion.aside>
 
-      {/* ─── Main Content ─── */}
+      {/* Main Content */}
       <main style={{ flex: 1, padding: '30px', overflowX: 'hidden' }}>
-        
-        {/* Top Header */}
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-          <div style={{ position: 'relative' }}>
-            <Search size={20} style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
-            <input type="text" placeholder="ابحث هنا عن أي شيء..." style={{ padding: '12px 50px 12px 20px', borderRadius: '12px', border: '1px solid #eee', width: '350px', fontSize: '14px', outline: 'none', background: '#fff' }} />
-          </div>
+          <h1 style={{ fontSize: '20px', fontWeight: '900' }}>أهلاً بكِ في لوحة التحكم</h1>
           
           <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-            <div style={{ position: 'relative' }}>
-              <button onClick={() => setShowNotifications(!showNotifications)} style={{ background: '#fff', border: '1px solid #eee', width: '45px', height: '45px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--purple-dark)', cursor: 'pointer' }}>
-                <Bell size={20} />
-                <div style={{ position: 'absolute', top: '10px', right: '10px', width: '8px', height: '8px', background: '#ff4d4d', borderRadius: '50%', border: '2px solid #fff' }}></div>
-              </button>
-              <AnimatePresence>
-                {showNotifications && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} style={{ position: 'absolute', top: '60px', left: 0, width: '300px', background: '#fff', borderRadius: '16px', boxShadow: '0 10px 40px rgba(0,0,0,0.1)', border: '1px solid #eee', padding: '15px', zIndex: 1000 }}>
-                    <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '15px', paddingBottom: '10px', borderBottom: '1px solid #eee' }}>الإشعارات</h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                        <div style={{ width: '8px', height: '8px', background: 'var(--primary-purple)', borderRadius: '50%' }}></div>
-                        <p style={{ fontSize: '13px' }}>طلب جديد رقم <b>#1024</b> بانتظار المراجعة.</p>
-                      </div>
-                      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                        <div style={{ width: '8px', height: '8px', background: 'var(--primary-purple)', borderRadius: '50%' }}></div>
-                        <p style={{ fontSize: '13px' }}>لديك رسالة جديدة من <b>ليلى أحمد</b>.</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
             <div style={{ textAlign: 'left' }}>
               <p style={{ fontSize: '14px', fontWeight: '800', color: '#2d3436' }}>المدير العام</p>
               <p style={{ fontSize: '11px', color: '#b2bec3' }}>متصل الآن</p>
@@ -391,11 +367,9 @@ const AdminDashboard = () => {
           </div>
         </header>
 
-        {/* Tab Content */}
         <AnimatePresence mode="wait">
           {renderContent()}
         </AnimatePresence>
-
       </main>
     </div>
   );

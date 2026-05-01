@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { storage } from '../utils/storage';
+
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Star, Sparkles, Quote, Crown, Scissors, Gem, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
@@ -53,10 +55,20 @@ const HomeFAQItem = ({ q, a, i }) => {
 const Home = () => {
   const collectionsRef = React.useRef(null);
   const productsRef = React.useRef(null);
+  const [phone, setPhone] = useState('');
 
   const scroll = (ref, direction) => {
     if (ref.current) {
       ref.current.scrollBy({ left: direction === 'left' ? -350 : 350, behavior: 'smooth' });
+    }
+  };
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (phone) {
+      storage.addSubscriber(phone);
+      alert('شكراً لاشتراككِ في نادي الأناقة!');
+      setPhone('');
     }
   };
 
@@ -241,8 +253,8 @@ const Home = () => {
             <p style={{ color: 'var(--text-muted)', fontSize: '16px', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.8 }}>
               سجلي رقم هاتفك لتكوني أول من يكتشف مجموعاتنا الحصرية وعروضنا السرية.
             </p>
-            <form style={{ display: 'flex', maxWidth: '500px', margin: '0 auto', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }} onSubmit={(e) => e.preventDefault()}>
-              <input type="tel" placeholder="أدخلي رقم هاتفك هنا..." dir="rtl" style={{ flex: '1 1 250px', padding: '16px 25px', borderRadius: '20px', border: '1px solid var(--border-light)', background: 'var(--bg-white)', color: 'var(--text-dark)', outline: 'none' }} />
+            <form style={{ display: 'flex', maxWidth: '500px', margin: '0 auto', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }} onSubmit={handleSubscribe}>
+              <input type="tel" placeholder="أدخلي رقم هاتفك هنا..." dir="rtl" value={phone} onChange={(e) => setPhone(e.target.value)} style={{ flex: '1 1 250px', padding: '16px 25px', borderRadius: '20px', border: '1px solid var(--border-light)', background: 'var(--bg-white)', color: 'var(--text-dark)', outline: 'none' }} />
               <button type="submit" style={{ background: 'var(--accent-gold)', color: '#000', padding: '16px 40px', fontWeight: '800', borderRadius: '20px', border: 'none', cursor: 'pointer', flex: '0 0 auto' }}>اشتراك</button>
             </form>
           </div>

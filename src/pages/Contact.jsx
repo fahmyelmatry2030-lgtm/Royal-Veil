@@ -5,6 +5,8 @@ import { Mail, Phone, MapPin, Camera, Share2, Send } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
 
+import { storage } from '../utils/storage';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -15,6 +17,16 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 1. Save to Local Storage for Admin Dashboard
+    storage.saveMessage({
+      sender: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      msg: formData.message
+    });
+
+    // 2. Prepare WhatsApp Message
     const waMessage = `*رسالة جديدة من الموقع*
 --------------------------
 *الاسم:* ${formData.name}
@@ -94,11 +106,11 @@ ${formData.message}`;
             </div>
 
             {/* Contact Form */}
-            <div style={{ background: 'var(--bg-lavender)', padding: '4rem', borderRadius: '4px', border: '1px solid var(--border-light)' }}>
+            <div style={{ background: 'var(--bg-lavender)', padding: '4rem', borderRadius: '20px', border: '1px solid var(--border-light)' }}>
               <h3 style={{ fontSize: '24px', fontWeight: '800', marginBottom: '2.5rem', color: 'var(--primary-purple)' }}>أرسلي لنا رسالة</h3>
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div>
-                  <input type="text" placeholder="الاسم الكامل" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid var(--border-light)', borderRadius: '2px', background: 'var(--bg-white)', color: 'var(--text-dark)' }} />
+                  <input type="text" placeholder="الاسم الكامل" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid var(--border-light)', borderRadius: '20px', background: 'var(--bg-white)', color: 'var(--text-dark)' }} />
                 </div>
                 <div>
                   <input type="email" placeholder="البريد الإلكتروني" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{ width: '100%', padding: '14px', border: '1px solid var(--border-light)', borderRadius: '2px', background: 'var(--bg-white)', color: 'var(--text-dark)' }} />

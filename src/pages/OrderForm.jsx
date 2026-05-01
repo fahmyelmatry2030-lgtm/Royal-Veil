@@ -5,6 +5,8 @@ import { Send, MapPin, Phone, User, ShoppingBag, Truck } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
 
+import { storage } from '../utils/storage';
+
 const OrderForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,6 +38,19 @@ const OrderForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    // 1. Save to Local Storage for Admin Dashboard
+    storage.saveOrder({
+      product: productName,
+      price: productPrice,
+      fullName: formData.fullName,
+      phone: formData.phone,
+      area: formData.area,
+      address: formData.address,
+      notes: formData.notes,
+      total: (parseInt(productPrice) || 0) + shippingCost
+    });
+
+    // 2. Prepare WhatsApp Message
     const message = `*طلب جديد من الموقع*
 --------------------------
 *المنتج:* ${productName}
@@ -72,7 +87,7 @@ const OrderForm = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem' }}>
             
             {/* Order Summary */}
-            <div style={{ background: 'var(--bg-lavender)', padding: '3rem', borderRadius: '8px', border: '1px solid var(--border-light)', height: 'fit-content' }}>
+            <div style={{ background: 'var(--bg-lavender)', padding: '3rem', borderRadius: '20px', border: '1px solid var(--border-light)', height: 'fit-content' }}>
               <SectionHeader badge="Summary" title="ملخص الطلب" right />
               
               <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '2rem', padding: '20px', background: 'var(--purple-light)', borderRadius: '4px' }}>
@@ -109,7 +124,7 @@ const OrderForm = () => {
             </div>
 
             {/* Customer Form */}
-            <div style={{ background: 'var(--bg-lavender)', padding: '3rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+            <div style={{ background: 'var(--bg-lavender)', padding: '3rem', borderRadius: '20px', border: '1px solid var(--border-light)' }}>
               <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '2.5rem' }}>بيانات التسليم</h3>
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 

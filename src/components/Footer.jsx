@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Camera, Share2, Globe, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { storage } from '../utils/storage';
 
 const Footer = () => {
   return (
@@ -68,16 +69,27 @@ const Footer = () => {
           <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
             <h4 style={{ fontSize: '22px', fontWeight: '900', marginBottom: '15px', color: 'var(--primary-purple)' }}>انضمي إلى عالمنا</h4>
             <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '30px' }}>سجلي رقم هاتفك ليصلكِ أحدث مجموعاتنا الحصرية وعروضنا الخاصة.</p>
-            <form style={{ display: 'flex', gap: '10px' }}>
+            <form 
+              style={{ display: 'flex', gap: '10px' }}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const phone = e.target.elements[0].value;
+                if (phone) {
+                  storage.addSubscriber(phone);
+                  alert('شكراً لاشتراككِ!');
+                  e.target.reset();
+                }
+              }}
+            >
               <input 
                 type="tel" 
                 placeholder="رقم الهاتف" 
                 dir="rtl"
-                style={{ flex: 1, padding: '14px 20px', border: '1px solid var(--border-light)', borderRadius: '2px', outline: 'none' }}
+                style={{ flex: 1, padding: '14px 20px', border: '1px solid var(--border-light)', borderRadius: '20px', outline: 'none' }}
               />
               <button style={{ 
                 background: 'var(--primary-purple)', color: 'var(--text-light)', padding: '0 30px', 
-                fontWeight: '700', borderRadius: '2px', border: 'none', 
+                fontWeight: '700', borderRadius: '20px', border: 'none', 
                 display: 'flex', alignItems: 'center', gap: '8px' 
               }}>
                 اشتراك <Send size={16} />

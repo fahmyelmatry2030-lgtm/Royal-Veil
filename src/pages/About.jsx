@@ -192,7 +192,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Quote Section - Updated with requested text */}
+      {/* Quote Section */}
       <section style={{ padding: '8rem 0', background: 'linear-gradient(135deg, var(--purple-dark), #1a0a2e)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(177,156,217,0.1) 0%, transparent 60%), radial-gradient(circle at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 60%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
@@ -206,40 +206,78 @@ const About = () => {
         </div>
       </section>
 
-      {/* Vision & Mission Banner */}
-      <section style={{ padding: '12rem 0', background: 'var(--purple-dark)', position: 'relative', overflow: 'hidden' }}>
-         <div style={{ position: 'absolute', inset: 0, opacity: 0.15, backgroundImage: 'url("/Images/IMG-20260429-WA0015.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
-         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '7rem' }}>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem' }}>
-                  <Eye size={30} color="var(--accent-gold)" />
-                  <h3 style={{ color: 'var(--accent-gold)', fontSize: '30px', fontWeight: '900', fontFamily: 'var(--font-serif)' }}>رؤيتنا</h3>
-                </div>
-                <p style={{ color: '#fff', fontSize: '22px', lineHeight: '2', opacity: 0.95, fontWeight: '500' }}>
-                  أن نكون المنارة العالمية للأناقة التي تجمع بين سحر الشرق وأصالة التراث وعصرية التصميم، متمكنين من وضع بصمة فلسطينية في كل خزانة أزياء راقية حول العالم.
-                </p>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem' }}>
-                  <Target size={30} color="var(--accent-gold)" />
-                  <h3 style={{ color: 'var(--accent-gold)', fontSize: '30px', fontWeight: '900', fontFamily: 'var(--font-serif)' }}>رسالتنا</h3>
-                </div>
-                <p style={{ color: '#fff', fontSize: '22px', lineHeight: '2', opacity: 0.95, fontWeight: '500' }}>
-                  تمكين المرأة الفلسطينية اقتصادياً واجتماعياً من خلال الحفاظ على حرفة التطريز وتطويرها، وتقديم منتجات استثنائية تعكس فخرنا بجذورنا وتطلعنا للمستقبل.
-                </p>
-              </motion.div>
-            </div>
-         </div>
+      {/* Vision & Mission & Objectives */}
+      <section style={{ padding: '10rem 0', background: 'var(--bg-lavender)' }}>
+        <div className="container">
+          <SectionHeader badge="Vision & Mission" title="رؤيتنا وأهدافنا" subtitle="نسعى نحو غد أفضل لصناعة الأزياء الفلسطينية على الصعيدين المحلي والعالمي." />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '3rem' }}>
+            {/* Vision & Mission */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              style={{ background: '#fff', padding: '4rem', border: '1px solid var(--border-light)', borderRadius: '24px', boxShadow: 'var(--shadow-sm)' }}
+            >
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '2.5rem' }}>
+                 <div style={{ width: '54px', height: '54px', background: 'var(--purple-light)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Eye size={28} color="var(--primary-purple)" />
+                 </div>
+                 <h3 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-dark)' }}>رؤيتنا</h3>
+              </div>
+              <p style={{ color: 'var(--text-muted)', lineHeight: '2', fontSize: '17px', marginBottom: '3rem' }}>
+                أن نكون المنارة العالمية للأناقة التي تجمع بين سحر الشرق وأصالة التراث وعصرية التصميم، متمكنين من وضع بصمة فلسطينية في كل خزانة أزياء راقية.
+              </p>
+              
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '2.5rem' }}>
+                 <div style={{ width: '54px', height: '54px', background: 'var(--purple-light)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Target size={28} color="var(--primary-purple)" />
+                 </div>
+                 <h3 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-dark)' }}>رسالتنا</h3>
+              </div>
+              <p style={{ color: 'var(--text-muted)', lineHeight: '2', fontSize: '17px' }}>
+                تمكين المرأة الفلسطينية اقتصادياً واجتماعياً من خلال الحفاظ على حرفة التطريز وتطويرها، وتقديم منتجات استثنائية تعكس فخرنا بجذورنا.
+              </p>
+            </motion.div>
+
+            {/* Objectives - As seen in screenshot */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              style={{ background: '#fff', padding: '4rem', border: '1px solid var(--border-light)', borderRadius: '24px', boxShadow: 'var(--shadow-sm)' }}
+            >
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '3rem' }}>
+                 <div style={{ width: '54px', height: '54px', background: 'var(--purple-light)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Sparkles size={28} color="var(--primary-purple)" />
+                 </div>
+                 <h3 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-dark)' }}>أهدافنا</h3>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                {[
+                  'إنتاج تصاميم عالمية بجودة تنافسية',
+                  'دعم وتمكين الحرفيات في المجتمع المحلي',
+                  'الحفاظ على الهوية الفلسطينية في قالب عصري',
+                  'مساعدة المصممين لدخول إلى سوق العمل',
+                ].map((goal, i) => (
+                  <li key={i} style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', color: 'var(--text-muted)', fontSize: '17px', lineHeight: 1.6 }}>
+                    <span style={{ color: 'var(--accent-gold)', fontSize: '20px', flexShrink: 0, marginTop: '2px' }}>◆</span>
+                    {goal}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Values */}
-      <section style={{ padding: '10rem 0', background: 'var(--bg-lavender)' }}>
+      <section style={{ padding: '10rem 0', background: 'var(--bg-white)' }}>
         <div className="container">
           <SectionHeader 
             badge="VALUES" 
-            title="ما نؤمن به" 
-            subtitle="القيم التي توجهنا في رحلة صناعة الجمال والتمكين."
+            title="قيمنا الراسخة" 
+            subtitle="المبادئ التي تحكم كل خطوة في مسيرتنا نحو التميز والإبداع."
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3.5rem' }}>
             {values.map((v, i) => (
@@ -251,16 +289,15 @@ const About = () => {
                 transition={{ delay: i * 0.15 }}
                 whileHover={{ y: -10, boxShadow: '0 20px 60px rgba(0,0,0,0.08)' }}
                 style={{ 
-                  background: '#fff', 
+                  background: 'var(--bg-lavender)', 
                   padding: '4rem 3rem', 
                   borderRadius: '32px', 
-                  boxShadow: 'var(--shadow-md)',
                   textAlign: 'center',
                   transition: 'all 0.4s'
                 }}
               >
                 <div style={{ color: 'var(--primary-purple)', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-                  <div style={{ padding: '20px', background: 'var(--bg-lavender)', borderRadius: '24px' }}>{v.icon}</div>
+                  <div style={{ padding: '20px', background: '#fff', borderRadius: '24px' }}>{v.icon}</div>
                 </div>
                 <h4 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '1.5rem', color: 'var(--text-dark)' }}>{v.title}</h4>
                 <p style={{ color: 'var(--text-muted)', lineHeight: '2', fontSize: '16px' }}>{v.desc}</p>
@@ -271,21 +308,13 @@ const About = () => {
       </section>
 
       {/* Final CTA */}
-      <section style={{ padding: '10rem 0', textAlign: 'center', position: 'relative' }}>
+      <section style={{ padding: '10rem 0', textAlign: 'center', background: 'var(--purple-dark)', color: '#fff' }}>
         <div className="container">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }} 
-            whileInView={{ opacity: 1, scale: 1 }} 
-            viewport={{ once: true }}
-            style={{ maxWidth: '900px', margin: '0 auto' }}
-          >
-            <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: '900', marginBottom: '2.5rem', fontFamily: 'var(--font-serif)', color: 'var(--text-dark)' }}>هل أنتِ جاهزة لتكوني جزءاً من قصتنا؟</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '20px', marginBottom: '4rem', lineHeight: 1.8 }}>
-               سواء كنتِ عميلة تبحثين عن التميز، أو شريكاً في النجاح، نحن هنا لنصنع الجمال معاً.
-            </p>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: '900', marginBottom: '2.5rem', fontFamily: 'var(--font-serif)' }}>هل أنتِ جاهزة لتكوني جزءاً من قصتنا؟</h2>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '25px', flexWrap: 'wrap' }}>
               <Link to="/shop" className="btn-premium" style={{ padding: '20px 60px', fontSize: '18px' }}>ابدئي التسوق</Link>
-              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', color: 'var(--primary-purple)', fontWeight: '900', border: '2.5px solid var(--primary-purple)', padding: '18px 55px', borderRadius: '50px', textDecoration: 'none', fontSize: '18px' }}>اتصلي بنا</Link>
+              <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', color: '#fff', fontWeight: '900', border: '2.5px solid #fff', padding: '18px 55px', borderRadius: '50px', textDecoration: 'none', fontSize: '18px' }}>اتصلي بنا</Link>
             </div>
           </motion.div>
         </div>

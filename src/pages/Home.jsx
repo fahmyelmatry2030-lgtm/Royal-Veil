@@ -211,22 +211,8 @@ const Home = () => {
       {/* Trending Now Slider */}
       <section style={{ padding: '8rem 0', background: 'var(--bg-white)', overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '5rem', flexWrap: 'wrap', gap: '20px' }}>
-            <SectionHeader badge="Trending Now" title="القطع الأكثر طلباً" subtitle="اكتشفي الإبداعات التي خطفت قلوب عميلاتنا هذا الموسم." right style={{ marginBottom: 0 }} />
-            <div style={{ display: 'flex', gap: '15px', paddingBottom: '15px' }}>
-              <button onClick={() => {
-                const el = document.getElementById('trending-slider');
-                el.scrollBy({ left: 300, behavior: 'smooth' });
-              }} style={{ background: 'var(--bg-lavender)', border: 'none', borderRadius: '50%', width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--primary-purple)' }}>
-                <ChevronRight size={22} />
-              </button>
-              <button onClick={() => {
-                const el = document.getElementById('trending-slider');
-                el.scrollBy({ left: -300, behavior: 'smooth' });
-              }} style={{ background: 'var(--bg-lavender)', border: 'none', borderRadius: '50%', width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--primary-purple)' }}>
-                <ChevronLeft size={22} />
-              </button>
-            </div>
+          <div style={{ marginBottom: '5rem' }}>
+            <SectionHeader badge="Trending Now" title="القطع الأكثر طلباً" subtitle="اكتشفي الإبداعات التي خطفت قلوب عميلاتنا هذا الموسم." right />
           </div>
           
           <div 
@@ -257,8 +243,23 @@ const Home = () => {
             ))}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/shop" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '30px', marginTop: '3rem' }}>
+            <div style={{ display: 'flex', gap: '20px' }}>
+              <button onClick={() => {
+                const el = document.getElementById('trending-slider');
+                el.scrollBy({ left: 300, behavior: 'smooth' });
+              }} style={{ background: 'var(--bg-lavender)', border: 'none', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--primary-purple)', boxShadow: 'var(--shadow-sm)' }}>
+                <ChevronRight size={24} />
+              </button>
+              <button onClick={() => {
+                const el = document.getElementById('trending-slider');
+                el.scrollBy({ left: -300, behavior: 'smooth' });
+              }} style={{ background: 'var(--bg-lavender)', border: 'none', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--primary-purple)', boxShadow: 'var(--shadow-sm)' }}>
+                <ChevronLeft size={24} />
+              </button>
+            </div>
+            
+            <Link to="/shop" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', background: 'var(--bg-lavender)', padding: '12px 40px', borderRadius: '50px' }}>
               عرض المجموعة كاملة <ArrowLeft size={18} />
             </Link>
           </div>

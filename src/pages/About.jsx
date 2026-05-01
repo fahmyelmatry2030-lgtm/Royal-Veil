@@ -13,7 +13,7 @@ const stats = [
 ];
 
 const milestones = [
-  { year: '2009', title: 'البداية الأولى', desc: 'تأسست نواة الجمعية من مجموعة صغيرة من الحرفيات المتحمسات لإحياء الزي الفلسطيني.' },
+  { year: '2025', title: 'البداية الأولى', desc: 'تأسست نواة الجمعية من مجموعة صغيرة من الحرفيات المتحمسات لإحياء الزي الفلسطيني.' },
   { year: '2014', title: 'أول معرض دولي', desc: 'شاركنا في معرض الحرف اليدوية الدولي وحصدنا إشادة واسعة على مستوى المنطقة.' },
   { year: '2018', title: 'توسعة المشاغل', desc: 'افتتحنا مشاغل تدريب مجهزة لاستقبال حرفيات جدد وتطوير مهاراتهن.' },
   { year: '2024', title: 'الطرحة الملكية', desc: 'إطلاق العلامة التجارية Royal Veil ودمج الهوية التراثية بمنصة رقمية عصرية.' },
@@ -192,7 +192,7 @@ const About = () => {
                 border: '4px solid #fff'
               }}>
                 <span style={{ fontSize: '26px', fontWeight: '900', color: '#1a102e', lineHeight: 1 }}>منذ</span>
-                <span style={{ fontSize: '34px', fontWeight: '900', color: '#1a102e', lineHeight: 1.2 }}>2009</span>
+                <span style={{ fontSize: '34px', fontWeight: '900', color: '#1a102e', lineHeight: 1.2 }}>2025</span>
               </div>
             </motion.div>
           </div>

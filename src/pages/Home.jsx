@@ -208,21 +208,59 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Trending Now */}
-      <section style={{ padding: '8rem 0', background: 'var(--bg-white)' }}>
+      {/* Trending Now Slider */}
+      <section style={{ padding: '8rem 0', background: 'var(--bg-white)', overflow: 'hidden' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '5rem', flexWrap: 'wrap', gap: '20px' }}>
             <SectionHeader badge="Trending Now" title="القطع الأكثر طلباً" subtitle="اكتشفي الإبداعات التي خطفت قلوب عميلاتنا هذا الموسم." right style={{ marginBottom: 0 }} />
-            <Link to="/shop" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', paddingBottom: '15px' }}>
-              عرض المجموعة كاملة <ArrowLeft size={18} />
-            </Link>
+            <div style={{ display: 'flex', gap: '15px', paddingBottom: '15px' }}>
+              <button onClick={() => {
+                const el = document.getElementById('trending-slider');
+                el.scrollBy({ left: 300, behavior: 'smooth' });
+              }} style={{ background: 'var(--bg-lavender)', border: 'none', borderRadius: '50%', width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--primary-purple)' }}>
+                <ChevronRight size={22} />
+              </button>
+              <button onClick={() => {
+                const el = document.getElementById('trending-slider');
+                el.scrollBy({ left: -300, behavior: 'smooth' });
+              }} style={{ background: 'var(--bg-lavender)', border: 'none', borderRadius: '50%', width: '45px', height: '45px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--primary-purple)' }}>
+                <ChevronLeft size={22} />
+              </button>
+            </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1.5rem', justifyItems: 'center' }}>
+          
+          <div 
+            id="trending-slider"
+            style={{ 
+              display: 'flex', 
+              overflowX: 'auto', 
+              gap: '2rem', 
+              paddingBottom: '2rem', 
+              msOverflowStyle: 'none', 
+              scrollbarWidth: 'none', 
+              scrollSnapType: 'x mandatory',
+              paddingRight: '1rem'
+            }} 
+            className="hide-scrollbar"
+          >
             {featuredProducts.map((p, i) => (
-              <motion.div key={p.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <motion.div 
+                key={p.id} 
+                initial={{ opacity: 0, x: 30 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ delay: i * 0.1 }}
+                style={{ flex: '0 0 280px', scrollSnapAlign: 'start' }}
+              >
                 <ProductCard product={p} />
               </motion.div>
             ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link to="/shop" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '15px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none' }}>
+              عرض المجموعة كاملة <ArrowLeft size={18} />
+            </Link>
           </div>
         </div>
       </section>

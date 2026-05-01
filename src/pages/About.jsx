@@ -64,7 +64,7 @@ const About = () => {
               marginBottom: '2.5rem',
               textShadow: '0 15px 45px rgba(0,0,0,0.6)'
             }}>
-              قصة جمعية الطرحة<br />الملكية
+              قصة جمعية الطرحة<br />الملكية التعاونية
             </h1>
             
             <p style={{ 

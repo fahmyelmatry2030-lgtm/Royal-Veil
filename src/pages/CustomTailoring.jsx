@@ -41,7 +41,7 @@ const CustomTailoring = () => {
                 padding: '3rem 2rem', 
                 background: 'var(--bg-lavender)', 
                 border: '1px solid var(--border-light)', 
-                borderRadius: '4px',
+                borderRadius: '20px',
                 textAlign: 'center',
                 transition: 'transform 0.3s'
               }} className="hover:transform hover:-translate-y-2">
@@ -65,7 +65,7 @@ const CustomTailoring = () => {
       <section style={{ padding: '6rem 0', borderTop: '1px solid #f0f0f0' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', alignItems: 'center' }}>
           <div style={{ position: 'relative' }}>
-             <img src="/Images/IMG-20260429-WA0017.jpg" style={{ width: '100%', borderRadius: '2px', objectFit: 'cover', maxHeight: '550px' }} alt="Tailoring" />
+             <img src="/Images/IMG-20260429-WA0017.jpg" style={{ width: '100%', borderRadius: '20px', objectFit: 'cover', maxHeight: '550px' }} alt="Tailoring" />
           </div>
           <div>
             <SectionHeader badge="Why Us" title="لماذا تختارين تفصيل جمعية الطرحة الملكية التعاونية؟" right />
@@ -86,7 +86,7 @@ const CustomTailoring = () => {
             <Link to="/custom-order" style={{ 
               display: 'inline-flex', alignItems: 'center', gap: '10px', 
               background: '#000', color: '#fff', padding: '16px 40px', 
-              fontWeight: '700', borderRadius: '2px', textDecoration: 'none',
+              fontWeight: '700', borderRadius: '20px', textDecoration: 'none',
               marginTop: '3rem'
             }}>احجزي موعدكِ الآن <ArrowLeft size={20} /></Link>
           </div>

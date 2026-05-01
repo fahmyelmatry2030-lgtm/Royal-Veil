@@ -34,10 +34,11 @@ const ProductCard = ({ product }) => {
       <div
         style={{
           position: 'relative',
-          aspectRatio: '2/3',
+          height: '260px',
           overflow: 'hidden',
-          borderRadius: '2px',
-          backgroundColor: '#f9f9f9',
+          borderRadius: '20px',
+          backgroundColor: '#f8f8f8',
+          boxShadow: 'var(--shadow-md)',
           cursor: 'pointer',
         }}
       >

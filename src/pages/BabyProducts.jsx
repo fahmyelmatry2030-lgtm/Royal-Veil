@@ -34,7 +34,7 @@ const BabyProducts = () => {
             <div style={{ flex: '1', minWidth: '300px' }}>
                <img 
                 src="/Images/WhatsApp%20Image%202026-04-30%20at%205.36.08%20AM%20(3).jpeg" 
-                style={{ width: '100%', borderRadius: '4px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', objectFit: 'cover', maxHeight: '500px' }} 
+                style={{ width: '100%', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', objectFit: 'cover', maxHeight: '500px' }} 
                 alt="Baby Products" 
                />
             </div>

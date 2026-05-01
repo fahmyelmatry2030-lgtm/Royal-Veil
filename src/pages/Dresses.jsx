@@ -106,7 +106,7 @@ const Dresses = () => {
             <button style={{
               padding: '16px 60px',
               border: '1px solid #000',
-              borderRadius: '2px',
+              borderRadius: '20px',
               fontSize: '13px',
               fontWeight: '800',
               letterSpacing: '0px',
@@ -134,8 +134,8 @@ const Dresses = () => {
             }}>احجزي جلسة استشارية <ArrowLeft size={16} /></Link>
           </div>
           <div style={{ flex: '1', minWidth: '300px', display: 'flex', gap: '20px' }}>
-             <img src="/Images/IMG-20260429-WA0024.jpg" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '2px' }} alt="" />
-             <img src="/Images/IMG-20260429-WA0025.jpg" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '2px', marginTop: '60px' }} alt="" />
+             <img src="/Images/IMG-20260429-WA0024.jpg" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '20px' }} alt="" />
+             <img src="/Images/IMG-20260429-WA0025.jpg" style={{ width: '45%', height: '500px', objectFit: 'cover', borderRadius: '20px', marginTop: '60px' }} alt="" />
           </div>
         </div>
       </section>
@@ -206,7 +206,7 @@ const Dresses = () => {
               <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', right: '2rem' }}>
                 <button style={{ 
                   width: '100%', padding: '14px', background: '#222', color: '#fff', 
-                  fontWeight: '700', borderRadius: '2px' 
+                  fontWeight: '700', borderRadius: '20px' 
                 }}>
                   تطبيق التصفية
                 </button>

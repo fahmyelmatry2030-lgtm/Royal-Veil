@@ -32,7 +32,7 @@ const HomeFAQItem = ({ q, a, i }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: i * 0.08 }}
-      style={{ border: '1px solid var(--border-light)', borderRadius: '8px', overflow: 'hidden', background: open ? 'var(--purple-light)' : 'var(--bg-white)', transition: 'all 0.3s' }}
+      style={{ border: '1px solid var(--border-light)', borderRadius: '24px', overflow: 'hidden', background: open ? 'var(--purple-light)' : 'var(--bg-white)', transition: 'all 0.3s' }}
     >
       <button
         onClick={() => setOpen(!open)}
@@ -102,7 +102,7 @@ const Home = () => {
             ].map((cat, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} style={{ flex: '0 0 180px', scrollSnapAlign: 'start' }}>
                 <Link to={cat.link} style={{ display: 'block', textDecoration: 'none' }}>
-                  <div style={{ height: '260px', borderRadius: '2px', overflow: 'hidden', boxShadow: 'var(--shadow-md)', marginBottom: '1rem', background: '#f8f8f8' }}>
+                  <div style={{ height: '260px', borderRadius: '20px', overflow: 'hidden', boxShadow: 'var(--shadow-md)', marginBottom: '1rem', background: '#f8f8f8' }}>
                     <img src={cat.img} alt={cat.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <h3 style={{ color: 'var(--text-dark)', fontSize: '15px', fontWeight: '800', textAlign: 'center' }}>{cat.title}</h3>
@@ -156,7 +156,7 @@ const Home = () => {
               <Link to="/about" style={{ color: 'var(--primary-purple)', fontWeight: '800', textDecoration: 'none', borderBottom: '2px solid var(--primary-purple)', paddingBottom: '5px' }}>التفاصيل الكاملة</Link>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <img src="/Images/new_sewing.jpg" alt="About Us" style={{ width: '100%', borderRadius: '4px', boxShadow: 'var(--shadow-lg)' }} />
+              <img src="/Images/new_sewing.jpg" alt="About Us" style={{ width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)' }} />
             </motion.div>
           </div>
         </div>
@@ -173,7 +173,7 @@ const Home = () => {
               { title: 'تمكين المرأة', desc: 'برامج لدعم المبدعات وتوفير فرص عمل مستدامة لهن في مجال الخياطة والتفصيل.', icon: <Star size={24} /> },
             ].map((activity, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ background: 'var(--bg-white)', padding: '3rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}>
+                style={{ background: 'var(--bg-white)', padding: '3rem', borderRadius: '24px', border: '1px solid var(--border-light)' }}>
                 <div style={{ color: 'var(--accent-gold)', marginBottom: '1.5rem' }}>{activity.icon}</div>
                 <h3 style={{ fontSize: '20px', fontWeight: '900', marginBottom: '1rem' }}>{activity.title}</h3>
                 <p style={{ color: 'var(--text-muted)', lineHeight: '1.8' }}>{activity.desc}</p>
@@ -225,8 +225,8 @@ const Home = () => {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/faq" style={{ display: 'inline-block', color: 'var(--primary-purple)', fontWeight: '800', fontSize: '15px', border: '2px solid var(--primary-purple)', padding: '12px 36px', borderRadius: '50px', textDecoration: 'none' }}>
-              عرض جميع الأسئلة الشائعة
+            <Link to="/contact" style={{ display: 'inline-block', color: 'var(--primary-purple)', fontWeight: '800', fontSize: '15px', border: '2px solid var(--primary-purple)', padding: '12px 36px', borderRadius: '50px', textDecoration: 'none' }}>
+              تواصلي معنا مباشرة
             </Link>
           </div>
         </div>
@@ -239,11 +239,11 @@ const Home = () => {
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
             <h3 style={{ fontSize: '36px', fontWeight: '900', color: 'var(--text-dark)', fontFamily: 'var(--font-serif)', marginBottom: '15px' }}>نادي جمعية الطرحة الملكية للأناقة</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '16px', maxWidth: '500px', margin: '0 auto 40px', lineHeight: 1.8 }}>
-              انضمي إلى قائمتنا البريدية لتكوني أول من يكتشف مجموعاتنا الحصرية وعروضنا السرية.
+              سجلي رقم هاتفك لتكوني أول من يكتشف مجموعاتنا الحصرية وعروضنا السرية.
             </p>
-            <form style={{ display: 'flex', maxWidth: '500px', margin: '0 auto', gap: '10px' }} onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="أدخلي بريدك الإلكتروني هنا..." style={{ flex: 1, padding: '18px 25px', borderRadius: '4px', border: '1px solid var(--border-light)', background: 'var(--bg-white)', color: 'var(--text-dark)', outline: 'none' }} />
-              <button type="submit" style={{ background: 'var(--accent-gold)', color: '#000', padding: '0 30px', fontWeight: '800', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>اشتراك</button>
+            <form style={{ display: 'flex', maxWidth: '500px', margin: '0 auto', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }} onSubmit={(e) => e.preventDefault()}>
+              <input type="tel" placeholder="أدخلي رقم هاتفك هنا..." dir="rtl" style={{ flex: '1 1 250px', padding: '16px 25px', borderRadius: '20px', border: '1px solid var(--border-light)', background: 'var(--bg-white)', color: 'var(--text-dark)', outline: 'none' }} />
+              <button type="submit" style={{ background: 'var(--accent-gold)', color: '#000', padding: '16px 40px', fontWeight: '800', borderRadius: '20px', border: 'none', cursor: 'pointer', flex: '0 0 auto' }}>اشتراك</button>
             </form>
           </div>
         </div>
@@ -255,23 +255,12 @@ const Home = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem', flexWrap: 'wrap', gap: '20px' }}>
             <div>
               <h3 style={{ fontSize: '32px', fontWeight: '900', fontFamily: 'var(--font-serif)', color: 'var(--text-dark)', marginBottom: '10px' }}>تألقي معنا على انستغرام</h3>
-              <p style={{ color: 'var(--accent-gold)', fontWeight: '700', fontSize: '13px' }}>@ROYALVEIL.COUTURE</p>
+              <p style={{ color: 'var(--accent-gold)', fontWeight: '700', fontSize: '13px' }}>@veilroyal</p>
             </div>
-            <a href="#" style={{ color: 'var(--text-dark)', textDecoration: 'none', border: '1px solid var(--border-light)', padding: '14px 35px', fontSize: '13px', fontWeight: '800', borderRadius: '50px', transition: 'all 0.3s' }}>متابعة الصفحة</a>
+            <a href="https://www.instagram.com/veilroyal?igsh=MTEyMHBtZm15dmtqYQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-dark)', textDecoration: 'none', border: '1px solid var(--border-light)', padding: '14px 35px', fontSize: '13px', fontWeight: '800', borderRadius: '50px', transition: 'all 0.3s' }}>متابعة الصفحة</a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '15px' }}>
-            {[
-              '/Images/IMG-20260429-WA0035.jpg',
-              '/Images/IMG-20260429-WA0022.jpg',
-              '/Images/IMG-20260429-WA0021.jpg',
-              '/Images/IMG-20260429-WA0023.jpg',
-              '/Images/IMG-20260429-WA0024.jpg',
-              '/Images/IMG-20260429-WA0053.jpg',
-            ].map((imgSrc, i) => (
-              <div key={i} style={{ aspectRatio: '1/1', overflow: 'hidden', position: 'relative', borderRadius: '8px' }}>
-                <img src={imgSrc} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease' }} alt="Royal Veil Collection" />
-              </div>
-            ))}
+          <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-md)', marginTop: '20px' }}>
+            <img src="/Images/WhatsApp Image 2026-04-30 at 1.39.18 PM (2).jpeg" style={{ width: '100%', height: 'auto', maxHeight: '700px', objectFit: 'cover', objectPosition: 'center' }} alt="Royal Veil Instagram" />
           </div>
         </div>
       </section>

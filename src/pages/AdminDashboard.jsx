@@ -22,11 +22,15 @@ import {
   DollarSign,
   Package,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  Mail,
+  MessageSquare,
+  MoreVertical,
+  UserPlus
 } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
-  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, Cell, PieChart, Pie
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
 
 // ─── Mock Data ───
@@ -44,6 +48,18 @@ const categoryData = [
   { name: 'عبايات', value: 300 },
   { name: 'أطقم كاجوال', value: 300 },
   { name: 'ملابس أطفال', value: 200 },
+];
+
+const messagesData = [
+  { id: 1, sender: 'ليلى أحمد', email: 'layla@example.com', subject: 'طلب فستان مخصص', date: 'منذ ساعتين', status: 'unread', msg: 'أهلاً، أود الاستفسار عن إمكانية تفصيل فستان زفاف دانتيل بمقاسات خاصة...' },
+  { id: 2, sender: 'سارة محمد', email: 'sara@example.com', subject: 'استفسار عن التوصيل', date: 'منذ ٥ ساعات', status: 'read', msg: 'متى يتوقع وصول طلبي رقم #1023؟' },
+  { id: 3, sender: 'نور الهدى', email: 'nour@example.com', subject: 'شكراً لكم', date: 'أمس', status: 'read', msg: 'وصل الفستان اليوم، الجودة رائعة جداً والتطريز متقن. شكراً!' },
+];
+
+const customersData = [
+  { id: 1, name: 'مريم علي', email: 'mariam@example.com', phone: '+972 59-123-4567', orders: 5, totalSpent: '١٢,٥٠٠ شيكل', lastOrder: '٢٠٢٤/٠٤/٢٨' },
+  { id: 2, name: 'رنا يوسف', email: 'rana@example.com', phone: '+972 59-987-6543', orders: 2, totalSpent: '٤,٢٠٠ شيكل', lastOrder: '٢٠٢٤/٠٤/٢٥' },
+  { id: 3, name: 'هبة القواسمي', email: 'heba@example.com', phone: '+972 52-444-5566', orders: 12, totalSpent: '٣٥,٠٠٠ شيكل', lastOrder: '٢٠٢٤/٠٤/٣٠' },
 ];
 
 const COLORS = ['#B19CD9', '#D4AF37', '#5D3E8B', '#A084CA'];
@@ -75,6 +91,7 @@ const StatCard = ({ title, value, icon, trend, color, isUp }) => (
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [showNotifications, setShowNotifications] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -82,7 +99,7 @@ const AdminDashboard = () => {
     navigate('/login');
   };
 
-  // Sub-Pages
+  // Sub-Pages Rendering
   const renderContent = () => {
     switch (activeTab) {
       case 'overview':
@@ -110,9 +127,7 @@ const AdminDashboard = () => {
                       <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                       <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} dy={10} />
                       <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} />
-                      <Tooltip 
-                        contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
-                      />
+                      <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} />
                       <Area type="monotone" dataKey="revenue" stroke="var(--primary-purple)" strokeWidth={3} fillOpacity={1} fill="url(#colorSales)" />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -124,15 +139,7 @@ const AdminDashboard = () => {
                 <div style={{ height: '300px', width: '100%' }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
-                      <Pie
-                        data={categoryData}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={60}
-                        outerRadius={80}
-                        paddingAngle={5}
-                        dataKey="value"
-                      >
+                      <Pie data={categoryData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
                         {categoryData.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
@@ -160,38 +167,30 @@ const AdminDashboard = () => {
                 </button>
               </div>
             </div>
-            
             <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
                 <thead style={{ background: '#fafafa' }}>
                   <tr>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700', color: '#555' }}>رقم الطلب</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700', color: '#555' }}>العميل</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700', color: '#555' }}>التاريخ</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700', color: '#555' }}>السعر</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700', color: '#555' }}>الحالة</th>
-                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700', color: '#555' }}>الإجراءات</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>رقم الطلب</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>العميل</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>التاريخ</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>السعر</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الحالة</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[1,2,3,4,5].map(i => (
                     <tr key={i} style={{ borderBottom: '1px solid #f0f0f0' }}>
                       <td style={{ padding: '16px', fontWeight: '600' }}>#102{i}</td>
-                      <td style={{ padding: '16px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <img src={`https://ui-avatars.com/api/?name=User${i}&background=random`} style={{ width: '32px', height: '32px', borderRadius: '50%' }} alt="user" />
-                          <span>عميل رقم {i}</span>
-                        </div>
-                      </td>
+                      <td style={{ padding: '16px' }}>عميل رقم {i}</td>
                       <td style={{ padding: '16px', color: '#777' }}>٢٠٢٤/٠٤/٣٠</td>
                       <td style={{ padding: '16px', fontWeight: '700' }}>٢,٥٠٠ شيكل</td>
-                      <td style={{ padding: '16px' }}>
-                        <span style={{ padding: '4px 12px', borderRadius: '50px', fontSize: '12px', fontWeight: '700', background: '#E8F5E9', color: '#4CAF50' }}>مكتمل</span>
-                      </td>
+                      <td style={{ padding: '16px' }}><span style={{ padding: '4px 12px', borderRadius: '50px', fontSize: '12px', fontWeight: '700', background: '#E8F5E9', color: '#4CAF50' }}>مكتمل</span></td>
                       <td style={{ padding: '16px' }}>
                         <div style={{ display: 'flex', gap: '8px' }}>
-                          <button style={{ color: 'var(--primary-purple)', background: 'none', border: 'none', cursor: 'pointer' }}><Edit size={18}/></button>
-                          <button style={{ color: '#ff4d4d', background: 'none', border: 'none', cursor: 'pointer' }}><Trash2 size={18}/></button>
+                          <button style={{ color: 'var(--primary-purple)' }}><Edit size={18}/></button>
+                          <button style={{ color: '#ff4d4d' }}><Trash2 size={18}/></button>
                         </div>
                       </td>
                     </tr>
@@ -211,19 +210,16 @@ const AdminDashboard = () => {
                 <PlusCircle size={20} /> إضافة منتج جديد
               </button>
             </div>
-            
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
               {[1,2,3,4].map(i => (
                 <div key={i} style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
-                  <div style={{ height: '200px', background: '#eee', position: 'relative' }}>
-                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(255,255,255,0.9)', padding: '4px 10px', borderRadius: '8px', fontSize: '12px', fontWeight: '700' }}>١٢ في المخزن</div>
-                  </div>
+                  <div style={{ height: '200px', background: '#eee' }}></div>
                   <div style={{ padding: '20px' }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>فستان سهرة كلاسيكي</h4>
+                    <h4 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>منتج رقم {i}</h4>
                     <p style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '18px', marginBottom: '15px' }}>١,٥٠٠ شيكل</p>
                     <div style={{ display: 'flex', gap: '10px' }}>
-                      <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', background: '#fff', cursor: 'pointer' }}><Edit size={16}/></button>
-                      <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', background: '#fff', cursor: 'pointer' }}><Trash2 size={16} color="#ff4d4d"/></button>
+                      <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee' }}><Edit size={16}/></button>
+                      <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee' }}><Trash2 size={16} color="#ff4d4d"/></button>
                     </div>
                   </div>
                 </div>
@@ -232,8 +228,82 @@ const AdminDashboard = () => {
           </motion.div>
         );
 
+      case 'customers':
+        return (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>قاعدة بيانات العملاء</h2>
+              <button style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', background: 'var(--accent-gold)', border: 'none', borderRadius: '12px', fontSize: '16px', color: '#1a0a2e', cursor: 'pointer', fontWeight: '700' }}>
+                <UserPlus size={20} /> إضافة عميل
+              </button>
+            </div>
+            <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
+                <thead style={{ background: '#fafafa' }}>
+                  <tr>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الاسم</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الاتصال</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الطلبات</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>إجمالي المشتريات</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>آخر طلب</th>
+                    <th style={{ padding: '16px', fontSize: '14px', fontWeight: '700' }}>الإجراءات</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {customersData.map(c => (
+                    <tr key={c.id} style={{ borderBottom: '1px solid #f0f0f0' }}>
+                      <td style={{ padding: '16px' }}>
+                        <div style={{ fontWeight: '700' }}>{c.name}</div>
+                        <div style={{ fontSize: '12px', color: '#888' }}>ID: #CUS-00{c.id}</div>
+                      </td>
+                      <td style={{ padding: '16px' }}>
+                        <div>{c.email}</div>
+                        <div style={{ fontSize: '12px', color: '#888' }}>{c.phone}</div>
+                      </td>
+                      <td style={{ padding: '16px', fontWeight: '600' }}>{c.orders} طلبات</td>
+                      <td style={{ padding: '16px', color: 'var(--primary-purple)', fontWeight: '800' }}>{c.totalSpent}</td>
+                      <td style={{ padding: '16px', color: '#777' }}>{c.lastOrder}</td>
+                      <td style={{ padding: '16px' }}>
+                        <button style={{ color: '#636e72' }}><MoreVertical size={18}/></button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        );
+
+      case 'messages':
+        return (
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+            <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>رسائل تواصل العملاء</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              {messagesData.map(msg => (
+                <div key={msg.id} style={{ background: '#fff', padding: '24px', borderRadius: '16px', border: '1px solid #f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
+                  {msg.status === 'unread' && <div style={{ position: 'absolute', top: '15px', right: '15px', width: '10px', height: '10px', background: '#ff4d4d', borderRadius: '50%' }}></div>}
+                  <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                    <div style={{ width: '50px', height: '50px', background: 'var(--bg-lavender)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-purple)' }}>
+                      <Mail size={24} />
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: '16px', fontWeight: '800' }}>{msg.sender} <span style={{ fontWeight: '400', fontSize: '13px', color: '#888', marginRight: '10px' }}>{msg.email}</span></h4>
+                      <p style={{ fontSize: '14px', fontWeight: '700', color: 'var(--primary-purple)', marginTop: '4px' }}>{msg.subject}</p>
+                      <p style={{ fontSize: '14px', color: '#636e72', marginTop: '8px', maxWidth: '600px' }}>{msg.msg}</p>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'left' }}>
+                    <p style={{ fontSize: '12px', color: '#aaa', marginBottom: '10px' }}>{msg.date}</p>
+                    <button style={{ padding: '8px 20px', background: 'var(--bg-lavender)', color: 'var(--primary-purple)', borderRadius: '8px', fontWeight: '700', border: 'none', cursor: 'pointer' }}>رد سريع</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        );
+
       default:
-        return <div>قيد التطوير...</div>;
+        return <div style={{ textAlign: 'center', padding: '100px', color: '#888' }}><Clock size={50} style={{ marginBottom: '20px', opacity: 0.2 }} /><p>هذا القسم قيد التطوير...</p></div>;
     }
   };
 
@@ -241,29 +311,12 @@ const AdminDashboard = () => {
     <div style={{ display: 'flex', minHeight: '100vh', background: '#fcfcfe', direction: 'rtl', fontFamily: 'var(--font-sans)' }}>
       
       {/* ─── Sidebar ─── */}
-      <motion.aside 
-        initial={false}
-        animate={{ width: isSidebarOpen ? '280px' : '90px' }}
-        style={{ 
-          background: '#fff', 
-          boxShadow: '2px 0 20px rgba(0,0,0,0.03)', 
-          zIndex: 100,
-          display: 'flex',
-          flexDirection: 'column',
-          position: 'sticky',
-          top: 0,
-          height: '100vh'
-        }}
-      >
+      <motion.aside initial={false} animate={{ width: isSidebarOpen ? '280px' : '90px' }} style={{ background: '#fff', boxShadow: '2px 0 20px rgba(0,0,0,0.03)', zIndex: 100, display: 'flex', flexDirection: 'column', position: 'sticky', top: 0, height: '100vh' }}>
         <div style={{ padding: '30px 24px', display: 'flex', alignItems: 'center', justifyContent: isSidebarOpen ? 'space-between' : 'center' }}>
           {isSidebarOpen && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{ width: '40px', height: '40px', background: 'var(--primary-purple)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-                <ShoppingBag size={24} />
-              </div>
-              <h2 style={{ fontSize: '18px', fontWeight: '900', color: 'var(--purple-dark)' }}>
-                ROYAL PANEL
-              </h2>
+              <div style={{ width: '40px', height: '40px', background: 'var(--primary-purple)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}><ShoppingBag size={24} /></div>
+              <h2 style={{ fontSize: '18px', fontWeight: '900', color: 'var(--purple-dark)' }}>ROYAL PANEL</h2>
             </div>
           )}
           <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} style={{ background: 'rgba(0,0,0,0.05)', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -277,29 +330,11 @@ const AdminDashboard = () => {
             { id: 'orders', icon: <ShoppingBag size={20} />, label: 'الطلبات' },
             { id: 'products', icon: <Package size={20} />, label: 'المخزون' },
             { id: 'customers', icon: <Users size={20} />, label: 'العملاء' },
+            { id: 'messages', icon: <MessageSquare size={20} />, label: 'الرسائل' },
             { id: 'analytics', icon: <TrendingUp size={20} />, label: 'التقارير' },
             { id: 'settings', icon: <Settings size={20} />, label: 'الإعدادات' },
           ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '15px',
-                padding: '14px 20px',
-                marginBottom: '5px',
-                background: activeTab === item.id ? 'var(--primary-purple)' : 'transparent',
-                borderRadius: '12px',
-                border: 'none',
-                color: activeTab === item.id ? '#fff' : '#636e72',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                textAlign: 'right',
-                fontWeight: activeTab === item.id ? '700' : '500'
-              }}
-            >
+            <button key={item.id} onClick={() => setActiveTab(item.id)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', marginBottom: '5px', background: activeTab === item.id ? 'var(--primary-purple)' : 'transparent', borderRadius: '12px', color: activeTab === item.id ? '#fff' : '#636e72', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'right', fontWeight: activeTab === item.id ? '700' : '500' }}>
               <div style={{ opacity: activeTab === item.id ? 1 : 0.7 }}>{item.icon}</div>
               {isSidebarOpen && <span style={{ fontSize: '15px' }}>{item.label}</span>}
             </button>
@@ -307,11 +342,7 @@ const AdminDashboard = () => {
         </nav>
 
         <div style={{ padding: '20px', borderTop: '1px solid #eee' }}>
-          <button onClick={handleLogout} style={{ 
-            width: '100%', display: 'flex', alignItems: 'center', gap: '15px', 
-            padding: '14px 20px', background: 'transparent', border: 'none', 
-            color: '#ff4d4d', cursor: 'pointer', fontWeight: '700'
-          }}>
+          <button onClick={handleLogout} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', background: 'transparent', color: '#ff4d4d', cursor: 'pointer', fontWeight: '700' }}>
             <LogOut size={20} />
             {isSidebarOpen && <span>خروج آمن</span>}
           </button>
@@ -325,24 +356,38 @@ const AdminDashboard = () => {
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
           <div style={{ position: 'relative' }}>
             <Search size={20} style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
-            <input 
-              type="text" 
-              placeholder="ابحث هنا عن أي شيء..." 
-              style={{ 
-                padding: '12px 50px 12px 20px', borderRadius: '12px', border: '1px solid #eee',
-                width: '350px', fontSize: '14px', outline: 'none', background: '#fff'
-              }}
-            />
+            <input type="text" placeholder="ابحث هنا عن أي شيء..." style={{ padding: '12px 50px 12px 20px', borderRadius: '12px', border: '1px solid #eee', width: '350px', fontSize: '14px', outline: 'none', background: '#fff' }} />
           </div>
           
-          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-            <div style={{ textAlign: 'left', marginLeft: '10px' }}>
+          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+            <div style={{ position: 'relative' }}>
+              <button onClick={() => setShowNotifications(!showNotifications)} style={{ background: '#fff', border: '1px solid #eee', width: '45px', height: '45px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--purple-dark)', cursor: 'pointer' }}>
+                <Bell size={20} />
+                <div style={{ position: 'absolute', top: '10px', right: '10px', width: '8px', height: '8px', background: '#ff4d4d', borderRadius: '50%', border: '2px solid #fff' }}></div>
+              </button>
+              <AnimatePresence>
+                {showNotifications && (
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} style={{ position: 'absolute', top: '60px', left: 0, width: '300px', background: '#fff', borderRadius: '16px', boxShadow: '0 10px 40px rgba(0,0,0,0.1)', border: '1px solid #eee', padding: '15px', zIndex: 1000 }}>
+                    <h4 style={{ fontSize: '14px', fontWeight: '800', marginBottom: '15px', paddingBottom: '10px', borderBottom: '1px solid #eee' }}>الإشعارات</h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                        <div style={{ width: '8px', height: '8px', background: 'var(--primary-purple)', borderRadius: '50%' }}></div>
+                        <p style={{ fontSize: '13px' }}>طلب جديد رقم <b>#1024</b> بانتظار المراجعة.</p>
+                      </div>
+                      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                        <div style={{ width: '8px', height: '8px', background: 'var(--primary-purple)', borderRadius: '50%' }}></div>
+                        <p style={{ fontSize: '13px' }}>لديك رسالة جديدة من <b>ليلى أحمد</b>.</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            <div style={{ textAlign: 'left' }}>
               <p style={{ fontSize: '14px', fontWeight: '800', color: '#2d3436' }}>المدير العام</p>
               <p style={{ fontSize: '11px', color: '#b2bec3' }}>متصل الآن</p>
             </div>
-            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'var(--primary-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: '900', boxShadow: '0 8px 15px rgba(177, 156, 217, 0.3)' }}>
-              A
-            </div>
+            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'var(--primary-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: '900', boxShadow: '0 8px 15px rgba(177, 156, 217, 0.3)' }}>A</div>
           </div>
         </header>
 

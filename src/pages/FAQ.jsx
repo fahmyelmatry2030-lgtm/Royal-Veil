@@ -256,7 +256,7 @@ const FAQ = () => {
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a
-                href="https://wa.me/972505542323"
+                href="https://wa.me/972585040233"
                 target="_blank"
                 rel="noreferrer"
                 style={{

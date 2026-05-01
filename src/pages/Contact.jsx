@@ -24,7 +24,7 @@ const Contact = () => {
 *الرسالة:*
 ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/972505542323?text=${encodeURIComponent(waMessage)}`;
+    const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(waMessage)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -59,7 +59,7 @@ ${formData.message}`;
                   </div>
                   <div>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', textTransform: 'uppercase' }}>اتصلي بنا</p>
-                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 50-554-2323</p>
+                    <p style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary-purple)' }}>+972 58-504-0233</p>
                   </div>
                 </div>
 
@@ -87,7 +87,7 @@ ${formData.message}`;
               <div style={{ marginTop: '4rem' }}>
                 <p style={{ fontWeight: '800', marginBottom: '1.5rem', fontSize: '14px', color: 'var(--primary-purple)' }}>تابعينا على</p>
                 <div style={{ display: 'flex', gap: '1rem' }}>
-                  <a href="#" style={{ width: '40px', height: '40px', border: '1px solid var(--border-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-purple)' }}><Camera size={18} /></a>
+                  <a href="https://www.instagram.com/veilroyal?igsh=MTEyMHBtZm15dmtqYQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" style={{ width: '40px', height: '40px', border: '1px solid var(--border-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-purple)' }}><Camera size={18} /></a>
                   <a href="#" style={{ width: '40px', height: '40px', border: '1px solid var(--border-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-purple)' }}><Share2 size={18} /></a>
                 </div>
               </div>

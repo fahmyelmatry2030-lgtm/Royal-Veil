@@ -35,7 +35,7 @@ const BlouseEmbroidery = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '6rem' }}>
             {examples.map((ex, i) => (
-              <div key={i} style={{ position: 'relative', height: '500px', overflow: 'hidden', borderRadius: '4px' }} className="group">
+              <div key={i} style={{ position: 'relative', height: '500px', overflow: 'hidden', borderRadius: '20px' }} className="group">
                 <img src={ex.img} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} className="group-hover:scale-110" alt={ex.title} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)', display: 'flex', alignItems: 'flex-end', padding: '2rem' }}>
                   <h3 style={{ color: '#fff', fontSize: '20px', fontWeight: '800' }}>{ex.title}</h3>
@@ -44,7 +44,7 @@ const BlouseEmbroidery = () => {
             ))}
           </div>
 
-          <div style={{ background: 'var(--bg-lavender)', padding: '5rem 2rem', borderRadius: '4px', textAlign: 'center', border: '1px solid var(--border-light)' }}>
+          <div style={{ background: 'var(--bg-lavender)', padding: '5rem 2rem', borderRadius: '20px', textAlign: 'center', border: '1px solid var(--border-light)' }}>
             <div style={{ color: 'var(--accent-gold)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}><Palette size={48} /></div>
             <SectionHeader 
               badge="Custom Art"

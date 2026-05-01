@@ -81,7 +81,7 @@ const Heritage = () => {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
                     whileHover={{ y: -4, boxShadow: 'var(--shadow-md)' }}
-                    style={{ padding: '20px', background: 'var(--bg-lavender)', border: '1px solid var(--border-light)', borderRadius: '8px', transition: 'all 0.3s' }}
+                    style={{ padding: '20px', background: 'var(--bg-lavender)', border: '1px solid var(--border-light)', borderRadius: '20px', transition: 'all 0.3s' }}
                   >
                     <div style={{ color: 'var(--accent-gold)', marginBottom: '10px' }}>{item.icon}</div>
                     <h4 style={{ fontWeight: '800', fontSize: '14px', marginBottom: '5px', color: 'var(--text-dark)' }}>{item.title}</h4>
@@ -94,8 +94,8 @@ const Heritage = () => {
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}
             >
-              <img src="/Images/IMG-20260429-WA0047.jpg" style={{ borderRadius: '4px', height: '420px', objectFit: 'cover', width: '100%', objectPosition: 'top', boxShadow: 'var(--shadow-lg)' }} alt="تطريز فلسطيني" />
-              <img src="/Images/IMG-20260429-WA0048.jpg" style={{ borderRadius: '4px', height: '420px', objectFit: 'cover', width: '100%', marginTop: '40px', boxShadow: 'var(--shadow-lg)' }} alt="ثوب تراثي" />
+              <img src="/Images/IMG-20260429-WA0047.jpg" style={{ borderRadius: '20px', height: '420px', objectFit: 'cover', width: '100%', objectPosition: 'top', boxShadow: 'var(--shadow-lg)' }} alt="تطريز فلسطيني" />
+              <img src="/Images/IMG-20260429-WA0048.jpg" style={{ borderRadius: '20px', height: '420px', objectFit: 'cover', width: '100%', marginTop: '40px', boxShadow: 'var(--shadow-lg)' }} alt="ثوب تراثي" />
             </motion.div>
           </div>
         </div>
@@ -131,7 +131,7 @@ const Heritage = () => {
                 style={{
                   background: activeRegion === i ? 'var(--bg-lavender)' : '#fff',
                   border: `2px solid ${activeRegion === i ? 'var(--primary-purple)' : 'var(--border-light)'}`,
-                  borderRadius: '12px', overflow: 'hidden', cursor: 'pointer',
+                  borderRadius: '20px', overflow: 'hidden', cursor: 'pointer',
                   transition: 'all 0.4s',
                   boxShadow: activeRegion === i ? 'var(--shadow-lg)' : 'var(--shadow-sm)',
                   transform: activeRegion === i ? 'translateY(-8px)' : 'none'
@@ -172,7 +172,7 @@ const Heritage = () => {
                 <div style={{ position: 'absolute', right: 'calc(50% - 22px)', top: '20px', width: '44px', height: '44px', background: 'var(--primary-purple)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', zIndex: 2, boxShadow: '0 0 0 6px var(--bg-lavender), 0 0 0 8px var(--primary-purple)' }}>
                   <Star size={16} fill="#fff" />
                 </div>
-                <div style={{ width: '42%', background: '#fff', padding: '2rem', borderRadius: '12px', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-light)' }}>
+                <div style={{ width: '42%', background: '#fff', padding: '2rem', borderRadius: '20px', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-light)' }}>
                   <span style={{ display: 'inline-block', background: 'var(--bg-lavender)', color: 'var(--primary-purple)', fontSize: '13px', fontWeight: '900', padding: '4px 14px', borderRadius: '50px', marginBottom: '12px' }}>{item.year}</span>
                   <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text-dark)', marginBottom: '10px' }}>{item.title}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.8' }}>{item.desc}</p>
@@ -215,7 +215,7 @@ const Heritage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                style={{ gridColumn: item.wide ? 'span 2' : 'auto', height: '300px', overflow: 'hidden', borderRadius: '8px' }}
+                style={{ gridColumn: item.wide ? 'span 2' : 'auto', height: '300px', overflow: 'hidden', borderRadius: '20px' }}
                 className="group"
               >
                 <img src={item.img} alt="صور تراثية" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }} className="group-hover:scale-110" />

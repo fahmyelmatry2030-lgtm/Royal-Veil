@@ -6,8 +6,8 @@ import { Target, Eye, Users, ShieldCheck, Leaf, Palette, Sparkles, ArrowLeft, Aw
 import SectionHeader from '../components/SectionHeader';
 
 const stats = [
-  { number: '15+', label: 'سنة في الصناعة', icon: <Award size={32} /> },
-  { number: '200+', label: 'حرفية فلسطينية', icon: <Users size={32} /> },
+  { number: '15+', label: 'مجموع خبرات الطاقم', icon: <Award size={32} /> },
+  { number: '7', label: 'مصممين أزياء بهوية فلسطينية', icon: <Users size={32} /> },
   { number: '5000+', label: 'قطعة مُصنَّعة', icon: <Star size={32} /> },
   { number: '1000+', label: 'عميلة سعيدة', icon: <Heart size={32} /> },
 ];

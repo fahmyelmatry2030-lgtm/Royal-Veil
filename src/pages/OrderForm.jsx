@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Send, MapPin, Phone, User, ShoppingBag, Truck } from 'lucide-react';
+import { Send, MapPin, Phone, User, ShoppingBag, Truck, CreditCard } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SectionHeader from '../components/SectionHeader';
 
@@ -20,7 +20,8 @@ const OrderForm = () => {
     phone: '',
     area: 'القدس',
     address: '',
-    notes: ''
+    notes: '',
+    paymentMethod: 'cod'
   });
 
   const shippingPrices = {
@@ -61,6 +62,7 @@ const OrderForm = () => {
 *الهاتف:* ${formData.phone}
 *المنطقة:* ${formData.area}
 *العنوان:* ${formData.address}
+*طريقة الدفع:* ${formData.paymentMethod === 'cod' ? 'الدفع عند الاستلام' : formData.paymentMethod === 'visa' ? 'فيزا / ماستر كارد' : 'باي بال'}
 *رسوم التوصيل:* ${shippingCost} شيكل
 --------------------------
 *ملاحظات:* ${formData.notes || 'لا يوجد'}`;
@@ -163,6 +165,35 @@ const OrderForm = () => {
                     <option value="الضفة الغربية">الضفة الغربية</option>
                     <option value="مناطق 48">مناطق 48 (شمال وجنوب)</option>
                   </select>
+                </div>
+
+                {/* Payment Methods */}
+                <div style={{ marginTop: '1rem' }}>
+                  <label style={{ display: 'block', marginBottom: '1rem', fontWeight: '800', fontSize: '15px' }}>طريقة الدفع:</label>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '10px' }}>
+                    {[
+                      { id: 'cod', label: 'دفع عند الاستلام', icon: <Truck size={16} /> },
+                      { id: 'visa', label: 'فيزا / ماستر', icon: <CreditCard size={16} /> },
+                      { id: 'paypal', label: 'باي بال', icon: <div style={{ fontSize: '14px', fontWeight: '900', color: '#003087' }}>P</div> }
+                    ].map(method => (
+                      <div 
+                        key={method.id}
+                        onClick={() => setFormData({...formData, paymentMethod: method.id})}
+                        style={{
+                          padding: '12px 10px',
+                          border: `2px solid ${formData.paymentMethod === method.id ? 'var(--accent-gold)' : 'var(--border-light)'}`,
+                          borderRadius: '8px',
+                          textAlign: 'center',
+                          cursor: 'pointer',
+                          background: formData.paymentMethod === method.id ? 'rgba(212,175,55,0.05)' : 'transparent',
+                          transition: 'all 0.2s'
+                        }}
+                      >
+                        <div style={{ color: formData.paymentMethod === method.id ? 'var(--accent-gold)' : 'var(--text-muted)', marginBottom: '5px', display: 'flex', justifyContent: 'center' }}>{method.icon}</div>
+                        <div style={{ fontSize: '12px', fontWeight: '700', color: formData.paymentMethod === method.id ? 'var(--text-dark)' : 'var(--text-muted)' }}>{method.label}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <textarea 

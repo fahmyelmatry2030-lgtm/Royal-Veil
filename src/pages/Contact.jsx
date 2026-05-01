@@ -29,7 +29,7 @@ ${formData.message}`;
   };
 
   return (
-    <div className="min-h-screen" style={{ direction: 'rtl', background: 'var(--bg-white)' }}>
+    <div style={{ direction: 'rtl', background: 'var(--bg-white)', minHeight: '100vh' }}>
       <Helmet>
         <title>Royal Veil | تواصل معنا - نحن هنا لخدمتكِ</title>
       </Helmet>

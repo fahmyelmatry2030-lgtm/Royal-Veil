@@ -31,6 +31,7 @@
   --shadow-sm: 0 4px 12px rgba(93, 62, 139, 0.05);
   --shadow-md: 0 15px 35px rgba(93, 62, 139, 0.1);
   --shadow-lg: 0 20px 40px rgba(93, 62, 139, 0.15);
+  --shadow-xl: 0 30px 60px rgba(93, 62, 139, 0.2);
   
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   

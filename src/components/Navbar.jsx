@@ -9,6 +9,7 @@ const navLinks = [
   { name: 'طاقم العمل', path: '/team' },
   { name: 'فساتين', path: '/dresses' },
   { name: 'التراث', path: '/heritage' },
+  { name: 'الأسئلة', path: '/faq' },
   { name: 'تواصل معنا', path: '/contact' },
 ];
 

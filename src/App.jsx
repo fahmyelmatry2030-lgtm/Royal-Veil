@@ -20,6 +20,7 @@ import Shop from './pages/Shop';
 import CustomOrderForm from './pages/CustomOrderForm';
 import AdminDashboard from './pages/AdminDashboard';
 import LoginPage from './pages/LoginPage';
+import FAQ from './pages/FAQ';
 
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -46,6 +47,7 @@ function AppContent() {
           <Route path="/custom-order" element={<CustomOrderForm />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </main>
       {!isAdminPage && <Footer />}

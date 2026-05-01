@@ -41,6 +41,7 @@ const Footer = () => {
               <li><Link to="/team" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طاقم العمل</Link></li>
               <li><Link to="/custom-order" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>طلب تفصيل خاص</Link></li>
               <li><Link to="/shop" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>المتجر الإلكتروني</Link></li>
+              <li><Link to="/faq" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>الأسئلة الشائعة</Link></li>
               <li><Link to="/contact" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontSize: '13px' }}>تواصل معنا</Link></li>
             </ul>
           </div>

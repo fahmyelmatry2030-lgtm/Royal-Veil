@@ -1,5 +1,9 @@
 export const initialContent = {
   home: {
+    collections: { badge: 'The Collections', title: 'مجموعاتنا المتميزة', subtitle: 'اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة.' },
+    featured: { badge: 'Exclusive', title: 'منتجات متميزة', subtitle: 'القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم.' },
+    activities: { badge: 'Activities', title: 'نشاطات الجمعية', subtitle: 'نساهم في بناء المجتمع وتطوير مهارات الحرفيات من خلال فعالياتنا المستمرة.' },
+    faqSection: { badge: 'FAQ', title: 'أسئلة شائعة', subtitle: 'إجابات سريعة على أكثر ما يسألنا عنه عميلاتنا الكريمات.' },
     hero: {
       title: 'تألقي بسحر\nتراثكِ الأصيل',
       buttonText: 'تسوقي الآن',

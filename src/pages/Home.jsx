@@ -110,7 +110,11 @@ const Home = () => {
       {/* Collections Slider */}
       <section style={{ padding: '6rem 0', background: 'var(--bg-white)', overflow: 'hidden' }}>
         <div className="container">
-          <SectionHeader badge="The Collections" title="مجموعاتنا المتميزة" subtitle="اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة." />
+          <SectionHeader 
+            badge={content.home.collections?.badge || "The Collections"} 
+            title={content.home.collections?.title || "مجموعاتنا المتميزة"} 
+            subtitle={content.home.collections?.subtitle || "اكتشفي التشكيلات المصممة بعناية لترافقكِ في كل مناسباتكِ السعيدة."} 
+          />
           <div ref={collectionsRef} style={{ display: 'flex', justifyContent: 'center', overflowX: 'auto', gap: '2rem', paddingBottom: '2rem', paddingRight: '1.5rem', paddingLeft: '1.5rem', msOverflowStyle: 'none', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }} className="hide-scrollbar">
             {[
               { title: 'فساتين', img: '/Images/collection_dresses.png', link: '/dresses' },
@@ -139,7 +143,11 @@ const Home = () => {
       {/* Featured Products Slider */}
       <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)', overflow: 'hidden' }}>
         <div className="container">
-          <SectionHeader badge="Exclusive" title="منتجات متميزة" subtitle="القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم." />
+          <SectionHeader 
+            badge={content.home.featured?.badge || "Exclusive"} 
+            title={content.home.featured?.title || "منتجات متميزة"} 
+            subtitle={content.home.featured?.subtitle || "القطع الأكثر طلباً التي خطفت قلوب عميلاتنا هذا الموسم."} 
+          />
           <div ref={productsRef} style={{ display: 'flex', overflowX: 'auto', gap: '2rem', paddingBottom: '4rem', msOverflowStyle: 'none', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }} className="hide-scrollbar">
             {featuredProducts.map((p) => (
               <div key={p.id} style={{ flex: '0 0 250px', scrollSnapAlign: 'start' }}>
@@ -183,7 +191,11 @@ const Home = () => {
       {/* Activities */}
       <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
-          <SectionHeader badge="Activities" title="نشاطات الجمعية" subtitle="نساهم في بناء المجتمع وتطوير مهارات الحرفيات من خلال فعالياتنا المستمرة." />
+          <SectionHeader 
+            badge={content.home.activities?.badge || "Activities"} 
+            title={content.home.activities?.title || "نشاطات الجمعية"} 
+            subtitle={content.home.activities?.subtitle || "نساهم في بناء المجتمع وتطوير مهارات الحرفيات من خلال فعالياتنا المستمرة."} 
+          />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {[
               { title: 'ورش عمل التطريز', desc: 'دورات تدريبية مكثفة لتعليم أصول التطريز اليدوي للأجيال الجديدة.', icon: <Scissors size={24} /> },
@@ -275,7 +287,11 @@ const Home = () => {
       {/* FAQ Section */}
       <section style={{ padding: '8rem 0', background: 'var(--bg-lavender)' }}>
         <div className="container">
-          <SectionHeader badge="FAQ" title="أسئلة شائعة" subtitle="إجابات سريعة على أكثر ما يسألنا عنه عميلاتنا الكريمات." />
+          <SectionHeader 
+            badge={content.home.faqSection?.badge || "FAQ"} 
+            title={content.home.faqSection?.title || "أسئلة شائعة"} 
+            subtitle={content.home.faqSection?.subtitle || "إجابات سريعة على أكثر ما يسألنا عنه عميلاتنا الكريمات."} 
+          />
           <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {homeFaqs.map((item, i) => (
               <HomeFAQItem key={i} q={item.q} a={item.a} i={i} />

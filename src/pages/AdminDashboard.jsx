@@ -503,6 +503,13 @@ const AdminDashboard = () => {
                   <Users size={20} /> الصفحة الرئيسية - من نحن
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الشارة (Badge)</label>
+                  <input 
+                    type="text"
+                    value={siteContent.home.about.badge || ''}
+                    onChange={(e) => handleUpdateContent('home', 'about.badge', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
                   <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان</label>
                   <input 
                     type="text"
@@ -541,6 +548,28 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
+              {/* Home - Newsletter */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Mail size={20} /> الصفحة الرئيسية - النشرة البريدية
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>العنوان</label>
+                  <input 
+                    type="text"
+                    value={siteContent.home.newsletter?.title || ''}
+                    onChange={(e) => handleUpdateContent('home', 'newsletter.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الوصف</label>
+                  <textarea 
+                    value={siteContent.home.newsletter?.description || ''}
+                    onChange={(e) => handleUpdateContent('home', 'newsletter.description', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                </div>
+              </div>
+
               {/* Common - Footer */}
               <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -569,6 +598,15 @@ const AdminDashboard = () => {
                         type="text"
                         value={siteContent.common.footer.address}
                         onChange={(e) => handleUpdateContent('common', 'footer.address', e.target.value)}
+                        style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                      />
+                    </div>
+                    <div style={{ gridColumn: '1 / -1' }}>
+                      <label style={{ fontSize: '13px', fontWeight: '700' }}>البريد الإلكتروني</label>
+                      <input 
+                        type="text"
+                        value={siteContent.common.footer.email || ''}
+                        onChange={(e) => handleUpdateContent('common', 'footer.email', e.target.value)}
                         style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
                       />
                     </div>
@@ -625,13 +663,27 @@ const AdminDashboard = () => {
                   <Target size={20} /> صفحة من نحن - الرؤية والرسالة
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الرؤية</label>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>عنوان الرؤية</label>
+                  <input 
+                    type="text"
+                    value={siteContent.about.vision?.title || ''}
+                    onChange={(e) => handleUpdateContent('about', 'vision.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>نص الرؤية</label>
                   <textarea 
                     value={siteContent.about.vision.description}
                     onChange={(e) => handleUpdateContent('about', 'vision.description', e.target.value)}
                     style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
                   />
-                  <label style={{ fontSize: '13px', fontWeight: '700' }}>الرسالة</label>
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>عنوان الرسالة</label>
+                  <input 
+                    type="text"
+                    value={siteContent.about.mission?.title || ''}
+                    onChange={(e) => handleUpdateContent('about', 'mission.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>نص الرسالة</label>
                   <textarea 
                     value={siteContent.about.mission.description}
                     onChange={(e) => handleUpdateContent('about', 'mission.description', e.target.value)}
@@ -657,6 +709,19 @@ const AdminDashboard = () => {
                   <textarea 
                     value={siteContent.contact.hero.subtitle}
                     onChange={(e) => handleUpdateContent('contact', 'hero.subtitle', e.target.value)}
+                    style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>عنوان معلومات التواصل</label>
+                  <input 
+                    type="text"
+                    value={siteContent.contact.info?.title || ''}
+                    onChange={(e) => handleUpdateContent('contact', 'info.title', e.target.value)}
+                    style={{ padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                  />
+                  <label style={{ fontSize: '13px', fontWeight: '700' }}>وصف معلومات التواصل</label>
+                  <textarea 
+                    value={siteContent.contact.info?.description || ''}
+                    onChange={(e) => handleUpdateContent('contact', 'info.description', e.target.value)}
                     style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
                   />
                 </div>

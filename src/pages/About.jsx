@@ -7,25 +7,36 @@ import SectionHeader from '../components/SectionHeader';
 import { storage } from '../utils/storage';
 import { useState, useEffect } from 'react';
 
-const stats = [
-  { number: '15+', label: 'مجموع خبرات الطاقم', icon: <Award size={32} /> },
-  { number: '7', label: 'مصممين أزياء بهوية فلسطينية', icon: <Users size={32} /> },
-  { number: '5000+', label: 'قطعة مُصنَّعة', icon: <Star size={32} /> },
-  { number: '1000+', label: 'عميلة سعيدة', icon: <Heart size={32} /> },
+const statsFallback = [
+  { number: '15+', label: 'مجموع خبرات الطاقم', icon: 'Award' },
+  { number: '7', label: 'مصممين أزياء بهوية فلسطينية', icon: 'Users' },
+  { number: '5000+', label: 'قطعة مُصنَّعة', icon: 'Star' },
+  { number: '1000+', label: 'عميلة سعيدة', icon: 'Heart' },
 ];
 
-const milestones = [
+const milestonesFallback = [
   { year: '2024', title: 'إحياء القدرات', desc: 'إحياء القدرات و الخبرات في تصميم الملابس وتوظيفهم ضمن رؤية الجمعية.' },
   { year: '2025', title: 'دعم المشروع', desc: 'دعم المشروع من عدة جهات مانحة جعلنا نفتتح اول مشغل يدوي لتصميم الفساتين في القدس.' },
   { year: '2026', title: 'توسع النطاق', desc: 'وسعنا نطاق العمل و البدء في العمل على مختلف القطع من منتجات البيبي و البلايز و الفساتين والعبايات.' },
 ];
 
-const values = [
-  { title: 'الابتكار', icon: <Palette size={28} />, desc: 'تطوير تصاميم جديدة تدمج التقنيات الحديثة بالحرفة اليدوية الأصيلة.' },
-  { title: 'الاستدامة', icon: <Leaf size={28} />, desc: 'استخدام خامات طبيعية صديقة للبيئة وتقنيات إنتاج نظيفة ومسؤولة.' },
-  { title: 'التعاون', icon: <Users size={28} />, desc: 'روح الفريق والعمل الجماعي هي سر نجاحنا المستمر وتميزنا الدائم.' },
-  { title: 'الشفافية', icon: <ShieldCheck size={28} />, desc: 'الالتزام بأعلى معايير الإدارة والنزاهة في جميع تعاملاتنا.' },
+const valuesFallback = [
+  { title: 'الابتكار', icon: 'Palette', desc: 'تطوير تصاميم جديدة تدمج التقنيات الحديثة بالحرفة اليدوية الأصيلة.' },
+  { title: 'الاستدامة', icon: 'Leaf', desc: 'استخدام خامات طبيعية صديقة للبيئة وتقنيات إنتاج نظيفة ومسؤولة.' },
+  { title: 'التعاون', icon: 'Users', desc: 'روح الفريق والعمل الجماعي هي سر نجاحنا المستمر وتميزنا الدائم.' },
+  { title: 'الشفافية', icon: 'ShieldCheck', desc: 'الالتزام بأعلى معايير الإدارة والنزاهة في جميع تعاملاتنا.' },
 ];
+
+const getIcon = (name) => {
+  if (name === 'Users') return <Users size={28} />;
+  if (name === 'Star') return <Star size={28} />;
+  if (name === 'Heart') return <Heart size={28} />;
+  if (name === 'Award') return <Award size={28} />;
+  if (name === 'Palette') return <Palette size={28} />;
+  if (name === 'Leaf') return <Leaf size={28} />;
+  if (name === 'ShieldCheck') return <ShieldCheck size={28} />;
+  return <Star size={28} />;
+};
 
 const About = () => {
   const [content, setContent] = useState(storage.getContent());
@@ -96,7 +107,7 @@ const About = () => {
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-gold), transparent)' }} />
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '5rem 2rem' }}>
-            {stats.map((stat, i) => (
+            {(content.about.stats || statsFallback).map((stat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -113,7 +124,7 @@ const About = () => {
                     border: '1px solid rgba(212,175,55,0.2)',
                     boxShadow: '0 0 30px rgba(212,175,55,0.1)'
                   }}>
-                    {stat.icon}
+                    {getIcon(stat.icon)}
                   </div>
                 </div>
                 <div style={{ 
@@ -222,7 +233,7 @@ const About = () => {
           <SectionHeader badge="Milestones" title="محطاتنا عبر الزمن" subtitle="مسيرة حافلة بالإنجازات التي شكلّت ما نحن عليه اليوم." />
           <div style={{ position: 'relative', maxWidth: '800px', margin: '6rem auto 0' }}>
             <div style={{ position: 'absolute', right: '50%', top: 0, bottom: 0, width: '2px', background: 'linear-gradient(to bottom, var(--primary-purple), var(--accent-gold))', transform: 'translateX(50%)', opacity: 0.2 }} />
-            {milestones.map((m, i) => (
+            {(content.about.milestones || milestonesFallback).map((m, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: i % 2 === 0 ? 40 : -40 }}
@@ -291,12 +302,12 @@ const About = () => {
                  <h3 style={{ fontSize: '26px', fontWeight: '800', color: 'var(--text-dark)' }}>أهدافنا</h3>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {[
+                {(content.about.goals || [
                   'إنتاج تصاميم عالمية بجودة تنافسية',
                   'دعم وتمكين الحرفيات في المجتمع المحلي',
                   'الحفاظ على الهوية الفلسطينية في قالب عصري',
                   'مساعدة المصممين لدخول إلى سوق العمل',
-                ].map((goal, i) => (
+                ]).map((goal, i) => (
                   <li key={i} style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', color: 'var(--text-muted)', fontSize: '17px', lineHeight: 1.6 }}>
                     <span style={{ color: 'var(--accent-gold)', fontSize: '20px', flexShrink: 0, marginTop: '2px' }}>◆</span>
                     {goal}
@@ -317,7 +328,7 @@ const About = () => {
             subtitle="المبادئ التي تحكم كل خطوة في مسيرتنا نحو التميز والإبداع."
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3.5rem' }}>
-            {values.map((v, i) => (
+            {(content.about.values || valuesFallback).map((v, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -334,7 +345,7 @@ const About = () => {
                 }}
               >
                 <div style={{ color: 'var(--primary-purple)', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-                  <div style={{ padding: '20px', background: '#fff', borderRadius: '24px' }}>{v.icon}</div>
+                  <div style={{ padding: '20px', background: '#fff', borderRadius: '24px' }}>{getIcon(v.icon)}</div>
                 </div>
                 <h4 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '1.5rem', color: 'var(--text-dark)' }}>{v.title}</h4>
                 <p style={{ color: 'var(--text-muted)', lineHeight: '2', fontSize: '16px' }}>{v.desc}</p>

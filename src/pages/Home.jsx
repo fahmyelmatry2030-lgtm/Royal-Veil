@@ -19,7 +19,7 @@ const featuredProducts = [
   { id: 108, title: 'فستان حفلات "غزل"', price: '2100 شيكل', img: '/Images/WhatsApp Image 2026-04-30 at 1.39.19 PM (3).jpeg' },
 ];
 
-const homeFaqs = [
+const homeFaqsFallback = [
   { q: 'كيف أطلب تفصيلاً خاصاً؟', a: 'يمكنكِ التواصل معنا مباشرةً عبر واتساب أو من خلال نموذج "طلب تفصيل خاص" في الموقع.' },
   { q: 'كم يستغرق تنفيذ الطلب؟', a: 'يتراوح وقت التنفيذ بين أسبوعين وأربعة أسابيع حسب تعقيد التصميم.' },
   { q: 'هل تقدمون التوصيل؟', a: 'نعم، نوفر خدمة توصيل داخل القدس والمناطق المجاورة. الشحن مجاني للطلبات فوق 200 شيكل.' },
@@ -197,18 +197,21 @@ const Home = () => {
             subtitle={content.home.activities?.subtitle || "نساهم في بناء المجتمع وتطوير مهارات الحرفيات من خلال فعالياتنا المستمرة."} 
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {[
-              { title: 'ورش عمل التطريز', desc: 'دورات تدريبية مكثفة لتعليم أصول التطريز اليدوي للأجيال الجديدة.', icon: <Scissors size={24} /> },
-              { title: 'معارض التراث', desc: 'المشاركة في المعارض الدولية والوطنية لنشر الثقافة والزي الفلسطيني.', icon: <Globe size={24} /> },
-              { title: 'تمكين المرأة', desc: 'برامج لدعم المبدعات وتوفير فرص عمل مستدامة لهن في مجال الخياطة والتفصيل.', icon: <Star size={24} /> },
-            ].map((activity, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ background: 'var(--bg-white)', padding: '3rem', borderRadius: '24px', border: '1px solid var(--border-light)' }}>
-                <div style={{ color: 'var(--accent-gold)', marginBottom: '1.5rem' }}>{activity.icon}</div>
-                <h3 style={{ fontSize: '20px', fontWeight: '900', marginBottom: '1rem' }}>{activity.title}</h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: '1.8' }}>{activity.desc}</p>
-              </motion.div>
-            ))}
+            {(content.home.activities || []).map((activity, i) => {
+              // Convert string icons to components if necessary or handle dynamically
+              let IconComp = Scissors;
+              if (activity.icon === 'Globe') IconComp = Globe;
+              if (activity.icon === 'Star') IconComp = Star;
+
+              return (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  style={{ background: 'var(--bg-white)', padding: '3rem', borderRadius: '24px', border: '1px solid var(--border-light)' }}>
+                  <div style={{ color: 'var(--accent-gold)', marginBottom: '1.5rem' }}><IconComp size={24} /></div>
+                  <h3 style={{ fontSize: '20px', fontWeight: '900', marginBottom: '1rem' }}>{activity.title}</h3>
+                  <p style={{ color: 'var(--text-muted)', lineHeight: '1.8' }}>{activity.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -293,7 +296,7 @@ const Home = () => {
             subtitle={content.home.faqSection?.subtitle || "إجابات سريعة على أكثر ما يسألنا عنه عميلاتنا الكريمات."} 
           />
           <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {homeFaqs.map((item, i) => (
+            {(content.home.faqs || homeFaqsFallback).map((item, i) => (
               <HomeFAQItem key={i} q={item.q} a={item.a} i={i} />
             ))}
           </div>

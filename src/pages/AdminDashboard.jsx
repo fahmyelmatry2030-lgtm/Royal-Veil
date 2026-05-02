@@ -38,6 +38,7 @@ import {
 } from 'recharts';
 import { storage } from '../utils/storage';
 import { initialProducts, CATEGORIES } from '../data/products';
+import ArrayEditor from '../components/ArrayEditor';
 
 // ─── Constants ───
 const COLORS = ['#B19CD9', '#D4AF37', '#5D3E8B', '#A084CA'];
@@ -548,6 +549,32 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
+              {/* Home - Activities Array */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0', gridColumn: '1 / -1' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Star size={20} /> الصفحة الرئيسية - نشاطات الجمعية (القائمة)
+                </h3>
+                <ArrayEditor 
+                  label="قائمة النشاطات" 
+                  items={siteContent.home.activities || []} 
+                  schema={{ title: 'عنوان النشاط', desc: 'وصف النشاط', icon: 'اسم الأيقونة (مثل Scissors, Globe, Star)' }} 
+                  onUpdate={(newArr) => handleUpdateContent('home', 'activities', newArr)} 
+                />
+              </div>
+
+              {/* Home - FAQs Array */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0', gridColumn: '1 / -1' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <MessageSquare size={20} /> الصفحة الرئيسية - الأسئلة الشائعة (القائمة)
+                </h3>
+                <ArrayEditor 
+                  label="الأسئلة والإجابات" 
+                  items={siteContent.home.faqs || []} 
+                  schema={{ q: 'السؤال', a: 'الإجابة (نص)' }} 
+                  onUpdate={(newArr) => handleUpdateContent('home', 'faqs', newArr)} 
+                />
+              </div>
+
               {/* Home - Newsletter */}
               <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -690,6 +717,45 @@ const AdminDashboard = () => {
                     style={{ padding: '15px', borderRadius: '12px', border: '1px solid #eee', minHeight: '80px', outline: 'none' }}
                   />
                 </div>
+              </div>
+
+              {/* About - Stats Array */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0', gridColumn: '1 / -1' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Award size={20} /> صفحة من نحن - الإحصائيات (الأرقام)
+                </h3>
+                <ArrayEditor 
+                  label="الإحصائيات" 
+                  items={siteContent.about.stats || []} 
+                  schema={{ number: 'الرقم (مثل 15+)', label: 'الوصف', icon: 'الأيقونة (Award, Users, Star, Heart)' }} 
+                  onUpdate={(newArr) => handleUpdateContent('about', 'stats', newArr)} 
+                />
+              </div>
+
+              {/* About - Milestones Array */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0', gridColumn: '1 / -1' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Crown size={20} /> صفحة من نحن - محطاتنا عبر الزمن
+                </h3>
+                <ArrayEditor 
+                  label="المحطات الزمنية" 
+                  items={siteContent.about.milestones || []} 
+                  schema={{ year: 'السنة', title: 'العنوان', desc: 'وصف المحطة (نص)' }} 
+                  onUpdate={(newArr) => handleUpdateContent('about', 'milestones', newArr)} 
+                />
+              </div>
+
+              {/* About - Values Array */}
+              <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0', gridColumn: '1 / -1' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Star size={20} /> صفحة من نحن - قيمنا الراسخة
+                </h3>
+                <ArrayEditor 
+                  label="القيم" 
+                  items={siteContent.about.values || []} 
+                  schema={{ title: 'عنوان القيمة', desc: 'وصف القيمة (نص)', icon: 'الأيقونة (Palette, Leaf, Users, ShieldCheck)' }} 
+                  onUpdate={(newArr) => handleUpdateContent('about', 'values', newArr)} 
+                />
               </div>
 
               {/* Contact Page */}

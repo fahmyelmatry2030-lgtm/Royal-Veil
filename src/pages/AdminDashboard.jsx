@@ -29,7 +29,8 @@ import {
   UserPlus,
   PhoneCall,
   Award,
-  Target
+  Target,
+  Crown
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { 

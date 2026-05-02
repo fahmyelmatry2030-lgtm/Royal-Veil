@@ -8,7 +8,9 @@ const STORAGE_KEYS = {
   SUBSCRIBERS: 'rv_subscribers',
   STATS: 'rv_stats',
   PRODUCTS: 'rv_products',
-  CONTENT: 'rv_site_content'
+  CONTENT: 'rv_site_content',
+  DELETED_IDS: 'rv_deleted_ids',
+  UPDATED_INITIAL: 'rv_updated_initial'
 };
 
 import { initialContent } from '../data/content';
@@ -96,8 +98,38 @@ export const storage = {
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify([newProduct, ...products]));
     return newProduct;
   },
+  // --- Deleted/Updated Initial Products ---
+  getDeletedIds: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.DELETED_IDS) || '[]'),
+  getUpdatedInitial: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.UPDATED_INITIAL) || '[]'),
+  
   deleteProduct: (id) => {
-    const products = storage.getProducts().filter(p => p.id !== id);
-    localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(products));
+    // 1. Remove from custom products
+    const customProducts = storage.getProducts().filter(p => p.id !== id);
+    localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(customProducts));
+    
+    // 2. Track deleted initial ID
+    const deletedIds = storage.getDeletedIds();
+    if (!deletedIds.includes(id)) {
+      localStorage.setItem(STORAGE_KEYS.DELETED_IDS, JSON.stringify([...deletedIds, id]));
+    }
+  },
+  updateProduct: (id, updatedData) => {
+    // 1. If it's a custom product
+    const customProducts = storage.getProducts();
+    const isCustom = customProducts.find(p => p.id === id);
+    if (isCustom) {
+      const updated = customProducts.map(p => p.id === id ? { ...p, ...updatedData } : p);
+      localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(updated));
+    } else {
+      // 2. If it's an initial product, track the update
+      const updatedInitial = storage.getUpdatedInitial();
+      const existingIdx = updatedInitial.findIndex(p => p.id === id);
+      if (existingIdx > -1) {
+        updatedInitial[existingIdx] = { ...updatedInitial[existingIdx], ...updatedData };
+      } else {
+        updatedInitial.push({ id, ...updatedData });
+      }
+      localStorage.setItem(STORAGE_KEYS.UPDATED_INITIAL, JSON.stringify(updatedInitial));
+    }
   }
 };

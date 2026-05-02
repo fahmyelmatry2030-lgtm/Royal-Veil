@@ -69,6 +69,8 @@ const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
   const [newProduct, setNewProduct] = useState({ title: '', price: '', category: 'فساتين', img: '' });
   const navigate = useNavigate();
 
@@ -80,17 +82,28 @@ const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
   const [siteContent, setSiteContent] = useState(null);
 
+  const refreshProducts = () => {
+    const storedProducts = storage.getProducts();
+    const deletedIds = storage.getDeletedIds();
+    const updatedInitial = storage.getUpdatedInitial();
+    
+    let combined = [...initialProducts];
+    combined = combined.filter(p => !deletedIds.includes(p.id));
+    combined = combined.map(p => {
+      const update = updatedInitial.find(u => u.id === p.id);
+      return update ? { ...p, ...update } : p;
+    });
+    
+    setProducts([...combined, ...storedProducts]);
+  };
+
   useEffect(() => {
-    // Load Real Data
     setOrders(storage.getOrders());
     setMessages(storage.getMessages());
     setCustomers(storage.getCustomers());
     setSubscribers(storage.getSubscribers());
     setSiteContent(storage.getContent());
-    
-    // Combine initial products with storage products
-    const storedProducts = storage.getProducts();
-    setProducts([...initialProducts, ...storedProducts]);
+    refreshProducts();
   }, []);
 
   const handleLogout = () => {
@@ -111,20 +124,36 @@ const AdminDashboard = () => {
   };
 
   const deleteProduct = (id) => {
-    // If it's a manual product (from storage), delete it there
-    storage.deleteProduct(id);
-    // Refresh products list
-    const storedProducts = storage.getProducts();
-    setProducts([...initialProducts, ...storedProducts]);
+    if (window.confirm('هل أنتِ متأكدة من حذف هذا المنتج؟')) {
+      storage.deleteProduct(id);
+      refreshProducts();
+    }
+  };
+
+  const handleOpenEdit = (product) => {
+    setEditingProduct(product);
+    setNewProduct({
+      title: product.title,
+      price: product.price.replace(' ₪', '').replace(' شيكل', ''),
+      category: product.category,
+      img: product.img
+    });
+    setIsEditMode(true);
+    setIsAddModalOpen(true);
   };
 
   const handleAddProduct = (e) => {
     e.preventDefault();
     if (newProduct.title && newProduct.price) {
-      storage.saveProduct(newProduct);
-      const storedProducts = storage.getProducts();
-      setProducts([...initialProducts, ...storedProducts]);
+      if (isEditMode && editingProduct) {
+        storage.updateProduct(editingProduct.id, newProduct);
+      } else {
+        storage.saveProduct(newProduct);
+      }
+      refreshProducts();
       setIsAddModalOpen(false);
+      setIsEditMode(false);
+      setEditingProduct(null);
       setNewProduct({ title: '', price: '', category: 'فساتين', img: '' });
     }
   };
@@ -243,7 +272,11 @@ const AdminDashboard = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
               <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)' }}>إدارة المتجر</h2>
               <button 
-                onClick={() => setIsAddModalOpen(true)}
+                onClick={() => {
+                  setIsEditMode(false);
+                  setNewProduct({ title: '', price: '', category: 'فساتين', img: '' });
+                  setIsAddModalOpen(true);
+                }}
                 style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px', background: 'var(--primary-purple)', border: 'none', borderRadius: '12px', fontSize: '16px', color: '#fff', cursor: 'pointer', fontWeight: '700' }}
               >
                 <PlusCircle size={20} /> إضافة منتج جديد
@@ -260,6 +293,9 @@ const AdminDashboard = () => {
                     <p style={{ fontSize: '12px', color: '#888', marginBottom: '8px' }}>{p.category}</p>
                     <p style={{ color: 'var(--primary-purple)', fontWeight: '800', fontSize: '16px', marginBottom: '15px' }}>{p.price} ₪</p>
                     <div style={{ display: 'flex', gap: '10px' }}>
+                      <button onClick={() => handleOpenEdit(p)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', color: 'var(--primary-purple)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Edit size={16}/>
+                      </button>
                       <button onClick={() => deleteProduct(p.id)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #eee', color: '#ff4d4d', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Trash2 size={16}/>
                       </button>
@@ -283,7 +319,9 @@ const AdminDashboard = () => {
                     initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
                     style={{ position: 'relative', background: '#fff', width: '100%', maxWidth: '500px', borderRadius: '24px', padding: '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
                   >
-                    <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '30px', color: 'var(--primary-purple)' }}>إضافة منتج جديد</h3>
+                    <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '30px', color: 'var(--primary-purple)' }}>
+                      {isEditMode ? 'تعديل المنتج' : 'إضافة منتج جديد'}
+                    </h3>
                     <form onSubmit={handleAddProduct} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <label style={{ fontSize: '14px', fontWeight: '700' }}>اسم المنتج</label>
@@ -328,7 +366,9 @@ const AdminDashboard = () => {
                         />
                       </div>
                       <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                        <button type="submit" style={{ flex: 1, padding: '14px', borderRadius: '12px', background: 'var(--primary-purple)', color: '#fff', border: 'none', fontWeight: '800', cursor: 'pointer' }}>حفظ المنتج</button>
+                        <button type="submit" style={{ flex: 1, padding: '14px', borderRadius: '12px', background: 'var(--primary-purple)', color: '#fff', border: 'none', fontWeight: '800', cursor: 'pointer' }}>
+                          {isEditMode ? 'حفظ التعديلات' : 'حفظ المنتج'}
+                        </button>
                         <button type="button" onClick={() => setIsAddModalOpen(false)} style={{ flex: 1, padding: '14px', borderRadius: '12px', background: '#f5f5f5', color: '#555', border: 'none', fontWeight: '800', cursor: 'pointer' }}>إلغاء</button>
                       </div>
                     </form>

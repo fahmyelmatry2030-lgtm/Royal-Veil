@@ -108,7 +108,7 @@ export const initialContent = {
     footer: {
       about: 'جمعية الطرحة الملكية التعاونية - ندمج عبق التراث الفلسطيني بلمسات عصرية عالمية لتتألقي في كل مناسبة.',
       address: 'القدس، فلسطين',
-      phone: '972505542323',
+      phone: '972585040233',
       whatsapp: '972585040233',
       email: 'info@royalveil.com'
     }

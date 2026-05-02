@@ -37,7 +37,7 @@ const Contact = () => {
 *الرسالة:*
 ${formData.message}`;
 
-    const whatsappNumber = content?.common?.footer?.phone?.replace(/\D/g, '') || '972505542323';
+    const whatsappNumber = content?.common?.footer?.phone?.replace(/\D/g, '') || '972585040233';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
     window.open(whatsappUrl, '_blank');
   };

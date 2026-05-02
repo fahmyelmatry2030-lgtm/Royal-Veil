@@ -611,11 +611,20 @@ const AdminDashboard = () => {
                   />
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
                     <div>
-                      <label style={{ fontSize: '13px', fontWeight: '700' }}>الهاتف</label>
+                      <label style={{ fontSize: '13px', fontWeight: '700' }}>الهاتف (للتواصل)</label>
                       <input 
                         type="text"
                         value={siteContent.common.footer.phone}
                         onChange={(e) => handleUpdateContent('common', 'footer.phone', e.target.value)}
+                        style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ fontSize: '13px', fontWeight: '700' }}>رقم الواتساب (للطلبات)</label>
+                      <input 
+                        type="text"
+                        value={siteContent.common.footer.whatsapp || ''}
+                        onChange={(e) => handleUpdateContent('common', 'footer.whatsapp', e.target.value)}
                         style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
                       />
                     </div>

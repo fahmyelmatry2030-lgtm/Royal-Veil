@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
+import { storage } from '../utils/storage';
 
 const WhatsAppButton = () => {
-  const phoneNumber = "972505542323"; 
+  const content = storage.getContent();
+  const phoneNumber = content?.common?.footer?.whatsapp?.replace(/\D/g, '') || "972585040233"; 
   const message = encodeURIComponent("مرحباً جمعية الطرحة الملكية، أرغب في الاستفسار عن منتجاتكم.");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

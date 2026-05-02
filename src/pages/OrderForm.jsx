@@ -11,6 +11,7 @@ const OrderForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
+  const [siteContent] = useState(storage.getContent());
   
   const [productName, setProductName] = useState(queryParams.get('product') || '');
   const [productPrice, setProductPrice] = useState(queryParams.get('price') || '');
@@ -22,6 +23,7 @@ const OrderForm = () => {
     address: '',
     notes: '',
     city: '',
+    size: '',
     paymentMethod: 'cod'
   });
 
@@ -48,6 +50,7 @@ const OrderForm = () => {
       phone: formData.phone,
       area: formData.area,
       city: formData.city,
+      size: formData.size,
       address: formData.address,
       notes: formData.notes,
       total: (parseInt(productPrice) || 0) + shippingCost
@@ -64,13 +67,15 @@ const OrderForm = () => {
 *الهاتف:* ${formData.phone}
 *المنطقة:* ${formData.area}
 *المحافظة/المدينة:* ${formData.city}
+*المقاس:* ${formData.size || 'لم يتم التحديد'}
 *العنوان:* ${formData.address}
 *طريقة الدفع:* ${formData.paymentMethod === 'cod' ? 'الدفع عند الاستلام' : formData.paymentMethod === 'visa' ? 'فيزا / ماستر كارد' : 'باي بال'}
 *رسوم التوصيل:* ${shippingCost} شيكل
 --------------------------
 *ملاحظات:* ${formData.notes || 'لا يوجد'}`;
 
-    const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(message)}`;
+    const whatsappNumber = siteContent?.common?.footer?.whatsapp?.replace(/\D/g, '') || '972585040233';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -183,6 +188,24 @@ const OrderForm = () => {
                     onChange={(e) => setFormData({...formData, city: e.target.value})}
                     style={{ width: '100%', padding: '14px', border: '1px solid var(--border-light)', borderRadius: '4px', background: 'var(--bg-white)', color: 'var(--text-dark)' }} 
                   />
+                </div>
+
+                <div style={{ position: 'relative' }}>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '800', fontSize: '14px', color: 'var(--text-dark)' }}>المقاس (Size):</label>
+                  <select 
+                    value={formData.size}
+                    onChange={(e) => setFormData({...formData, size: e.target.value})}
+                    required
+                    style={{ width: '100%', padding: '14px', border: '1px solid var(--border-light)', borderRadius: '4px', background: 'var(--bg-white)', color: 'var(--text-dark)', cursor: 'pointer' }}
+                  >
+                    <option value="">اختاري المقاس...</option>
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">X-Large (XL)</option>
+                    <option value="XXL">XX-Large (XXL)</option>
+                    <option value="تفصيل خاص">تفصيل حسب القياس (سنتواصل معكِ)</option>
+                  </select>
                 </div>
 
                 {/* Payment Methods */}

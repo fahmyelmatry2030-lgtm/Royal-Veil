@@ -8,6 +8,7 @@ import { storage } from '../utils/storage';
 
 const CustomOrderForm = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [siteContent] = useState(storage.getContent());
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -53,7 +54,8 @@ ${formData.details}
 *القياسات:*
 ${formData.sizes || 'طلب مساعدة'}`;
 
-    const whatsappUrl = `https://wa.me/972585040233?text=${encodeURIComponent(message)}`;
+    const whatsappNumber = siteContent?.common?.footer?.whatsapp?.replace(/\D/g, '') || '972585040233';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setSubmitted(true);
   };

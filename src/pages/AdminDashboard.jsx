@@ -356,14 +356,27 @@ const AdminDashboard = () => {
                         </select>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                        <label style={{ fontSize: '14px', fontWeight: '700' }}>رابط الصورة</label>
+                        <label style={{ fontSize: '14px', fontWeight: '700' }}>صورة المنتج (من الجهاز)</label>
                         <input 
-                          type="text" 
-                          placeholder="/Images/product-name.jpg"
-                          value={newProduct.img}
-                          onChange={(e) => setNewProduct({...newProduct, img: e.target.value})}
-                          style={{ padding: '12px 16px', borderRadius: '12px', border: '1px solid #eee', outline: 'none' }}
+                          type="file" 
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                setNewProduct({...newProduct, img: reader.result});
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                          style={{ padding: '12px 16px', borderRadius: '12px', border: '1px solid #eee', outline: 'none', background: '#fcfcfe' }}
                         />
+                        {newProduct.img && (
+                          <div style={{ marginTop: '10px', height: '120px', borderRadius: '12px', overflow: 'hidden', border: '2px solid var(--purple-light)' }}>
+                            <img src={newProduct.img} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          </div>
+                        )}
                       </div>
                       <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                         <button type="submit" style={{ flex: 1, padding: '14px', borderRadius: '12px', background: 'var(--primary-purple)', color: '#fff', border: 'none', fontWeight: '800', cursor: 'pointer' }}>

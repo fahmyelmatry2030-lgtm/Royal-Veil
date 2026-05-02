@@ -27,7 +27,9 @@ import {
   MessageSquare,
   MoreVertical,
   UserPlus,
-  PhoneCall
+  PhoneCall,
+  Award,
+  Target
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -407,10 +409,10 @@ const AdminDashboard = () => {
                        <span style={{ fontWeight: '700' }}>{sub}</span>
                     </div>
                   ))}
-               </div>
-            </div>
-          </motion.div>
-        );
+                </div>
+              </div>
+            </motion.div>
+          );
 
       case 'content':
         if (!siteContent) return null;
@@ -671,8 +673,6 @@ const AdminDashboard = () => {
                   />
                 </div>
               </div>
-                </div>
-              </div>
             </div>
           </motion.div>
         );
@@ -700,6 +700,7 @@ const AdminDashboard = () => {
         </div>
 
         <nav style={{ flex: 1, marginTop: '20px', padding: '0 15px' }}>
+          {[
             { id: 'overview', icon: <LayoutDashboard size={20} />, label: 'الرئيسية' },
             { id: 'orders', icon: <ShoppingBag size={20} />, label: 'الطلبات' },
             { id: 'products', icon: <Package size={20} />, label: 'المتجر' },

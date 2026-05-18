@@ -30,7 +30,8 @@ import {
   PhoneCall,
   Award,
   Target,
-  Crown
+  Crown,
+  Star
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -75,6 +76,22 @@ const AdminDashboard = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [newProduct, setNewProduct] = useState({ title: '', price: '', category: 'فساتين', img: '' });
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      if (mobile) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Data State
   const [orders, setOrders] = useState([]);
@@ -190,7 +207,7 @@ const AdminDashboard = () => {
               <StatCard title="المشتركات" value={subscribers.length} icon={<Bell size={20} />} trend="٨.٤٪" color="#5D3E8B" isUp={true} />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px', marginBottom: '30px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.5fr 1fr', gap: '20px', marginBottom: '30px' }}>
               <div style={{ background: '#fff', padding: '24px', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.02)', border: '1px solid #f0f0f0' }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px', color: '#2d3436' }}>الطلبات الأخيرة</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
@@ -226,7 +243,7 @@ const AdminDashboard = () => {
                 <Download size={18} /> تصدير الطلبات
               </button>
             </div>
-            <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
+            <div style={{ background: '#fff', borderRadius: '16px', overflowX: 'auto', border: '1px solid #f0f0f0' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
                 <thead style={{ background: '#fafafa' }}>
                   <tr>
@@ -319,7 +336,7 @@ const AdminDashboard = () => {
                   />
                   <motion.div 
                     initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
-                    style={{ position: 'relative', background: '#fff', width: '100%', maxWidth: '500px', borderRadius: '24px', padding: '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
+                    style={{ position: 'relative', background: '#fff', width: '100%', maxWidth: '500px', borderRadius: '24px', padding: isMobile ? '20px' : '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', maxHeight: '90vh', overflowY: 'auto' }}
                   >
                     <h3 style={{ fontSize: '24px', fontWeight: '900', marginBottom: '30px', color: 'var(--primary-purple)' }}>
                       {isEditMode ? 'تعديل المنتج' : 'إضافة منتج جديد'}
@@ -398,7 +415,7 @@ const AdminDashboard = () => {
         return (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>قاعدة بيانات العملاء</h2>
-            <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
+            <div style={{ background: '#fff', borderRadius: '16px', overflowX: 'auto', border: '1px solid #f0f0f0' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right' }}>
                 <thead style={{ background: '#fafafa' }}>
                   <tr>
@@ -475,7 +492,7 @@ const AdminDashboard = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--purple-dark)', marginBottom: '30px' }}>إدارة محتوى الموقع</h2>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '30px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
               {/* Home - Hero */}
               <div style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #f0f0f0' }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '20px', color: 'var(--primary-purple)', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -877,19 +894,52 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#fcfcfe', direction: 'rtl', fontFamily: 'var(--font-sans)' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#fcfcfe', direction: 'rtl', fontFamily: 'var(--font-sans)', position: 'relative' }}>
       
+      {/* Mobile Sidebar Overlay */}
+      {isMobile && isSidebarOpen && (
+        <div 
+          onClick={() => setIsSidebarOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.4)',
+            backdropFilter: 'blur(2px)',
+            zIndex: 999
+          }}
+        />
+      )}
+
       {/* Sidebar */}
-      <motion.aside initial={false} animate={{ width: isSidebarOpen ? '280px' : '90px' }} style={{ background: '#fff', boxShadow: '2px 0 20px rgba(0,0,0,0.03)', zIndex: 100, display: 'flex', flexDirection: 'column', position: 'sticky', top: 0, height: '100vh' }}>
-        <div style={{ padding: '30px 24px', display: 'flex', alignItems: 'center', justifyContent: isSidebarOpen ? 'space-between' : 'center' }}>
-          {isSidebarOpen && (
+      <motion.aside 
+        initial={false} 
+        animate={{ 
+          width: isSidebarOpen ? '280px' : (isMobile ? '0px' : '90px'),
+          x: isMobile && !isSidebarOpen ? '100%' : '0%'
+        }} 
+        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        style={{ 
+          background: '#fff', 
+          boxShadow: isMobile ? '-5px 0 25px rgba(0,0,0,0.1)' : '2px 0 20px rgba(0,0,0,0.03)', 
+          zIndex: 1000, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          position: isMobile ? 'fixed' : 'sticky', 
+          top: 0, 
+          right: 0,
+          height: '100vh',
+          overflowY: 'auto'
+        }}
+      >
+        <div style={{ padding: '30px 24px', display: 'flex', alignItems: 'center', justifyContent: (isSidebarOpen || isMobile) ? 'space-between' : 'center' }}>
+          {(isSidebarOpen || isMobile) && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{ width: '40px', height: '40px', background: 'var(--primary-purple)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}><ShoppingBag size={24} /></div>
               <h2 style={{ fontSize: '18px', fontWeight: '900', color: 'var(--purple-dark)' }}>ROYAL PANEL</h2>
             </div>
           )}
           <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} style={{ background: 'rgba(0,0,0,0.05)', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', width: '32px', height: '32px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {isSidebarOpen ? <X size={18} /> : <Menu size={18} />}
+            {(isSidebarOpen || isMobile) ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
@@ -903,32 +953,60 @@ const AdminDashboard = () => {
             { id: 'subscribers', icon: <Bell size={20} />, label: 'المشتركات' },
             { id: 'content', icon: <Edit size={20} />, label: 'إدارة المحتوى' },
           ].map((item) => (
-            <button key={item.id} onClick={() => setActiveTab(item.id)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', marginBottom: '5px', background: activeTab === item.id ? 'var(--primary-purple)' : 'transparent', borderRadius: '12px', color: activeTab === item.id ? '#fff' : '#636e72', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'right', fontWeight: activeTab === item.id ? '700' : '500' }}>
+            <button 
+              key={item.id} 
+              onClick={() => {
+                setActiveTab(item.id);
+                if (isMobile) setIsSidebarOpen(false);
+              }} 
+              style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', marginBottom: '5px', background: activeTab === item.id ? 'var(--primary-purple)' : 'transparent', borderRadius: '12px', color: activeTab === item.id ? '#fff' : '#636e72', cursor: 'pointer', transition: 'all 0.2s', textAlign: 'right', fontWeight: activeTab === item.id ? '700' : '500', border: 'none', outline: 'none' }}
+            >
               <div style={{ opacity: activeTab === item.id ? 1 : 0.7 }}>{item.icon}</div>
-              {isSidebarOpen && <span style={{ fontSize: '15px' }}>{item.label}</span>}
+              {(isSidebarOpen || isMobile) && <span style={{ fontSize: '15px' }}>{item.label}</span>}
             </button>
           ))}
         </nav>
 
         <div style={{ padding: '20px', borderTop: '1px solid #eee' }}>
-          <button onClick={handleLogout} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', background: 'transparent', color: '#ff4d4d', cursor: 'pointer', fontWeight: '700' }}>
+          <button onClick={handleLogout} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '15px', padding: '14px 20px', background: 'transparent', color: '#ff4d4d', cursor: 'pointer', fontWeight: '700', border: 'none' }}>
             <LogOut size={20} />
-            {isSidebarOpen && <span>خروج آمن</span>}
+            {(isSidebarOpen || isMobile) && <span>خروج آمن</span>}
           </button>
         </div>
       </motion.aside>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: '30px', overflowX: 'hidden' }}>
-        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '20px', fontWeight: '900' }}>أهلاً بكِ في لوحة التحكم</h1>
+      <main style={{ flex: 1, padding: isMobile ? '20px' : '30px', overflowX: 'hidden' }}>
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', gap: '15px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {isMobile && (
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                style={{ 
+                  background: 'rgba(0,0,0,0.05)', 
+                  border: 'none', 
+                  cursor: 'pointer', 
+                  color: 'var(--text-dark)', 
+                  width: '40px', 
+                  height: '40px', 
+                  borderRadius: '10px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center' 
+                }}
+              >
+                <Menu size={22} />
+              </button>
+            )}
+            <h1 style={{ fontSize: isMobile ? '16px' : '20px', fontWeight: '900', margin: 0 }}>أهلاً بكِ في لوحة التحكم</h1>
+          </div>
           
-          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-            <div style={{ textAlign: 'left' }}>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+            <div style={{ textAlign: 'left', display: isMobile ? 'none' : 'block' }}>
               <p style={{ fontSize: '14px', fontWeight: '800', color: '#2d3436' }}>المدير العام</p>
               <p style={{ fontSize: '11px', color: '#b2bec3' }}>متصل الآن</p>
             </div>
-            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'var(--primary-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: '900', boxShadow: '0 8px 15px rgba(177, 156, 217, 0.3)' }}>A</div>
+            <div style={{ width: isMobile ? '36px' : '48px', height: isMobile ? '36px' : '48px', borderRadius: '12px', background: 'var(--primary-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: '900', boxShadow: '0 8px 15px rgba(177, 156, 217, 0.3)' }}>A</div>
           </div>
         </header>
 

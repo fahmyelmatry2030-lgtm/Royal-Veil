@@ -20,9 +20,20 @@ export const storage = {
   getContent: () => {
     const stored = localStorage.getItem(STORAGE_KEYS.CONTENT);
     if (!stored) return initialContent;
-    // Merge stored content with initial to handle new fields
+    // Deep-merge: stored values override defaults, but missing keys fall back to initialContent
     const parsed = JSON.parse(stored);
-    return { ...initialContent, ...parsed };
+    const deepMerge = (target, source) => {
+      const result = { ...target };
+      for (const key of Object.keys(source)) {
+        if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+          result[key] = deepMerge(target[key] || {}, source[key]);
+        } else {
+          result[key] = source[key];
+        }
+      }
+      return result;
+    };
+    return deepMerge(initialContent, parsed);
   },
   saveContent: (newContent) => {
     localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(newContent));
